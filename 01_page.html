@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>인천 여행지 소개</title>
     <style>
-        /* 기본 스타일 초기화 */
         * {
             margin: 0;
             padding: 0;
@@ -13,29 +12,26 @@
         }
 
         body {
-            font-family: '맑은 고딕', sans-serif;
+            font-family: '나눔고딕', sans-serif;
             background: #f0f4f8;
             color: #222;
             line-height: 1.6;
+            padding-top: 70px; /* fixed header 높이만큼 패딩 */
         }
 
-        /* 헤더 */
+        /* 헤더 + 네비 합치기 */
         header {
-            background: linear-gradient(to right, #A8FBD3, #4FB7B3);
-            color: #1f1f1f;
-            padding: 60px 20px 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 10;
-        }
-
-        .header-top {
+            background: #fff;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
+            padding: 10px 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         .logo {
@@ -45,14 +41,33 @@
         }
 
         .logo h1 {
-            font-size: 2.5em;
-            margin: 0;
-            color: #1f1f1f;
+            font-size: 1.8em;
+            color: #31326F;
         }
 
         .icon {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #31326F;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background: #4FB7B3;
+            color: #fff;
         }
 
         .search-box {
@@ -60,85 +75,33 @@
             align-items: center;
             border-radius: 5px;
             overflow: hidden;
-            border: 1px solid #fff;
+            border: 1px solid #ccc;
+            margin-left: 20px;
         }
 
         .search-box input {
-            padding: 8px 10px;
+            padding: 6px 10px;
             border: none;
             outline: none;
-            font-size: 1em;
+            font-size: 10px;
         }
 
         .search-box button {
             padding: 6px 10px;
             border: none;
-            background: #fff;
+            background: #4FB7B3;
             cursor: pointer;
-            font-size: 1em;
         }
 
         .search-box button img {
-            width: 20px;
-            height: 20px;
-        }
-
-        header p {
-            font-size: 1.3em;
-            color: #333;
-        }
-
-        /* 내비게이션 */
-        nav {
-            background: linear-gradient(to right, #31326F, #4FB7B3);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 9;
-            border-radius: 0 0 10px 10px;
-        }
-
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-
-        nav li {
-            margin: 10px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 12px 25px;
-            display: inline-block;
-            border-radius: 10px;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        nav a:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        nav a.active::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 100%;
-            height: 3px;
-            background: #fff;
-            border-radius: 2px;
+            width: 18px;
+            height: 18px;
         }
 
         /* 히어로 영역 */
         .hero {
             background: url('./images/home_image.png') no-repeat center/cover;
             min-height: 500px;
-            margin-top: 0; /* nav 아래 공간 확보 */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -147,15 +110,10 @@
             font-size: 2.5em;
             font-weight: bold;
             text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
-            transition: transform 0.3s ease;
             text-align: center;
-            padding-left: 20px;
-            padding-right: 20px;
-            border-radius: 0 0 10px 10px ;
-        }
-
-        .hero:hover {
-            transform: scale(1.02);
+            padding: 0 20px;
+            margin-bottom: 50px;
+            border-radius: 0 0 20px 20px;
         }
 
         .hero button {
@@ -196,7 +154,6 @@
             font-size: 1.1em;
         }
 
-        /* 여행지 카드 */
         .places {
             display: flex;
             flex-wrap: wrap;
@@ -257,15 +214,6 @@
             box-shadow: 0 10px 15px rgba(0,0,0,0.2);
         }
 
-        /* 소개 섹션 */
-        .about {
-            margin-top: 50px;
-        }
-
-        .about p {
-            margin-bottom: 15px;
-        }
-
         /* 푸터 */
         footer {
             background: #31326F;
@@ -298,15 +246,26 @@
 
         /* 반응형 */
         @media (max-width: 900px) {
-            .places li {
-                flex: 1 1 calc(50% - 20px);
-            }
-            .header-top {
+            header {
                 flex-direction: column;
                 gap: 10px;
             }
+
             .logo h1 {
-                font-size: 2em;
+                font-size: 1.5em;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .search-box {
+                margin-left: 0;
+            }
+
+            .places li {
+                flex: 1 1 calc(50% - 20px);
             }
         }
 
@@ -322,32 +281,33 @@
 </head>
 <body>
     <header>
-        <div class="header-top">
-            <div class="logo">
-                <img src="./icon/bridge.png" alt="다리 아이콘" class="icon">
-                <img src="./icon/incheon.png" alt="도시 아이콘" class="icon">
-                <h1>인천 여행지 소개</h1>
-            </div>
-            <div class="search-box">
-                <input type="text" placeholder="관심 있는 인천 여행지를 검색하세요">
-                <button><img src="./icon/search.png" alt="검색 아이콘"></button>
-            </div>
+        <div class="logo">
+            <img src="./icon/bridge.png" alt="다리 아이콘" class="icon">
+            <img src="./icon/incheon.png" alt="도시 아이콘" class="icon">
+            <h1>인천 여행지 소개</h1>
         </div>
-        <p>바다와 도시가 어우러진 인천의 명소를 만나보세요</p>
-    </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active">홈</a></li>
-            <li><a href="about.html">소개</a></li>
-            <li><a href="contact.html">문의</a></li>
-        </ul>
-    </nav>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">홈</a></li>
+                <li><a href="about.html">소개</a></li>
+                <li><a href="contact.html">문의</a></li>
+            </ul>
+        </nav>
+
+        <div class="search-box">
+            <input type="text" placeholder="관심 있는 인천 여행지를 검색하세요">
+            <button><img src="./icon/search.png" alt="검색 아이콘"></button>
+        </div>
+    </header>
 
     <div class="hero">
         인천으로 떠나는 특별한 여행
         <button onclick="window.location.href='#places'">대표 여행지 보기</button>
     </div>
+
+    <!-- 이하 기존 컨테이너, 여행지, 푸터 동일 -->
+
 
     <div class="container about">
         <h2>인천 소개</h2>
