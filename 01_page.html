@@ -1,173 +1,312 @@
 <!DOCTYPE html>
 <html lang="ko">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>인천 여행지 소개</title>
-		<style>
-			/* 기본 스타일 초기화 */
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-			}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인천 여행지 소개</title>
+    <style>
+        /* 기본 스타일 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-			body {
-				font-family: '맑은 고딕', sans-serif;
-				background: #f0f4f8;
-				color: #222;
-				line-height: 1.6;
-			}
+        body {
+            font-family: '맑은 고딕', sans-serif;
+            background: #f0f4f8;
+            color: #222;
+            line-height: 1.6;
+        }
 
-			/* 헤더 */
-			header {
-				background: linear-gradient(to right, #A8FBD3, #4FB7B3);
-				color: #1f1f1f;
-				padding: 40px 20px;
-				text-align: center;
-				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-			}
+        /* 헤더 */
+        header {
+            background: linear-gradient(to right, #A8FBD3, #4FB7B3);
+            color: #1f1f1f;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
-			header h1 {
-				font-size: 2.8em;
-				margin-bottom: 10px;
-			}
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
 
-			header p {
-				font-size: 1.2em;
-				color: #333;
-			}
+        header p {
+            font-size: 1.3em;
+            color: #333;
+        }
 
-			/* 내비게이션 */
-			nav {
-				background: #31326F;
-			}
+        /* 내비게이션 */
+        nav {
+            background: #31326F;
+        }
 
-			nav ul {
-				display: flex;
-				justify-content: center;
-				list-style: none;
-			}
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
 
-			nav li {
-				margin: 0 20px;
-			}
+        nav li {
+            margin: 0 20px;
+        }
 
-			nav a {
-				color: #fff;
-				text-decoration: none;
-				font-weight: 600;
-				padding: 12px 20px;
-				display: inline-block;
-				transition: 0.3s;
-				border-radius: 5px;
-			}
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 20px;
+            display: inline-block;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
 
-			nav a:hover {
-				background: #4FB7B3;
-				color: #fff;
-			}
+        nav a:hover {
+            background: #4FB7B3;
+            color: #fff;
+        }
 
-			/* 히어로 영역 */
-			.hero {
-				background: url('./images/home_image.png') no-repeat center/cover;
-				height: 450px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				color: white;
-				font-size: 2.5em;
-				font-weight: bold;
-				text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
-				transition: transform 0.3s ease;
-			}
+        /* 히어로 영역 */
+        .hero {
+            background: url('./images/home_image.png') no-repeat center/cover;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding: 0 20px;
+        }
 
-			.hero:hover {
-				transform: scale(1.02);
-			}
+        .hero:hover {
+            transform: scale(1.02);
+        }
 
-			/* 메인 컨테이너 */
-			.container {
-				width: 90%;
-				max-width: 1200px;
-				margin: 40px auto;
-			}
+        .hero button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1em;
+            font-weight: bold;
+            color: #fff;
+            background: #4FB7B3;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-			h2 {
-				color: #31326F;
-				font-size: 2em;
-				margin-bottom: 20px;
-				border-bottom: 2px solid #4FB7B3;
-				display: inline-block;
-				padding-bottom: 5px;
-			}
+        .hero button:hover {
+            background: #36a29f;
+        }
 
-			p {
-				margin-bottom: 20px;
-				font-size: 1.1em;
-			}
+        /* 메인 컨테이너 */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
 
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 20px;
-			}
+        h2 {
+            color: #31326F;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4FB7B3;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
 
-			ul li {
-				background: white;
-				padding: 20px;
-				flex: 1 1 calc(33% - 20px);
-				border-radius: 10px;
-				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-				transition: transform 0.3s ease, box-shadow 0.3s ease;
-			}
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
 
-			ul li:hover {
-				transform: translateY(-5px);
-				box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-			}
+        /* 여행지 카드 */
+        .places {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-			/* 푸터 */
-			footer {
-				background: #31326F;
-				color: white;
-				text-align: center;
-				padding: 25px;
-				margin-top: 60px;
-				font-size: 0.95em;
-			}
-		</style>
-	</head>
-	<body>
-		<header>
-			<h1>인천 여행지 소개</h1>
-			<p>바다와 도시가 어우러진 인천의 명소를 만나보세요</p>
-		</header>
+        .places li {
+            background: white;
+            border-radius: 10px;
+            flex: 1 1 calc(33% - 20px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
 
-		<nav>
-			<ul>
-				<li><a href="index.html">홈</a></li>
-				<li><a href="about.html">소개</a></li>
-				<li><a href="contact.html">문의</a></li>
-			</ul>
-		</nav>
+        .places li img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
 
-		<div class="hero">
-			인천으로 떠나는 특별한 여행
-		</div>
+        .places li div {
+            padding: 15px;
+            flex-grow: 1;
+        }
 
-		<div class="container">
-			<h2>대표 여행지</h2>
-			<p>인천은 국제적인 항구도시로, 다양한 관광지와 문화를 즐길 수 있습니다.</p>
-			<ul>
-				<li>차이나타운 - 한국 속 작은 중국</li>
-				<li>송도 센트럴파크 - 현대적인 도시 속 휴식 공간</li>
-				<li>월미도 - 놀이공원과 바다를 동시에 즐길 수 있는 명소</li>
-			</ul>
-		</div>
+        .places li h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #31326F;
+        }
 
-		<footer>
-			<p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
-		</footer>
-	</body>
+        .places li p {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .places li button {
+            margin-top: auto;
+            padding: 10px 15px;
+            font-size: 0.95em;
+            color: #fff;
+            background: #4FB7B3;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .places li button:hover {
+            background: #36a29f;
+        }
+
+        .places li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        }
+
+        /* 소개 섹션 */
+        .about {
+            margin-top: 50px;
+        }
+
+        .about p {
+            margin-bottom: 15px;
+        }
+
+        /* 푸터 */
+        footer {
+            background: #31326F;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.95em;
+        }
+
+        footer .social {
+            margin: 15px 0;
+        }
+
+        footer .social a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: 0.3s;
+        }
+
+        footer .social a:hover {
+            color: #4FB7B3;
+        }
+
+        /* 반응형 */
+        @media (max-width: 900px) {
+            .places li {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .places li {
+                flex: 1 1 100%;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            .hero {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>인천 여행지 소개</h1>
+        <p>바다와 도시가 어우러진 인천의 명소를 만나보세요</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">홈</a></li>
+            <li><a href="about.html">소개</a></li>
+            <li><a href="contact.html">문의</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        인천으로 떠나는 특별한 여행
+        <button onclick="window.location.href='#places'">대표 여행지 보기</button>
+    </div>
+
+    <div class="container about">
+        <h2>인천 소개</h2>
+        <p>인천은 대한민국 서해안에 위치한 국제 항구도시로, 현대적인 도시와 아름다운 자연이 공존하는 매력적인 지역입니다.</p>
+        <p>역사적인 건축물, 활기찬 차이나타운, 그리고 섬과 해변 등 다양한 관광지를 즐길 수 있으며, 맛집과 카페도 풍부합니다.</p>
+    </div>
+
+    <div class="container" id="places">
+        <h2>대표 여행지</h2>
+        <p>인천에서 꼭 방문해야 할 주요 여행지들을 소개합니다.</p>
+        <ul class="places">
+            <li>
+                <img src="./images/town.png" alt="차이나타운">
+                <div>
+                    <h3>차이나타운</h3>
+                    <p>한국 속 작은 중국, 화려한 건축과 맛집 체험</p>
+                    <button>자세히 보기</button>
+                </div>
+            </li>
+            <li>
+                <img src="./images/songdo.png" alt="송도 센트럴파크">
+                <div>
+                    <h3>송도 센트럴파크</h3>
+                    <p>현대적인 도시 속에서 자연과 함께 휴식을 즐길 수 있는 공간</p>
+                    <button>자세히 보기</button>
+                </div>
+            </li>
+            <li>
+                <img src="./images/wolmido.png" alt="월미도">
+                <div>
+                    <h3>월미도</h3>
+                    <p>놀이공원과 바다를 동시에 즐길 수 있는 인기 명소</p>
+                    <button>자세히 보기</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <footer>
+        <div class="social">
+            <a href="#">페이스북</a>
+            <a href="#">인스타그램</a>
+            <a href="#">트위터</a>
+        </div>
+        <p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
+        <p>문의: example@email.com | 전화: 010-1234-5678</p>
+    </footer>
+</body>
 </html>
