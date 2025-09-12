@@ -72,7 +72,7 @@
 
         .search-box button {
             padding: 6px 10px;
-            border: 3;
+            border: none;
             background: #fff;
             cursor: pointer;
             font-size: 1em;
@@ -94,6 +94,7 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             position: relative;
             z-index: 9;
+            border-radius: 0 0 10px 10px;
         }
 
         nav ul {
@@ -137,7 +138,7 @@
         .hero {
             background: url('./images/home_image.png') no-repeat center/cover;
             min-height: 500px;
-            margin-top: 10px; /* nav 아래 공간 확보 */
+            margin-top: 0; /* nav 아래 공간 확보 */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -150,6 +151,7 @@
             text-align: center;
             padding-left: 20px;
             padding-right: 20px;
+            border-radius: 0 0 10px 10px ;
         }
 
         .hero:hover {
@@ -272,22 +274,26 @@
             padding: 30px 20px;
             margin-top: 60px;
             font-size: 0.95em;
+            border-radius: 10px 10px 0 0;
         }
 
-        footer .social {
-            margin: 15px 0;
+        footer .social-icons {
+            margin-bottom: 10px;
         }
 
-        footer .social a {
+        footer .social-icons a {
             margin: 0 10px;
-            color: white;
-            text-decoration: none;
-            font-size: 1.2em;
+            display: inline-block;
+        }
+
+        footer .social-icons img {
+            width: 30px;
+            height: 30px;
             transition: 0.3s;
         }
 
-        footer .social a:hover {
-            color: #4FB7B3;
+        footer .social-icons img:hover {
+            transform: scale(1.2);
         }
 
         /* 반응형 */
@@ -318,13 +324,12 @@
     <header>
         <div class="header-top">
             <div class="logo">
-                <img src="./icon/bridge.png" alt="바다 아이콘" class="icon">
-                <img src="./icon/incheon.png" alt="비행기 아이콘" class="icon">
-            
+                <img src="./icon/bridge.png" alt="다리 아이콘" class="icon">
+                <img src="./icon/incheon.png" alt="도시 아이콘" class="icon">
                 <h1>인천 여행지 소개</h1>
             </div>
             <div class="search-box">
-                <input type="text" placeholder="관심 있는 인천에 여행지를 검색하세요">
+                <input type="text" placeholder="관심 있는 인천 여행지를 검색하세요">
                 <button><img src="./icon/search.png" alt="검색 아이콘"></button>
             </div>
         </div>
@@ -382,10 +387,10 @@
     </div>
 
     <footer>
-        <div class="social">
-            <a href="#">페이스북</a>
-            <a href="#">인스타그램</a>
-            <a href="#">트위터</a>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank"><img src="./icon/facebook.png" alt="페이스북"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="./icon/instagram.png" alt="인스타그램"></a>
+            <a href="https://twitter.com" target="_blank"><img src="./icon/twitter.png" alt="트위터"></a>
         </div>
         <p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
         <p>문의: example@email.com | 전화: 010-1234-5678</p>
