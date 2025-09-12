@@ -23,14 +23,64 @@
         header {
             background: linear-gradient(to right, #A8FBD3, #4FB7B3);
             color: #1f1f1f;
-            padding: 50px 20px;
+            padding: 60px 20px 30px 20px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
         }
 
-        header h1 {
-            font-size: 3em;
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
             margin-bottom: 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #1f1f1f;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid #fff;
+        }
+
+        .search-box input {
+            padding: 8px 10px;
+            border: none;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .search-box button {
+            padding: 6px 10px;
+            border: 3;
+            background: #fff;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .search-box button img {
+            width: 20px;
+            height: 20px;
         }
 
         header p {
@@ -40,38 +90,54 @@
 
         /* 내비게이션 */
         nav {
-            background: #31326F;
+            background: linear-gradient(to right, #31326F, #4FB7B3);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 9;
         }
 
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
+            flex-wrap: wrap;
         }
 
         nav li {
-            margin: 0 20px;
+            margin: 10px;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            padding: 12px 20px;
+            padding: 12px 25px;
             display: inline-block;
+            border-radius: 10px;
             transition: 0.3s;
-            border-radius: 5px;
+            position: relative;
         }
 
         nav a:hover {
-            background: #4FB7B3;
-            color: #fff;
+            background: rgba(255,255,255,0.2);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 3px;
+            background: #fff;
+            border-radius: 2px;
         }
 
         /* 히어로 영역 */
         .hero {
             background: url('./images/home_image.png') no-repeat center/cover;
-            height: 500px;
+            min-height: 500px;
+            margin-top: 10px; /* nav 아래 공간 확보 */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -82,7 +148,8 @@
             text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
             transition: transform 0.3s ease;
             text-align: center;
-            padding: 0 20px;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         .hero:hover {
@@ -228,14 +295,18 @@
             .places li {
                 flex: 1 1 calc(50% - 20px);
             }
+            .header-top {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .logo h1 {
+                font-size: 2em;
+            }
         }
 
         @media (max-width: 600px) {
             .places li {
                 flex: 1 1 100%;
-            }
-            header h1 {
-                font-size: 2em;
             }
             .hero {
                 font-size: 1.8em;
@@ -245,13 +316,24 @@
 </head>
 <body>
     <header>
-        <h1>인천 여행지 소개</h1>
+        <div class="header-top">
+            <div class="logo">
+                <img src="./icon/bridge.png" alt="바다 아이콘" class="icon">
+                <img src="./icon/incheon.png" alt="비행기 아이콘" class="icon">
+            
+                <h1>인천 여행지 소개</h1>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="관심 있는 인천에 여행지를 검색하세요">
+                <button><img src="./icon/search.png" alt="검색 아이콘"></button>
+            </div>
+        </div>
         <p>바다와 도시가 어우러진 인천의 명소를 만나보세요</p>
     </header>
 
     <nav>
         <ul>
-            <li><a href="index.html">홈</a></li>
+            <li><a href="index.html" class="active">홈</a></li>
             <li><a href="about.html">소개</a></li>
             <li><a href="contact.html">문의</a></li>
         </ul>
