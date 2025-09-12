@@ -83,7 +83,7 @@
             padding: 6px 10px;
             border: none;
             outline: none;
-            font-size: 10px;
+            font-size: 14px;
         }
 
         .search-box button {
@@ -214,6 +214,31 @@
             box-shadow: 0 10px 15px rgba(0,0,0,0.2);
         }
 
+        .loding {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .loding li {
+            background: white;
+            border-radius: 10px;
+            flex: 1 1 calc(33% - 20px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .loding li img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        
+
         /* 푸터 */
         footer {
             background: #31326F;
@@ -343,6 +368,22 @@
                     <button>자세히 보기</button>
                 </div>
             </li>
+        </ul>
+    </div>
+
+    <div class="container" id="lodging">
+        <h2>숙소 세일</h2>
+        <p>인천에서 세일중인 숙소입니다.</p>
+        <ul class="loding">
+            <li ><a href="">
+                <img src="./images/lo1.png" alt="숙소1">
+            </a></li>
+            <li ><a href="">
+                <img src="./images/lo2.png" alt="숙소2">
+            </a></li>
+            <li ><a href="">
+                <img src="./images/lo3.png" alt="숙소3">
+            </a></li>
         </ul>
     </div>
 
