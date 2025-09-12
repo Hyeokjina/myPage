@@ -1,50 +1,105 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>인천 여행지 소개</title>
-  <style>
-    body { font-family: '맑은 고딕', sans-serif; margin: 0; }
-    header { background: #0078d7; color: white; padding: 20px; text-align: center; }
-    nav { background: #005a9e; padding: 10px; }
-    nav ul { list-style: none; display: flex; justify-content: center; margin: 0; padding: 0; }
-    nav li { margin: 0 15px; }
-    nav a { color: white; text-decoration: none; font-weight: bold; }
-    .hero { background: url('images/incheon_main.jpg') no-repeat center/cover; height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2em; font-weight: bold; text-shadow: 2px 2px 5px black; }
-    .container { width: 80%; margin: 20px auto; }
-    h2 { color: #0078d7; }
-    footer { background: #0078d7; color: white; text-align: center; padding: 15px; margin-top: 30px; }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>인천 여행지 소개</h1>
-    <p>바다와 도시가 어우러진 인천의 명소를 만나보세요</p>
-  </header>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>인천 여행지 소개</title>
+		<style>
+			/* 기본 스타일 초기화 */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
 
-  <nav>
-    <ul>
-      <li><a href="index.html">홈</a></li>
-      <li><a href="about.html">소개</a></li>
-      <li><a href="contact.html">문의</a></li>
-    </ul>
-  </nav>
+			body {
+				font-family: '맑은 고딕', sans-serif;
+				background: #f0f4f8;
+				color: #222;
+				line-height: 1.6;
+			}
 
-  <div class="hero">인천으로 떠나는 특별한 여행</div>
+			/* 헤더 */
+			header {
+				background: linear-gradient(to right, #A8FBD3, #4FB7B3);
+				color: #1f1f1f;
+				padding: 40px 20px;
+				text-align: center;
+				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+			}
 
-  <div class="container">
-    <h2>대표 여행지</h2>
-    <p>인천은 국제적인 항구도시로, 다양한 관광지와 문화를 즐길 수 있습니다.</p>
-    <ul>
-      <li>차이나타운 – 한국 속 작은 중국</li>
-      <li>송도 센트럴파크 – 현대적인 도시 속 휴식 공간</li>
-      <li>월미도 – 놀이공원과 바다를 동시에 즐길 수 있는 명소</li>
-    </ul>
-  </div>
+			header h1 {
+				font-size: 2.8em;
+				margin-bottom: 10px;
+			}
 
-  <footer>
-    <p>&copy; 2025 인천 여행지 소개 | 만든이: 홍길동</p>
-  </footer>
-</body>
+			header p {
+				font-size: 1.2em;
+				color: #333;
+			}
+
+			nav {
+				background: #31326F;
+			}
+
+			nav ul {
+				display: flex;
+				justify-content: center;
+				list-style: none;
+			}
+
+			nav li {
+				margin: 0 20px;
+			}
+
+			nav a {
+				color: #fff;
+				text-decoration: none;
+				font-weight: 600;
+				padding: 12px 20px;
+				display: inline-block;
+				transition: 0.3s;
+				border-radius: 5px;
+			}
+
+			nav a:hover {
+				background: #4FB7B3;
+				color: #fff;
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>인천 여행지 소개</h1>
+			<p>바다와 도시가 어우러진 인천의 명소를 만나보세요</p>
+		</header>
+
+		<nav>
+			<ul>
+				<li><a href="index.html">홈</a></li>
+				<li><a href="about.html">소개</a></li>
+				<li><a href="contact.html">문의</a></li>
+			</ul>
+		</nav>
+
+		<div class="hero">
+			인천으로 떠나는 특별한 여행
+		</div>
+
+		<div class="container">
+			<h2>대표 여행지</h2>
+			<p>인천은 국제적인 항구도시로, 다양한 관광지와 문화를 즐길 수 있습니다.</p>
+			<ul>
+				<li>차이나타운 - 한국 속 작은 중국</li>
+				<li>송도 센트럴파크 - 현대적인 도시 속 휴식 공간</li>
+				<li>월미도 - 놀이공원과 바다를 동시에 즐길 수 있는 명소</li>
+			</ul>
+		</div>
+
+		<footer>
+			<p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
+		</footer>
+	</body>
 </html>
