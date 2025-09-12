@@ -4,70 +4,137 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>인천 여행지 소개</title>
-        <style>
+		<style>
+			/* 기본 스타일 초기화 */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
 			body {
 				font-family: '맑은 고딕', sans-serif;
-				margin: 0;
+				background: #f0f4f8;
+				color: #222;
+				line-height: 1.6;
 			}
 
+			/* 헤더 */
 			header {
-				background: #A8FBD3;
-				color: rgb(22, 22, 22);
-				padding: 20px;
+				background: linear-gradient(to right, #A8FBD3, #4FB7B3);
+				color: #1f1f1f;
+				padding: 40px 20px;
 				text-align: center;
+				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 			}
 
+			header h1 {
+				font-size: 2.8em;
+				margin-bottom: 10px;
+			}
+
+			header p {
+				font-size: 1.2em;
+				color: #333;
+			}
+
+			/* 내비게이션 */
 			nav {
-				background: #4FB7B3;
-				padding: 10px;
+				background: #31326F;
 			}
 
 			nav ul {
-				list-style: none;
 				display: flex;
 				justify-content: center;
-				margin: 0;
-				padding: 0;
+				list-style: none;
 			}
 
 			nav li {
-				margin: 0 15px;
+				margin: 0 20px;
 			}
 
 			nav a {
-				color: rgb(3, 3, 3);
+				color: #fff;
 				text-decoration: none;
-				font-weight: bold;
+				font-weight: 600;
+				padding: 12px 20px;
+				display: inline-block;
+				transition: 0.3s;
+				border-radius: 5px;
 			}
 
+			nav a:hover {
+				background: #4FB7B3;
+				color: #fff;
+			}
+
+			/* 히어로 영역 */
 			.hero {
 				background: url('./images/home_image.png') no-repeat center/cover;
-				height: 400px;
+				height: 450px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				color: rgb(15, 15, 15);
-				font-size: 2em;
+				color: white;
+				font-size: 2.5em;
 				font-weight: bold;
-				text-shadow: 2px 2px 5px black;
+				text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+				transition: transform 0.3s ease;
 			}
 
+			.hero:hover {
+				transform: scale(1.02);
+			}
+
+			/* 메인 컨테이너 */
 			.container {
-				width: 80%;
-				margin: 20px auto;
-                background: #637AB9;
+				width: 90%;
+				max-width: 1200px;
+				margin: 40px auto;
 			}
 
 			h2 {
 				color: #31326F;
+				font-size: 2em;
+				margin-bottom: 20px;
+				border-bottom: 2px solid #4FB7B3;
+				display: inline-block;
+				padding-bottom: 5px;
 			}
 
+			p {
+				margin-bottom: 20px;
+				font-size: 1.1em;
+			}
+
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 20px;
+			}
+
+			ul li {
+				background: white;
+				padding: 20px;
+				flex: 1 1 calc(33% - 20px);
+				border-radius: 10px;
+				box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+
+			ul li:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+			}
+
+			/* 푸터 */
 			footer {
 				background: #31326F;
 				color: white;
 				text-align: center;
-				padding: 15px;
-				margin-top: 30px;
+				padding: 25px;
+				margin-top: 60px;
+				font-size: 0.95em;
 			}
 		</style>
 	</head>
@@ -92,7 +159,7 @@
 		<div class="container">
 			<h2>대표 여행지</h2>
 			<p>인천은 국제적인 항구도시로, 다양한 관광지와 문화를 즐길 수 있습니다.</p>
-			<ul>  
+			<ul>
 				<li>차이나타운 - 한국 속 작은 중국</li>
 				<li>송도 센트럴파크 - 현대적인 도시 속 휴식 공간</li>
 				<li>월미도 - 놀이공원과 바다를 동시에 즐길 수 있는 명소</li>
