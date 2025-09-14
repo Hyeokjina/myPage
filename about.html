@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인천 소개</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #f0f4f8;
+            color: #222;
+            line-height: 1.6;
+            padding-top: 70px;
+        }
+
+        /* 헤더 */
+        header {
+            background: #fff;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8em;
+            color: #31326F;
+        }
+
+        .icon {
+            width: 35px;
+            height: 35px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #31326F;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: #4FB7B3;
+            color: #fff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        h2 {
+            color: #31326F;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4FB7B3;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        /* 카드 섹션 */
+        .card-section {
+            margin-bottom: 50px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #31326F;
+        }
+
+        .card-content p {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .card-content a {
+            text-decoration: none;
+            padding: 8px 15px;
+            background: #4FB7B3;
+            color: #fff;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .card-content a:hover {
+            background: #36a29f;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        footer {
+            background: #31326F;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.95em;
+        }
+
+        footer .social-icons {
+            margin-bottom: 10px;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+        footer .social-icons img {
+            width: 30px;
+            height: 30px;
+            transition: 0.3s;
+        }
+
+        footer .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .logo h1 {
+                font-size: 1.5em;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./icon/bridge.png" alt="다리 아이콘" class="icon">
+            <img src="./icon/incheon.png" alt="도시 아이콘" class="icon">
+            <h1>인천 소개</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="about.html" class="active">소개</a></li>
+                <li><a href="contact.html">문의</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>인천 개요</h2>
+        <p>인천은 대한민국 서해안에 위치한 국제 항구도시로, 현대적인 도시와 아름다운 자연이 공존하는 매력적인 지역입니다.</p>
+        <p>역사적인 건축물, 활기찬 차이나타운, 섬과 해변 등 다양한 관광지를 즐길 수 있으며, 맛집과 카페도 풍부합니다.</p>
+    </div>
+
+    <div class="container card-section">
+        <h2>주요 관광지</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="./images/town.png" alt="차이나타운">
+                <div class="card-content">
+                    <h3>차이나타운</h3>
+                    <p>한국 속 작은 중국, 화려한 건축과 맛집 체험</p>
+                    <a href="#">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./images/songdo.png" alt="송도 센트럴파크">
+                <div class="card-content">
+                    <h3>송도 센트럴파크</h3>
+                    <p>현대적인 도시 속에서 자연과 함께 휴식을 즐길 수 있는 공간</p>
+                    <a href="#">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="./images/wolmido.png" alt="월미도">
+                <div class="card-content">
+                    <h3>월미도</h3>
+                    <p>놀이공원과 바다를 동시에 즐길 수 있는 인기 명소</p>
+                    <a href="#">자세히 보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container card-section">
+        <h2>위치 확인</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.307222206211!2d126.62167327691264!3d37.456255279811565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7e08e70b3eaf%3A0x2f8d3f6aef5e6e4b!2z7ISc7Jq47JqU7J2065Oc64yA!5e0!3m2!1sko!2skr!4v1694510000000!5m2!1sko!2skr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank"><img src="./icon/facebook.png" alt="페이스북"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="./icon/instagram.png" alt="인스타그램"></a>
+            <a href="https://twitter.com" target="_blank"><img src="./icon/twitter.png" alt="트위터"></a>
+        </div>
+        <p>&copy; 2025 인천 소개 | 문혁진</p>
+        <p>문의: example@email.com | 전화: 010-1234-5678</p>
+    </footer>
+</body>
+</html>
