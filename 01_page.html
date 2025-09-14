@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>인천 여행지 소개</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,15 +13,19 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: '나눔고딕', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
             background: #f0f4f8;
             color: #222;
             line-height: 1.6;
-            padding-top: 70px; /* fixed header 높이만큼 패딩 */
+            padding-top: 70px;
         }
 
-        /* 헤더 + 네비 합치기 */
+        /* 헤더 */
         header {
             background: #fff;
             width: 100%;
@@ -122,7 +128,7 @@
             font-size: 1em;
             font-weight: bold;
             color: #fff;
-            background: #4FB7B3;
+            background: linear-gradient(135deg,#4FB7B3,#36a29f);
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -130,7 +136,39 @@
         }
 
         .hero button:hover {
-            background: #36a29f;
+            background: linear-gradient(135deg,#36a29f,#4FB7B3);
+        }
+
+        /* 섹션 헤더 */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            color: #31326F;
+            font-size: 2em;
+            border-bottom: 2px solid #4FB7B3;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .more-btn {
+            text-decoration: none;
+            color: #4FB7B3;
+            font-weight: 600;
+            border: 1px solid #4FB7B3;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-size: 0.9em;
+        }
+
+        .more-btn:hover {
+            background: #4FB7B3;
+            color: #fff;
         }
 
         /* 메인 컨테이너 */
@@ -140,49 +178,53 @@
             margin: 50px auto;
         }
 
-        h2 {
-            color: #31326F;
-            font-size: 2em;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #4FB7B3;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
         p {
             margin-bottom: 20px;
             font-size: 1.1em;
         }
 
-        .places {
-            display: flex;
-            flex-wrap: wrap;
+        /* 카드 공통 */
+        .places, .loding {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
-        .places li {
-            background: white;
+        .places li, .loding li {
+            list-style: none;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(5px);
             border-radius: 10px;
-            flex: 1 1 calc(33% - 20px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
 
-        .places li img {
+        .places li img, .loding li img {
             width: 100%;
-            height: 180px;
+            aspect-ratio: 1/1;
             object-fit: cover;
+            transition: transform 0.4s ease, filter 0.4s ease;
         }
 
-        .places li div {
+        .places li:hover img, .loding li:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.9);
+        }
+
+        .places li div, .loding li div {
             padding: 15px;
             flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
         }
 
-        .places li h3 {
+        .places li h3, .loding li h3 {
             font-size: 1.3em;
             margin-bottom: 10px;
             color: #31326F;
@@ -209,35 +251,10 @@
             background: #36a29f;
         }
 
-        .places li:hover {
+        .places li:hover, .loding li:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
         }
-
-        .loding {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .loding li {
-            background: white;
-            border-radius: 10px;
-            flex: 1 1 calc(33% - 20px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .loding li img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        
 
         /* 푸터 */
         footer {
@@ -288,20 +305,14 @@
             .search-box {
                 margin-left: 0;
             }
-
-            .places li {
-                flex: 1 1 calc(50% - 20px);
-            }
         }
 
         @media (max-width: 600px) {
-            .places li {
-                flex: 1 1 100%;
-            }
             .hero {
                 font-size: 1.8em;
             }
         }
+
     </style>
 </head>
 <body>
@@ -331,62 +342,76 @@
         <button onclick="window.location.href='#places'">대표 여행지 보기</button>
     </div>
 
-    <!-- 이하 기존 컨테이너, 여행지, 푸터 동일 -->
-
-
+    <!-- 인천 소개 -->
     <div class="container about">
-        <h2>인천 소개</h2>
+        <div class="section-header">
+            <h2>인천 소개</h2>
+            <a href="#" class="more-btn">+ 더보기</a>
+        </div>
         <p>인천은 대한민국 서해안에 위치한 국제 항구도시로, 현대적인 도시와 아름다운 자연이 공존하는 매력적인 지역입니다.</p>
         <p>역사적인 건축물, 활기찬 차이나타운, 그리고 섬과 해변 등 다양한 관광지를 즐길 수 있으며, 맛집과 카페도 풍부합니다.</p>
     </div>
 
+    <!-- 대표 여행지 -->
     <div class="container" id="places">
-        <h2>대표 여행지</h2>
-        <p>인천에서 꼭 방문해야 할 주요 여행지들을 소개합니다.</p>
+        <div class="section-header">
+            <h2>대표 여행지</h2>
+            <a href="#" class="more-btn">+ 더보기</a>
+        </div>
         <ul class="places">
-            <li>
+            <li onclick="window.location.href='#'">
                 <img src="./images/town.png" alt="차이나타운">
                 <div>
                     <h3>차이나타운</h3>
                     <p>한국 속 작은 중국, 화려한 건축과 맛집 체험</p>
-                    <button>자세히 보기</button>
                 </div>
             </li>
-            <li>
+            <li onclick="window.location.href='#'">
                 <img src="./images/songdo.png" alt="송도 센트럴파크">
                 <div>
                     <h3>송도 센트럴파크</h3>
                     <p>현대적인 도시 속에서 자연과 함께 휴식을 즐길 수 있는 공간</p>
-                    <button>자세히 보기</button>
                 </div>
             </li>
-            <li>
+            <li onclick="window.location.href='#'">
                 <img src="./images/wolmido.png" alt="월미도">
                 <div>
                     <h3>월미도</h3>
                     <p>놀이공원과 바다를 동시에 즐길 수 있는 인기 명소</p>
-                    <button>자세히 보기</button>
                 </div>
             </li>
         </ul>
     </div>
 
-    <div class="container" id="lodging">
-        <h2>숙소 세일</h2>
-        <p>인천에서 세일중인 숙소입니다.</p>
-        <ul class="loding">
-            <li ><a href="">
-                <img src="./images/lo1.png" alt="숙소1">
-            </a></li>
-            <li ><a href="">
-                <img src="./images/lo2.png" alt="숙소2">
-            </a></li>
-            <li ><a href="">
-                <img src="./images/lo3.png" alt="숙소3">
-            </a></li>
+    <!-- 인기 지역 -->
+    <div class="container" id="popular">
+        <div class="section-header">
+            <h2>인기 지역</h2>
+            <a href="#" class="more-btn">+ 더보기</a>
+        </div>
+        <ul class="places">
+            <li onclick="window.location.href='#'"><img src="./images/seoul.png" alt="서울"><div><h3>서울</h3></div></li>
+            <li onclick="window.location.href='#'"><img src="./images/busan.png" alt="부산"><div><h3>부산</h3></div></li>
+            <li onclick="window.location.href='#'"><img src="./images/jeju.png" alt="제주"><div><h3>제주</h3></div></li>
+            <li onclick="window.location.href='#'"><img src="./images/gangwon.png" alt="강원"><div><h3>강원</h3></div></li>
+            <li onclick="window.location.href='#'"><img src="./images/gyeongju.png" alt="경주"><div><h3>경주</h3></div></li>
         </ul>
     </div>
 
+    <!-- 숙소 세일 -->
+    <div class="container" id="lodging">
+        <div class="section-header">
+            <h2>숙소 세일</h2>
+            <a href="#" class="more-btn">+ 더보기</a>
+        </div>
+        <ul class="loding">
+            <li onclick="window.location.href='#'"><img src="./images/lo1.png" alt="숙소1"></li>
+            <li onclick="window.location.href='#'"><img src="./images/lo2.png" alt="숙소2"></li>
+            <li onclick="window.location.href='#'"><img src="./images/lo3.png" alt="숙소3"></li>
+        </ul>
+    </div>
+
+    <!-- 푸터 -->
     <footer>
         <div class="social-icons">
             <a href="https://www.facebook.com" target="_blank"><img src="./icon/facebook.png" alt="페이스북"></a>
