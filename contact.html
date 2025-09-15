@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문의하기</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: #f0f4f8;
+      color: #222;
+      line-height: 1.6;
+      padding-top: 70px;
+    }
+
+    /* 헤더 */
+    header {
+      background: #fff;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .logo {display: flex; align-items: center; gap: 10px;}
+    .logo h1 {font-size: 1.5em; color: #31326F;}
+    .icon {width: 30px; height: 30px;}
+    nav ul {display: flex; list-style: none; gap: 15px;}
+    nav a {
+      text-decoration: none; color: #31326F;
+      font-weight: 600; padding: 8px 15px; border-radius: 5px; transition: 0.3s;
+    }
+    nav a:hover, nav a.active {background: #4FB7B3; color: #fff;}
+
+    /* 문의 박스 */
+    .contact-container {
+      max-width: 600px;
+      margin: 80px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #31326F;
+      text-align: center;
+    }
+    label {font-weight: bold; display: block; margin: 15px 0 5px;}
+    input, textarea {
+      width: 100%; padding: 12px;
+      border: 1px solid #ccc; border-radius: 5px;
+      font-size: 14px;
+    }
+    textarea {resize: none;}
+    button {
+      width: 100%; padding: 12px;
+      margin-top: 20px;
+      background: #4FB7B3; color: #fff;
+      font-size: 16px; border: none; border-radius: 5px;
+      cursor: pointer; transition: 0.3s;
+    }
+    button:hover {background: #36a29f;}
+
+    /* 푸터 */
+    footer {
+      background: #31326F;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="./icon/bridge.png" alt="다리 아이콘" class="icon">
+      <h1>문의하기</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="page.html">홈</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="contact.html" class="active">문의</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="contact-container">
+    <h2>문의 남기기</h2>
+    <form>
+      <label for="name">이름</label>
+      <input type="text" id="name" placeholder="이름을 입력하세요" required>
+
+      <label for="email">이메일</label>
+      <input type="email" id="email" placeholder="이메일을 입력하세요" required>
+
+      <label for="message">문의 내용</label>
+      <textarea id="message" rows="6" placeholder="문의 내용을 입력하세요" required></textarea>
+
+      <button type="submit">보내기</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
+  </footer>
+</body>
+</html>
