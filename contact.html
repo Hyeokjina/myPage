@@ -107,9 +107,18 @@
       <label for="message">문의 내용</label>
       <textarea id="message" rows="6" placeholder="문의 내용을 입력하세요." required></textarea>
 
-      <button type="submit">보내기</button>
+        <button type="submit">보내기</button>
     </form>
+    <p id="success-msg" style="display:none; margin-top:20px; text-align:center; color:#4FB7B3; font-weight:600;">문의가 접수되었습니다. 감사합니다!</p>
   </div>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    });
+  </script>
 
   <footer>
     <p>&copy; 2025 인천 여행지 소개! | 문혁진</p>
