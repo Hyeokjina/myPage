@@ -430,6 +430,36 @@
             background: #36a29f;
         }
 
+        /* 다크 모드 */
+        body.dark { background: #1a1a2e; color: #ddd; }
+        body.dark header { background: #16213e; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+        body.dark .logo h1 { color: #a0c4ff; }
+        body.dark nav a { color: #a0c4ff; }
+        body.dark nav a:hover, body.dark nav a.active { background: #4FB7B3; color: #fff; }
+        body.dark .fav-count { color: #a0c4ff; border-color: #444; }
+        body.dark .fav-count:hover { background: #2a1a2e; }
+        body.dark .search-box { border-color: #444; }
+        body.dark .search-box input { background: #1e1e3a; color: #ddd; }
+        body.dark .places li, body.dark .loding li { background: rgba(22,33,62,0.95); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+        body.dark .places li h3, body.dark .loding li h3 { color: #a0c4ff; }
+        body.dark .section-header h2 { color: #a0c4ff; }
+        body.dark .modal { background: #16213e; color: #ddd; }
+        body.dark .modal h3 { color: #a0c4ff; }
+        body.dark .modal-list li { background: #1a1a2e; }
+        body.dark footer { background: #0f0f1a; }
+
+        .dark-toggle {
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: 0.3s;
+        }
+        body.dark .dark-toggle { border-color: #555; color: #ddd; }
+        .dark-toggle:hover { background: #4FB7B3; color: #fff; border-color: #4FB7B3; }
+
         /* 반응형 */
         @media (max-width: 900px) {
             header {
@@ -476,6 +506,7 @@
         </nav>
 
         <div style="display:flex; align-items:center; gap:12px;">
+            <button class="dark-toggle" id="dark-btn" onclick="toggleDark()">🌙</button>
             <button class="fav-count" onclick="openFavModal()">
                 ♥ 즐겨찾기 <span class="badge" id="fav-badge">0</span>
             </button>
@@ -691,7 +722,17 @@
             });
         }
 
+        function toggleDark() {
+            const isDark = document.body.classList.toggle('dark');
+            localStorage.setItem('dark', isDark);
+            document.getElementById('dark-btn').textContent = isDark ? '☀️' : '🌙';
+        }
+
         // 초기화
+        if (localStorage.getItem('dark') === 'true') {
+            document.body.classList.add('dark');
+            document.getElementById('dark-btn').textContent = '☀️';
+        }
         updateBadge();
         updateButtons();
     </script>
