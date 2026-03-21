@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인기 지역</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #f0f4f8;
+            color: #222;
+            line-height: 1.6;
+            padding-top: 70px;
+        }
+
+        /* 헤더 */
+        header {
+            background: #fff;
+            width: 100%;
+            position: fixed;
+            top: 0; left: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo h1 { font-size: 1.8em; color: #31326F; }
+        .icon { width: 35px; height: 35px; }
+
+        nav ul { display: flex; list-style: none; gap: 15px; }
+        nav a {
+            text-decoration: none; color: #31326F;
+            font-weight: 600; padding: 8px 15px;
+            border-radius: 5px; transition: 0.3s;
+        }
+        nav a:hover, nav a.active { background: #4FB7B3; color: #fff; }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        h2 {
+            color: #31326F;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4FB7B3;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .intro {
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        /* 지역 카드 */
+        .region-section {
+            margin-bottom: 60px;
+        }
+
+        .region-section h3 {
+            font-size: 1.5em;
+            color: #31326F;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid #4FB7B3;
+        }
+
+        .region-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            overflow: hidden;
+            display: flex;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .region-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+        }
+
+        .region-card img {
+            width: 320px;
+            min-height: 220px;
+            object-fit: cover;
+            flex-shrink: 0;
+            transition: transform 0.4s;
+        }
+
+        .region-card:hover img { transform: scale(1.04); }
+
+        .region-card-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .region-card-content p {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .region-card-content a {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: #4FB7B3;
+            color: #fff;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: 0.3s;
+            align-self: flex-start;
+        }
+
+        .region-card-content a:hover { background: #36a29f; }
+
+        /* 푸터 */
+        footer {
+            background: #31326F;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.95em;
+            border-radius: 10px 10px 0 0;
+        }
+
+        footer .social-icons { margin-bottom: 10px; }
+        footer .social-icons a { margin: 0 10px; display: inline-block; }
+        footer .social-icons img { width: 30px; height: 30px; transition: 0.3s; }
+        footer .social-icons img:hover { transform: scale(1.2); }
+
+        /* 반응형 */
+        @media (max-width: 900px) {
+            header { flex-direction: column; gap: 10px; }
+            .logo h1 { font-size: 1.5em; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .region-card { flex-direction: column; }
+            .region-card img { width: 100%; min-height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./icon/bridge.png" alt="다리 아이콘" class="icon">
+            <img src="./icon/incheon.png" alt="도시 아이콘" class="icon">
+            <h1>인기 지역</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="about.html">소개</a></li>
+                <li><a href="contact.html">문의</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>인기 지역</h2>
+        <p class="intro">대한민국의 다양한 매력을 지닌 인기 여행지들을 소개합니다.</p>
+
+        <div class="region-section" id="seoul">
+            <h3>서울</h3>
+            <div class="region-card">
+                <img src="./images/seoul.png" alt="서울">
+                <div class="region-card-content">
+                    <p>대한민국의 수도 서울은 고궁과 현대 도시가 공존하는 매력적인 도시입니다. 경복궁, 남산타워, 명동, 홍대 등 다양한 관광지와 맛집이 가득하며, 사계절 언제 방문해도 즐길 거리가 넘칩니다.</p>
+                    <a href="contact.html">여행 문의하기</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="region-section" id="busan">
+            <h3>부산</h3>
+            <div class="region-card">
+                <img src="./images/busan.png" alt="부산">
+                <div class="region-card-content">
+                    <p>대한민국 제2의 도시 부산은 아름다운 해변과 신선한 해산물로 유명합니다. 해운대, 광안리, 감천문화마을 등 볼거리가 풍부하며, 활기찬 항구 도시의 분위기를 느낄 수 있습니다.</p>
+                    <a href="contact.html">여행 문의하기</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="region-section" id="jeju">
+            <h3>제주</h3>
+            <div class="region-card">
+                <img src="./images/jeju.png" alt="제주">
+                <div class="region-card-content">
+                    <p>천혜의 자연환경을 자랑하는 제주도는 한라산, 성산일출봉, 우도, 올레길 등 아름다운 자연경관과 함께 독특한 제주 문화를 경험할 수 있는 최고의 여행지입니다.</p>
+                    <a href="contact.html">여행 문의하기</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="region-section" id="gangwon">
+            <h3>강원</h3>
+            <div class="region-card">
+                <img src="./images/gangwon.png" alt="강원">
+                <div class="region-card-content">
+                    <p>강원도는 설악산, 동해, 평창 등 사계절 내내 다양한 자연 액티비티를 즐길 수 있는 곳입니다. 겨울엔 스키, 여름엔 래프팅과 해수욕, 가을엔 단풍 트레킹까지 다채로운 경험이 기다립니다.</p>
+                    <a href="contact.html">여행 문의하기</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="region-section" id="gyeongju">
+            <h3>경주</h3>
+            <div class="region-card">
+                <img src="./images/gyeongju.png" alt="경주">
+                <div class="region-card-content">
+                    <p>천년 고도 경주는 신라의 역사와 문화가 고스란히 살아있는 도시입니다. 불국사, 석굴암, 첨성대, 대릉원 등 유네스코 세계문화유산을 비롯한 수많은 문화재를 만날 수 있습니다.</p>
+                    <a href="contact.html">여행 문의하기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank"><img src="./icon/facebook.png" alt="페이스북"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="./icon/instagram.png" alt="인스타그램"></a>
+            <a href="https://twitter.com" target="_blank"><img src="./icon/twitter.png" alt="트위터"></a>
+        </div>
+        <p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
+        <p>문의: example@email.com | 전화: 010-1234-5678</p>
+    </footer>
+</body>
+</html>
