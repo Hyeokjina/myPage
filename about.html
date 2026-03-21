@@ -169,7 +169,80 @@
             box-shadow: 0 12px 25px rgba(0,0,0,0.25);
         }
 
-        iframe {
+        /* 상세 모달 */
+    .detail-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 200;
+        align-items: center;
+        justify-content: center;
+    }
+    .detail-overlay.open { display: flex; }
+
+    .detail-modal {
+        background: #fff;
+        border-radius: 14px;
+        width: 90%;
+        max-width: 520px;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+    }
+
+    .detail-modal img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        border-radius: 14px 14px 0 0;
+    }
+
+    .detail-modal-body {
+        padding: 24px;
+    }
+
+    .detail-modal-body h3 {
+        font-size: 1.5em;
+        color: #31326F;
+        margin-bottom: 12px;
+    }
+
+    .detail-modal-body p {
+        font-size: 1em;
+        color: #444;
+        line-height: 1.8;
+        margin-bottom: 10px;
+    }
+
+    .detail-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin: 16px 0;
+        font-size: 0.95em;
+        color: #555;
+    }
+
+    .detail-info span::before {
+        margin-right: 6px;
+    }
+
+    .detail-close {
+        width: 100%;
+        padding: 10px;
+        background: #4FB7B3;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1em;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .detail-close:hover { background: #36a29f; }
+
+    iframe {
             width: 100%;
             height: 400px;
             border: none;
@@ -327,7 +400,7 @@
                 <div class="card-content">
                     <h3>차이나타운</h3>
                     <p>한국 속 작은 중국, 화려한 건축과 맛집 체험</p>
-                    <a href="#">자세히 보기</a>
+                    <a href="#" onclick="openDetail('town'); return false;">자세히 보기</a>
                 </div>
             </div>
             <div class="card">
@@ -335,7 +408,7 @@
                 <div class="card-content">
                     <h3>송도 센트럴파크</h3>
                     <p>현대적인 도시 속에서 자연과 함께 휴식을 즐길 수 있는 공간</p>
-                    <a href="#">자세히 보기</a>
+                    <a href="#" onclick="openDetail('songdo'); return false;">자세히 보기</a>
                 </div>
             </div>
             <div class="card">
@@ -343,7 +416,7 @@
                 <div class="card-content">
                     <h3>월미도</h3>
                     <p>놀이공원과 바다를 동시에 즐길 수 있는 인기 명소</p>
-                    <a href="#">자세히 보기</a>
+                    <a href="#" onclick="openDetail('wolmido'); return false;">자세히 보기</a>
                 </div>
             </div>
         </div>
@@ -353,6 +426,60 @@
         <h2>위치 확인</h2>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.307222206211!2d126.62167327691264!3d37.456255279811565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7e08e70b3eaf%3A0x2f8d3f6aef5e6e4b!2z7ISc7Jq47JqU7J2065Oc64yA!5e0!3m2!1sko!2skr!4v1694510000000!5m2!1sko!2skr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+
+    <!-- 상세 모달 -->
+    <div class="detail-overlay" id="detail-overlay" onclick="closeDetailOutside(event)">
+        <div class="detail-modal" id="detail-modal">
+            <img id="detail-img" src="" alt="">
+            <div class="detail-modal-body">
+                <h3 id="detail-title"></h3>
+                <p id="detail-desc"></p>
+                <div class="detail-info" id="detail-info"></div>
+                <button class="detail-close" onclick="closeDetail()">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const details = {
+            town: {
+                title: '차이나타운',
+                img: './images/town.png',
+                desc: '인천 차이나타운은 1883년 인천항 개항 이후 형성된 한국 유일의 차이나타운입니다. 화려한 패루(중국식 문)와 붉은 건물들이 이국적인 분위기를 자아내며, 짜장면 발상지로도 유명합니다.',
+                info: ['📍 위치: 인천 중구 차이나타운로', '🕐 운영: 연중무휴', '🍜 추천: 짜장면, 공갈빵, 월병']
+            },
+            songdo: {
+                title: '송도 센트럴파크',
+                img: './images/songdo.png',
+                desc: '송도 센트럴파크는 인천 송도국제도시 한복판에 위치한 대형 수변공원입니다. 해수를 이용한 수로에서 카약과 보트를 즐길 수 있으며, 야경이 특히 아름다워 데이트 명소로 인기입니다.',
+                info: ['📍 위치: 인천 연수구 센트럴로 160', '🕐 운영: 연중무휴 24시간', '🚤 추천: 카약, 자전거, 야경 산책']
+            },
+            wolmido: {
+                title: '월미도',
+                img: './images/wolmido.png',
+                desc: '월미도는 인천항 앞바다에 위치한 섬으로, 놀이공원과 문화의 거리, 선착장이 어우러진 복합 관광지입니다. 인천상륙작전의 역사적 현장이기도 하며, 바다를 배경으로 다양한 즐길 거리가 가득합니다.',
+                info: ['📍 위치: 인천 중구 월미로 303', '🕐 운영: 10:00 ~ 22:00', '🎡 추천: 디스코팡팡, 씨사이드 산책로, 횟집']
+            }
+        };
+
+        function openDetail(key) {
+            const d = details[key];
+            document.getElementById('detail-img').src = d.img;
+            document.getElementById('detail-img').alt = d.title;
+            document.getElementById('detail-title').textContent = d.title;
+            document.getElementById('detail-desc').textContent = d.desc;
+            document.getElementById('detail-info').innerHTML = d.info.map(i => `<span>${i}</span>`).join('');
+            document.getElementById('detail-overlay').classList.add('open');
+        }
+
+        function closeDetail() {
+            document.getElementById('detail-overlay').classList.remove('open');
+        }
+
+        function closeDetailOutside(e) {
+            if (e.target === document.getElementById('detail-overlay')) closeDetail();
+        }
+    </script>
 
     <footer>
         <div class="social-icons">
