@@ -664,10 +664,30 @@
 
         function searchPlaces() {
             const query = document.getElementById('search-input').value.trim().toLowerCase();
-            document.querySelectorAll('.places li, .loding li').forEach(li => {
-                const name = (li.querySelector('h3') || li.querySelector('img'))?.textContent?.toLowerCase()
-                    || li.querySelector('img')?.alt?.toLowerCase() || '';
-                li.style.display = (!query || name.includes(query)) ? '' : 'none';
+            document.querySelectorAll('.container[id]').forEach(section => {
+                const items = section.querySelectorAll('.places li, .loding li');
+                if (!items.length) return;
+                let anyVisible = false;
+                items.forEach(li => {
+                    const name = li.querySelector('h3')?.textContent?.toLowerCase()
+                        || li.querySelector('img')?.alt?.toLowerCase() || '';
+                    const visible = !query || name.includes(query);
+                    li.style.display = visible ? '' : 'none';
+                    if (visible) anyVisible = true;
+                });
+                let noResult = section.querySelector('.no-result');
+                if (!anyVisible) {
+                    if (!noResult) {
+                        noResult = document.createElement('p');
+                        noResult.className = 'no-result';
+                        noResult.style.cssText = 'text-align:center; color:#999; padding:20px 0; font-size:1em;';
+                        noResult.textContent = '검색 결과가 없습니다.';
+                        section.appendChild(noResult);
+                    }
+                    noResult.style.display = 'block';
+                } else if (noResult) {
+                    noResult.style.display = 'none';
+                }
             });
         }
 
