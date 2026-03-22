@@ -92,6 +92,28 @@
     body.dark .dark-toggle { border-color: #555; color: #ddd; }
     .dark-toggle:hover { background: #4FB7B3; color: #fff; border-color: #4FB7B3; }
 
+    /* 상단 이동 버튼 */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 44px;
+        height: 44px;
+        background: #4FB7B3;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        font-size: 1.3em;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s, transform 0.3s;
+        z-index: 150;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { transform: translateY(-3px); background: #36a29f; }
+
     /* 푸터 */
     footer {
       background: #31326F;
@@ -119,6 +141,8 @@
     <button class="dark-toggle" id="dark-btn" onclick="toggleDark()">🌙</button>
   </header>
 
+  <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
   <div class="contact-container">
     <h2>문의 남기기</h2>
     <form>
@@ -145,6 +169,10 @@
   </script>
 
   <script>
+    window.addEventListener('scroll', () => {
+        document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 300);
+    });
+
     function toggleDark() {
         const isDark = document.body.classList.toggle('dark');
         localStorage.setItem('dark', isDark);
