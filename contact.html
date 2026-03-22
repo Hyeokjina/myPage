@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>문의하기</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/contact.css">
 </head>
@@ -52,20 +51,8 @@
   </script>
 
   <script>
-    window.addEventListener('scroll', () => {
-        document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 300);
-    });
-
-    function toggleDark() {
-        const isDark = document.body.classList.toggle('dark');
-        localStorage.setItem('dark', isDark);
-        document.getElementById('dark-btn').textContent = isDark ? '☀️' : '🌙';
-    }
-    if (localStorage.getItem('dark') === 'true') {
-        document.body.classList.add('dark');
-        document.getElementById('dark-btn').textContent = '☀️';
-    }
   </script>
+  <script src="./js/common.js"></script>
 
   <footer>
     <p>&copy; 2025 인천 여행지 소개! | 문혁진</p>

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>숙소 세일</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/lodging.css">
 </head>
@@ -82,21 +81,7 @@
         </div>
     </div>
 
-    <script>
-        window.addEventListener('scroll', () => {
-            document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 300);
-        });
-
-        function toggleDark() {
-            const isDark = document.body.classList.toggle('dark');
-            localStorage.setItem('dark', isDark);
-            document.getElementById('dark-btn').textContent = isDark ? '☀️' : '🌙';
-        }
-        if (localStorage.getItem('dark') === 'true') {
-            document.body.classList.add('dark');
-            document.getElementById('dark-btn').textContent = '☀️';
-        }
-    </script>
+    <script src="./js/common.js"></script>
 
     <footer>
         <div class="social-icons">
