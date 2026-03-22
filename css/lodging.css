@@ -1,0 +1,42 @@
+h2 {
+    color: #31326F;
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #4FB7B3;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+.intro { margin-bottom: 40px; font-size: 1.1em; }
+
+.lodging-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+}
+.lodging-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.lodging-card:hover { transform: translateY(-5px); box-shadow: 0 14px 30px rgba(0,0,0,0.2); }
+.lodging-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform 0.4s, filter 0.4s; }
+.lodging-card:hover img { transform: scale(1.04); filter: brightness(0.92); }
+.lodging-card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.lodging-card-content h3 { font-size: 1.2em; color: #31326F; margin-bottom: 8px; }
+.lodging-card-content p { font-size: 0.95em; color: #666; flex-grow: 1; margin-bottom: 15px; }
+.price-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
+.price-original { font-size: 0.9em; color: #aaa; text-decoration: line-through; }
+.price-sale { font-size: 1.2em; font-weight: 700; color: #e74c3c; }
+.sale-badge { background: #e74c3c; color: #fff; font-size: 0.8em; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+.lodging-card-content a { display: block; text-align: center; text-decoration: none; padding: 10px; background: #4FB7B3; color: #fff; border-radius: 6px; font-weight: 600; transition: 0.3s; }
+.lodging-card-content a:hover { background: #36a29f; }
+
+/* 다크 모드 */
+body.dark h2 { color: #a0c4ff; }
+body.dark .lodging-card { background: #16213e; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+body.dark .lodging-card-content h3 { color: #a0c4ff; }
+body.dark .lodging-card-content p { color: #bbb; }

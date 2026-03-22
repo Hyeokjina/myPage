@@ -1,0 +1,204 @@
+/* 검색창 */
+.search-box {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    margin-left: 20px;
+}
+.search-box input { padding: 6px 10px; border: none; outline: none; font-size: 14px; }
+.search-box button { padding: 6px 10px; border: none; background: #4FB7B3; cursor: pointer; }
+.search-box button img { width: 18px; height: 18px; }
+
+/* 히어로 */
+.hero {
+    background: url('../images/home_image.png') no-repeat center/cover;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+    text-align: center;
+    padding: 0 20px;
+    margin-bottom: 50px;
+    border-radius: 0 0 20px 20px;
+}
+.hero button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #4FB7B3, #36a29f);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.hero button:hover { background: linear-gradient(135deg, #36a29f, #4FB7B3); }
+
+/* 섹션 헤더 */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.section-header h2 {
+    color: #31326F;
+    font-size: 2em;
+    border-bottom: 2px solid #763911;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+.more-btn {
+    text-decoration: none;
+    color: #4FB7B3;
+    font-weight: 600;
+    border: 1px solid #4FB7B3;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-size: 0.9em;
+}
+.more-btn:hover { background: #4FB7B3; color: #fff; }
+
+/* 장소 카드 */
+.places, .loding {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.places li, .loding li {
+    list-style: none;
+    position: relative;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.places li img, .loding li img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+.places li:hover img, .loding li:hover img { transform: scale(1.05); filter: brightness(0.9); }
+.places li div, .loding li div {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.places li h3, .loding li h3 { font-size: 1.3em; margin-bottom: 10px; color: #31326F; }
+.places li p { font-size: 1em; margin-bottom: 15px; }
+.places li button { margin-top: auto; padding: 10px 15px; font-size: 0.95em; color: #fff; background: #4FB7B3; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+.places li button:hover { background: #36a29f; }
+.places li:hover, .loding li:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.25); }
+
+/* 즐겨찾기 버튼 */
+.fav-btn {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: rgba(255,255,255,0.85);
+    border: none;
+    border-radius: 50%;
+    width: 36px; height: 36px;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background 0.2s;
+    z-index: 2;
+}
+.fav-btn:hover { transform: scale(1.2); }
+.fav-btn.active { background: #fff0f0; }
+
+/* 헤더 즐겨찾기 카운트 */
+.fav-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #31326F;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: 0.3s;
+    border: 1px solid #ddd;
+}
+.fav-count:hover { background: #fff0f0; }
+.fav-count .badge {
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 20px; height: 20px;
+    font-size: 0.75em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 즐겨찾기 모달 */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    width: 90%;
+    max-width: 480px;
+    max-height: 70vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.modal h3 { color: #31326F; font-size: 1.4em; margin-bottom: 20px; }
+.modal-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.modal-list li { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; background: #f0f4f8; }
+.modal-list li span { font-weight: 600; flex-grow: 1; }
+.modal-list li button { background: none; border: none; font-size: 1.1em; cursor: pointer; color: #e74c3c; }
+.modal-empty { text-align: center; color: #999; padding: 20px 0; }
+.modal-close { margin-top: 20px; width: 100%; padding: 10px; background: #4FB7B3; color: #fff; border: none; border-radius: 8px; font-size: 1em; cursor: pointer; }
+.modal-close:hover { background: #36a29f; }
+
+/* 다크 모드 */
+body.dark .fav-count { color: #a0c4ff; border-color: #444; }
+body.dark .fav-count:hover { background: #2a1a2e; }
+body.dark .search-box { border-color: #444; }
+body.dark .search-box input { background: #1e1e3a; color: #ddd; }
+body.dark .places li, body.dark .loding li { background: rgba(22,33,62,0.95); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+body.dark .places li h3, body.dark .loding li h3 { color: #a0c4ff; }
+body.dark .section-header h2 { color: #a0c4ff; }
+body.dark .modal { background: #16213e; color: #ddd; }
+body.dark .modal h3 { color: #a0c4ff; }
+body.dark .modal-list li { background: #1a1a2e; }
+
+/* 반응형 */
+@media (max-width: 900px) {
+    .search-box { margin-left: 0; }
+}
+@media (max-width: 600px) {
+    .hero { font-size: 1.8em; }
+}

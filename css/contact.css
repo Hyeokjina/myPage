@@ -1,0 +1,37 @@
+.contact-container {
+    max-width: 600px;
+    margin: 80px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+h2 { margin-bottom: 20px; color: #31326F; text-align: center; }
+label { font-weight: bold; display: block; margin: 15px 0 5px; }
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+}
+textarea { resize: none; }
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #50b6b2;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button[type="submit"]:hover { background: #36a29f; }
+
+/* 다크 모드 */
+body.dark .contact-container { background: #16213e; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+body.dark h2 { color: #a0c4ff; }
+body.dark input, body.dark textarea { background: #1a1a2e; color: #ddd; border-color: #444; }

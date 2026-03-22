@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f0f4f8;
+    color: #222;
+    line-height: 1.6;
+    padding-top: 70px;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+/* 헤더 */
+header {
+    background: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo h1 { font-size: 1.8em; color: #31326F; }
+.icon { width: 35px; height: 35px; }
+
+/* 네비게이션 */
+nav ul { display: flex; list-style: none; gap: 15px; }
+nav a {
+    text-decoration: none;
+    color: #31326F;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+nav a:hover, nav a.active { background: #4FB7B3; color: #fff; }
+
+/* 공통 컨테이너 */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+/* 푸터 */
+footer {
+    background: #31326F;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px;
+    font-size: 0.95em;
+    border-radius: 10px 10px 0 0;
+}
+footer .social-icons { margin-bottom: 10px; }
+footer .social-icons a { margin: 0 10px; display: inline-block; }
+footer .social-icons img { width: 30px; height: 30px; transition: 0.3s; }
+footer .social-icons img:hover { transform: scale(1.2); }
+
+/* 다크 모드 토글 */
+.dark-toggle {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: 0.3s;
+}
+.dark-toggle:hover { background: #4FB7B3; color: #fff; border-color: #4FB7B3; }
+
+/* 상단 이동 버튼 */
+.back-to-top {
+    position: fixed;
+    bottom: 30px; right: 30px;
+    width: 44px; height: 44px;
+    background: #4FB7B3;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.3em;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 150;
+}
+.back-to-top.visible { opacity: 1; pointer-events: auto; }
+.back-to-top:hover { transform: translateY(-3px); background: #36a29f; }
+
+/* 다크 모드 공통 */
+body.dark { background: #1a1a2e; color: #ddd; }
+body.dark header { background: #16213e; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+body.dark .logo h1 { color: #a0c4ff; }
+body.dark nav a { color: #a0c4ff; }
+body.dark nav a:hover, body.dark nav a.active { background: #4FB7B3; color: #fff; }
+body.dark footer { background: #0f0f1a; }
+body.dark .dark-toggle { border-color: #555; color: #ddd; }
+
+/* 반응형 공통 */
+@media (max-width: 900px) {
+    header { flex-direction: column; gap: 10px; }
+    .logo h1 { font-size: 1.5em; }
+    nav ul { flex-wrap: wrap; justify-content: center; }
+}
