@@ -38,6 +38,8 @@ header {
     text-decoration: none;
 }
 
+a.logo { text-decoration: none; }
+
 .logo h1 { font-size: 1.8em; color: #31326F; }
 .icon { width: 35px; height: 35px; }
 
