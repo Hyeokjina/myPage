@@ -109,6 +109,13 @@ footer .social-icons img:hover { transform: scale(1.2); }
 .back-to-top.visible { opacity: 1; pointer-events: auto; }
 .back-to-top:hover { transform: translateY(-3px); background: #36a29f; }
 
+/* 이미지 로드 실패 */
+img[src="./icon/incheon.png"] {
+    background: #f0f4f8;
+    object-fit: contain;
+    padding: 20px;
+}
+
 /* 다크 모드 공통 */
 body.dark { background: #1a1a2e; color: #ddd; }
 body.dark header { background: #16213e; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
