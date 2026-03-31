@@ -78,7 +78,7 @@ function closeFavModalOutside(event) {
 function searchPlaces() {
     const query = document.getElementById('search-input').value.trim().toLowerCase();
     document.querySelectorAll('.container[id]').forEach(section => {
-        const items = section.querySelectorAll('.places li, .loding li');
+        const items = section.querySelectorAll('.places li, .lodging li');
         if (!items.length) return;
         let anyVisible = false;
         items.forEach(li => {

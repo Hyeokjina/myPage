@@ -8,7 +8,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.places li, .loding li, .card, .region-card, .lodging-card').forEach((el, i) => {
+document.querySelectorAll('.places li, .lodging li, .card, .region-card, .lodging-card').forEach((el, i) => {
     el.style.transitionDelay = `${(i % 4) * 0.1}s`;
     el.classList.add('reveal');
     revealObserver.observe(el);

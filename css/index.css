@@ -69,12 +69,12 @@
 .more-btn:hover { background: #4FB7B3; color: #fff; }
 
 /* 장소 카드 */
-.places, .loding {
+.places, .lodging {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
-.places li, .loding li {
+.places li, .lodging li {
     list-style: none;
     position: relative;
     background: rgba(255,255,255,0.9);
@@ -87,14 +87,14 @@
     flex-direction: column;
     cursor: pointer;
 }
-.places li img, .loding li img {
+.places li img, .lodging li img {
     width: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
     transition: transform 0.4s ease, filter 0.4s ease;
 }
-.places li:hover img, .loding li:hover img { transform: scale(1.05); filter: brightness(0.9); }
-.places li div, .loding li div {
+.places li:hover img, .lodging li:hover img { transform: scale(1.05); filter: brightness(0.9); }
+.places li div, .lodging li div {
     padding: 15px;
     flex-grow: 1;
     display: flex;
@@ -102,11 +102,11 @@
     justify-content: center;
     text-align: center;
 }
-.places li h3, .loding li h3 { font-size: 1.3em; margin-bottom: 10px; color: #31326F; }
+.places li h3, .lodging li h3 { font-size: 1.3em; margin-bottom: 10px; color: #31326F; }
 .places li p { font-size: 1em; margin-bottom: 15px; }
 .places li button { margin-top: auto; padding: 10px 15px; font-size: 0.95em; color: #fff; background: #4FB7B3; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; }
 .places li button:hover { background: #36a29f; }
-.places li:hover, .loding li:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.25); }
+.places li:hover, .lodging li:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.25); }
 
 /* 즐겨찾기 버튼 */
 .fav-btn {
@@ -188,8 +188,8 @@ body.dark .fav-count { color: #a0c4ff; border-color: #444; }
 body.dark .fav-count:hover { background: #2a1a2e; }
 body.dark .search-box { border-color: #444; }
 body.dark .search-box input { background: #1e1e3a; color: #ddd; }
-body.dark .places li, body.dark .loding li { background: rgba(22,33,62,0.95); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
-body.dark .places li h3, body.dark .loding li h3 { color: #a0c4ff; }
+body.dark .places li, body.dark .lodging li { background: rgba(22,33,62,0.95); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+body.dark .places li h3, body.dark .lodging li h3 { color: #a0c4ff; }
 body.dark .section-header h2 { color: #a0c4ff; }
 body.dark .modal { background: #16213e; color: #ddd; }
 body.dark .modal h3 { color: #a0c4ff; }
