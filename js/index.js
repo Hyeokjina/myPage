@@ -46,7 +46,14 @@ function openFavModal() {
         empty.style.display = 'none';
         favs.forEach(name => {
             const li = document.createElement('li');
-            li.innerHTML = `<span>♥ ${name}</span><button onclick="removeFav('${name}')" title="삭제">✕</button>`;
+            const span = document.createElement('span');
+            span.textContent = `♥ ${name}`;
+            const btn = document.createElement('button');
+            btn.textContent = '✕';
+            btn.title = '삭제';
+            btn.addEventListener('click', () => removeFav(name));
+            li.appendChild(span);
+            li.appendChild(btn);
             list.appendChild(li);
         });
     }
