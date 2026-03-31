@@ -125,6 +125,17 @@ body.dark nav a:hover, body.dark nav a.active { background: #4FB7B3; color: #fff
 body.dark footer { background: #0f0f1a; }
 body.dark .dark-toggle { border-color: #555; color: #ddd; }
 
+/* 스크롤 애니메이션 */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* 햄버거 버튼 */
 .hamburger {
     display: none;
