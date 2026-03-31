@@ -125,9 +125,34 @@ body.dark nav a:hover, body.dark nav a.active { background: #4FB7B3; color: #fff
 body.dark footer { background: #0f0f1a; }
 body.dark .dark-toggle { border-color: #555; color: #ddd; }
 
+/* 햄버거 버튼 */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6em;
+    cursor: pointer;
+    color: #31326F;
+    padding: 5px 8px;
+    line-height: 1;
+    transition: 0.3s;
+}
+body.dark .hamburger { color: #a0c4ff; }
+
 /* 반응형 공통 */
 @media (max-width: 900px) {
-    header { flex-direction: column; gap: 10px; }
+    header { flex-wrap: wrap; gap: 0; }
+    .logo { flex: 1; }
     .logo h1 { font-size: 1.5em; }
-    nav ul { flex-wrap: wrap; justify-content: center; }
+    .hamburger { display: block; }
+    nav {
+        display: none;
+        width: 100%;
+        border-top: 1px solid #eee;
+        padding: 10px 0;
+        margin-top: 8px;
+    }
+    nav.open { display: block; }
+    nav ul { flex-direction: column; align-items: center; gap: 5px; }
+    body.dark nav { border-color: #333; }
 }

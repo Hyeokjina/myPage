@@ -197,7 +197,7 @@ body.dark .modal-list li { background: #1a1a2e; }
 
 /* 반응형 */
 @media (max-width: 900px) {
-    .search-box { margin-left: 0; }
+    .search-box { display: none; }
 }
 @media (max-width: 600px) {
     .hero { font-size: 1.8em; }

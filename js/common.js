@@ -1,3 +1,7 @@
+function toggleNav() {
+    document.querySelector('nav').classList.toggle('open');
+}
+
 function toggleDark() {
     const isDark = document.body.classList.toggle('dark');
     localStorage.setItem('dark', isDark);
