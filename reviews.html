@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="./icon/bridge.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>여행 후기 - 인천 여행지 소개</title>
+  <meta name="description" content="인천 및 국내 여행지 후기를 확인하고 직접 작성해보세요.">
+  <meta property="og:title" content="여행 후기 - 인천 여행지 소개">
+  <meta property="og:description" content="여행자들이 남긴 생생한 국내 여행 후기 게시판입니다.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/reviews.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="./icon/bridge.png" alt="다리 아이콘" class="icon">
+      <img src="./icon/incheon.png" alt="도시 아이콘" class="icon">
+      <h1>여행 후기</h1>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="reviews.html" class="active">후기</a></li>
+        <li><a href="contact.html">문의</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" onclick="toggleNav()">☰</button>
+    <button class="dark-toggle" id="dark-btn" onclick="toggleDark()">🌙</button>
+  </header>
+
+  <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <main class="reviews-wrap">
+    <section class="write-section">
+      <h2>후기 작성</h2>
+      <form id="review-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="region">지역</label>
+            <select id="region" required>
+              <option value="">선택하세요</option>
+              <option value="인천">인천</option>
+              <option value="서울">서울</option>
+              <option value="부산">부산</option>
+              <option value="제주">제주</option>
+              <option value="강원">강원</option>
+              <option value="경주">경주</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>별점</label>
+            <div class="star-input" id="star-input">
+              <span data-val="1">★</span>
+              <span data-val="2">★</span>
+              <span data-val="3">★</span>
+              <span data-val="4">★</span>
+              <span data-val="5">★</span>
+            </div>
+            <input type="hidden" id="rating" value="0">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="title">제목</label>
+          <input type="text" id="title" placeholder="후기 제목을 입력하세요" required maxlength="50">
+        </div>
+        <div class="form-group">
+          <label for="content">내용</label>
+          <textarea id="content" rows="5" placeholder="여행 후기를 자유롭게 작성해주세요." required maxlength="500"></textarea>
+        </div>
+        <button type="submit">후기 등록</button>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <div class="list-header">
+        <h2>전체 후기 <span id="review-count">0</span>건</h2>
+        <div class="filter-bar">
+          <select id="filter-region">
+            <option value="전체">전체 지역</option>
+            <option value="인천">인천</option>
+            <option value="서울">서울</option>
+            <option value="부산">부산</option>
+            <option value="제주">제주</option>
+            <option value="강원">강원</option>
+            <option value="경주">경주</option>
+            <option value="기타">기타</option>
+          </select>
+        </div>
+      </div>
+      <ul id="review-list"></ul>
+      <p id="empty-msg" class="empty-msg">아직 등록된 후기가 없습니다. 첫 후기를 작성해보세요!</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./icon/facebook.png" alt="페이스북"></a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./icon/instagram.png" alt="인스타그램"></a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><img src="./icon/twitter.png" alt="트위터"></a>
+    </div>
+    <p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
+    <p>문의: example@email.com | 전화: 010-1234-5678</p>
+  </footer>
+
+  <script src="./js/common.js"></script>
+  <script src="./js/reviews.js"></script>
+</body>
+</html>
