@@ -2,16 +2,181 @@
   max-width: 860px;
   margin: 60px auto;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-.planner-empty {
+/* 추가 폼 */
+.add-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 36px 40px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.add-section h2,
+.list-section h2 {
+  margin-bottom: 24px;
+  color: #31326F;
+  font-size: 1.3rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.form-row .form-group { flex: 1; }
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fafafa;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4FB7B3;
+}
+
+#schedule-form button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background: #4FB7B3;
+  color: #fff;
+  font-size: 15px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 4px;
+}
+
+#schedule-form button[type="submit"]:hover { background: #36a29f; }
+
+/* 목록 */
+.list-section h2 span {
+  color: #4FB7B3;
+}
+
+#schedule-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.schedule-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px 24px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.s-date-block {
   text-align: center;
-  padding: 100px 20px;
-  color: #aaa;
-  font-size: 18px;
-  line-height: 2;
+  min-width: 52px;
 }
 
-.planner-empty p:first-child {
-  font-size: 48px;
+.s-date-block .s-month {
+  font-size: 11px;
+  color: #4FB7B3;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.s-date-block .s-day {
+  font-size: 26px;
+  font-weight: 800;
+  color: #31326F;
+  line-height: 1.1;
+}
+
+.s-divider {
+  width: 1px;
+  height: 44px;
+  background: #eee;
+  flex-shrink: 0;
+}
+
+.s-info { flex: 1; }
+
+.s-place {
+  font-weight: 700;
+  font-size: 15px;
+  color: #222;
+}
+
+.s-time {
+  font-size: 12px;
+  color: #4FB7B3;
+  margin-top: 2px;
+}
+
+.s-memo {
+  font-size: 13px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.empty-msg {
+  text-align: center;
+  color: #aaa;
+  font-size: 15px;
+  margin-top: 40px;
+  display: none;
+}
+
+/* 다크 모드 */
+body.dark .add-section,
+body.dark .schedule-card {
+  background: #16213e;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+
+body.dark .add-section h2,
+body.dark .list-section h2 { color: #a0c4ff; }
+
+body.dark .form-group label { color: #ccc; }
+
+body.dark .form-group input {
+  background: #1a1a2e;
+  color: #ddd;
+  border-color: #444;
+}
+
+body.dark .s-date-block .s-day { color: #a0c4ff; }
+body.dark .s-place { color: #ddd; }
+body.dark .s-divider { background: #333; }
+
+/* 반응형 */
+@media (max-width: 600px) {
+  .add-section { padding: 24px 20px; }
+  .form-row { flex-direction: column; gap: 0; }
+  .schedule-card { padding: 14px 16px; gap: 14px; }
 }

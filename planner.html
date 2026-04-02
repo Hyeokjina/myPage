@@ -35,10 +35,36 @@
   <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
   <main class="planner-wrap">
-    <div class="planner-empty">
-      <p>📋</p>
-      <p>여행 플래너 기능을 준비 중입니다.</p>
-    </div>
+    <section class="add-section">
+      <h2>일정 추가</h2>
+      <form id="schedule-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="s-date">날짜</label>
+            <input type="date" id="s-date" required>
+          </div>
+          <div class="form-group">
+            <label for="s-time">시간</label>
+            <input type="time" id="s-time">
+          </div>
+          <div class="form-group">
+            <label for="s-place">장소</label>
+            <input type="text" id="s-place" placeholder="예) 차이나타운" required maxlength="30">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="s-memo">메모</label>
+          <input type="text" id="s-memo" placeholder="간단한 메모를 남겨보세요." maxlength="80">
+        </div>
+        <button type="submit">+ 일정 추가</button>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>내 일정 <span id="schedule-count">0</span>개</h2>
+      <ul id="schedule-list"></ul>
+      <p id="empty-msg" class="empty-msg">아직 추가된 일정이 없습니다.</p>
+    </section>
   </main>
 
   <footer>
@@ -52,5 +78,6 @@
   </footer>
 
   <script src="./js/common.js"></script>
+  <script src="./js/planner.js"></script>
 </body>
 </html>
