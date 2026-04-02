@@ -1,0 +1,17 @@
+.planner-wrap {
+  max-width: 860px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.planner-empty {
+  text-align: center;
+  padding: 100px 20px;
+  color: #aaa;
+  font-size: 18px;
+  line-height: 2;
+}
+
+.planner-empty p:first-child {
+  font-size: 48px;
+}

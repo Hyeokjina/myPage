@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="./icon/bridge.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>여행 플래너 - 인천 여행지 소개</title>
+  <meta name="description" content="나만의 여행 일정을 계획하고 관리해보세요.">
+  <meta property="og:title" content="여행 플래너 - 인천 여행지 소개">
+  <meta property="og:description" content="날짜별 여행 일정을 직접 작성하고 관리하는 플래너입니다.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/planner.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="./icon/bridge.png" alt="다리 아이콘" class="icon">
+      <img src="./icon/incheon.png" alt="도시 아이콘" class="icon">
+      <h1>여행 플래너</h1>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="reviews.html">후기</a></li>
+        <li><a href="planner.html" class="active">플래너</a></li>
+        <li><a href="contact.html">문의</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" onclick="toggleNav()">☰</button>
+    <button class="dark-toggle" id="dark-btn" onclick="toggleDark()">🌙</button>
+  </header>
+
+  <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <main class="planner-wrap">
+    <div class="planner-empty">
+      <p>📋</p>
+      <p>여행 플래너 기능을 준비 중입니다.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./icon/facebook.png" alt="페이스북"></a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./icon/instagram.png" alt="인스타그램"></a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><img src="./icon/twitter.png" alt="트위터"></a>
+    </div>
+    <p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
+    <p>문의: example@email.com | 전화: 010-1234-5678</p>
+  </footer>
+
+  <script src="./js/common.js"></script>
+</body>
+</html>
