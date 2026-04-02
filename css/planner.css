@@ -126,6 +126,36 @@
 
 .s-info { flex: 1; }
 
+/* 액션 버튼 */
+.s-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.check-btn,
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  transition: color 0.2s, transform 0.1s;
+  padding: 2px 4px;
+}
+
+.check-btn { color: #ccc; }
+.check-btn.checked { color: #4FB7B3; font-weight: 700; }
+.check-btn:hover { transform: scale(1.2); }
+
+.delete-btn { color: #ddd; }
+.delete-btn:hover { color: #e74c3c; }
+
+/* 완료 상태 */
+.schedule-card.done { opacity: 0.5; }
+.schedule-card.done .s-place { text-decoration: line-through; color: #aaa; }
+
 .s-place {
   font-weight: 700;
   font-size: 15px;
@@ -173,6 +203,8 @@ body.dark .form-group input {
 body.dark .s-date-block .s-day { color: #a0c4ff; }
 body.dark .s-place { color: #ddd; }
 body.dark .s-divider { background: #333; }
+body.dark .delete-btn { color: #555; }
+body.dark .delete-btn:hover { color: #e74c3c; }
 
 /* 반응형 */
 @media (max-width: 600px) {

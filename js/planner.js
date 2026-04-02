@@ -16,7 +16,8 @@ document.getElementById('schedule-form').addEventListener('submit', e => {
     date: document.getElementById('s-date').value,
     time: document.getElementById('s-time').value,
     place: document.getElementById('s-place').value.trim(),
-    memo: document.getElementById('s-memo').value.trim()
+    memo: document.getElementById('s-memo').value.trim(),
+    done: false
   };
 
   const schedules = getSchedules();
@@ -31,6 +32,20 @@ document.getElementById('schedule-form').addEventListener('submit', e => {
   renderList();
   e.target.reset();
 });
+
+function toggleDone(id) {
+  const schedules = getSchedules().map(s =>
+    s.id === id ? { ...s, done: !s.done } : s
+  );
+  saveSchedules(schedules);
+  renderList();
+}
+
+function deleteSchedule(id) {
+  const schedules = getSchedules().filter(s => s.id !== id);
+  saveSchedules(schedules);
+  renderList();
+}
 
 function renderList() {
   const schedules = getSchedules();
@@ -53,9 +68,10 @@ function renderList() {
     const day = dateObj.getDate();
 
     const li = document.createElement('li');
-    li.className = 'schedule-card reveal';
+    li.className = 'schedule-card reveal' + (s.done ? ' done' : '');
     li.dataset.id = s.id;
 
+    // 날짜 블록
     const dateBlock = document.createElement('div');
     dateBlock.className = 's-date-block';
 
@@ -73,13 +89,13 @@ function renderList() {
     const divider = document.createElement('div');
     divider.className = 's-divider';
 
+    // 정보
     const info = document.createElement('div');
     info.className = 's-info';
 
     const placeEl = document.createElement('div');
     placeEl.className = 's-place';
     placeEl.textContent = s.place;
-
     info.appendChild(placeEl);
 
     if (s.time) {
@@ -96,9 +112,29 @@ function renderList() {
       info.appendChild(memoEl);
     }
 
+    // 액션 버튼
+    const actions = document.createElement('div');
+    actions.className = 's-actions';
+
+    const checkBtn = document.createElement('button');
+    checkBtn.className = 'check-btn' + (s.done ? ' checked' : '');
+    checkBtn.textContent = s.done ? '✓' : '○';
+    checkBtn.setAttribute('aria-label', '완료 토글');
+    checkBtn.addEventListener('click', () => toggleDone(s.id));
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'delete-btn';
+    delBtn.textContent = '✕';
+    delBtn.setAttribute('aria-label', '일정 삭제');
+    delBtn.addEventListener('click', () => deleteSchedule(s.id));
+
+    actions.appendChild(checkBtn);
+    actions.appendChild(delBtn);
+
     li.appendChild(dateBlock);
     li.appendChild(divider);
     li.appendChild(info);
+    li.appendChild(actions);
 
     list.appendChild(li);
   });
