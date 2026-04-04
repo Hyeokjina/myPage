@@ -243,6 +243,51 @@ document.getElementById('schedule-form').addEventListener('submit', e => {
   e.target.reset();
 });
 
+// 일정 수정 모달 열기/닫기
+function openEditModal(schedule) {
+  document.getElementById('e-id').value = schedule.id;
+  document.getElementById('e-date').value = schedule.date;
+  document.getElementById('e-time').value = schedule.time || '';
+  document.getElementById('e-place').value = schedule.place;
+  document.getElementById('e-memo').value = schedule.memo || '';
+  document.getElementById('e-warn').style.display = 'none';
+  document.getElementById('edit-modal').classList.add('open');
+  document.getElementById('e-place').focus();
+}
+
+function closeEditModal() {
+  document.getElementById('edit-modal').classList.remove('open');
+  document.getElementById('edit-form').reset();
+}
+
+function closeEditModalOutside(e) {
+  if (e.target === document.getElementById('edit-modal')) closeEditModal();
+}
+
+// 일정 수정 저장
+document.getElementById('edit-form').addEventListener('submit', e => {
+  e.preventDefault();
+
+  const id = Number(document.getElementById('e-id').value);
+  const date = document.getElementById('e-date').value;
+  const time = document.getElementById('e-time').value;
+  const place = document.getElementById('e-place').value.trim();
+  const memo = document.getElementById('e-memo').value.trim();
+
+  const schedules = getSchedules().map(s =>
+    s.id === id ? { ...s, date, time, place, memo } : s
+  );
+  schedules.sort((a, b) => {
+    const da = a.date + (a.time || '00:00');
+    const db = b.date + (b.time || '00:00');
+    return da.localeCompare(db);
+  });
+  saveSchedules(schedules);
+
+  closeEditModal();
+  renderScheduleList();
+});
+
 function toggleDone(id) {
   const schedules = getSchedules().map(s =>
     s.id === id ? { ...s, done: !s.done } : s
@@ -344,6 +389,12 @@ function renderScheduleList() {
 
     actions.appendChild(checkBtn);
     actions.appendChild(delBtn);
+
+    // 카드 클릭 → 수정 모달 (버튼 클릭은 제외)
+    li.addEventListener('click', ev => {
+      if (ev.target.closest('.s-actions')) return;
+      openEditModal(s);
+    });
 
     li.appendChild(dateBlock);
     li.appendChild(divider);
