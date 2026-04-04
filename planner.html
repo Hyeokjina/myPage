@@ -35,7 +35,45 @@
   <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
   <main class="planner-wrap">
-    <section class="add-section">
+
+    <!-- 플랜 목록 -->
+    <section class="plans-section">
+      <div class="plans-header">
+        <h2>내 여행 플랜</h2>
+        <button id="new-plan-btn" onclick="openPlanModal()">+ 새 플랜</button>
+      </div>
+      <ul id="plan-list"></ul>
+      <p id="plan-empty-msg" class="empty-msg">플랜을 먼저 만들어보세요!</p>
+    </section>
+
+    <!-- 플랜 생성 모달 -->
+    <div id="plan-modal" class="modal-overlay" onclick="closePlanModalOutside(event)">
+      <div class="modal-box">
+        <h3>새 여행 플랜</h3>
+        <form id="plan-form">
+          <div class="form-group">
+            <label for="p-name">여행 이름</label>
+            <input type="text" id="p-name" placeholder="예) 인천 당일치기" required maxlength="30">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="p-start">시작일</label>
+              <input type="date" id="p-start" required>
+            </div>
+            <div class="form-group">
+              <label for="p-end">종료일</label>
+              <input type="date" id="p-end" required>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button type="button" onclick="closePlanModal()">취소</button>
+            <button type="submit">만들기</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <section class="add-section" id="schedule-section" style="display:none;">
       <h2>일정 추가</h2>
       <form id="schedule-form">
         <div class="form-row">
@@ -60,7 +98,7 @@
       </form>
     </section>
 
-    <section class="list-section">
+    <section class="list-section" id="list-section" style="display:none;">
       <h2>내 일정 <span id="schedule-count">0</span>개</h2>
       <ul id="schedule-list"></ul>
       <p id="empty-msg" class="empty-msg">아직 추가된 일정이 없습니다.</p>
