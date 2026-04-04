@@ -101,6 +101,39 @@
       </div>
     </div>
 
+    <!-- 일정 수정 모달 -->
+    <div id="edit-modal" class="modal-overlay" onclick="closeEditModalOutside(event)">
+      <div class="modal-box">
+        <h3>일정 수정</h3>
+        <form id="edit-form">
+          <input type="hidden" id="e-id">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="e-date">날짜</label>
+              <input type="date" id="e-date" required>
+            </div>
+            <div class="form-group">
+              <label for="e-time">시간</label>
+              <input type="time" id="e-time">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="e-place">장소</label>
+            <input type="text" id="e-place" required maxlength="30">
+          </div>
+          <div class="form-group">
+            <label for="e-memo">메모</label>
+            <input type="text" id="e-memo" maxlength="80">
+          </div>
+          <p id="e-warn" class="edit-warn" style="display:none;"></p>
+          <div class="modal-actions">
+            <button type="button" onclick="closeEditModal()">취소</button>
+            <button type="submit">저장</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <section class="add-section" id="schedule-section" style="display:none;">
       <h2>일정 추가</h2>
       <form id="schedule-form">

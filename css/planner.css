@@ -313,6 +313,21 @@
 .schedule-card.done { opacity: 0.5; }
 .schedule-card.done .s-place { text-decoration: line-through; color: #aaa; }
 
+/* 카드 클릭 힌트 */
+.schedule-card { cursor: pointer; }
+.schedule-card:hover { transform: translateY(-2px); }
+
+/* 일정 수정 경고 */
+.edit-warn {
+  font-size: 13px;
+  color: #e67e22;
+  background: #fff8f0;
+  border: 1px solid #f5cba7;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}
+
 .s-place {
   font-weight: 700;
   font-size: 15px;
@@ -387,6 +402,7 @@ body.dark .s-place { color: #ddd; }
 body.dark .s-divider { background: #333; }
 body.dark .delete-btn { color: #555; }
 body.dark .delete-btn:hover { color: #e74c3c; }
+body.dark .edit-warn { background: #2a1a0a; border-color: #7a4a1a; color: #f0a060; }
 
 /* 반응형 */
 @media (max-width: 600px) {
