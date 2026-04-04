@@ -57,6 +57,69 @@ document.getElementById('plan-form').addEventListener('submit', e => {
   selectPlan(plan.id);
 });
 
+// 플랜 삭제
+function deletePlan(id) {
+  if (!confirm('플랜을 삭제하면 해당 일정도 모두 삭제됩니다. 계속할까요?')) return;
+
+  const plans = getPlans().filter(p => String(p.id) !== String(id));
+  savePlans(plans);
+
+  // 해당 플랜 일정 삭제
+  const all = JSON.parse(localStorage.getItem(SCHEDULES_KEY) || '{}');
+  delete all[id];
+  localStorage.setItem(SCHEDULES_KEY, JSON.stringify(all));
+
+  // 활성 플랜이 삭제된 경우 초기화
+  if (String(getActivePlanId()) === String(id)) {
+    localStorage.removeItem('active_plan_id');
+    document.getElementById('schedule-section').style.display = 'none';
+    document.getElementById('list-section').style.display = 'none';
+  }
+
+  renderPlanList();
+}
+
+// 플랜 수정 모달
+function openRenameModal(plan) {
+  document.getElementById('r-id').value = plan.id;
+  document.getElementById('r-name').value = plan.name;
+  document.getElementById('r-start').value = plan.start;
+  document.getElementById('r-end').value = plan.end;
+  document.getElementById('rename-modal').classList.add('open');
+}
+
+function closeRenameModal() {
+  document.getElementById('rename-modal').classList.remove('open');
+  document.getElementById('rename-form').reset();
+}
+
+function closeRenameModalOutside(e) {
+  if (e.target === document.getElementById('rename-modal')) closeRenameModal();
+}
+
+document.getElementById('rename-form').addEventListener('submit', e => {
+  e.preventDefault();
+
+  const id = Number(document.getElementById('r-id').value);
+  const name = document.getElementById('r-name').value.trim();
+  const start = document.getElementById('r-start').value;
+  const end = document.getElementById('r-end').value;
+
+  if (start > end) {
+    alert('종료일은 시작일 이후여야 합니다.');
+    return;
+  }
+
+  const plans = getPlans().map(p =>
+    p.id === id ? { ...p, name, start, end } : p
+  );
+  savePlans(plans);
+  closeRenameModal();
+  renderPlanList();
+
+  if (String(getActivePlanId()) === String(id)) renderScheduleList();
+});
+
 // 플랜 선택
 function selectPlan(id) {
   setActivePlanId(id);
@@ -106,8 +169,34 @@ function renderPlanList() {
 
     info.appendChild(nameEl);
     info.appendChild(periodEl);
+
+    const planActions = document.createElement('div');
+    planActions.className = 'plan-actions';
+
+    const editBtn = document.createElement('button');
+    editBtn.className = 'plan-edit-btn';
+    editBtn.textContent = '✏️';
+    editBtn.setAttribute('aria-label', '플랜 수정');
+    editBtn.addEventListener('click', ev => {
+      ev.stopPropagation();
+      openRenameModal(plan);
+    });
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'plan-del-btn';
+    delBtn.textContent = '🗑️';
+    delBtn.setAttribute('aria-label', '플랜 삭제');
+    delBtn.addEventListener('click', ev => {
+      ev.stopPropagation();
+      deletePlan(plan.id);
+    });
+
+    planActions.appendChild(editBtn);
+    planActions.appendChild(delBtn);
+
     li.appendChild(icon);
     li.appendChild(info);
+    li.appendChild(planActions);
     list.appendChild(li);
   });
 }
