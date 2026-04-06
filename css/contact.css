@@ -42,4 +42,5 @@ button[type="submit"]:hover { background: #36a29f; }
 /* 다크 모드 */
 body.dark .contact-container { background: #16213e; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
 body.dark h2 { color: #a0c4ff; }
+body.dark label { color: #ccc; }
 body.dark input, body.dark textarea { background: #1a1a2e; color: #ddd; border-color: #444; }

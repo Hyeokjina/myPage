@@ -78,7 +78,7 @@
         </div>
         <ul class="places">
             <li onclick="window.location.href='about.html#card-section'">
-                <button class="fav-btn" onclick="toggleFav(event, '차이나타운')" title="즐겨찾기">♡</button>
+                <button class="fav-btn" data-name="차이나타운" onclick="toggleFav(event, '차이나타운')" title="즐겨찾기">♡</button>
                 <img src="./images/town.png" alt="차이나타운" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'">
                 <div>
                     <h3>차이나타운</h3>
@@ -86,7 +86,7 @@
                 </div>
             </li>
             <li onclick="window.location.href='about.html#card-section'">
-                <button class="fav-btn" onclick="toggleFav(event, '송도 센트럴파크')" title="즐겨찾기">♡</button>
+                <button class="fav-btn" data-name="송도 센트럴파크" onclick="toggleFav(event, '송도 센트럴파크')" title="즐겨찾기">♡</button>
                 <img src="./images/songdo.png" alt="송도 센트럴파크" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'">
                 <div>
                     <h3>송도 센트럴파크</h3>
@@ -94,7 +94,7 @@
                 </div>
             </li>
             <li onclick="window.location.href='about.html#card-section'">
-                <button class="fav-btn" onclick="toggleFav(event, '월미도')" title="즐겨찾기">♡</button>
+                <button class="fav-btn" data-name="월미도" onclick="toggleFav(event, '월미도')" title="즐겨찾기">♡</button>
                 <img src="./images/wolmido.png" alt="월미도" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'">
                 <div>
                     <h3>월미도</h3>
@@ -111,11 +111,11 @@
             <a href="regions.html" class="more-btn">+ 더보기</a>
         </div>
         <ul class="places">
-            <li onclick="window.location.href='regions.html#seoul'"><button class="fav-btn" onclick="toggleFav(event, '서울')" title="즐겨찾기">♡</button><img src="./images/seoul.png" alt="서울" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'"><div><h3>서울</h3></div></li>
-            <li onclick="window.location.href='regions.html#busan'"><button class="fav-btn" onclick="toggleFav(event, '부산')" title="즐겨찾기">♡</button><img src="./images/busan.png" alt="부산" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'"><div><h3>부산</h3></div></li>
-            <li onclick="window.location.href='regions.html#jeju'"><button class="fav-btn" onclick="toggleFav(event, '제주')" title="즐겨찾기">♡</button><img src="./images/jeju.png" alt="제주" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'"><div><h3>제주</h3></div></li>
-            <li onclick="window.location.href='regions.html#gangwon'"><button class="fav-btn" onclick="toggleFav(event, '강원')" title="즐겨찾기">♡</button><img src="./images/gangwon.png" alt="강원" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'"><div><h3>강원</h3></div></li>
-            <li onclick="window.location.href='regions.html#gyeongju'"><button class="fav-btn" onclick="toggleFav(event, '경주')" title="즐겨찾기">♡</button><img src="./images/gyeongju.png" alt="경주" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'"><div><h3>경주</h3></div></li>
+            <li onclick="window.location.href='regions.html#seoul'"><button class="fav-btn" data-name="서울" onclick="toggleFav(event, '서울')" title="즐겨찾기">♡</button><img src="./images/seoul.png" alt="서울" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'"><div><h3>서울</h3></div></li>
+            <li onclick="window.location.href='regions.html#busan'"><button class="fav-btn" data-name="부산" onclick="toggleFav(event, '부산')" title="즐겨찾기">♡</button><img src="./images/busan.png" alt="부산" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'"><div><h3>부산</h3></div></li>
+            <li onclick="window.location.href='regions.html#jeju'"><button class="fav-btn" data-name="제주" onclick="toggleFav(event, '제주')" title="즐겨찾기">♡</button><img src="./images/jeju.png" alt="제주" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'"><div><h3>제주</h3></div></li>
+            <li onclick="window.location.href='regions.html#gangwon'"><button class="fav-btn" data-name="강원" onclick="toggleFav(event, '강원')" title="즐겨찾기">♡</button><img src="./images/gangwon.png" alt="강원" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'"><div><h3>강원</h3></div></li>
+            <li onclick="window.location.href='regions.html#gyeongju'"><button class="fav-btn" data-name="경주" onclick="toggleFav(event, '경주')" title="즐겨찾기">♡</button><img src="./images/gyeongju.png" alt="경주" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'"><div><h3>경주</h3></div></li>
         </ul>
     </div>
 

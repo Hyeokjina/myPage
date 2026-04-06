@@ -15,7 +15,8 @@ function updateBadge() {
 function updateButtons() {
     const favs = getFavs();
     document.querySelectorAll('.fav-btn').forEach(btn => {
-        const name = btn.getAttribute('onclick').match(/'([^']+)'\)/)[1];
+        const name = btn.dataset.name;
+        if (!name) return;
         if (favs.includes(name)) {
             btn.textContent = '♥';
             btn.classList.add('active');
