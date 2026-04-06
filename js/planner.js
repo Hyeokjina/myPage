@@ -291,6 +291,26 @@ function closeEditModalOutside(e) {
   if (e.target === document.getElementById('edit-modal')) closeEditModal();
 }
 
+// 날짜 범위 벗어남 경고 헬퍼
+function checkDateInRange(date, warnElId) {
+  const activePlanId = getActivePlanId();
+  const plan = getPlans().find(p => String(p.id) === String(activePlanId));
+  const warnEl = document.getElementById(warnElId);
+  if (!plan || !date || !warnEl) return;
+
+  if (date < plan.start || date > plan.end) {
+    warnEl.textContent = `⚠️ 선택한 날짜(${date})가 플랜 기간(${plan.start} ~ ${plan.end}) 밖입니다.`;
+    warnEl.style.display = 'block';
+  } else {
+    warnEl.style.display = 'none';
+  }
+}
+
+// 일정 추가 폼 날짜 변경 시 경고
+document.getElementById('s-date').addEventListener('change', e => {
+  checkDateInRange(e.target.value, 's-warn');
+});
+
 // 일정 수정 저장
 document.getElementById('edit-form').addEventListener('submit', e => {
   e.preventDefault();
@@ -314,6 +334,11 @@ document.getElementById('edit-form').addEventListener('submit', e => {
   closeEditModal();
   renderScheduleList();
   renderPlanList();
+});
+
+// 수정 모달 날짜 변경 시 경고
+document.getElementById('e-date').addEventListener('change', e => {
+  checkDateInRange(e.target.value, 'e-warn');
 });
 
 function toggleDone(id) {
@@ -474,6 +499,19 @@ function showToast(msg) {
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 2200);
 }
+
+// ── ESC 키로 모달 닫기 ──────────────────────────────
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (document.getElementById('edit-modal').classList.contains('open')) {
+    closeEditModal();
+  } else if (document.getElementById('rename-modal').classList.contains('open')) {
+    closeRenameModal();
+  } else if (document.getElementById('plan-modal').classList.contains('open')) {
+    closePlanModal();
+  }
+});
 
 // ── 초기화 ─────────────────────────────────────────
 
