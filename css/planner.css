@@ -440,7 +440,46 @@ body.dark .cat-btn.active {
   display: flex;
   align-items: center;
   gap: 20px;
+  overflow: hidden;
 }
+
+/* 카테고리 좌측 컬러 바 */
+.cat-bar {
+  width: 4px;
+  align-self: stretch;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin: -18px -16px -18px -24px;
+}
+
+.cat-bar.cat-관광 { background: #4FB7B3; }
+.cat-bar.cat-식사  { background: #e67e22; }
+.cat-bar.cat-숙박  { background: #9b59b6; }
+.cat-bar.cat-교통  { background: #3498db; }
+.cat-bar.cat-쇼핑  { background: #e91e8c; }
+.cat-bar.cat-기타  { background: #95a5a6; }
+
+/* 카테고리 뱃지 */
+.s-place-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cat-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.cat-badge-관광 { background: #e8f7f6; color: #4FB7B3; }
+.cat-badge-식사  { background: #fef0e6; color: #e67e22; }
+.cat-badge-숙박  { background: #f5eefb; color: #9b59b6; }
+.cat-badge-교통  { background: #e8f4fd; color: #3498db; }
+.cat-badge-쇼핑  { background: #fce4f2; color: #e91e8c; }
+.cat-badge-기타  { background: #f0f0f0;  color: #95a5a6; }
 
 .s-date-block {
   text-align: center;
@@ -592,6 +631,12 @@ body.dark .form-group input {
 body.dark .s-date-block .s-day { color: #a0c4ff; }
 body.dark .s-place { color: #ddd; }
 body.dark .s-divider { background: #333; }
+body.dark .cat-badge-관광 { background: #1a3a3a; color: #7dd6d2; }
+body.dark .cat-badge-식사  { background: #3a2010; color: #f0a060; }
+body.dark .cat-badge-숙박  { background: #2a1a3a; color: #c490e4; }
+body.dark .cat-badge-교통  { background: #0d2a3a; color: #7ab8d9; }
+body.dark .cat-badge-쇼핑  { background: #3a0a25; color: #f07ac0; }
+body.dark .cat-badge-기타  { background: #2a2a2a; color: #888; }
 body.dark .delete-btn { color: #555; }
 body.dark .delete-btn:hover { color: #e74c3c; }
 body.dark .edit-warn { background: #2a1a0a; border-color: #7a4a1a; color: #f0a060; }

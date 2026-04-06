@@ -442,9 +442,14 @@ function renderScheduleList() {
     const month = dateObj.toLocaleString('ko-KR', { month: 'short' });
     const day = dateObj.getDate();
 
+    const cat = s.category || '기타';
     const li = document.createElement('li');
     li.className = 'schedule-card reveal' + (s.done ? ' done' : '');
     li.dataset.id = s.id;
+    li.dataset.category = cat;
+
+    const catBar = document.createElement('div');
+    catBar.className = `cat-bar cat-${cat}`;
 
     const dateBlock = document.createElement('div');
     dateBlock.className = 's-date-block';
@@ -466,10 +471,20 @@ function renderScheduleList() {
     const info = document.createElement('div');
     info.className = 's-info';
 
+    const placeRow = document.createElement('div');
+    placeRow.className = 's-place-row';
+
     const placeEl = document.createElement('div');
     placeEl.className = 's-place';
     placeEl.textContent = s.place;
-    info.appendChild(placeEl);
+
+    const catBadge = document.createElement('span');
+    catBadge.className = `cat-badge cat-badge-${cat}`;
+    catBadge.textContent = cat;
+
+    placeRow.appendChild(placeEl);
+    placeRow.appendChild(catBadge);
+    info.appendChild(placeRow);
 
     if (s.time) {
       const timeEl = document.createElement('div');
@@ -509,6 +524,7 @@ function renderScheduleList() {
       openEditModal(s);
     });
 
+    li.appendChild(catBar);
     li.appendChild(dateBlock);
     li.appendChild(divider);
     li.appendChild(info);
