@@ -167,8 +167,34 @@ function renderPlanList() {
     periodEl.className = 'plan-period';
     periodEl.textContent = `${plan.start} ~ ${plan.end}`;
 
+    // 진행률 계산
+    const allSchedules = JSON.parse(localStorage.getItem(SCHEDULES_KEY) || '{}');
+    const planSchedules = allSchedules[plan.id] || [];
+    const total = planSchedules.length;
+    const done = planSchedules.filter(s => s.done).length;
+    const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+
+    const progressWrap = document.createElement('div');
+    progressWrap.className = 'plan-progress-wrap';
+
+    const bar = document.createElement('div');
+    bar.className = 'plan-progress-bar';
+
+    const fill = document.createElement('div');
+    fill.className = 'plan-progress-fill';
+    fill.style.width = pct + '%';
+
+    const label = document.createElement('span');
+    label.className = 'plan-progress-label' + (total > 0 && done === total ? ' done-all' : '');
+    label.textContent = total === 0 ? '일정 없음' : (done === total ? '완료!' : `${done}/${total}`);
+
+    bar.appendChild(fill);
+    progressWrap.appendChild(bar);
+    progressWrap.appendChild(label);
+
     info.appendChild(nameEl);
     info.appendChild(periodEl);
+    info.appendChild(progressWrap);
 
     const planActions = document.createElement('div');
     planActions.className = 'plan-actions';
@@ -240,6 +266,7 @@ document.getElementById('schedule-form').addEventListener('submit', e => {
   saveSchedules(schedules);
 
   renderScheduleList();
+  renderPlanList();
   e.target.reset();
 });
 
@@ -286,6 +313,7 @@ document.getElementById('edit-form').addEventListener('submit', e => {
 
   closeEditModal();
   renderScheduleList();
+  renderPlanList();
 });
 
 function toggleDone(id) {
@@ -294,11 +322,13 @@ function toggleDone(id) {
   );
   saveSchedules(schedules);
   renderScheduleList();
+  renderPlanList();
 }
 
 function deleteSchedule(id) {
   saveSchedules(getSchedules().filter(s => s.id !== id));
   renderScheduleList();
+  renderPlanList();
 }
 
 function renderScheduleList() {
