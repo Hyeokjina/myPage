@@ -272,6 +272,32 @@ function saveSchedules(schedules) {
   localStorage.setItem(SCHEDULES_KEY, JSON.stringify(all));
 }
 
+// 카테고리 버튼 클릭 처리
+function initCategorySelector(selectorId) {
+  const selector = document.getElementById(selectorId);
+  selector.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      selector.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+}
+
+function getSelectedCategory(selectorId) {
+  const active = document.querySelector(`#${selectorId} .cat-btn.active`);
+  return active ? active.dataset.value : '기타';
+}
+
+function setSelectedCategory(selectorId, value) {
+  const selector = document.getElementById(selectorId);
+  selector.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.value === value);
+  });
+}
+
+initCategorySelector('s-category');
+initCategorySelector('e-category');
+
 document.getElementById('schedule-form').addEventListener('submit', e => {
   e.preventDefault();
   if (!getActivePlanId()) return;
@@ -282,6 +308,7 @@ document.getElementById('schedule-form').addEventListener('submit', e => {
     time: document.getElementById('s-time').value,
     place: document.getElementById('s-place').value.trim(),
     memo: document.getElementById('s-memo').value.trim(),
+    category: getSelectedCategory('s-category'),
     done: false
   };
 
@@ -306,6 +333,7 @@ function openEditModal(schedule) {
   document.getElementById('e-time').value = schedule.time || '';
   document.getElementById('e-place').value = schedule.place;
   document.getElementById('e-memo').value = schedule.memo || '';
+  setSelectedCategory('e-category', schedule.category || '관광');
   document.getElementById('e-warn').style.display = 'none';
   document.getElementById('edit-modal').classList.add('open');
   document.getElementById('e-place').focus();
@@ -350,8 +378,9 @@ document.getElementById('edit-form').addEventListener('submit', e => {
   const place = document.getElementById('e-place').value.trim();
   const memo = document.getElementById('e-memo').value.trim();
 
+  const category = getSelectedCategory('e-category');
   const schedules = getSchedules().map(s =>
-    s.id === id ? { ...s, date, time, place, memo } : s
+    s.id === id ? { ...s, date, time, place, memo, category } : s
   );
   schedules.sort((a, b) => {
     const da = a.date + (a.time || '00:00');

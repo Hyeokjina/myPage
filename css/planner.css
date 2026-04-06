@@ -278,6 +278,44 @@
   border-color: #4FB7B3;
 }
 
+/* 카테고리 선택 */
+.category-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cat-btn {
+  padding: 6px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  font-family: inherit;
+}
+
+.cat-btn:hover { border-color: #4FB7B3; }
+.cat-btn.active {
+  border-color: #4FB7B3;
+  background: #4FB7B3;
+  color: #fff;
+}
+
+body.dark .cat-btn {
+  background: #1a1a2e;
+  border-color: #444;
+  color: #ccc;
+}
+
+body.dark .cat-btn:hover { border-color: #4FB7B3; }
+body.dark .cat-btn.active {
+  background: #4FB7B3;
+  border-color: #4FB7B3;
+  color: #fff;
+}
+
 #schedule-form button[type="submit"] {
   width: 100%;
   padding: 12px;

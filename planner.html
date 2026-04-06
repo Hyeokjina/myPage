@@ -125,6 +125,17 @@
             <label for="e-memo">메모</label>
             <input type="text" id="e-memo" maxlength="80">
           </div>
+          <div class="form-group">
+            <label>카테고리</label>
+            <div class="category-selector" id="e-category">
+              <button type="button" data-value="관광" class="cat-btn">🏛️ 관광</button>
+              <button type="button" data-value="식사" class="cat-btn">🍽️ 식사</button>
+              <button type="button" data-value="숙박" class="cat-btn">🏨 숙박</button>
+              <button type="button" data-value="교통" class="cat-btn">🚌 교통</button>
+              <button type="button" data-value="쇼핑" class="cat-btn">🛍️ 쇼핑</button>
+              <button type="button" data-value="기타" class="cat-btn">📌 기타</button>
+            </div>
+          </div>
           <p id="e-warn" class="edit-warn" style="display:none;"></p>
           <div class="modal-actions">
             <button type="button" onclick="closeEditModal()">취소</button>
@@ -154,6 +165,17 @@
         <div class="form-group">
           <label for="s-memo">메모</label>
           <input type="text" id="s-memo" placeholder="간단한 메모를 남겨보세요." maxlength="80">
+        </div>
+        <div class="form-group">
+          <label>카테고리</label>
+          <div class="category-selector" id="s-category">
+            <button type="button" data-value="관광" class="cat-btn active">🏛️ 관광</button>
+            <button type="button" data-value="식사" class="cat-btn">🍽️ 식사</button>
+            <button type="button" data-value="숙박" class="cat-btn">🏨 숙박</button>
+            <button type="button" data-value="교통" class="cat-btn">🚌 교통</button>
+            <button type="button" data-value="쇼핑" class="cat-btn">🛍️ 쇼핑</button>
+            <button type="button" data-value="기타" class="cat-btn">📌 기타</button>
+          </div>
         </div>
         <p id="s-warn" class="edit-warn" style="display:none;"></p>
         <button type="submit">+ 일정 추가</button>
