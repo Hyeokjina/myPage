@@ -152,6 +152,26 @@ function renderPlanList() {
     li.className = 'plan-card' + (String(plan.id) === String(activePlanId) ? ' active' : '');
     li.addEventListener('click', () => selectPlan(plan.id));
 
+    // D-day 계산
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const startDate = new Date(plan.start + 'T00:00:00');
+    const endDate = new Date(plan.end + 'T00:00:00');
+    const diffStart = Math.round((startDate - today) / (1000 * 60 * 60 * 24));
+    const diffEnd = Math.round((endDate - today) / (1000 * 60 * 60 * 24));
+
+    let ddayText, ddayClass;
+    if (diffStart > 0) {
+      ddayText = `D-${diffStart}`;
+      ddayClass = 'dday-upcoming';
+    } else if (diffEnd >= 0) {
+      ddayText = '여행 중';
+      ddayClass = 'dday-active';
+    } else {
+      ddayText = `D+${Math.abs(diffEnd)}`;
+      ddayClass = 'dday-past';
+    }
+
     const icon = document.createElement('div');
     icon.className = 'plan-icon';
     icon.textContent = '✈️';
@@ -192,7 +212,16 @@ function renderPlanList() {
     progressWrap.appendChild(bar);
     progressWrap.appendChild(label);
 
-    info.appendChild(nameEl);
+    const ddayEl = document.createElement('span');
+    ddayEl.className = `dday-badge ${ddayClass}`;
+    ddayEl.textContent = ddayText;
+
+    const nameRow = document.createElement('div');
+    nameRow.className = 'plan-name-row';
+    nameRow.appendChild(nameEl);
+    nameRow.appendChild(ddayEl);
+
+    info.appendChild(nameRow);
     info.appendChild(periodEl);
     info.appendChild(progressWrap);
 
