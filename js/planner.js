@@ -435,6 +435,46 @@ function renderScheduleList() {
   });
 }
 
+// ── 복사 / 인쇄 ────────────────────────────────────
+
+function copySchedule() {
+  const schedules = getSchedules();
+  if (schedules.length === 0) {
+    showToast('일정이 없습니다.');
+    return;
+  }
+
+  const activePlanId = getActivePlanId();
+  const plan = getPlans().find(p => String(p.id) === String(activePlanId));
+  const title = plan ? `[${plan.name}] ${plan.start} ~ ${plan.end}` : '여행 일정';
+
+  const lines = schedules.map(s => {
+    const time = s.time ? ` ${s.time}` : '';
+    const memo = s.memo ? ` (${s.memo})` : '';
+    const done = s.done ? ' ✓' : '';
+    return `${s.date}${time}  ${s.place}${memo}${done}`;
+  });
+
+  const text = `${title}\n${'─'.repeat(30)}\n${lines.join('\n')}`;
+
+  navigator.clipboard.writeText(text)
+    .then(() => showToast('클립보드에 복사되었습니다!'))
+    .catch(() => showToast('복사에 실패했습니다.'));
+}
+
+function showToast(msg) {
+  let toast = document.getElementById('toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast';
+    toast.className = 'toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
 // ── 초기화 ─────────────────────────────────────────
 
 renderPlanList();

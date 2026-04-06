@@ -264,9 +264,96 @@
 
 #schedule-form button[type="submit"]:hover { background: #36a29f; }
 
-/* 목록 */
-.list-section h2 span {
-  color: #4FB7B3;
+/* 목록 헤더 */
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.list-header h2 { margin-bottom: 0; }
+
+.list-header h2 span { color: #4FB7B3; }
+
+.list-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.list-actions button {
+  padding: 7px 14px;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.list-actions button:hover {
+  background: #f0fafa;
+  border-color: #4FB7B3;
+}
+
+/* 복사 완료 토스트 */
+.toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #31326F;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 2000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 인쇄 스타일 */
+@media print {
+  header, footer, .plans-section, .add-section,
+  .list-actions, .s-actions, .back-to-top,
+  .hamburger, .dark-toggle {
+    display: none !important;
+  }
+
+  body { background: #fff !important; color: #000 !important; }
+
+  .planner-wrap { margin: 0; padding: 0; }
+
+  .list-section {
+    display: block !important;
+  }
+
+  .list-header h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #000;
+  }
+
+  .schedule-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd;
+    margin-bottom: 8px;
+    break-inside: avoid;
+    cursor: default;
+  }
+
+  .schedule-card.done { opacity: 1; }
+
+  .s-date-block .s-day { color: #000 !important; }
+  .s-place { color: #000 !important; }
 }
 
 #schedule-list {
@@ -438,6 +525,9 @@ body.dark .s-divider { background: #333; }
 body.dark .delete-btn { color: #555; }
 body.dark .delete-btn:hover { color: #e74c3c; }
 body.dark .edit-warn { background: #2a1a0a; border-color: #7a4a1a; color: #f0a060; }
+body.dark .list-actions button { background: #1a1a2e; border-color: #444; color: #ccc; }
+body.dark .list-actions button:hover { background: #1a3a3a; border-color: #4FB7B3; }
+body.dark .toast { background: #4FB7B3; color: #fff; }
 
 /* 반응형 */
 @media (max-width: 600px) {

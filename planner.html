@@ -160,7 +160,13 @@
     </section>
 
     <section class="list-section" id="list-section" style="display:none;">
-      <h2>내 일정 <span id="schedule-count">0</span>개</h2>
+      <div class="list-header">
+        <h2>내 일정 <span id="schedule-count">0</span>개</h2>
+        <div class="list-actions">
+          <button id="copy-btn" onclick="copySchedule()">📋 텍스트 복사</button>
+          <button id="print-btn" onclick="window.print()">🖨️ 인쇄</button>
+        </div>
+      </div>
       <ul id="schedule-list"></ul>
       <p id="empty-msg" class="empty-msg">아직 추가된 일정이 없습니다.</p>
     </section>
