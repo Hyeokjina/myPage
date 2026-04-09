@@ -108,6 +108,40 @@
 .places li button:hover { background: #36a29f; }
 .places li:hover, .lodging li:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.25); }
 
+/* 숙소 카드 가격 */
+.lodging-price-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.lodging-price-original {
+    font-size: 0.85em;
+    color: #aaa;
+    text-decoration: line-through;
+}
+
+.lodging-price-sale {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #e74c3c;
+}
+
+.lodging-sale-badge {
+    font-size: 0.75em;
+    font-weight: 700;
+    background: #e74c3c;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: auto;
+}
+
+body.dark .lodging-price-original { color: #666; }
+body.dark .lodging-price-sale { color: #ff7675; }
+
 /* 즐겨찾기 버튼 */
 .fav-btn {
     position: absolute;
