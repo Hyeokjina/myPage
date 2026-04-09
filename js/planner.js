@@ -587,6 +587,18 @@ document.addEventListener('keydown', e => {
   }
 });
 
+// ── 이벤트 리스너 ──────────────────────────────────
+
+document.getElementById('new-plan-btn')?.addEventListener('click', openPlanModal);
+document.getElementById('plan-modal')?.addEventListener('click', closePlanModalOutside);
+document.getElementById('plan-cancel-btn')?.addEventListener('click', closePlanModal);
+document.getElementById('rename-modal')?.addEventListener('click', closeRenameModalOutside);
+document.getElementById('rename-cancel-btn')?.addEventListener('click', closeRenameModal);
+document.getElementById('edit-modal')?.addEventListener('click', closeEditModalOutside);
+document.getElementById('edit-cancel-btn')?.addEventListener('click', closeEditModal);
+document.getElementById('copy-btn')?.addEventListener('click', copySchedule);
+document.getElementById('print-btn')?.addEventListener('click', () => window.print());
+
 // ── 초기화 ─────────────────────────────────────────
 
 renderPlanList();

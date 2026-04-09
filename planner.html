@@ -28,11 +28,11 @@
         <li><a href="contact.html">문의</a></li>
       </ul>
     </nav>
-    <button class="hamburger" onclick="toggleNav()">☰</button>
-    <button class="dark-toggle" id="dark-btn" onclick="toggleDark()">🌙</button>
+    <button class="hamburger">☰</button>
+    <button class="dark-toggle" id="dark-btn">🌙</button>
   </header>
 
-  <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <button class="back-to-top" id="back-to-top">↑</button>
 
   <main class="planner-wrap">
 
@@ -40,14 +40,14 @@
     <section class="plans-section">
       <div class="plans-header">
         <h2>내 여행 플랜</h2>
-        <button id="new-plan-btn" onclick="openPlanModal()">+ 새 플랜</button>
+        <button id="new-plan-btn">+ 새 플랜</button>
       </div>
       <ul id="plan-list"></ul>
       <p id="plan-empty-msg" class="empty-msg">플랜을 먼저 만들어보세요!</p>
     </section>
 
     <!-- 플랜 생성 모달 -->
-    <div id="plan-modal" class="modal-overlay" onclick="closePlanModalOutside(event)">
+    <div id="plan-modal" class="modal-overlay">
       <div class="modal-box">
         <h3>새 여행 플랜</h3>
         <form id="plan-form">
@@ -66,7 +66,7 @@
             </div>
           </div>
           <div class="modal-actions">
-            <button type="button" onclick="closePlanModal()">취소</button>
+            <button type="button" id="plan-cancel-btn">취소</button>
             <button type="submit">만들기</button>
           </div>
         </form>
@@ -74,7 +74,7 @@
     </div>
 
     <!-- 플랜 수정 모달 -->
-    <div id="rename-modal" class="modal-overlay" onclick="closeRenameModalOutside(event)">
+    <div id="rename-modal" class="modal-overlay">
       <div class="modal-box">
         <h3>플랜 수정</h3>
         <form id="rename-form">
@@ -94,7 +94,7 @@
             </div>
           </div>
           <div class="modal-actions">
-            <button type="button" onclick="closeRenameModal()">취소</button>
+            <button type="button" id="rename-cancel-btn">취소</button>
             <button type="submit">저장</button>
           </div>
         </form>
@@ -102,7 +102,7 @@
     </div>
 
     <!-- 일정 수정 모달 -->
-    <div id="edit-modal" class="modal-overlay" onclick="closeEditModalOutside(event)">
+    <div id="edit-modal" class="modal-overlay">
       <div class="modal-box">
         <h3>일정 수정</h3>
         <form id="edit-form">
@@ -138,7 +138,7 @@
           </div>
           <p id="e-warn" class="edit-warn" style="display:none;"></p>
           <div class="modal-actions">
-            <button type="button" onclick="closeEditModal()">취소</button>
+            <button type="button" id="edit-cancel-btn">취소</button>
             <button type="submit">저장</button>
           </div>
         </form>
@@ -186,8 +186,8 @@
       <div class="list-header">
         <h2>내 일정 <span id="schedule-count">0</span>개</h2>
         <div class="list-actions">
-          <button id="copy-btn" onclick="copySchedule()">📋 텍스트 복사</button>
-          <button id="print-btn" onclick="window.print()">🖨️ 인쇄</button>
+          <button id="copy-btn">📋 텍스트 복사</button>
+          <button id="print-btn">🖨️ 인쇄</button>
         </div>
       </div>
       <ul id="schedule-list"></ul>

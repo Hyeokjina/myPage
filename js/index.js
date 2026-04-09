@@ -105,6 +105,24 @@ function searchPlaces() {
     });
 }
 
+// 이벤트 리스너 등록
+document.querySelectorAll('.fav-btn').forEach(btn => {
+    btn.addEventListener('click', e => toggleFav(e, btn.dataset.name));
+});
+
+document.querySelectorAll('.places li[data-href], .lodging li[data-href]').forEach(li => {
+    li.addEventListener('click', () => { window.location.href = li.dataset.href; });
+});
+
+document.querySelector('.fav-count')?.addEventListener('click', openFavModal);
+document.querySelector('.modal-close')?.addEventListener('click', closeFavModal);
+document.getElementById('fav-modal')?.addEventListener('click', closeFavModalOutside);
+
+document.querySelector('.hero-btn')?.addEventListener('click', () => { window.location.href = '#places'; });
+
+document.getElementById('search-input')?.addEventListener('input', searchPlaces);
+document.getElementById('search-btn')?.addEventListener('click', searchPlaces);
+
 // 초기화
 updateBadge();
 updateButtons();

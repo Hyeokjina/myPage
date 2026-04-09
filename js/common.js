@@ -32,3 +32,7 @@ if (localStorage.getItem('dark') === 'true') {
     document.body.classList.add('dark');
     document.getElementById('dark-btn').textContent = '☀️';
 }
+
+document.querySelector('.hamburger')?.addEventListener('click', toggleNav);
+document.getElementById('dark-btn')?.addEventListener('click', toggleDark);
+document.getElementById('back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));

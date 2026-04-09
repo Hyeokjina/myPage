@@ -36,3 +36,12 @@ function closeDetail() {
 function closeDetailOutside(e) {
     if (e.target === document.getElementById('detail-overlay')) closeDetail();
 }
+
+document.querySelectorAll('[data-detail]').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        openDetail(link.dataset.detail);
+    });
+});
+document.getElementById('detail-overlay')?.addEventListener('click', closeDetailOutside);
+document.querySelector('.detail-close')?.addEventListener('click', closeDetail);

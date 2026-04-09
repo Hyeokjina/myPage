@@ -28,11 +28,11 @@
                 <li><a href="contact.html">문의</a></li>
             </ul>
         </nav>
-        <button class="hamburger" onclick="toggleNav()">☰</button>
-        <button class="dark-toggle" id="dark-btn" onclick="toggleDark()">🌙</button>
+        <button class="hamburger">☰</button>
+        <button class="dark-toggle" id="dark-btn">🌙</button>
     </header>
 
-    <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    <button class="back-to-top" id="back-to-top">↑</button>
 
     <!-- 좌측 세로 메뉴 -->
     <aside class="side-menu">
@@ -68,7 +68,7 @@
                 <div class="card-content">
                     <h3>차이나타운</h3>
                     <p>한국 속 작은 중국, 화려한 건축과 맛집 체험</p>
-                    <a href="#" onclick="openDetail('town'); return false;">자세히 보기</a>
+                    <a href="#" data-detail="town">자세히 보기</a>
                 </div>
             </div>
             <div class="card">
@@ -76,7 +76,7 @@
                 <div class="card-content">
                     <h3>송도 센트럴파크</h3>
                     <p>현대적인 도시 속에서 자연과 함께 휴식을 즐길 수 있는 공간</p>
-                    <a href="#" onclick="openDetail('songdo'); return false;">자세히 보기</a>
+                    <a href="#" data-detail="songdo">자세히 보기</a>
                 </div>
             </div>
             <div class="card">
@@ -84,7 +84,7 @@
                 <div class="card-content">
                     <h3>월미도</h3>
                     <p>놀이공원과 바다를 동시에 즐길 수 있는 인기 명소</p>
-                    <a href="#" onclick="openDetail('wolmido'); return false;">자세히 보기</a>
+                    <a href="#" data-detail="wolmido">자세히 보기</a>
                 </div>
             </div>
         </div>
@@ -96,14 +96,14 @@
     </div>
 
     <!-- 상세 모달 -->
-    <div class="detail-overlay" id="detail-overlay" onclick="closeDetailOutside(event)">
+    <div class="detail-overlay" id="detail-overlay">
         <div class="detail-modal" id="detail-modal">
             <img id="detail-img" src="" alt="">
             <div class="detail-modal-body">
                 <h3 id="detail-title"></h3>
                 <p id="detail-desc"></p>
                 <div class="detail-info" id="detail-info"></div>
-                <button class="detail-close" onclick="closeDetail()">닫기</button>
+                <button class="detail-close">닫기</button>
             </div>
         </div>
     </div>
