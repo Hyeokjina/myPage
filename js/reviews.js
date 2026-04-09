@@ -32,13 +32,16 @@ document.getElementById('review-form').addEventListener('submit', e => {
   e.preventDefault();
 
   const rating = +ratingInput.value;
+  const starWarn = document.getElementById('star-warn');
   if (rating === 0) {
-    alert('별점을 선택해주세요.');
+    starWarn.style.display = 'block';
     return;
   }
+  starWarn.style.display = 'none';
 
   const review = {
     id: Date.now(),
+    nickname: document.getElementById('nickname').value.trim() || '익명',
     region: document.getElementById('region').value,
     rating,
     title: document.getElementById('title').value.trim(),
@@ -54,6 +57,7 @@ document.getElementById('review-form').addEventListener('submit', e => {
   e.target.reset();
   ratingInput.value = 0;
   highlightStars(0);
+  document.getElementById('star-warn').style.display = 'none';
 });
 
 // 삭제
@@ -66,8 +70,12 @@ function deleteReview(id) {
 // 렌더링
 function renderList() {
   const filterVal = document.getElementById('filter-region').value;
+  const sortVal = document.getElementById('sort-order').value;
   const all = getReviews();
-  const filtered = filterVal === '전체' ? all : all.filter(r => r.region === filterVal);
+  let filtered = filterVal === '전체' ? all : all.filter(r => r.region === filterVal);
+  if (sortVal === 'rating') {
+    filtered = [...filtered].sort((a, b) => b.rating - a.rating);
+  }
 
   const list = document.getElementById('review-list');
   const emptyMsg = document.getElementById('empty-msg');
@@ -99,12 +107,17 @@ function renderList() {
     starEl.className = 'card-stars';
     starEl.textContent = stars;
 
+    const nicknameEl = document.createElement('span');
+    nicknameEl.className = 'card-nickname';
+    nicknameEl.textContent = review.nickname || '익명';
+
     const dateEl = document.createElement('span');
     dateEl.className = 'card-date';
     dateEl.textContent = review.date;
 
     top.appendChild(badge);
     top.appendChild(starEl);
+    top.appendChild(nicknameEl);
     top.appendChild(dateEl);
 
     const titleEl = document.createElement('p');
@@ -131,5 +144,6 @@ function renderList() {
 }
 
 document.getElementById('filter-region').addEventListener('change', renderList);
+document.getElementById('sort-order').addEventListener('change', renderList);
 
 renderList();

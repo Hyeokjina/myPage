@@ -81,6 +81,13 @@
 .star-input span:hover,
 .star-input span:hover ~ span { color: #ccc; }
 
+.star-warn {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
 #review-form button[type="submit"] {
   width: 100%;
   padding: 12px;
@@ -114,6 +121,12 @@
 
 .list-header #review-count {
   color: #4FB7B3;
+}
+
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .filter-bar select {
@@ -167,6 +180,12 @@
   color: #f5a623;
   font-size: 16px;
   letter-spacing: 1px;
+}
+
+.card-nickname {
+  font-size: 13px;
+  color: #777;
+  font-weight: 600;
 }
 
 .card-date {
@@ -246,6 +265,7 @@ body.dark .region-badge {
 }
 
 body.dark .card-content { color: #bbb; }
+body.dark .card-nickname { color: #9db4cc; }
 
 body.dark .delete-btn { color: #555; }
 body.dark .delete-btn:hover { color: #e74c3c; }
