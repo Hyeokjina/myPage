@@ -423,6 +423,44 @@ body.dark .cat-btn.active {
   .s-place { color: #000 !important; }
 }
 
+/* 카테고리 필터 바 */
+.cat-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.cat-filter-btn {
+  padding: 5px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  font-family: inherit;
+}
+
+.cat-filter-btn:hover { border-color: #4FB7B3; }
+.cat-filter-btn.active {
+  border-color: #4FB7B3;
+  background: #4FB7B3;
+  color: #fff;
+}
+
+body.dark .cat-filter-btn {
+  background: #1a1a2e;
+  border-color: #444;
+  color: #ccc;
+}
+body.dark .cat-filter-btn:hover { border-color: #4FB7B3; }
+body.dark .cat-filter-btn.active {
+  background: #4FB7B3;
+  border-color: #4FB7B3;
+  color: #fff;
+}
+
 #schedule-list {
   list-style: none;
   padding: 0;

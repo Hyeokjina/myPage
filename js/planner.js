@@ -1,5 +1,6 @@
 const PLANS_KEY = 'travel_plans';
 const SCHEDULES_KEY = 'travel_schedules';
+let activeCatFilter = '전체';
 
 // ── 플랜 관리 ──────────────────────────────────────
 
@@ -428,16 +429,20 @@ function renderScheduleList() {
     countEl.closest('h2').firstChild.textContent = `${plan.name} 일정 `;
   }
 
-  list.innerHTML = '';
-  countEl.textContent = schedules.length;
+  const filtered = activeCatFilter === '전체'
+    ? schedules
+    : schedules.filter(s => (s.category || '기타') === activeCatFilter);
 
-  if (schedules.length === 0) {
+  list.innerHTML = '';
+  countEl.textContent = filtered.length;
+
+  if (filtered.length === 0) {
     emptyMsg.style.display = 'block';
     return;
   }
   emptyMsg.style.display = 'none';
 
-  schedules.forEach(s => {
+  filtered.forEach(s => {
     const dateObj = new Date(s.date + 'T00:00:00');
     const month = dateObj.toLocaleString('ko-KR', { month: 'short' });
     const day = dateObj.getDate();
@@ -588,6 +593,15 @@ document.addEventListener('keydown', e => {
 });
 
 // ── 이벤트 리스너 ──────────────────────────────────
+
+document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeCatFilter = btn.dataset.cat;
+    renderScheduleList();
+  });
+});
 
 document.getElementById('new-plan-btn')?.addEventListener('click', openPlanModal);
 document.getElementById('plan-modal')?.addEventListener('click', closePlanModalOutside);
