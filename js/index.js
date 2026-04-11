@@ -123,6 +123,12 @@ document.querySelector('.hero-btn')?.addEventListener('click', () => { window.lo
 document.getElementById('search-input')?.addEventListener('input', searchPlaces);
 document.getElementById('search-btn')?.addEventListener('click', searchPlaces);
 
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('fav-modal').classList.contains('open')) {
+        closeFavModal();
+    }
+});
+
 // 초기화
 updateBadge();
 updateButtons();
