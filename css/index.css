@@ -107,6 +107,7 @@
 .places li button { margin-top: auto; padding: 10px 15px; font-size: 0.95em; color: #fff; background: #4FB7B3; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; }
 .places li button:hover { background: #36a29f; }
 .places li:hover, .lodging li:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.25); }
+.places li:focus, .lodging li:focus { outline: 2px solid #4FB7B3; outline-offset: 2px; }
 
 /* 숙소 카드 가격 */
 .lodging-price-row {

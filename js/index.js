@@ -112,6 +112,12 @@ document.querySelectorAll('.fav-btn').forEach(btn => {
 
 document.querySelectorAll('.places li[data-href], .lodging li[data-href]').forEach(li => {
     li.addEventListener('click', () => { window.location.href = li.dataset.href; });
+    li.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.location.href = li.dataset.href;
+        }
+    });
 });
 
 document.querySelector('.fav-count')?.addEventListener('click', openFavModal);
