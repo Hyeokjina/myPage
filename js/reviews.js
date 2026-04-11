@@ -1,4 +1,6 @@
 const STORAGE_KEY = 'travel_reviews';
+const PAGE_SIZE = 5;
+let currentPage = 1;
 
 function getReviews() {
   return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
@@ -77,6 +79,11 @@ function renderList() {
     filtered = [...filtered].sort((a, b) => b.rating - a.rating);
   }
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  if (currentPage > totalPages) currentPage = totalPages;
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const paginated = filtered.slice(start, start + PAGE_SIZE);
+
   const list = document.getElementById('review-list');
   const emptyMsg = document.getElementById('empty-msg');
   const countEl = document.getElementById('review-count');
@@ -90,7 +97,7 @@ function renderList() {
   }
   emptyMsg.style.display = 'none';
 
-  filtered.forEach(review => {
+  paginated.forEach(review => {
     const li = document.createElement('li');
     li.className = 'review-card reveal';
 
