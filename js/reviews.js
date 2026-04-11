@@ -55,6 +55,7 @@ document.getElementById('review-form').addEventListener('submit', e => {
   reviews.unshift(review);
   saveReviews(reviews);
 
+  currentPage = 1;
   renderList();
   e.target.reset();
   ratingInput.value = 0;
@@ -182,7 +183,7 @@ function renderPagination(totalPages) {
   container.appendChild(next);
 }
 
-document.getElementById('filter-region').addEventListener('change', renderList);
-document.getElementById('sort-order').addEventListener('change', renderList);
+document.getElementById('filter-region').addEventListener('change', () => { currentPage = 1; renderList(); });
+document.getElementById('sort-order').addEventListener('change', () => { currentPage = 1; renderList(); });
 
 renderList();
