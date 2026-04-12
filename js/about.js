@@ -45,3 +45,6 @@ document.querySelectorAll('[data-detail]').forEach(link => {
 });
 document.getElementById('detail-overlay')?.addEventListener('click', closeDetailOutside);
 document.querySelector('.detail-close')?.addEventListener('click', closeDetail);
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeDetail();
+});
