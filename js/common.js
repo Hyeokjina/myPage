@@ -33,6 +33,15 @@ if (localStorage.getItem('dark') === 'true') {
     document.getElementById('dark-btn').textContent = '☀️';
 }
 
+// 네비게이션 active 자동화
+const currentFile = location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('nav a').forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === currentFile) {
+        a.classList.add('active');
+    }
+});
+
 document.querySelector('.hamburger')?.addEventListener('click', toggleNav);
 document.getElementById('dark-btn')?.addEventListener('click', toggleDark);
 document.getElementById('back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
