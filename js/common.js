@@ -28,10 +28,22 @@ window.addEventListener('scroll', () => {
     document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 300);
 });
 
-if (localStorage.getItem('dark') === 'true') {
+// 다크모드 초기화: 저장값 우선, 없으면 OS 설정 따름
+const savedDark = localStorage.getItem('dark');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const isDarkMode = savedDark !== null ? savedDark === 'true' : prefersDark;
+
+if (isDarkMode) {
     document.body.classList.add('dark');
     document.getElementById('dark-btn').textContent = '☀️';
 }
+
+// OS 다크모드 변경 감지 (저장값 없을 때만 반응)
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (localStorage.getItem('dark') !== null) return;
+    document.body.classList.toggle('dark', e.matches);
+    document.getElementById('dark-btn').textContent = e.matches ? '☀️' : '🌙';
+});
 
 // 네비게이션 active 자동화
 const currentFile = location.pathname.split('/').pop() || 'index.html';
