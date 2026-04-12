@@ -199,5 +199,11 @@ function renderPagination(totalPages) {
 document.getElementById('filter-region').addEventListener('change', () => { currentPage = 1; renderList(); });
 document.getElementById('sort-order').addEventListener('change', () => { currentPage = 1; renderList(); });
 document.getElementById('review-search').addEventListener('input', () => { currentPage = 1; renderList(); });
+document.getElementById('review-search-clear').addEventListener('click', () => {
+  document.getElementById('review-search').value = '';
+  currentPage = 1;
+  renderList();
+  document.getElementById('review-search').focus();
+});
 
 renderList();
