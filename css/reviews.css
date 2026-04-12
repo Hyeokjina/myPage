@@ -103,6 +103,51 @@
 
 #review-form button[type="submit"]:hover { background: #36a29f; }
 
+/* 후기 검색바 */
+.review-search-bar {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.review-search-bar input {
+  width: 100%;
+  padding: 10px 40px 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fafafa;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.review-search-bar input:focus {
+  outline: none;
+  border-color: #4FB7B3;
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #aaa;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px;
+}
+
+.search-clear-btn:hover { color: #555; }
+
+body.dark .review-search-bar input {
+  background: #1a1a2e;
+  border-color: #444;
+  color: #ddd;
+}
+
 /* 목록 */
 .list-section {
   padding-bottom: 20px;
