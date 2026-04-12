@@ -74,11 +74,24 @@ function deleteReview(id) {
 function renderList() {
   const filterVal = document.getElementById('filter-region').value;
   const sortVal = document.getElementById('sort-order').value;
+  const query = document.getElementById('review-search').value.trim().toLowerCase();
   const all = getReviews();
+
   let filtered = filterVal === '전체' ? all : all.filter(r => r.region === filterVal);
+
+  if (query) {
+    filtered = filtered.filter(r =>
+      r.title.toLowerCase().includes(query) ||
+      r.content.toLowerCase().includes(query) ||
+      (r.nickname || '').toLowerCase().includes(query)
+    );
+  }
+
   if (sortVal === 'rating') {
     filtered = [...filtered].sort((a, b) => b.rating - a.rating);
   }
+
+  document.getElementById('review-search-clear').style.display = query ? 'block' : 'none';
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   if (currentPage > totalPages) currentPage = totalPages;
@@ -185,5 +198,6 @@ function renderPagination(totalPages) {
 
 document.getElementById('filter-region').addEventListener('change', () => { currentPage = 1; renderList(); });
 document.getElementById('sort-order').addEventListener('change', () => { currentPage = 1; renderList(); });
+document.getElementById('review-search').addEventListener('input', () => { currentPage = 1; renderList(); });
 
 renderList();
