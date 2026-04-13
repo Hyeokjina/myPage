@@ -537,6 +537,8 @@ function renderScheduleList() {
 
     list.appendChild(li);
   });
+
+  renderStats();
 }
 
 // ── 복사 / 인쇄 ────────────────────────────────────
@@ -591,6 +593,44 @@ document.addEventListener('keydown', e => {
     closePlanModal();
   }
 });
+
+// ── 통계 렌더링 ────────────────────────────────────
+
+function renderStats() {
+  const schedules = getSchedules();
+  const statsEl = document.getElementById('schedule-stats');
+
+  if (schedules.length === 0) {
+    statsEl.style.display = 'none';
+    return;
+  }
+  statsEl.style.display = 'flex';
+
+  const total = schedules.length;
+  const done = schedules.filter(s => s.done).length;
+  const rate = Math.round((done / total) * 100);
+
+  document.getElementById('stat-total').innerHTML = `전체 <strong>${total}개</strong>`;
+  document.getElementById('stat-done').innerHTML = `완료 <strong>${done}개</strong>`;
+  document.getElementById('stat-rate').innerHTML = `완료율 <strong>${rate}%</strong>`;
+
+  const catOrder = ['관광', '식사', '숙박', '교통', '쇼핑', '기타'];
+  const catCount = {};
+  schedules.forEach(s => {
+    const cat = s.category || '기타';
+    catCount[cat] = (catCount[cat] || 0) + 1;
+  });
+
+  const catsEl = document.getElementById('stats-cats');
+  catsEl.innerHTML = '';
+  catOrder.forEach(cat => {
+    if (!catCount[cat]) return;
+    const badge = document.createElement('span');
+    badge.className = `stats-cat-badge cat-badge-${cat}`;
+    badge.textContent = `${cat} ${catCount[cat]}`;
+    catsEl.appendChild(badge);
+  });
+}
 
 // ── 이벤트 리스너 ──────────────────────────────────
 
