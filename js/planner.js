@@ -75,6 +75,7 @@ function deletePlan(id) {
     localStorage.removeItem('active_plan_id');
     document.getElementById('schedule-section').style.display = 'none';
     document.getElementById('list-section').style.display = 'none';
+    document.getElementById('schedule-stats').style.display = 'none';
   }
 
   renderPlanList();
@@ -144,6 +145,7 @@ function renderPlanList() {
     emptyMsg.style.display = 'block';
     document.getElementById('schedule-section').style.display = 'none';
     document.getElementById('list-section').style.display = 'none';
+    document.getElementById('schedule-stats').style.display = 'none';
     return;
   }
   emptyMsg.style.display = 'none';
