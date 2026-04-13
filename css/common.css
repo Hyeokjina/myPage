@@ -80,11 +80,12 @@ footer .social-icons img:hover { transform: scale(1.2); }
 /* 다크 모드 토글 */
 .dark-toggle {
     background: none;
-    border: 1px solid #ddd;
+    border: 1px solid #0EA5C9;
     border-radius: 20px;
     padding: 5px 12px;
     cursor: pointer;
     font-size: 1em;
+    color: #0EA5C9;
     transition: 0.3s;
 }
 .dark-toggle:hover { background: #0EA5C9; color: #fff; border-color: #0EA5C9; }

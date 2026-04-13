@@ -176,7 +176,7 @@ body.dark .lodging-price-sale { color: #ff7675; }
     transition: 0.3s;
     border: 1px solid #ddd;
 }
-.fav-count:hover { background: #fff0f0; }
+.fav-count:hover { background: #E8F6FB; }
 .fav-count .badge {
     background: #e74c3c;
     color: white;
@@ -220,7 +220,7 @@ body.dark .lodging-price-sale { color: #ff7675; }
 
 /* 다크 모드 */
 body.dark .fav-count { color: #7EC8E3; border-color: #444; }
-body.dark .fav-count:hover { background: #2a1a2e; }
+body.dark .fav-count:hover { background: #0A2535; }
 body.dark .search-box { border-color: #444; }
 body.dark .search-box input { background: #1e1e3a; color: #ddd; }
 body.dark .places li, body.dark .lodging li { background: rgba(22,33,62,0.95); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
