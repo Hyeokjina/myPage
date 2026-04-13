@@ -18,7 +18,7 @@
 .write-section h2,
 .list-section h2 {
   margin-bottom: 24px;
-  color: #31326F;
+  color: #1E3A5F;
   font-size: 1.3rem;
 }
 
@@ -62,7 +62,7 @@
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #4FB7B3;
+  border-color: #0EA5C9;
 }
 
 .form-group textarea { resize: vertical; }
@@ -91,7 +91,7 @@
 #review-form button[type="submit"] {
   width: 100%;
   padding: 12px;
-  background: #4FB7B3;
+  background: #0EA5C9;
   color: #fff;
   font-size: 15px;
   border: none;
@@ -101,7 +101,7 @@
   margin-top: 4px;
 }
 
-#review-form button[type="submit"]:hover { background: #36a29f; }
+#review-form button[type="submit"]:hover { background: #0B8CAA; }
 
 /* 후기 검색바 */
 .review-search-bar {
@@ -123,7 +123,7 @@
 
 .review-search-bar input:focus {
   outline: none;
-  border-color: #4FB7B3;
+  border-color: #0EA5C9;
 }
 
 .search-clear-btn {
@@ -143,7 +143,7 @@
 .search-clear-btn:hover { color: #555; }
 
 body.dark .review-search-bar input {
-  background: #1a1a2e;
+  background: #0A1628;
   border-color: #444;
   color: #ddd;
 }
@@ -165,7 +165,7 @@ body.dark .review-search-bar input {
 .list-header h2 { margin-bottom: 0; }
 
 .list-header #review-count {
-  color: #4FB7B3;
+  color: #0EA5C9;
 }
 
 .filter-bar {
@@ -214,7 +214,7 @@ body.dark .review-search-bar input {
 
 .region-badge {
   background: #e8f7f6;
-  color: #4FB7B3;
+  color: #0EA5C9;
   font-size: 12px;
   font-weight: 700;
   padding: 3px 10px;
@@ -242,7 +242,7 @@ body.dark .review-search-bar input {
 .card-title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #31326F;
+  color: #1E3A5F;
   margin-bottom: 8px;
 }
 
@@ -300,13 +300,13 @@ body.dark .review-search-bar input {
 }
 
 .page-btn:hover {
-  border-color: #4FB7B3;
+  border-color: #0EA5C9;
   background: #f0fafa;
 }
 
 .page-btn.active {
-  background: #4FB7B3;
-  border-color: #4FB7B3;
+  background: #0EA5C9;
+  border-color: #0EA5C9;
   color: #fff;
   font-weight: 700;
 }
@@ -318,43 +318,43 @@ body.dark .review-search-bar input {
 }
 
 body.dark .page-btn {
-  background: #1a1a2e;
+  background: #0A1628;
   border-color: #444;
   color: #ccc;
 }
 body.dark .page-btn:hover {
-  border-color: #4FB7B3;
+  border-color: #0EA5C9;
   background: #1a3a3a;
 }
 body.dark .page-btn.active {
-  background: #4FB7B3;
-  border-color: #4FB7B3;
+  background: #0EA5C9;
+  border-color: #0EA5C9;
   color: #fff;
 }
 
 /* 다크 모드 */
 body.dark .write-section,
 body.dark .review-card {
-  background: #16213e;
+  background: #0F2035;
   box-shadow: 0 4px 14px rgba(0,0,0,0.4);
 }
 
 body.dark .write-section h2,
 body.dark .list-section h2,
-body.dark .card-title { color: #a0c4ff; }
+body.dark .card-title { color: #7EC8E3; }
 
 body.dark .form-group label { color: #ccc; }
 
 body.dark .form-group input,
 body.dark .form-group select,
 body.dark .form-group textarea {
-  background: #1a1a2e;
+  background: #0A1628;
   color: #ddd;
   border-color: #444;
 }
 
 body.dark .filter-bar select {
-  background: #1a1a2e;
+  background: #0A1628;
   color: #ddd;
   border-color: #444;
 }

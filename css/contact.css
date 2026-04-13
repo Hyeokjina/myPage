@@ -6,7 +6,7 @@
     border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
-h2 { margin-bottom: 20px; color: #31326F; text-align: center; }
+h2 { margin-bottom: 20px; color: #1E3A5F; text-align: center; }
 label { font-weight: bold; display: block; margin: 15px 0 5px; }
 input, textarea {
     width: 100%;
@@ -21,7 +21,7 @@ button[type="submit"] {
     width: 100%;
     padding: 12px;
     margin-top: 20px;
-    background: #4FB7B3;
+    background: #0EA5C9;
     color: #fff;
     font-size: 16px;
     border: none;
@@ -29,18 +29,18 @@ button[type="submit"] {
     cursor: pointer;
     transition: 0.3s;
 }
-button[type="submit"]:hover { background: #36a29f; }
+button[type="submit"]:hover { background: #0B8CAA; }
 
 .success-msg {
     display: none;
     margin-top: 20px;
     text-align: center;
-    color: #4FB7B3;
+    color: #0EA5C9;
     font-weight: 600;
 }
 
 /* 다크 모드 */
-body.dark .contact-container { background: #16213e; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
-body.dark h2 { color: #a0c4ff; }
+body.dark .contact-container { background: #0F2035; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+body.dark h2 { color: #7EC8E3; }
 body.dark label { color: #ccc; }
-body.dark input, body.dark textarea { background: #1a1a2e; color: #ddd; border-color: #444; }
+body.dark input, body.dark textarea { background: #0A1628; color: #ddd; border-color: #444; }

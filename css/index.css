@@ -8,7 +8,7 @@
     margin-left: 20px;
 }
 .search-box input { padding: 6px 10px; border: none; outline: none; font-size: 14px; }
-.search-box button { padding: 6px 10px; border: none; background: #4FB7B3; cursor: pointer; }
+.search-box button { padding: 6px 10px; border: none; background: #0EA5C9; cursor: pointer; }
 .search-box button img { width: 18px; height: 18px; }
 
 /* 히어로 */
@@ -34,13 +34,13 @@
     font-size: 1em;
     font-weight: bold;
     color: #fff;
-    background: linear-gradient(135deg, #4FB7B3, #36a29f);
+    background: linear-gradient(135deg, #0EA5C9, #0B8CAA);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
 }
-.hero button:hover { background: linear-gradient(135deg, #36a29f, #4FB7B3); }
+.hero button:hover { background: linear-gradient(135deg, #0B8CAA, #0EA5C9); }
 
 /* 섹션 헤더 */
 .section-header {
@@ -50,23 +50,23 @@
     margin-bottom: 10px;
 }
 .section-header h2 {
-    color: #31326F;
+    color: #1E3A5F;
     font-size: 2em;
-    border-bottom: 2px solid #763911;
+    border-bottom: 2px solid #0EA5C9;
     padding-bottom: 5px;
     display: inline-block;
 }
 .more-btn {
     text-decoration: none;
-    color: #4FB7B3;
+    color: #0EA5C9;
     font-weight: 600;
-    border: 1px solid #4FB7B3;
+    border: 1px solid #0EA5C9;
     padding: 5px 10px;
     border-radius: 5px;
     transition: 0.3s;
     font-size: 0.9em;
 }
-.more-btn:hover { background: #4FB7B3; color: #fff; }
+.more-btn:hover { background: #0EA5C9; color: #fff; }
 
 /* 장소 카드 */
 .places, .lodging {
@@ -102,12 +102,12 @@
     justify-content: center;
     text-align: center;
 }
-.places li h3, .lodging li h3 { font-size: 1.3em; margin-bottom: 10px; color: #31326F; }
+.places li h3, .lodging li h3 { font-size: 1.3em; margin-bottom: 10px; color: #1E3A5F; }
 .places li p { font-size: 1em; margin-bottom: 15px; }
-.places li button { margin-top: auto; padding: 10px 15px; font-size: 0.95em; color: #fff; background: #4FB7B3; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; }
-.places li button:hover { background: #36a29f; }
+.places li button { margin-top: auto; padding: 10px 15px; font-size: 0.95em; color: #fff; background: #0EA5C9; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+.places li button:hover { background: #0B8CAA; }
 .places li:hover, .lodging li:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.25); }
-.places li:focus, .lodging li:focus { outline: 2px solid #4FB7B3; outline-offset: 2px; }
+.places li:focus, .lodging li:focus { outline: 2px solid #0EA5C9; outline-offset: 2px; }
 
 /* 숙소 카드 가격 */
 .lodging-price-row {
@@ -169,7 +169,7 @@ body.dark .lodging-price-sale { color: #ff7675; }
     gap: 5px;
     font-size: 0.9em;
     font-weight: 600;
-    color: #31326F;
+    color: #1E3A5F;
     cursor: pointer;
     padding: 6px 12px;
     border-radius: 5px;
@@ -209,26 +209,26 @@ body.dark .lodging-price-sale { color: #ff7675; }
     overflow-y: auto;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
-.modal h3 { color: #31326F; font-size: 1.4em; margin-bottom: 20px; }
+.modal h3 { color: #1E3A5F; font-size: 1.4em; margin-bottom: 20px; }
 .modal-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .modal-list li { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; background: #f0f4f8; }
 .modal-list li span { font-weight: 600; flex-grow: 1; }
 .modal-list li button { background: none; border: none; font-size: 1.1em; cursor: pointer; color: #e74c3c; }
 .modal-empty { text-align: center; color: #999; padding: 20px 0; }
-.modal-close { margin-top: 20px; width: 100%; padding: 10px; background: #4FB7B3; color: #fff; border: none; border-radius: 8px; font-size: 1em; cursor: pointer; }
-.modal-close:hover { background: #36a29f; }
+.modal-close { margin-top: 20px; width: 100%; padding: 10px; background: #0EA5C9; color: #fff; border: none; border-radius: 8px; font-size: 1em; cursor: pointer; }
+.modal-close:hover { background: #0B8CAA; }
 
 /* 다크 모드 */
-body.dark .fav-count { color: #a0c4ff; border-color: #444; }
+body.dark .fav-count { color: #7EC8E3; border-color: #444; }
 body.dark .fav-count:hover { background: #2a1a2e; }
 body.dark .search-box { border-color: #444; }
 body.dark .search-box input { background: #1e1e3a; color: #ddd; }
 body.dark .places li, body.dark .lodging li { background: rgba(22,33,62,0.95); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
-body.dark .places li h3, body.dark .lodging li h3 { color: #a0c4ff; }
-body.dark .section-header h2 { color: #a0c4ff; }
-body.dark .modal { background: #16213e; color: #ddd; }
-body.dark .modal h3 { color: #a0c4ff; }
-body.dark .modal-list li { background: #1a1a2e; }
+body.dark .places li h3, body.dark .lodging li h3 { color: #7EC8E3; }
+body.dark .section-header h2 { color: #7EC8E3; }
+body.dark .modal { background: #0F2035; color: #ddd; }
+body.dark .modal h3 { color: #7EC8E3; }
+body.dark .modal-list li { background: #0A1628; }
 
 /* 반응형 */
 @media (max-width: 900px) {

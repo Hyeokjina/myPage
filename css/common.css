@@ -40,20 +40,20 @@ header {
 
 a.logo { text-decoration: none; }
 
-.logo h1 { font-size: 1.8em; color: #31326F; }
+.logo h1 { font-size: 1.8em; color: #1E3A5F; }
 .icon { width: 35px; height: 35px; }
 
 /* 네비게이션 */
 nav ul { display: flex; list-style: none; gap: 15px; }
 nav a {
     text-decoration: none;
-    color: #31326F;
+    color: #1E3A5F;
     font-weight: 600;
     padding: 8px 15px;
     border-radius: 5px;
     transition: 0.3s;
 }
-nav a:hover, nav a.active { background: #4FB7B3; color: #fff; }
+nav a:hover, nav a.active { background: #0EA5C9; color: #fff; }
 
 /* 공통 컨테이너 */
 .container {
@@ -64,7 +64,7 @@ nav a:hover, nav a.active { background: #4FB7B3; color: #fff; }
 
 /* 푸터 */
 footer {
-    background: #31326F;
+    background: #1E3A5F;
     color: white;
     text-align: center;
     padding: 30px 20px;
@@ -87,14 +87,14 @@ footer .social-icons img:hover { transform: scale(1.2); }
     font-size: 1em;
     transition: 0.3s;
 }
-.dark-toggle:hover { background: #4FB7B3; color: #fff; border-color: #4FB7B3; }
+.dark-toggle:hover { background: #0EA5C9; color: #fff; border-color: #0EA5C9; }
 
 /* 상단 이동 버튼 */
 .back-to-top {
     position: fixed;
     bottom: 30px; right: 30px;
     width: 44px; height: 44px;
-    background: #4FB7B3;
+    background: #0EA5C9;
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -107,7 +107,7 @@ footer .social-icons img:hover { transform: scale(1.2); }
     z-index: 150;
 }
 .back-to-top.visible { opacity: 1; pointer-events: auto; }
-.back-to-top:hover { transform: translateY(-3px); background: #36a29f; }
+.back-to-top:hover { transform: translateY(-3px); background: #0B8CAA; }
 
 /* 이미지 로드 실패 */
 img[src="./icon/incheon.png"] {
@@ -117,12 +117,12 @@ img[src="./icon/incheon.png"] {
 }
 
 /* 다크 모드 공통 */
-body.dark { background: #1a1a2e; color: #ddd; }
-body.dark header { background: #16213e; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
-body.dark .logo h1 { color: #a0c4ff; }
-body.dark nav a { color: #a0c4ff; }
-body.dark nav a:hover, body.dark nav a.active { background: #4FB7B3; color: #fff; }
-body.dark footer { background: #0f0f1a; }
+body.dark { background: #0A1628; color: #ddd; }
+body.dark header { background: #0F2035; box-shadow: 0 2px 6px rgba(0,0,0,0.4); }
+body.dark .logo h1 { color: #7EC8E3; }
+body.dark nav a { color: #7EC8E3; }
+body.dark nav a:hover, body.dark nav a.active { background: #0EA5C9; color: #fff; }
+body.dark footer { background: #060D1A; }
 body.dark .dark-toggle { border-color: #555; color: #ddd; }
 
 /* 스크롤 애니메이션 */
@@ -143,12 +143,12 @@ body.dark .dark-toggle { border-color: #555; color: #ddd; }
     border: none;
     font-size: 1.6em;
     cursor: pointer;
-    color: #31326F;
+    color: #1E3A5F;
     padding: 5px 8px;
     line-height: 1;
     transition: 0.3s;
 }
-body.dark .hamburger { color: #a0c4ff; }
+body.dark .hamburger { color: #7EC8E3; }
 
 /* 반응형 공통 */
 @media (max-width: 900px) {
