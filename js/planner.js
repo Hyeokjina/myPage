@@ -5,7 +5,19 @@ let activeCatFilter = '전체';
 // ── 플랜 관리 ──────────────────────────────────────
 
 function getPlans() {
-  return JSON.parse(localStorage.getItem(PLANS_KEY) || '[]');
+  try {
+    return JSON.parse(localStorage.getItem(PLANS_KEY) || '[]');
+  } catch {
+    return [];
+  }
+}
+
+function getAllSchedules() {
+  try {
+    return JSON.parse(localStorage.getItem(SCHEDULES_KEY) || '{}');
+  } catch {
+    return {};
+  }
 }
 
 function savePlans(plans) {
@@ -66,7 +78,7 @@ function deletePlan(id) {
   savePlans(plans);
 
   // 해당 플랜 일정 삭제
-  const all = JSON.parse(localStorage.getItem(SCHEDULES_KEY) || '{}');
+  const all = getAllSchedules();
   delete all[id];
   localStorage.setItem(SCHEDULES_KEY, JSON.stringify(all));
 
@@ -191,7 +203,7 @@ function renderPlanList() {
     periodEl.textContent = `${plan.start} ~ ${plan.end}`;
 
     // 진행률 계산
-    const allSchedules = JSON.parse(localStorage.getItem(SCHEDULES_KEY) || '{}');
+    const allSchedules = getAllSchedules();
     const planSchedules = allSchedules[plan.id] || [];
     const total = planSchedules.length;
     const done = planSchedules.filter(s => s.done).length;
@@ -262,13 +274,13 @@ function renderPlanList() {
 // ── 일정 관리 ──────────────────────────────────────
 
 function getSchedules() {
-  const all = JSON.parse(localStorage.getItem(SCHEDULES_KEY) || '{}');
+  const all = getAllSchedules();
   const id = getActivePlanId();
   return id ? (all[id] || []) : [];
 }
 
 function saveSchedules(schedules) {
-  const all = JSON.parse(localStorage.getItem(SCHEDULES_KEY) || '{}');
+  const all = getAllSchedules();
   const id = getActivePlanId();
   if (!id) return;
   all[id] = schedules;
