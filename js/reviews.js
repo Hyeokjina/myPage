@@ -3,7 +3,11 @@ const PAGE_SIZE = 5;
 let currentPage = 1;
 
 function getReviews() {
-  return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  } catch {
+    return [];
+  }
 }
 
 function saveReviews(reviews) {

@@ -1,7 +1,11 @@
 const FAV_KEY = 'incheon_favorites';
 
 function getFavs() {
-    return JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+    try {
+        return JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
+    } catch {
+        return [];
+    }
 }
 
 function saveFavs(favs) {
