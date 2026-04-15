@@ -25,7 +25,13 @@ function openDetail(key) {
     document.getElementById('detail-img').alt = d.title;
     document.getElementById('detail-title').textContent = d.title;
     document.getElementById('detail-desc').textContent = d.desc;
-    document.getElementById('detail-info').innerHTML = d.info.map(i => `<span>${i}</span>`).join('');
+    const infoEl = document.getElementById('detail-info');
+    infoEl.textContent = '';
+    d.info.forEach(i => {
+        const span = document.createElement('span');
+        span.textContent = i;
+        infoEl.appendChild(span);
+    });
     document.getElementById('detail-overlay').classList.add('open');
 }
 

@@ -624,9 +624,16 @@ function renderStats() {
   const done = schedules.filter(s => s.done).length;
   const rate = Math.round((done / total) * 100);
 
-  document.getElementById('stat-total').innerHTML = `전체 <strong>${total}개</strong>`;
-  document.getElementById('stat-done').innerHTML = `완료 <strong>${done}개</strong>`;
-  document.getElementById('stat-rate').innerHTML = `완료율 <strong>${rate}%</strong>`;
+  function setStatItem(id, label, value) {
+    const el = document.getElementById(id);
+    el.textContent = '';
+    const strong = document.createElement('strong');
+    strong.textContent = value;
+    el.append(label + ' ', strong);
+  }
+  setStatItem('stat-total', '전체', `${total}개`);
+  setStatItem('stat-done', '완료', `${done}개`);
+  setStatItem('stat-rate', '완료율', `${rate}%`);
 
   const catOrder = ['관광', '식사', '숙박', '교통', '쇼핑', '기타'];
   const catCount = {};
