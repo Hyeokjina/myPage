@@ -9,7 +9,11 @@ function getFavs() {
 }
 
 function saveFavs(favs) {
-    localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+    try {
+        localStorage.setItem(FAV_KEY, JSON.stringify(favs));
+    } catch {
+        showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
+    }
 }
 
 function updateBadge() {

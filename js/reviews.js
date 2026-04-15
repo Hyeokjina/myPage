@@ -11,7 +11,11 @@ function getReviews() {
 }
 
 function saveReviews(reviews) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
+  } catch {
+    showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
+  }
 }
 
 // 별점 UI

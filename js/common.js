@@ -54,6 +54,19 @@ document.querySelectorAll('nav a').forEach(a => {
     }
 });
 
+function showToast(msg) {
+    let toast = document.getElementById('toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
 document.querySelector('.hamburger')?.addEventListener('click', toggleNav);
 document.getElementById('dark-btn')?.addEventListener('click', toggleDark);
 document.getElementById('back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));

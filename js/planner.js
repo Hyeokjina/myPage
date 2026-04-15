@@ -21,7 +21,11 @@ function getAllSchedules() {
 }
 
 function savePlans(plans) {
-  localStorage.setItem(PLANS_KEY, JSON.stringify(plans));
+  try {
+    localStorage.setItem(PLANS_KEY, JSON.stringify(plans));
+  } catch {
+    showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
+  }
 }
 
 function getActivePlanId() {
@@ -80,7 +84,11 @@ function deletePlan(id) {
   // 해당 플랜 일정 삭제
   const all = getAllSchedules();
   delete all[id];
-  localStorage.setItem(SCHEDULES_KEY, JSON.stringify(all));
+  try {
+    localStorage.setItem(SCHEDULES_KEY, JSON.stringify(all));
+  } catch {
+    showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
+  }
 
   // 활성 플랜이 삭제된 경우 초기화
   if (String(getActivePlanId()) === String(id)) {
@@ -284,7 +292,11 @@ function saveSchedules(schedules) {
   const id = getActivePlanId();
   if (!id) return;
   all[id] = schedules;
-  localStorage.setItem(SCHEDULES_KEY, JSON.stringify(all));
+  try {
+    localStorage.setItem(SCHEDULES_KEY, JSON.stringify(all));
+  } catch {
+    showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
+  }
 }
 
 // 카테고리 버튼 클릭 처리
@@ -580,19 +592,6 @@ function copySchedule() {
   navigator.clipboard.writeText(text)
     .then(() => showToast('클립보드에 복사되었습니다!'))
     .catch(() => showToast('복사에 실패했습니다.'));
-}
-
-function showToast(msg) {
-  let toast = document.getElementById('toast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'toast';
-    toast.className = 'toast';
-    document.body.appendChild(toast);
-  }
-  toast.textContent = msg;
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 2200);
 }
 
 // ── ESC 키로 모달 닫기 ──────────────────────────────
