@@ -78,6 +78,70 @@ function deleteReview(id) {
   renderList();
 }
 
+// 수정 모달 별점 UI
+const editStarSpans = document.querySelectorAll('#edit-star-input span');
+const editRatingInput = document.getElementById('edit-rating');
+
+editStarSpans.forEach(span => {
+  span.addEventListener('mouseover', () => highlightEditStars(+span.dataset.val));
+  span.addEventListener('mouseout', () => highlightEditStars(+editRatingInput.value));
+  span.addEventListener('click', () => {
+    editRatingInput.value = span.dataset.val;
+    highlightEditStars(+span.dataset.val);
+  });
+});
+
+function highlightEditStars(val) {
+  editStarSpans.forEach(s => s.classList.toggle('on', +s.dataset.val <= val));
+}
+
+// 수정 모달 열기/닫기
+function openEditReviewModal(review) {
+  document.getElementById('edit-review-id').value = review.id;
+  document.getElementById('edit-nickname').value = review.nickname || '';
+  document.getElementById('edit-region').value = review.region;
+  editRatingInput.value = review.rating;
+  highlightEditStars(review.rating);
+  document.getElementById('edit-title').value = review.title;
+  document.getElementById('edit-content').value = review.content;
+  document.getElementById('edit-star-warn').style.display = 'none';
+  const modal = document.getElementById('edit-review-modal');
+  modal.classList.add('open');
+  trapFocus(modal);
+}
+
+function closeEditReviewModal() {
+  const modal = document.getElementById('edit-review-modal');
+  modal.classList.remove('open');
+  releaseFocus(modal);
+}
+
+// 수정 저장
+document.getElementById('edit-review-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const rating = +editRatingInput.value;
+  if (rating === 0) {
+    document.getElementById('edit-star-warn').style.display = 'block';
+    return;
+  }
+  document.getElementById('edit-star-warn').style.display = 'none';
+
+  const id = Number(document.getElementById('edit-review-id').value);
+  const reviews = getReviews().map(r =>
+    r.id === id ? {
+      ...r,
+      nickname: document.getElementById('edit-nickname').value.trim() || '익명',
+      region:   document.getElementById('edit-region').value,
+      rating,
+      title:    document.getElementById('edit-title').value.trim(),
+      content:  document.getElementById('edit-content').value.trim(),
+    } : r
+  );
+  saveReviews(reviews);
+  closeEditReviewModal();
+  renderList();
+});
+
 // 렌더링
 function renderList() {
   const filterVal = document.getElementById('filter-region').value;
@@ -158,6 +222,12 @@ function renderList() {
     contentEl.className = 'card-content';
     contentEl.textContent = review.content;
 
+    const editBtn = document.createElement('button');
+    editBtn.className = 'edit-btn';
+    editBtn.textContent = '✏️';
+    editBtn.setAttribute('aria-label', '후기 수정');
+    editBtn.addEventListener('click', () => openEditReviewModal(review));
+
     const delBtn = document.createElement('button');
     delBtn.className = 'delete-btn';
     delBtn.textContent = '✕';
@@ -167,6 +237,7 @@ function renderList() {
     li.appendChild(top);
     li.appendChild(titleEl);
     li.appendChild(contentEl);
+    li.appendChild(editBtn);
     li.appendChild(delBtn);
 
     list.appendChild(li);
@@ -212,6 +283,16 @@ document.getElementById('review-search-clear').addEventListener('click', () => {
   currentPage = 1;
   renderList();
   document.getElementById('review-search').focus();
+});
+
+document.getElementById('edit-review-cancel').addEventListener('click', closeEditReviewModal);
+document.getElementById('edit-review-modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('edit-review-modal')) closeEditReviewModal();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('edit-review-modal').classList.contains('open')) {
+    closeEditReviewModal();
+  }
 });
 
 renderList();
