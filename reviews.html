@@ -122,6 +122,58 @@
     <p>문의: example@email.com | 전화: 010-1234-5678</p>
   </footer>
 
+  <!-- 후기 수정 모달 -->
+  <div id="edit-review-modal" class="review-modal-overlay">
+    <div class="review-modal-box">
+      <h3>후기 수정</h3>
+      <form id="edit-review-form">
+        <input type="hidden" id="edit-review-id">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="edit-nickname">닉네임</label>
+            <input type="text" id="edit-nickname" maxlength="15">
+          </div>
+          <div class="form-group">
+            <label for="edit-region">지역</label>
+            <select id="edit-region" required>
+              <option value="인천">인천</option>
+              <option value="서울">서울</option>
+              <option value="부산">부산</option>
+              <option value="제주">제주</option>
+              <option value="강원">강원</option>
+              <option value="경주">경주</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>별점</label>
+            <div class="star-input" id="edit-star-input">
+              <span data-val="1">★</span>
+              <span data-val="2">★</span>
+              <span data-val="3">★</span>
+              <span data-val="4">★</span>
+              <span data-val="5">★</span>
+            </div>
+            <input type="hidden" id="edit-rating" value="0">
+            <p id="edit-star-warn" class="star-warn" style="display:none;">별점을 선택해주세요.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="edit-title">제목</label>
+          <input type="text" id="edit-title" required maxlength="50">
+        </div>
+        <div class="form-group">
+          <label for="edit-content">내용</label>
+          <textarea id="edit-content" rows="5" required maxlength="500"></textarea>
+        </div>
+        <div class="review-modal-actions">
+          <button type="button" id="edit-review-cancel">취소</button>
+          <button type="submit">저장</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="./js/common.js"></script>
   <script src="./js/reviews.js"></script>
 </body>
