@@ -32,11 +32,15 @@ function openDetail(key) {
         span.textContent = i;
         infoEl.appendChild(span);
     });
-    document.getElementById('detail-overlay').classList.add('open');
+    const overlay = document.getElementById('detail-overlay');
+    overlay.classList.add('open');
+    trapFocus(overlay);
 }
 
 function closeDetail() {
-    document.getElementById('detail-overlay').classList.remove('open');
+    const overlay = document.getElementById('detail-overlay');
+    overlay.classList.remove('open');
+    releaseFocus(overlay);
 }
 
 function closeDetailOutside(e) {

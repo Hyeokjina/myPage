@@ -38,13 +38,16 @@ function setActivePlanId(id) {
 
 // 모달 열기/닫기
 function openPlanModal() {
-  document.getElementById('plan-modal').classList.add('open');
-  document.getElementById('p-name').focus();
+  const modal = document.getElementById('plan-modal');
+  modal.classList.add('open');
+  trapFocus(modal);
 }
 
 function closePlanModal() {
-  document.getElementById('plan-modal').classList.remove('open');
+  const modal = document.getElementById('plan-modal');
+  modal.classList.remove('open');
   document.getElementById('plan-form').reset();
+  releaseFocus(modal);
 }
 
 function closePlanModalOutside(e) {
@@ -107,12 +110,16 @@ function openRenameModal(plan) {
   document.getElementById('r-name').value = plan.name;
   document.getElementById('r-start').value = plan.start;
   document.getElementById('r-end').value = plan.end;
-  document.getElementById('rename-modal').classList.add('open');
+  const modal = document.getElementById('rename-modal');
+  modal.classList.add('open');
+  trapFocus(modal);
 }
 
 function closeRenameModal() {
-  document.getElementById('rename-modal').classList.remove('open');
+  const modal = document.getElementById('rename-modal');
+  modal.classList.remove('open');
   document.getElementById('rename-form').reset();
+  releaseFocus(modal);
 }
 
 function closeRenameModalOutside(e) {
@@ -362,13 +369,16 @@ function openEditModal(schedule) {
   document.getElementById('e-memo').value = schedule.memo || '';
   setSelectedCategory('e-category', schedule.category || '관광');
   document.getElementById('e-warn').style.display = 'none';
-  document.getElementById('edit-modal').classList.add('open');
-  document.getElementById('e-place').focus();
+  const editModal = document.getElementById('edit-modal');
+  editModal.classList.add('open');
+  trapFocus(editModal);
 }
 
 function closeEditModal() {
-  document.getElementById('edit-modal').classList.remove('open');
+  const editModal = document.getElementById('edit-modal');
+  editModal.classList.remove('open');
   document.getElementById('edit-form').reset();
+  releaseFocus(editModal);
 }
 
 function closeEditModalOutside(e) {

@@ -67,6 +67,7 @@ function openFavModal() {
         });
     }
     document.getElementById('fav-modal').classList.add('open');
+    trapFocus(document.getElementById('fav-modal'));
 }
 
 function removeFav(name) {
@@ -77,7 +78,9 @@ function removeFav(name) {
 }
 
 function closeFavModal() {
-    document.getElementById('fav-modal').classList.remove('open');
+    const modal = document.getElementById('fav-modal');
+    modal.classList.remove('open');
+    releaseFocus(modal);
 }
 
 function closeFavModalOutside(event) {
