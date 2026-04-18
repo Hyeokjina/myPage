@@ -609,6 +609,14 @@ document.addEventListener('keydown', e => {
 
 // ── 통계 렌더링 ────────────────────────────────────
 
+function setStatItem(id, label, value) {
+  const el = document.getElementById(id);
+  el.textContent = '';
+  const strong = document.createElement('strong');
+  strong.textContent = value;
+  el.append(label + ' ', strong);
+}
+
 function renderStats() {
   const schedules = getSchedules();
   const statsEl = document.getElementById('schedule-stats');
@@ -623,13 +631,6 @@ function renderStats() {
   const done = schedules.filter(s => s.done).length;
   const rate = Math.round((done / total) * 100);
 
-  function setStatItem(id, label, value) {
-    const el = document.getElementById(id);
-    el.textContent = '';
-    const strong = document.createElement('strong');
-    strong.textContent = value;
-    el.append(label + ' ', strong);
-  }
   setStatItem('stat-total', '전체', `${total}개`);
   setStatItem('stat-done', '완료', `${done}개`);
   setStatItem('stat-rate', '완료율', `${rate}%`);
