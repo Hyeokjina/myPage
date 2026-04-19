@@ -275,6 +275,44 @@ function renderPagination(totalPages) {
   container.appendChild(next);
 }
 
+// 데이터 내보내기 / 가져오기
+function exportReviewsData() {
+  const data = getReviews();
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `reviews-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+document.getElementById('export-reviews-btn')?.addEventListener('click', exportReviewsData);
+
+document.getElementById('import-reviews-input')?.addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (!Array.isArray(data)) {
+        showToast('올바른 후기 백업 파일이 아닙니다.');
+        return;
+      }
+      if (!confirm(`후기 ${data.length}건을 가져옵니다. 기존 데이터가 덮어씌워집니다. 계속할까요?`)) return;
+      saveReviews(data);
+      currentPage = 1;
+      renderList();
+      showToast('데이터를 성공적으로 가져왔습니다.');
+    } catch {
+      showToast('파일을 읽는 중 오류가 발생했습니다.');
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+});
+
 document.getElementById('filter-region').addEventListener('change', () => { currentPage = 1; renderList(); });
 document.getElementById('sort-order').addEventListener('change', () => { currentPage = 1; renderList(); });
 document.getElementById('review-search').addEventListener('input', () => { currentPage = 1; renderList(); });

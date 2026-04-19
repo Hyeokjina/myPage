@@ -674,6 +674,54 @@ document.querySelectorAll('.cat-filter-btn').forEach(btn => {
   });
 });
 
+// ── 데이터 내보내기 / 가져오기 ────────────────────────
+
+function exportPlannerData() {
+  const data = { plans: getPlans(), schedules: getAllSchedules() };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `planner-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+document.getElementById('export-plan-btn')?.addEventListener('click', exportPlannerData);
+
+document.getElementById('import-plan-input')?.addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (!Array.isArray(data.plans) || typeof data.schedules !== 'object') {
+        showToast('올바른 플래너 백업 파일이 아닙니다.');
+        return;
+      }
+      if (!confirm(`플랜 ${data.plans.length}개를 가져옵니다. 기존 데이터가 덮어씌워집니다. 계속할까요?`)) return;
+      savePlans(data.plans);
+      try {
+        localStorage.setItem(SCHEDULES_KEY, JSON.stringify(data.schedules));
+      } catch {
+        showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
+        return;
+      }
+      localStorage.removeItem('active_plan_id');
+      document.getElementById('schedule-section').style.display = 'none';
+      document.getElementById('list-section').style.display = 'none';
+      document.getElementById('schedule-stats').style.display = 'none';
+      renderPlanList();
+      showToast('데이터를 성공적으로 가져왔습니다.');
+    } catch {
+      showToast('파일을 읽는 중 오류가 발생했습니다.');
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+});
+
 document.getElementById('new-plan-btn')?.addEventListener('click', openPlanModal);
 document.getElementById('plan-modal')?.addEventListener('click', closePlanModalOutside);
 document.getElementById('plan-cancel-btn')?.addEventListener('click', closePlanModal);
