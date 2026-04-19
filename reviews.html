@@ -90,6 +90,10 @@
       <div class="list-header">
         <h2>전체 후기 <span id="review-count">0</span>건</h2>
         <div class="filter-bar">
+          <button id="export-reviews-btn" class="data-btn">⬇ 내보내기</button>
+          <label class="data-btn" id="import-reviews-label">⬆ 가져오기
+            <input type="file" id="import-reviews-input" accept=".json" style="display:none;">
+          </label>
           <select id="sort-order">
             <option value="newest">최신순</option>
             <option value="rating">별점 높은순</option>

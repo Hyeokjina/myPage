@@ -40,7 +40,13 @@
     <section class="plans-section">
       <div class="plans-header">
         <h2>내 여행 플랜</h2>
-        <button id="new-plan-btn">+ 새 플랜</button>
+        <div class="plans-header-actions">
+          <button id="new-plan-btn">+ 새 플랜</button>
+          <button id="export-plan-btn" class="data-btn">⬇ 내보내기</button>
+          <label class="data-btn" id="import-plan-label">⬆ 가져오기
+            <input type="file" id="import-plan-input" accept=".json" style="display:none;">
+          </label>
+        </div>
       </div>
       <ul id="plan-list"></ul>
       <p id="plan-empty-msg" class="empty-msg">플랜을 먼저 만들어보세요!</p>
