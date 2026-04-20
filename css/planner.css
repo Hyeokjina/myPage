@@ -28,6 +28,13 @@
   margin: 0;
 }
 
+.plans-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 #new-plan-btn {
   padding: 8px 18px;
   background: #0EA5C9;
@@ -40,6 +47,21 @@
 }
 
 #new-plan-btn:hover { background: #0B8CAA; }
+
+.data-btn {
+  padding: 7px 13px;
+  background: #fff;
+  color: #0EA5C9;
+  border: 1px solid #0EA5C9;
+  border-radius: 7px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.data-btn:hover { background: #0EA5C9; color: #fff; }
 
 #plan-list {
   list-style: none;
@@ -676,6 +698,13 @@ body.dark .modal-box {
 
 body.dark .plans-header h2,
 body.dark .modal-box h3 { color: #7EC8E3; }
+
+body.dark .data-btn {
+  background: #0F2035;
+  color: #7EC8E3;
+  border-color: #7EC8E3;
+}
+body.dark .data-btn:hover { background: #0EA5C9; color: #fff; border-color: #0EA5C9; }
 
 body.dark .plan-card { border-color: #333; }
 body.dark .plan-card:hover { background: #1a2a3a; border-color: #0EA5C9; }

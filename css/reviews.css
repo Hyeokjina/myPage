@@ -184,6 +184,28 @@ body.dark .review-search-bar input {
   background: #fff;
 }
 
+.data-btn {
+  padding: 7px 13px;
+  background: #fff;
+  color: #0EA5C9;
+  border: 1px solid #0EA5C9;
+  border-radius: 7px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.data-btn:hover { background: #0EA5C9; color: #fff; }
+
+body.dark .data-btn {
+  background: #0F2035;
+  color: #7EC8E3;
+  border-color: #7EC8E3;
+}
+body.dark .data-btn:hover { background: #0EA5C9; color: #fff; border-color: #0EA5C9; }
+
 #review-list {
   list-style: none;
   padding: 0;
