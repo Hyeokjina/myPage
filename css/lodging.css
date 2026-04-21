@@ -23,7 +23,7 @@ h2 {
     border: 1px solid rgba(0,0,0,0.04);
 }
 .lodging-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
-.lodging-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform 0.35s; }
+.lodging-card img { width: 100%; aspect-ratio: 688/320; object-fit: cover; transition: transform 0.35s; }
 .lodging-card:hover img { transform: scale(1.04); }
 .lodging-card-content { padding: 18px; flex-grow: 1; display: flex; flex-direction: column; }
 .lodging-card-content h3 {
