@@ -135,7 +135,13 @@ document.querySelector('.fav-count')?.addEventListener('click', openFavModal);
 document.querySelector('.modal-close')?.addEventListener('click', closeFavModal);
 document.getElementById('fav-modal')?.addEventListener('click', closeFavModalOutside);
 
-document.querySelector('.hero-btn')?.addEventListener('click', () => { window.location.href = '#places'; });
+document.querySelectorAll('.hero-tag').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const input = document.getElementById('search-input');
+        if (input) { input.value = btn.dataset.query; searchPlaces(); }
+        document.getElementById('places')?.scrollIntoView({ behavior: 'smooth' });
+    });
+});
 
 document.getElementById('search-input')?.addEventListener('input', searchPlaces);
 document.getElementById('search-btn')?.addEventListener('click', searchPlaces);

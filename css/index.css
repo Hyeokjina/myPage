@@ -149,26 +149,71 @@
     background: #fff;
     border-radius: 18px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-    transition: transform 0.22s ease, box-shadow 0.22s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     cursor: pointer;
     border: 1px solid rgba(0,0,0,0.04);
 }
+.places li:hover, .lodging li:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.14);
+}
+.places li:focus, .lodging li:focus { outline: 2px solid #0EA5C9; outline-offset: 2px; }
+
+/* 카드 이미지 + 호버 오버레이 */
+.places li .card-img-wrap,
+.lodging li .card-img-wrap {
+    position: relative;
+    overflow: hidden;
+}
 .places li img {
     width: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    display: block;
+    transition: transform 0.45s ease;
 }
 .lodging li img {
     width: 100%;
     aspect-ratio: 688/320;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    display: block;
+    transition: transform 0.45s ease;
 }
-.places li:hover img, .lodging li:hover img { transform: scale(1.04); }
+.places li:hover img, .lodging li:hover img { transform: scale(1.07); }
+
+/* 오버레이 레이어 */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,22,40,0.78) 0%, rgba(10,22,40,0) 55%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+}
+.places li:hover .card-overlay,
+.lodging li:hover .card-overlay { opacity: 1; }
+.card-overlay span {
+    color: #fff;
+    font-size: 0.82em;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    transform: translateY(6px);
+    transition: transform 0.3s ease;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.places li:hover .card-overlay span,
+.lodging li:hover .card-overlay span {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* 카드 텍스트 영역 */
 .places li div, .lodging li div {
     padding: 16px;
     flex-grow: 1;
@@ -185,28 +230,9 @@
 .places li p {
     font-size: 0.88em;
     color: #777;
-    margin-bottom: 14px;
+    margin-bottom: 0;
     line-height: 1.5;
 }
-.places li button {
-    margin-top: auto;
-    padding: 10px;
-    font-size: 0.88em;
-    font-weight: 600;
-    color: #0EA5C9;
-    background: #EDF9FC;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.18s, color 0.18s;
-    font-family: inherit;
-}
-.places li button:hover { background: #0EA5C9; color: #fff; }
-.places li:hover, .lodging li:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-}
-.places li:focus, .lodging li:focus { outline: 2px solid #0EA5C9; outline-offset: 2px; }
 
 /* 숙소 카드 가격 */
 .lodging-price-row {
@@ -356,9 +382,9 @@ body.dark .lodging-sale-badge { background: #2a1515; border-color: #4a2020; colo
 /* 다크 모드 */
 body.dark .fav-count { color: #b0c8d8; background: #1a2e42; }
 body.dark .fav-count:hover { background: #0A2535; color: #7EC8E3; }
-body.dark .search-box { background: #1a2e42; }
-body.dark .search-box:focus-within { border-color: #0EA5C9; background: #0F2035; }
-body.dark .search-box input { color: #ddd; }
+body.dark .hero-search { background: #1a2e42; box-shadow: 0 8px 48px rgba(0,0,0,0.5); }
+body.dark .hero-search input { color: #ddd; }
+body.dark .hero-search input::placeholder { color: #666; }
 body.dark .places li, body.dark .lodging li {
     background: #0F2035;
     box-shadow: 0 2px 12px rgba(0,0,0,0.3);
@@ -377,11 +403,12 @@ body.dark .modal-close { background: #0EA5C9; }
 body.dark .modal-close:hover { background: #0B8CAA; }
 
 /* 반응형 */
-@media (max-width: 900px) {
-    .search-box { display: none; }
-}
 @media (max-width: 600px) {
-    .hero { min-height: 400px; border-radius: 0 0 20px 20px; }
-    .hero h2 { font-size: 1.9em; }
+    .hero { min-height: 480px; padding: 80px 20px 56px; border-radius: 0 0 24px 24px; }
+    .hero h2 { font-size: 2.1em; letter-spacing: -1px; }
+    .hero > p { font-size: 0.92em; margin-bottom: 28px; }
+    .hero-search { padding: 5px 5px 5px 18px; }
+    .hero-search button { padding: 11px 18px; font-size: 0.88em; }
+    .hero-tag { font-size: 0.82em; padding: 6px 14px; }
     .places, .lodging { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
 }
