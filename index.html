@@ -35,10 +35,6 @@
             <button class="fav-count">
                 ♥ 즐겨찾기 <span class="badge" id="fav-badge">0</span>
             </button>
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="궁금한 인천에 여행지를 검색하세요">
-                <button id="search-btn"><img src="./icon/search.png" alt="검색 아이콘"></button>
-            </div>
         </div>
     </header>
 
@@ -55,8 +51,22 @@
     </div>
 
     <div class="hero">
-        인천으로 떠나는 특별한 여행
-        <button class="hero-btn">대표 여행지 보기</button>
+        <h2>인천으로 떠나는<br>특별한 여행</h2>
+        <p>차이나타운, 송도, 월미도 — 인천의 모든 매력을 한눈에</p>
+        <div class="hero-search">
+            <input type="text" id="search-input" placeholder="어디로 떠나고 싶으세요?">
+            <button id="search-btn">
+                <img src="./icon/search.png" alt="검색">
+                검색
+            </button>
+        </div>
+        <div class="hero-tags">
+            <button class="hero-tag" data-query="차이나타운">차이나타운</button>
+            <button class="hero-tag" data-query="송도">송도</button>
+            <button class="hero-tag" data-query="월미도">월미도</button>
+            <button class="hero-tag" data-query="서울">서울</button>
+            <button class="hero-tag" data-query="제주">제주</button>
+        </div>
     </div>
 
     <!-- 인천 소개 -->

@@ -1,47 +1,16 @@
-/* 검색창 */
-.search-box {
-    display: flex;
-    align-items: center;
-    background: #f4f6f9;
-    border-radius: 100px;
-    overflow: hidden;
-    border: 1.5px solid transparent;
-    margin-left: 12px;
-    transition: border-color 0.2s;
-}
-.search-box:focus-within { border-color: #0EA5C9; background: #fff; }
-.search-box input {
-    padding: 7px 14px;
-    border: none;
-    outline: none;
-    font-size: 13.5px;
-    background: transparent;
-    font-family: inherit;
-    width: 160px;
-}
-.search-box button {
-    padding: 7px 12px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-}
-.search-box button img { width: 16px; height: 16px; opacity: 0.5; }
-
 /* 히어로 */
 .hero {
-    background: url('../images/home_image.png') no-repeat center/100% auto;
-    aspect-ratio: 1141/502;
+    background: url('../images/home_image.png') no-repeat center/cover;
+    min-height: 580px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
-    padding: 0 24px;
+    padding: 100px 24px 72px;
     margin-bottom: 60px;
-    border-radius: 0 0 28px 28px;
+    border-radius: 0 0 32px 32px;
     position: relative;
     overflow: hidden;
 }
@@ -49,40 +18,98 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(10,22,40,0.55) 100%);
+    background: linear-gradient(160deg, rgba(0,0,0,0.08) 0%, rgba(10,22,40,0.68) 100%);
     border-radius: inherit;
 }
 .hero > * { position: relative; z-index: 1; }
 .hero h2 {
-    font-size: 2.6em;
+    font-size: 3.2em;
     font-weight: 800;
-    letter-spacing: -1px;
-    line-height: 1.2;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
-    margin-bottom: 12px;
+    letter-spacing: -1.5px;
+    line-height: 1.18;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.35);
+    margin-bottom: 16px;
 }
-.hero p {
+.hero > p {
     font-size: 1.05em;
     font-weight: 400;
-    opacity: 0.88;
-    margin-bottom: 28px;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+    opacity: 0.85;
+    margin-bottom: 36px;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+    letter-spacing: -0.2px;
 }
-.hero button {
-    padding: 14px 32px;
-    font-size: 0.95em;
-    font-weight: 700;
-    color: #fff;
+
+/* Hero 검색창 */
+.hero-search {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 100px;
+    padding: 6px 6px 6px 24px;
+    width: 100%;
+    max-width: 560px;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.28);
+    margin-bottom: 20px;
+    gap: 8px;
+}
+.hero-search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    font-family: inherit;
+    background: transparent;
+    color: #222;
+    min-width: 0;
+    letter-spacing: -0.2px;
+}
+.hero-search input::placeholder { color: #aaa; }
+.hero-search button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 24px;
     background: #0EA5C9;
     border: none;
     border-radius: 100px;
+    color: #fff;
+    font-size: 0.95em;
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    letter-spacing: -0.2px;
     font-family: inherit;
-    box-shadow: 0 4px 20px rgba(14,165,201,0.45);
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: -0.2px;
+    flex-shrink: 0;
 }
-.hero button:hover { background: #0B8CAA; transform: translateY(-2px); }
+.hero-search button:hover { background: #0B8CAA; transform: scale(1.03); }
+.hero-search button img { width: 15px; height: 15px; filter: brightness(0) invert(1); }
+
+/* Hero 태그 버튼 */
+.hero-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.hero-tag {
+    padding: 8px 18px;
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.5);
+    border-radius: 100px;
+    color: #fff;
+    font-size: 0.88em;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.18s, border-color 0.18s, transform 0.15s;
+    letter-spacing: -0.2px;
+    backdrop-filter: blur(6px);
+}
+.hero-tag:hover {
+    background: rgba(255,255,255,0.28);
+    border-color: rgba(255,255,255,0.8);
+    transform: translateY(-1px);
+}
 
 /* 섹션 헤더 */
 .section-header {
