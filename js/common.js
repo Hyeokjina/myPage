@@ -45,9 +45,9 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e =
     document.getElementById('dark-btn').textContent = e.matches ? '☀️' : '🌙';
 });
 
-// 네비게이션 active 자동화
+// 네비게이션 active 자동화 (헤더 nav + 하단 탭바 공통)
 const currentFile = location.pathname.split('/').pop() || 'index.html';
-document.querySelectorAll('nav a').forEach(a => {
+document.querySelectorAll('nav a, .bottom-nav a').forEach(a => {
     a.classList.remove('active');
     if (a.getAttribute('href') === currentFile) {
         a.classList.add('active');
