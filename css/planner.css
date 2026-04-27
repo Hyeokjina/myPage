@@ -532,25 +532,63 @@ body.dark .cat-filter-btn.active {
   color: #fff;
 }
 
+/* 타임라인 컨테이너 */
 #schedule-list {
   list-style: none;
-  padding: 0;
+  padding: 0 0 0 36px;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0;
+  position: relative;
+}
+#schedule-list::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: linear-gradient(to bottom, #0EA5C9 0%, #e0f2fe 100%);
+  border-radius: 2px;
 }
 
 .schedule-card {
+  position: relative;
+  margin-bottom: 14px;
   background: #fff;
-  border-radius: 10px;
-  padding: 18px 24px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
+
+/* 타임라인 도트 */
+.schedule-card::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #0EA5C9;
+  box-shadow: 0 0 0 3px rgba(14,165,201,0.15);
+  z-index: 1;
+}
+.schedule-card[data-category="관광"]::before { border-color: #0EA5C9; box-shadow: 0 0 0 3px rgba(14,165,201,0.15); }
+.schedule-card[data-category="식사"]::before  { border-color: #e67e22; box-shadow: 0 0 0 3px rgba(230,126,34,0.15); }
+.schedule-card[data-category="숙박"]::before  { border-color: #9b59b6; box-shadow: 0 0 0 3px rgba(155,89,182,0.15); }
+.schedule-card[data-category="교통"]::before  { border-color: #3498db; box-shadow: 0 0 0 3px rgba(52,152,219,0.15); }
+.schedule-card[data-category="쇼핑"]::before  { border-color: #e91e8c; box-shadow: 0 0 0 3px rgba(233,30,140,0.15); }
+.schedule-card[data-category="기타"]::before  { border-color: #95a5a6; box-shadow: 0 0 0 3px rgba(149,165,166,0.15); }
 
 /* 카테고리 좌측 컬러 바 */
 .cat-bar {
@@ -558,7 +596,7 @@ body.dark .cat-filter-btn.active {
   align-self: stretch;
   border-radius: 4px;
   flex-shrink: 0;
-  margin: -18px -16px -18px -24px;
+  margin: -16px -8px -16px -18px;
 }
 
 .cat-bar.cat-관광 { background: #0EA5C9; }
@@ -650,7 +688,10 @@ body.dark .cat-filter-btn.active {
 
 /* 카드 클릭 힌트 */
 .schedule-card { cursor: pointer; }
-.schedule-card:hover { transform: translateY(-2px); }
+.schedule-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+}
 
 /* 일정 수정 경고 */
 .edit-warn {
@@ -727,10 +768,16 @@ body.dark .modal-overlay { background: rgba(0,0,0,0.6); }
 
 body.dark .form-group input[type="date"] { color-scheme: dark; }
 
+body.dark #schedule-list::before {
+  background: linear-gradient(to bottom, #0EA5C9 0%, #0a2535 100%);
+}
+body.dark .schedule-card::before { background: #0F2035; }
+
 body.dark .add-section,
 body.dark .schedule-card {
   background: #0F2035;
   box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  border-color: rgba(255,255,255,0.04);
 }
 
 body.dark .add-section h2,
