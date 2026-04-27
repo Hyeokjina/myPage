@@ -142,6 +142,44 @@ document.getElementById('edit-review-form').addEventListener('submit', e => {
   renderList();
 });
 
+// 별점 분포 요약
+function renderRatingSummary() {
+  const all = getReviews();
+  const el = {
+    avg: document.getElementById('rating-avg-num'),
+    stars: document.getElementById('rating-avg-stars'),
+    label: document.getElementById('rating-avg-label'),
+  };
+  if (!el.avg) return;
+
+  if (all.length === 0) {
+    el.avg.textContent = '-';
+    el.stars.textContent = '☆☆☆☆☆';
+    el.label.textContent = '아직 후기가 없습니다';
+    [1,2,3,4,5].forEach(n => {
+      document.getElementById(`bar-${n}`).style.width = '0%';
+      document.getElementById(`cnt-${n}`).textContent = '0';
+    });
+    return;
+  }
+
+  const total = all.length;
+  const avg = all.reduce((s, r) => s + r.rating, 0) / total;
+  el.avg.textContent = avg.toFixed(1);
+  el.label.textContent = `총 ${total}개 후기`;
+
+  const filled = Math.round(avg);
+  el.stars.textContent = '★'.repeat(filled) + '☆'.repeat(5 - filled);
+
+  const counts = {1:0, 2:0, 3:0, 4:0, 5:0};
+  all.forEach(r => counts[r.rating]++);
+  const max = Math.max(...Object.values(counts), 1);
+  [1,2,3,4,5].forEach(n => {
+    document.getElementById(`bar-${n}`).style.width = `${(counts[n] / max) * 100}%`;
+    document.getElementById(`cnt-${n}`).textContent = counts[n];
+  });
+}
+
 // 렌더링
 function renderList() {
   const filterVal = document.getElementById('filter-region').value;
@@ -244,6 +282,7 @@ function renderList() {
   });
 
   renderPagination(totalPages);
+  renderRatingSummary();
 }
 
 function renderPagination(totalPages) {

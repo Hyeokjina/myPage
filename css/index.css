@@ -115,27 +115,53 @@
 .section-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    align-items: flex-start;
+    margin-bottom: 24px;
 }
+.section-header-text { display: flex; flex-direction: column; gap: 4px; }
 .section-header h2 {
     color: #1E3A5F;
-    font-size: 1.4em;
+    font-size: 1.45em;
     font-weight: 800;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.section-header h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #0EA5C9;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+.section-subtitle {
+    font-size: 0.82em;
+    color: #999;
+    letter-spacing: -0.2px;
+    padding-left: 12px;
 }
 .more-btn {
     text-decoration: none;
     color: #0EA5C9;
     font-weight: 600;
     font-size: 0.85em;
-    padding: 6px 14px;
-    border-radius: 100px;
-    border: 1.5px solid #0EA5C9;
-    transition: background 0.18s, color 0.18s;
+    transition: color 0.18s, gap 0.18s;
     letter-spacing: -0.2px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    white-space: nowrap;
+    padding-top: 4px;
 }
-.more-btn:hover { background: #0EA5C9; color: #fff; }
+.more-btn::after { content: '→'; transition: transform 0.18s; }
+.more-btn:hover { color: #0B8CAA; }
+.more-btn:hover::after { transform: translateX(3px); }
+
+body.dark .section-header h2 { color: #e8f4fb; }
+body.dark .section-subtitle { color: #5a7a8a; }
 
 /* 장소 카드 */
 .places, .lodging {
@@ -414,9 +440,6 @@ body.dark .places li, body.dark .lodging li {
 }
 body.dark .places li h3, body.dark .lodging li h3 { color: #e8f4fb; }
 body.dark .places li p { color: #7a94a8; }
-body.dark .places li button { background: #0A2535; color: #7EC8E3; }
-body.dark .places li button:hover { background: #0EA5C9; color: #fff; }
-body.dark .section-header h2 { color: #e8f4fb; }
 body.dark .modal { background: #0F2035; }
 body.dark .modal h3 { color: #e8f4fb; }
 body.dark .modal-list li { background: #0A1628; }
