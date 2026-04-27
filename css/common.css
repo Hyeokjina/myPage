@@ -52,9 +52,9 @@ a.logo { text-decoration: none; }
 }
 .icon { width: 28px; height: 28px; }
 
-/* 네비게이션 */
-nav ul { display: flex; list-style: none; gap: 4px; }
-nav a {
+/* 헤더 네비게이션 */
+header nav ul { display: flex; list-style: none; gap: 4px; }
+header nav a {
     text-decoration: none;
     color: #444;
     font-weight: 500;
@@ -64,8 +64,8 @@ nav a {
     transition: background 0.18s, color 0.18s;
     letter-spacing: -0.2px;
 }
-nav a:hover { background: #f0f4f8; color: #1E3A5F; }
-nav a.active {
+header nav a:hover { background: #f0f4f8; color: #1E3A5F; }
+header nav a.active {
     background: #1E3A5F;
     color: #fff;
     font-weight: 600;
@@ -170,9 +170,9 @@ body.dark header {
     box-shadow: 0 1px 0 rgba(255,255,255,0.06);
 }
 body.dark .logo h1 { color: #e8f4fb; }
-body.dark nav a { color: #b0c8d8; }
-body.dark nav a:hover { background: #1a2e42; color: #e8f4fb; }
-body.dark nav a.active { background: #0EA5C9; color: #fff; }
+body.dark header nav a { color: #b0c8d8; }
+body.dark header nav a:hover { background: #1a2e42; color: #e8f4fb; }
+body.dark header nav a.active { background: #0EA5C9; color: #fff; }
 body.dark footer { background: #060D1A; }
 body.dark .dark-toggle { background: #1a2e42; }
 body.dark .dark-toggle:hover { background: #243d55; }
@@ -250,7 +250,7 @@ body.dark .bottom-nav a.active { color: #0EA5C9; }
 @media (max-width: 900px) {
     header { height: 56px; padding: 0 20px; }
     .hamburger { display: block; }
-    nav {
+    header nav {
         display: none;
         position: absolute;
         top: 56px;
@@ -263,10 +263,10 @@ body.dark .bottom-nav a.active { color: #0EA5C9; }
         padding: 12px 16px 20px;
         z-index: 99;
     }
-    nav.open { display: block; }
-    nav ul { flex-direction: column; gap: 2px; }
-    nav a { display: block; padding: 11px 16px; border-radius: 12px; font-size: 1em; }
-    body.dark nav {
+    header nav.open { display: block; }
+    header nav ul { flex-direction: column; gap: 2px; }
+    header nav a { display: block; padding: 11px 16px; border-radius: 12px; font-size: 1em; }
+    body.dark header nav {
         background: rgba(15,32,53,0.97);
         box-shadow: 0 12px 32px rgba(0,0,0,0.4);
     }

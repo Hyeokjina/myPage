@@ -15,7 +15,7 @@ document.querySelectorAll('.places li, .lodging li, .card, .region-card, .lodgin
 });
 
 function toggleNav() {
-    document.querySelector('nav').classList.toggle('open');
+    document.querySelector('header nav').classList.toggle('open');
 }
 
 function toggleDark() {
