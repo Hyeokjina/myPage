@@ -232,7 +232,7 @@ function renderList() {
     top.className = 'card-top';
 
     const badge = document.createElement('span');
-    badge.className = 'region-badge';
+    badge.className = `region-badge region-${review.region}`;
     badge.textContent = review.region;
 
     const starEl = document.createElement('span');
