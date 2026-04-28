@@ -1,0 +1,188 @@
+/* 지역 히어로 */
+.region-hero {
+    background-size: cover;
+    background-position: center;
+    min-height: 360px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 0;
+    border-radius: 0 0 28px 28px;
+    overflow: hidden;
+}
+.region-hero-overlay {
+    width: 100%;
+    padding: 48px 40px 40px;
+    background: linear-gradient(to top, rgba(10,22,40,0.82) 0%, rgba(10,22,40,0.1) 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.region-hero-tag {
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #0EA5C9;
+    background: rgba(14,165,201,0.18);
+    border: 1px solid rgba(14,165,201,0.4);
+    padding: 4px 12px;
+    border-radius: 100px;
+    display: inline-block;
+    width: fit-content;
+    letter-spacing: -0.1px;
+}
+.region-hero-overlay h2 {
+    font-size: 2.8em;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -1.5px;
+    margin: 0;
+    line-height: 1.1;
+}
+.region-hero-overlay p {
+    font-size: 1em;
+    color: rgba(255,255,255,0.75);
+    margin: 0;
+}
+.region-back-btn {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.82em;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.18s;
+    width: fit-content;
+}
+.region-back-btn:hover { color: #fff; }
+
+/* 정보 그리드 */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 14px;
+    margin-top: 28px;
+}
+.info-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+.info-icon { font-size: 1.4em; }
+.info-card strong { font-size: 0.82em; font-weight: 700; color: #1E3A5F; }
+.info-card span { font-size: 0.82em; color: #777; line-height: 1.4; }
+
+/* 카드 이미지 배너 (이미지 없을 때 색상 대체) */
+.card-img-banner {
+    width: 100%;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    border-radius: 0;
+}
+.banner-blue   { background: linear-gradient(135deg, #1E3A5F 0%, #0EA5C9 100%); }
+.banner-teal   { background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%); }
+.banner-pink   { background: linear-gradient(135deg, #be185d 0%, #f472b6 100%); }
+.banner-amber  { background: linear-gradient(135deg, #92400e 0%, #f59e0b 100%); }
+.banner-purple { background: linear-gradient(135deg, #6d28d9 0%, #a78bfa 100%); }
+.banner-green  { background: linear-gradient(135deg, #065f46 0%, #34d399 100%); }
+.banner-orange { background: linear-gradient(135deg, #c2410c 0%, #fb923c 100%); }
+.banner-sky    { background: linear-gradient(135deg, #0369a1 0%, #38bdf8 100%); }
+.banner-rose   { background: linear-gradient(135deg, #9f1239 0%, #fb7185 100%); }
+
+/* 추천 코스 */
+.course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 8px;
+}
+.course-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 22px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+.course-day {
+    font-size: 0.75em;
+    font-weight: 800;
+    color: #fff;
+    background: #0EA5C9;
+    padding: 6px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+    letter-spacing: -0.2px;
+    flex-shrink: 0;
+}
+.course-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.course-content strong {
+    font-size: 0.95em;
+    font-weight: 700;
+    color: #1E3A5F;
+    letter-spacing: -0.3px;
+}
+.course-content span {
+    font-size: 0.85em;
+    color: #777;
+    letter-spacing: -0.2px;
+}
+
+/* 추천 음식 */
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+}
+.food-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px 14px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.food-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.food-emoji { font-size: 2em; }
+.food-card strong { font-size: 0.9em; font-weight: 700; color: #1E3A5F; }
+.food-card span { font-size: 0.75em; color: #999; }
+
+/* 다크 모드 */
+body.dark .info-card { background: #0F2035; border-color: rgba(255,255,255,0.04); }
+body.dark .info-card strong { color: #e8f4fb; }
+body.dark .info-card span { color: #7a94a8; }
+body.dark .course-item { background: #0F2035; border-color: rgba(255,255,255,0.04); }
+body.dark .course-content strong { color: #e8f4fb; }
+body.dark .course-content span { color: #7a94a8; }
+body.dark .food-card { background: #0F2035; border-color: rgba(255,255,255,0.04); }
+body.dark .food-card strong { color: #e8f4fb; }
+body.dark .food-card span { color: #5a7a8a; }
+
+/* 반응형 */
+@media (max-width: 600px) {
+    .region-hero { min-height: 260px; }
+    .region-hero-overlay { padding: 32px 20px 28px; }
+    .region-hero-overlay h2 { font-size: 2em; }
+    .info-grid { grid-template-columns: repeat(2, 1fr); }
+    .course-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .food-grid { grid-template-columns: repeat(3, 1fr); }
+}

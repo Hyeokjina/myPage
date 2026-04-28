@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./icon/bridge.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울 - 인천 여행지 소개</title>
+    <meta name="description" content="대한민국의 수도 서울의 역사, 주요 관광지, 추천 코스를 소개합니다.">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/region-detail.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="./icon/bridge.png" alt="로고" class="icon">
+            <h1>서울</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="about.html">소개</a></li>
+                <li><a href="reviews.html">후기</a></li>
+                <li><a href="planner.html">플래너</a></li>
+                <li><a href="contact.html">문의</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger">☰</button>
+        <button class="dark-toggle" id="dark-btn">🌙</button>
+    </header>
+
+    <button class="back-to-top" id="back-to-top">↑</button>
+
+    <aside class="side-menu">
+        <h3>목차</h3>
+        <ul>
+            <li><a href="#overview">소개</a></li>
+            <li><a href="#history">역사</a></li>
+            <li><a href="#attractions">주요 관광지</a></li>
+            <li><a href="#course">추천 코스</a></li>
+            <li><a href="#food">추천 음식</a></li>
+        </ul>
+    </aside>
+
+    <!-- 히어로 -->
+    <div class="region-hero" style="background-image: url('./images/seoul.png');">
+        <div class="region-hero-overlay">
+            <span class="region-hero-tag">대한민국 수도</span>
+            <h2>서울</h2>
+            <p>600년 역사와 현대가 공존하는 도시</p>
+            <a href="regions.html" class="region-back-btn">← 인기 지역으로</a>
+        </div>
+    </div>
+
+    <!-- 소개 -->
+    <div class="container" id="overview">
+        <h2>서울 소개</h2>
+        <p>서울은 대한민국의 수도이자 최대 도시로, 인구 약 1,000만 명이 거주하는 동아시아의 대표적인 메트로폴리탄입니다. 한강을 중심으로 남북으로 나뉘며, 경복궁·창덕궁 등 조선시대 궁궐과 초고층 빌딩이 어우러진 독특한 도시 풍경을 자랑합니다.</p>
+        <p>K-pop, K-드라마, K-푸드 등 한류 문화의 중심지로 전 세계 관광객이 찾는 국제도시이기도 합니다. 명동의 쇼핑, 홍대의 젊음, 인사동의 전통, 강남의 세련됨까지 각 지역마다 뚜렷한 개성을 가지고 있어 방문할 때마다 새로운 매력을 발견할 수 있습니다.</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-icon">🗺️</span>
+                <strong>위치</strong>
+                <span>대한민국 중부, 한강 유역</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">👥</span>
+                <strong>인구</strong>
+                <span>약 1,000만 명</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">🌡️</span>
+                <strong>기후</strong>
+                <span>4계절 뚜렷, 여름 덥고 겨울 추움</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">✈️</span>
+                <strong>교통</strong>
+                <span>인천공항·김포공항, 지하철 9호선</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 역사 -->
+    <div class="container" id="history">
+        <h2>서울의 역사</h2>
+        <p>서울의 역사는 기원전으로 거슬러 올라갑니다. 백제의 첫 번째 수도 위례성이 현재의 서울 지역에 위치했으며, 이후 고구려와 신라가 번갈아 지배하며 삼국시대 내내 전략적 요충지로 중요하게 여겨졌습니다.</p>
+        <p>1392년 조선을 건국한 태조 이성계는 이듬해 한양(漢陽)으로 천도하여 경복궁을 짓고 도성을 정비했습니다. 이후 500여 년간 조선의 수도로서 정치·경제·문화의 중심지 역할을 했습니다. 사대문(四大門)과 청계천, 종로 등이 이 시기에 형성되었습니다.</p>
+        <p>일제강점기(1910~1945)에는 경성(京城)으로 불리며 식민 통치의 중심지가 되었고, 1945년 광복 이후 대한민국의 수도 서울로 거듭났습니다. 1950년 한국전쟁으로 폐허가 되었지만, 이후 '한강의 기적'으로 불리는 급속한 경제 성장과 함께 현대적인 도시로 재건되었습니다. 1988년 서울 올림픽은 서울이 세계 무대에 발돋움하는 계기가 되었습니다.</p>
+    </div>
+
+    <!-- 주요 관광지 -->
+    <div class="container card-section" id="attractions">
+        <h2>주요 관광지</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-img-banner banner-blue">🏯</div>
+                <div class="card-content">
+                    <h3>경복궁</h3>
+                    <p>조선 왕조 최대 규모의 궁궐. 근정전, 경회루, 향원정 등 아름다운 전각이 가득하며 수문장 교대식이 유명합니다.</p>
+                    <a href="#" data-detail="gyeongbok">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-teal">🗼</div>
+                <div class="card-content">
+                    <h3>N서울타워</h3>
+                    <p>남산 위에 솟은 서울의 랜드마크. 전망대에서 서울 전경을 한눈에 볼 수 있으며 야경이 특히 아름답습니다.</p>
+                    <a href="#" data-detail="namsan">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-pink">🛍️</div>
+                <div class="card-content">
+                    <h3>명동</h3>
+                    <p>서울 최대의 쇼핑·관광 중심지. 코스메틱, 패션, 거리 음식이 가득한 거리로 외국인 관광객에게도 인기가 높습니다.</p>
+                    <a href="#" data-detail="myeongdong">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-amber">🏘️</div>
+                <div class="card-content">
+                    <h3>북촌한옥마을</h3>
+                    <p>600여 채의 한옥이 밀집한 전통 마을. 경복궁과 창덕궁 사이에 위치하며 고즈넉한 골목 산책이 매력적입니다.</p>
+                    <a href="#" data-detail="bukchon">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-purple">🎵</div>
+                <div class="card-content">
+                    <h3>홍대</h3>
+                    <p>젊음과 예술, 클럽 문화의 중심지. 개성 넘치는 카페와 소품숍, 버스킹 공연이 연중 이어지는 활기찬 거리입니다.</p>
+                    <a href="#" data-detail="hongdae">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-green">🎎</div>
+                <div class="card-content">
+                    <h3>인사동</h3>
+                    <p>전통 공예품과 갤러리, 찻집이 즐비한 문화 거리. 한국 전통문화를 체험하기에 가장 좋은 장소입니다.</p>
+                    <a href="#" data-detail="insadong">자세히 보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추천 코스 -->
+    <div class="container" id="course">
+        <h2>추천 여행 코스</h2>
+        <div class="course-list">
+            <div class="course-item">
+                <div class="course-day">Day 1</div>
+                <div class="course-content">
+                    <strong>고궁 & 전통문화</strong>
+                    <span>경복궁 → 북촌한옥마을 → 인사동 → 광장시장</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">Day 2</div>
+                <div class="course-content">
+                    <strong>도심 & 야경</strong>
+                    <span>명동 → 남산 N서울타워 → 한강공원 → 홍대</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">Day 3</div>
+                <div class="course-content">
+                    <strong>현대 서울</strong>
+                    <span>DDP 동대문 → 강남 COEX → 잠실 롯데월드</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추천 음식 -->
+    <div class="container" id="food">
+        <h2>추천 음식</h2>
+        <div class="food-grid">
+            <div class="food-card">
+                <span class="food-emoji">🥩</span>
+                <strong>삼겹살</strong>
+                <span>신촌·홍대 골목 고기집</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🍜</span>
+                <strong>설렁탕</strong>
+                <span>종로 노포 설렁탕 골목</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🥘</span>
+                <strong>순대국밥</strong>
+                <span>광장시장 순대 타운</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🍣</span>
+                <strong>회·초밥</strong>
+                <span>노량진 수산시장</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🧇</span>
+                <strong>빈대떡</strong>
+                <span>광장시장 먹자골목</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🍦</span>
+                <strong>팥빙수</strong>
+                <span>인사동·북촌 카페</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 상세 모달 -->
+    <div class="detail-overlay" id="detail-overlay">
+        <div class="detail-modal" id="detail-modal">
+            <div class="detail-modal-body">
+                <h3 id="detail-title"></h3>
+                <p id="detail-desc"></p>
+                <div class="detail-info" id="detail-info"></div>
+                <button class="detail-close">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./icon/facebook.png" alt="페이스북"></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./icon/instagram.png" alt="인스타그램"></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><img src="./icon/twitter.png" alt="트위터"></a>
+        </div>
+        <p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
+        <p>문의: example@email.com | 전화: 010-1234-5678</p>
+    </footer>
+
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="index.html"><span class="tab-icon">🏠</span>홈</a></li>
+            <li><a href="about.html"><span class="tab-icon">📍</span>소개</a></li>
+            <li><a href="reviews.html"><span class="tab-icon">⭐</span>후기</a></li>
+            <li><a href="planner.html"><span class="tab-icon">📅</span>플래너</a></li>
+            <li><a href="contact.html"><span class="tab-icon">💬</span>문의</a></li>
+        </ul>
+    </nav>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/region-detail.js"></script>
+</body>
+</html>

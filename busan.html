@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./icon/bridge.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부산 - 인천 여행지 소개</title>
+    <meta name="description" content="대한민국 제2의 도시 부산의 역사, 주요 관광지, 추천 코스를 소개합니다.">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/region-detail.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="./icon/bridge.png" alt="로고" class="icon">
+            <h1>부산</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="about.html">소개</a></li>
+                <li><a href="reviews.html">후기</a></li>
+                <li><a href="planner.html">플래너</a></li>
+                <li><a href="contact.html">문의</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger">☰</button>
+        <button class="dark-toggle" id="dark-btn">🌙</button>
+    </header>
+
+    <button class="back-to-top" id="back-to-top">↑</button>
+
+    <aside class="side-menu">
+        <h3>목차</h3>
+        <ul>
+            <li><a href="#overview">소개</a></li>
+            <li><a href="#history">역사</a></li>
+            <li><a href="#attractions">주요 관광지</a></li>
+            <li><a href="#course">추천 코스</a></li>
+            <li><a href="#food">추천 음식</a></li>
+        </ul>
+    </aside>
+
+    <!-- 히어로 -->
+    <div class="region-hero" style="background-image: url('./images/busan.png');">
+        <div class="region-hero-overlay">
+            <span class="region-hero-tag">대한민국 제2의 도시</span>
+            <h2>부산</h2>
+            <p>바다와 산이 어우러진 항구 도시</p>
+            <a href="regions.html" class="region-back-btn">← 인기 지역으로</a>
+        </div>
+    </div>
+
+    <!-- 소개 -->
+    <div class="container" id="overview">
+        <h2>부산 소개</h2>
+        <p>부산은 대한민국 제2의 도시이자 최대 항구 도시로, 인구 약 340만 명이 거주합니다. 동쪽과 남쪽으로는 바다, 북쪽으로는 험준한 산이 둘러싸인 독특한 지형 덕분에 도심 속 해변과 산이 공존하는 아름다운 도시입니다.</p>
+        <p>해운대 해수욕장, 광안리 해수욕장 등 유명 해변과 함께 자갈치 시장의 신선한 해산물, 감천문화마을의 알록달록한 골목, 국제영화제로 유명한 문화 도시이기도 합니다. 여름 피서지로는 물론, 사계절 내내 매력을 뽐내는 여행지입니다.</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-icon">🗺️</span>
+                <strong>위치</strong>
+                <span>대한민국 남동부, 낙동강 하구</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">👥</span>
+                <strong>인구</strong>
+                <span>약 340만 명</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">🌡️</span>
+                <strong>기후</strong>
+                <span>해양성 기후, 여름 습하고 겨울 온난</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">✈️</span>
+                <strong>교통</strong>
+                <span>김해국제공항, KTX 부산역</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 역사 -->
+    <div class="container" id="history">
+        <h2>부산의 역사</h2>
+        <p>부산은 선사시대부터 사람이 거주한 유서 깊은 도시입니다. 조선시대에는 동래부(東萊府)로 불리며 일본과의 교역 창구인 왜관이 설치되어 한일 교류의 요충지 역할을 했습니다. 특히 임진왜란(1592년) 당시에는 이순신 장군이 활약한 주요 격전지이기도 했습니다.</p>
+        <p>1876년 강화도 조약 체결로 부산이 최초로 개항되면서 근대 도시로의 발전이 시작되었습니다. 일제강점기에는 부산항이 대륙 진출의 관문으로 급성장했으며, 해방 후에도 대한민국 최대 무역항으로서 경제 발전을 이끌었습니다.</p>
+        <p>한국전쟁(1950~1953) 기간에는 임시수도로서 전국 각지의 피란민을 받아들였으며, 이 시기 형성된 달동네 문화가 오늘날 감천문화마을의 기원이 되었습니다. 1996년부터 시작된 부산국제영화제(BIFF)는 부산을 아시아 최대의 영화 문화도시로 자리매김하게 했습니다.</p>
+    </div>
+
+    <!-- 주요 관광지 -->
+    <div class="container card-section" id="attractions">
+        <h2>주요 관광지</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-img-banner banner-sky">🏖️</div>
+                <div class="card-content">
+                    <h3>해운대 해수욕장</h3>
+                    <p>대한민국 최대 해수욕장으로 여름이면 수백만 명이 찾는 부산 최고의 명소. 마린시티의 야경과 함께 즐기면 더욱 특별합니다.</p>
+                    <a href="#" data-detail="haeundae">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-blue">🌉</div>
+                <div class="card-content">
+                    <h3>광안리 해수욕장</h3>
+                    <p>광안대교의 야경이 아름다운 해변. 해운대보다 조용한 분위기로 카페와 맛집이 즐비하며 드라이브 코스로도 유명합니다.</p>
+                    <a href="#" data-detail="gwangan">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-amber">🎨</div>
+                <div class="card-content">
+                    <h3>감천문화마을</h3>
+                    <p>태극도 신자들이 피란 시절 형성한 달동네가 예술 마을로 탈바꿈. 알록달록한 집들과 골목길이 독특한 경관을 만들어냅니다.</p>
+                    <a href="#" data-detail="gamcheon">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-teal">🐟</div>
+                <div class="card-content">
+                    <h3>자갈치 시장</h3>
+                    <p>대한민국 최대 수산물 시장. 활어회, 해산물, 건어물 등 싱싱한 해산물을 저렴하게 즐길 수 있어 미식 여행의 필수 코스입니다.</p>
+                    <a href="#" data-detail="jagalchi">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-green">🌊</div>
+                <div class="card-content">
+                    <h3>태종대</h3>
+                    <p>깎아지른 절벽과 기암괴석, 에메랄드빛 바다가 어우러진 천혜의 절경. 다누비 열차를 타고 순환하며 여러 전망 포인트를 즐길 수 있습니다.</p>
+                    <a href="#" data-detail="taejongdae">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-purple">🎬</div>
+                <div class="card-content">
+                    <h3>BIFF 광장</h3>
+                    <p>부산국제영화제의 중심지. 핸드프린팅 거리, 영화 관련 조형물, 다양한 거리 공연이 펼쳐지는 문화 명소입니다.</p>
+                    <a href="#" data-detail="biff">자세히 보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추천 코스 -->
+    <div class="container" id="course">
+        <h2>추천 여행 코스</h2>
+        <div class="course-list">
+            <div class="course-item">
+                <div class="course-day">Day 1</div>
+                <div class="course-content">
+                    <strong>해변 & 야경</strong>
+                    <span>해운대 해수욕장 → 동백섬 → 광안리 → 광안대교 야경</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">Day 2</div>
+                <div class="course-content">
+                    <strong>문화 & 미식</strong>
+                    <span>자갈치 시장 → 남포동 → BIFF 광장 → 감천문화마을</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">Day 3</div>
+                <div class="course-content">
+                    <strong>자연 절경</strong>
+                    <span>태종대 → 송도 해수욕장 → 암남공원 → 용두산공원</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추천 음식 -->
+    <div class="container" id="food">
+        <h2>추천 음식</h2>
+        <div class="food-grid">
+            <div class="food-card">
+                <span class="food-emoji">🐟</span>
+                <strong>회·해산물</strong>
+                <span>자갈치·해운대 횟집</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🍲</span>
+                <strong>돼지국밥</strong>
+                <span>부산식 구수한 국밥</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🌮</span>
+                <strong>씨앗호떡</strong>
+                <span>남포동 명물 길거리 간식</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🍜</span>
+                <strong>밀면</strong>
+                <span>부산 향토 냉면 요리</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🦀</span>
+                <strong>꽃게탕</strong>
+                <span>기장·해운대 해산물 식당</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🍢</span>
+                <strong>어묵</strong>
+                <span>부산 국제시장 어묵 골목</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 상세 모달 -->
+    <div class="detail-overlay" id="detail-overlay">
+        <div class="detail-modal" id="detail-modal">
+            <div class="detail-modal-body">
+                <h3 id="detail-title"></h3>
+                <p id="detail-desc"></p>
+                <div class="detail-info" id="detail-info"></div>
+                <button class="detail-close">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./icon/facebook.png" alt="페이스북"></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./icon/instagram.png" alt="인스타그램"></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><img src="./icon/twitter.png" alt="트위터"></a>
+        </div>
+        <p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
+        <p>문의: example@email.com | 전화: 010-1234-5678</p>
+    </footer>
+
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="index.html"><span class="tab-icon">🏠</span>홈</a></li>
+            <li><a href="about.html"><span class="tab-icon">📍</span>소개</a></li>
+            <li><a href="reviews.html"><span class="tab-icon">⭐</span>후기</a></li>
+            <li><a href="planner.html"><span class="tab-icon">📅</span>플래너</a></li>
+            <li><a href="contact.html"><span class="tab-icon">💬</span>문의</a></li>
+        </ul>
+    </nav>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/region-detail.js"></script>
+</body>
+</html>
