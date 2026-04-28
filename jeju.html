@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./icon/bridge.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제주 - 인천 여행지 소개</title>
+    <meta name="description" content="대한민국 최고의 휴양지 제주도의 역사, 주요 관광지, 추천 코스를 소개합니다.">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/region-detail.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="./icon/bridge.png" alt="로고" class="icon">
+            <h1>제주</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="about.html">소개</a></li>
+                <li><a href="reviews.html">후기</a></li>
+                <li><a href="planner.html">플래너</a></li>
+                <li><a href="contact.html">문의</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger">☰</button>
+        <button class="dark-toggle" id="dark-btn">🌙</button>
+    </header>
+
+    <button class="back-to-top" id="back-to-top">↑</button>
+
+    <aside class="side-menu">
+        <h3>목차</h3>
+        <ul>
+            <li><a href="#overview">소개</a></li>
+            <li><a href="#history">역사</a></li>
+            <li><a href="#attractions">주요 관광지</a></li>
+            <li><a href="#course">추천 코스</a></li>
+            <li><a href="#food">추천 음식</a></li>
+        </ul>
+    </aside>
+
+    <!-- 히어로 -->
+    <div class="region-hero" style="background-image: url('./images/jeju.png');">
+        <div class="region-hero-overlay">
+            <span class="region-hero-tag">유네스코 세계자연유산</span>
+            <h2>제주</h2>
+            <p>바람과 돌과 여자가 많은 삼다(三多)의 섬</p>
+            <a href="regions.html" class="region-back-btn">← 인기 지역으로</a>
+        </div>
+    </div>
+
+    <!-- 소개 -->
+    <div class="container" id="overview">
+        <h2>제주 소개</h2>
+        <p>제주도는 대한민국 최남단에 위치한 화산섬으로, 면적 1,849㎢의 우리나라에서 가장 큰 섬입니다. 한라산, 성산일출봉, 거문오름 용암동굴계가 유네스코 세계자연유산으로 지정되어 있으며, 섬 전체가 유네스코 생물권보전지역이기도 합니다.</p>
+        <p>에메랄드빛 바다, 한라산 정상의 백록담, 오름이라 불리는 수백 개의 소화산, 검은 현무암 해안 등 독특한 자연 경관이 가득합니다. 한국의 하와이라 불릴 만큼 아름다운 경치와 온난한 기후로 연간 1,500만 명 이상이 방문하는 최고의 국내 휴양지입니다.</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-icon">🗺️</span>
+                <strong>위치</strong>
+                <span>대한민국 최남단, 한반도 남서쪽</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">👥</span>
+                <strong>인구</strong>
+                <span>약 67만 명</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">🌡️</span>
+                <strong>기후</strong>
+                <span>아열대성, 연평균 기온 16°C</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">✈️</span>
+                <strong>교통</strong>
+                <span>제주국제공항, 여객선 (목포·완도)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 역사 -->
+    <div class="container" id="history">
+        <h2>제주의 역사</h2>
+        <p>제주도는 약 180만 년 전 화산 활동으로 형성되었습니다. 탐라국(耽羅國)이라는 독립 왕국으로 오랫동안 존재했으며, 삼국시대부터 고려시대에 걸쳐 독자적인 문화와 언어를 발전시켰습니다. 탐라가 고려에 완전히 편입된 것은 1105년의 일입니다.</p>
+        <p>고려시대 말 원나라의 지배를 받으며 몽골 목마장이 설치되어 말 사육이 성행했고, 이는 지금도 제주마 문화로 이어집니다. 조선시대에는 유배지로 활용되어 많은 학자와 문인들이 제주에서 귀양살이를 하며 제주 문화에 영향을 미쳤습니다.</p>
+        <p>1948년 4·3 사건은 제주 현대사의 가장 아픈 상처로, 무고한 주민 다수가 희생된 비극적인 사건입니다. 이를 기억하는 4·3 평화공원이 조성되어 있습니다. 1991년 제주도가 국제자유도시로 지정되면서 관광·교육·첨단산업의 중심지로 도약하고 있습니다.</p>
+    </div>
+
+    <!-- 주요 관광지 -->
+    <div class="container card-section" id="attractions">
+        <h2>주요 관광지</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-img-banner banner-green">⛰️</div>
+                <div class="card-content">
+                    <h3>한라산</h3>
+                    <p>해발 1,950m 대한민국 최고봉. 유네스코 세계자연유산으로 사계절 아름다운 자연 경관과 다양한 등산 코스를 자랑합니다.</p>
+                    <a href="#" data-detail="hallasan">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-orange">🌅</div>
+                <div class="card-content">
+                    <h3>성산일출봉</h3>
+                    <p>수중 화산 폭발로 생성된 거대한 분화구. 정상에서 바라보는 일출이 장관이며 해녀 물질 시연도 볼 수 있습니다.</p>
+                    <a href="#" data-detail="seongsan">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-sky">🏝️</div>
+                <div class="card-content">
+                    <h3>우도</h3>
+                    <p>에메랄드빛 바다와 하얀 산호 해변이 아름다운 작은 섬. 자전거로 섬 일주를 하며 땅콩 아이스크림을 즐기는 것이 필수 코스입니다.</p>
+                    <a href="#" data-detail="udo">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-blue">💧</div>
+                <div class="card-content">
+                    <h3>천지연폭포</h3>
+                    <p>높이 22m의 웅장한 폭포로 서귀포의 상징. 천연기념물 무태장어가 서식하며 야간 조명이 아름다운 낭만 명소입니다.</p>
+                    <a href="#" data-detail="cheonjiyeon">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-teal">🌊</div>
+                <div class="card-content">
+                    <h3>협재해수욕장</h3>
+                    <p>새하얀 모래사장과 에메랄드빛 투명한 바다가 인상적인 제주 서쪽의 대표 해변. 옆 비양도 전망이 더해져 경치가 일품입니다.</p>
+                    <a href="#" data-detail="hyeopjae">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-rose">🌸</div>
+                <div class="card-content">
+                    <h3>섭지코지</h3>
+                    <p>현무암 해안절벽과 등대, 유채꽃밭이 어우러진 제주 동쪽 끝 절경. 드라마·CF 촬영지로 유명하며 성산일출봉과 연계 여행이 좋습니다.</p>
+                    <a href="#" data-detail="sebjikoji">자세히 보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추천 코스 -->
+    <div class="container" id="course">
+        <h2>추천 여행 코스</h2>
+        <div class="course-list">
+            <div class="course-item">
+                <div class="course-day">Day 1</div>
+                <div class="course-content">
+                    <strong>동쪽 일주</strong>
+                    <span>성산일출봉 → 우도 → 섭지코지 → 함덕 해수욕장</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">Day 2</div>
+                <div class="course-content">
+                    <strong>서귀포 & 남쪽</strong>
+                    <span>천지연폭포 → 정방폭포 → 중문 해수욕장 → 주상절리</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">Day 3</div>
+                <div class="course-content">
+                    <strong>서쪽 & 한라산</strong>
+                    <span>협재해수욕장 → 한림공원 → 한라산 어리목 코스 → 제주 시내</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추천 음식 -->
+    <div class="container" id="food">
+        <h2>추천 음식</h2>
+        <div class="food-grid">
+            <div class="food-card">
+                <span class="food-emoji">🐷</span>
+                <strong>흑돼지구이</strong>
+                <span>제주 흑돼지 전문 식당</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🍜</span>
+                <strong>고기국수</strong>
+                <span>제주식 돼지 육수 국수</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🦪</span>
+                <strong>전복뚝배기</strong>
+                <span>서귀포 해녀 음식점</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🍊</span>
+                <strong>감귤 디저트</strong>
+                <span>제주 특산 감귤 카페</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🍦</span>
+                <strong>땅콩 아이스크림</strong>
+                <span>우도 명물 간식</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🥧</span>
+                <strong>오메기떡</strong>
+                <span>제주 전통 차좁쌀 떡</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 상세 모달 -->
+    <div class="detail-overlay" id="detail-overlay">
+        <div class="detail-modal" id="detail-modal">
+            <div class="detail-modal-body">
+                <h3 id="detail-title"></h3>
+                <p id="detail-desc"></p>
+                <div class="detail-info" id="detail-info"></div>
+                <button class="detail-close">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./icon/facebook.png" alt="페이스북"></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./icon/instagram.png" alt="인스타그램"></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><img src="./icon/twitter.png" alt="트위터"></a>
+        </div>
+        <p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
+        <p>문의: example@email.com | 전화: 010-1234-5678</p>
+    </footer>
+
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="index.html"><span class="tab-icon">🏠</span>홈</a></li>
+            <li><a href="about.html"><span class="tab-icon">📍</span>소개</a></li>
+            <li><a href="reviews.html"><span class="tab-icon">⭐</span>후기</a></li>
+            <li><a href="planner.html"><span class="tab-icon">📅</span>플래너</a></li>
+            <li><a href="contact.html"><span class="tab-icon">💬</span>문의</a></li>
+        </ul>
+    </nav>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/region-detail.js"></script>
+</body>
+</html>
