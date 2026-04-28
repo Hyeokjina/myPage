@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./icon/bridge.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>강원 - 인천 여행지 소개</title>
+    <meta name="description" content="대한민국 자연의 보고 강원도의 역사, 주요 관광지, 추천 코스를 소개합니다.">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/region-detail.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="./icon/bridge.png" alt="로고" class="icon">
+            <h1>강원</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="about.html">소개</a></li>
+                <li><a href="reviews.html">후기</a></li>
+                <li><a href="planner.html">플래너</a></li>
+                <li><a href="contact.html">문의</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger">☰</button>
+        <button class="dark-toggle" id="dark-btn">🌙</button>
+    </header>
+
+    <button class="back-to-top" id="back-to-top">↑</button>
+
+    <aside class="side-menu">
+        <h3>목차</h3>
+        <ul>
+            <li><a href="#overview">소개</a></li>
+            <li><a href="#history">역사</a></li>
+            <li><a href="#attractions">주요 관광지</a></li>
+            <li><a href="#course">추천 코스</a></li>
+            <li><a href="#food">추천 음식</a></li>
+        </ul>
+    </aside>
+
+    <!-- 히어로 -->
+    <div class="region-hero" style="background-image: url('./images/gangwon.png');">
+        <div class="region-hero-overlay">
+            <span class="region-hero-tag">대한민국 자연의 보고</span>
+            <h2>강원</h2>
+            <p>설악산과 동해, 사계절 모두 아름다운 도</p>
+            <a href="regions.html" class="region-back-btn">← 인기 지역으로</a>
+        </div>
+    </div>
+
+    <!-- 소개 -->
+    <div class="container" id="overview">
+        <h2>강원 소개</h2>
+        <p>강원도는 대한민국 중동부에 위치한 도로, 태백산맥을 중심으로 영서·영동 지방으로 나뉩니다. 면적은 전국 최대(16,874㎢)이며, 설악산·오대산·태백산 등 대한민국을 대표하는 명산과 동해 해안이 공존하는 자연의 보고입니다.</p>
+        <p>겨울에는 스키·눈꽃 여행, 봄에는 진달래·철쭉 트레킹, 여름에는 동해 해수욕과 계곡 피서, 가을에는 단풍 산행으로 사계절 내내 여행객이 끊이지 않습니다. 춘천 닭갈비, 초당 순두부, 감자옹심이 등 강원 대표 먹거리도 빠놓을 수 없는 매력입니다.</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-icon">🗺️</span>
+                <strong>위치</strong>
+                <span>대한민국 중동부, 태백산맥 일대</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">👥</span>
+                <strong>인구</strong>
+                <span>약 154만 명</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">🌡️</span>
+                <strong>기후</strong>
+                <span>영서 내륙성, 영동 해양성 기후</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">🚆</span>
+                <strong>교통</strong>
+                <span>KTX 강릉·춘천선, 영동고속도로</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 역사 -->
+    <div class="container" id="history">
+        <h2>강원의 역사</h2>
+        <p>강원도 지역은 선사시대부터 사람이 거주한 유서 깊은 곳입니다. 삼국시대에는 고구려·신라·백제의 각축장이었으며, 특히 고구려의 영향을 크게 받았습니다. 통일신라 이후에는 명주(溟州)로 불리며 지역 문화가 꽃피었습니다.</p>
+        <p>고려시대에는 강릉을 중심으로 동해안 지역이 교통·무역의 요충지로 발전했습니다. 조선시대에 강원도(江原道)라는 명칭이 확립되었으며, 금강산·설악산을 유람하는 문인들의 기행문이 많이 남아 있습니다. 정선 아리랑, 강릉 단오제 등 풍부한 무형문화유산도 이 시기에 형성되었습니다.</p>
+        <p>한국전쟁 당시 38선 접경 지역으로 치열한 전투가 벌어졌고, 철원·인제·양구 등지에는 지금도 안보 관광지가 조성되어 있습니다. 2018년 평창 동계올림픽 개최로 강원도는 세계적인 스포츠·관광 명소로 주목받게 되었습니다.</p>
+    </div>
+
+    <!-- 주요 관광지 -->
+    <div class="container card-section" id="attractions">
+        <h2>주요 관광지</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-img-banner banner-amber">🏔️</div>
+                <div class="card-content">
+                    <h3>설악산</h3>
+                    <p>강원도를 대표하는 국립공원. 울산바위, 공룡능선, 대청봉 등 웅장한 바위 절경이 유명하며 가을 단풍이 절경입니다.</p>
+                    <a href="#" data-detail="seoraksan">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-blue">🌊</div>
+                <div class="card-content">
+                    <h3>동해 해변</h3>
+                    <p>강릉 경포대, 속초 해수욕장 등 청정한 동해 해변. 투명한 파란 바다와 솔숲이 어우러진 여름 피서의 명소입니다.</p>
+                    <a href="#" data-detail="donghae">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-teal">🦢</div>
+                <div class="card-content">
+                    <h3>춘천 의암호</h3>
+                    <p>소양강댐이 만들어낸 아름다운 인공 호수. 호반의 도시 춘천의 상징으로 자전거 길, 카페거리와 함께 즐기기 좋습니다.</p>
+                    <a href="#" data-detail="chuncheon">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-green">🌲</div>
+                <div class="card-content">
+                    <h3>오대산</h3>
+                    <p>월정사와 상원사가 있는 불교 성지. 울창한 전나무 숲길 산책이 유명하며 겨울 설경이 특히 아름다운 사찰 여행지입니다.</p>
+                    <a href="#" data-detail="odaesan">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-sky">🎿</div>
+                <div class="card-content">
+                    <h3>평창 스키장</h3>
+                    <p>2018 동계올림픽 개최지. 용평·알펜시아 등 세계적 수준의 스키 리조트에서 스키·보드를 즐길 수 있는 겨울 여행의 핵심입니다.</p>
+                    <a href="#" data-detail="pyeongchang">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-rose">🌊</div>
+                <div class="card-content">
+                    <h3>정동진</h3>
+                    <p>세계에서 바다와 가장 가까운 기차역으로 기네스북에 등재된 곳. 일출 명소로 유명하며 모래시계 공원과 해안 절벽이 인상적입니다.</p>
+                    <a href="#" data-detail="jeongdongjin">자세히 보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추천 코스 -->
+    <div class="container" id="course">
+        <h2>추천 여행 코스</h2>
+        <div class="course-list">
+            <div class="course-item">
+                <div class="course-day">Day 1</div>
+                <div class="course-content">
+                    <strong>설악 & 속초</strong>
+                    <span>설악산 권금성 케이블카 → 속초 중앙시장 → 속초 해수욕장 → 아바이마을</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">Day 2</div>
+                <div class="course-content">
+                    <strong>강릉 & 동해</strong>
+                    <span>정동진 일출 → 강릉 안목 커피거리 → 경포대 → 오죽헌</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">Day 3</div>
+                <div class="course-content">
+                    <strong>춘천 & 내륙</strong>
+                    <span>춘천 의암호 → 남이섬 → 강촌 레일바이크 → 닭갈비 골목</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추천 음식 -->
+    <div class="container" id="food">
+        <h2>추천 음식</h2>
+        <div class="food-grid">
+            <div class="food-card">
+                <span class="food-emoji">🍗</span>
+                <strong>닭갈비</strong>
+                <span>춘천 명동 닭갈비 골목</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🥣</span>
+                <strong>감자옹심이</strong>
+                <span>강원 전통 감자 수제비</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🍱</span>
+                <strong>초당 순두부</strong>
+                <span>강릉 초당 순두부 마을</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🦑</span>
+                <strong>오징어 요리</strong>
+                <span>속초·강릉 항구 싱싱 오징어</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🌽</span>
+                <strong>찰옥수수</strong>
+                <span>강원 특산 옥수수 간식</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🐟</span>
+                <strong>황태 요리</strong>
+                <span>인제 용대리 황태 마을</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 상세 모달 -->
+    <div class="detail-overlay" id="detail-overlay">
+        <div class="detail-modal" id="detail-modal">
+            <div class="detail-modal-body">
+                <h3 id="detail-title"></h3>
+                <p id="detail-desc"></p>
+                <div class="detail-info" id="detail-info"></div>
+                <button class="detail-close">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./icon/facebook.png" alt="페이스북"></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./icon/instagram.png" alt="인스타그램"></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><img src="./icon/twitter.png" alt="트위터"></a>
+        </div>
+        <p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
+        <p>문의: example@email.com | 전화: 010-1234-5678</p>
+    </footer>
+
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="index.html"><span class="tab-icon">🏠</span>홈</a></li>
+            <li><a href="about.html"><span class="tab-icon">📍</span>소개</a></li>
+            <li><a href="reviews.html"><span class="tab-icon">⭐</span>후기</a></li>
+            <li><a href="planner.html"><span class="tab-icon">📅</span>플래너</a></li>
+            <li><a href="contact.html"><span class="tab-icon">💬</span>문의</a></li>
+        </ul>
+    </nav>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/region-detail.js"></script>
+</body>
+</html>
