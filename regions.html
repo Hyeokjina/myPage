@@ -33,66 +33,143 @@
 
     <button class="back-to-top" id="back-to-top">↑</button>
 
-    <div class="container">
-        <h2>인기 지역</h2>
-        <p class="intro">대한민국의 다양한 매력을 지닌 인기 여행지들을 소개합니다.</p>
-
-        <div class="region-section" id="seoul">
-            <h3>서울</h3>
-            <div class="region-card">
-                <img src="./images/seoul.png" alt="서울" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'">
-                <div class="region-card-content">
-                    <p>대한민국의 수도 서울은 고궁과 현대 도시가 공존하는 매력적인 도시입니다. 경복궁, 남산타워, 명동, 홍대 등 다양한 관광지와 맛집이 가득하며, 사계절 언제 방문해도 즐길 거리가 넘칩니다.</p>
-                    <a href="seoul.html">자세히 보기</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="region-section" id="busan">
-            <h3>부산</h3>
-            <div class="region-card">
-                <img src="./images/busan.png" alt="부산" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'">
-                <div class="region-card-content">
-                    <p>대한민국 제2의 도시 부산은 아름다운 해변과 신선한 해산물로 유명합니다. 해운대, 광안리, 감천문화마을 등 볼거리가 풍부하며, 활기찬 항구 도시의 분위기를 느낄 수 있습니다.</p>
-                    <a href="busan.html">자세히 보기</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="region-section" id="jeju">
-            <h3>제주</h3>
-            <div class="region-card">
-                <img src="./images/jeju.png" alt="제주" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'">
-                <div class="region-card-content">
-                    <p>천혜의 자연환경을 자랑하는 제주도는 한라산, 성산일출봉, 우도, 올레길 등 아름다운 자연경관과 함께 독특한 제주 문화를 경험할 수 있는 최고의 여행지입니다.</p>
-                    <a href="jeju.html">자세히 보기</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="region-section" id="gangwon">
-            <h3>강원</h3>
-            <div class="region-card">
-                <img src="./images/gangwon.png" alt="강원" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'">
-                <div class="region-card-content">
-                    <p>강원도는 설악산, 동해, 평창 등 사계절 내내 다양한 자연 액티비티를 즐길 수 있는 곳입니다. 겨울엔 스키, 여름엔 래프팅과 해수욕, 가을엔 단풍 트레킹까지 다채로운 경험이 기다립니다.</p>
-                    <a href="gangwon.html">자세히 보기</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="region-section" id="gyeongju">
-            <h3>경주</h3>
-            <div class="region-card">
-                <img src="./images/gyeongju.png" alt="경주" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'">
-                <div class="region-card-content">
-                    <p>천년 고도 경주는 신라의 역사와 문화가 고스란히 살아있는 도시입니다. 불국사, 석굴암, 첨성대, 대릉원 등 유네스코 세계문화유산을 비롯한 수많은 문화재를 만날 수 있습니다.</p>
-                    <a href="gyeongju.html">자세히 보기</a>
-                </div>
-            </div>
+    <!-- 히어로 -->
+    <div class="regions-hero">
+        <div class="regions-hero-inner">
+            <p class="regions-hero-tag">🗺️ 전국 인기 여행지</p>
+            <h2>어디로 떠나실 건가요?</h2>
+            <p class="regions-hero-sub">대한민국 대표 여행지의 볼거리, 먹거리, 추천 코스를 한눈에</p>
         </div>
     </div>
 
+    <div class="container">
+
+        <!-- 지역 카드 그리드 -->
+        <div class="regions-grid">
+
+            <a href="seoul.html" class="rcard" id="seoul">
+                <div class="rcard-img-wrap">
+                    <img src="./images/seoul.png" alt="서울" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="rcard-img-banner" style="display:none; background:linear-gradient(135deg,#6d28d9,#a78bfa);">🏙️</div>
+                    <div class="rcard-overlay">
+                        <span class="rcard-tag">대한민국 수도</span>
+                    </div>
+                </div>
+                <div class="rcard-content">
+                    <div class="rcard-meta">
+                        <h3>서울</h3>
+                        <span class="rcard-arrow">→</span>
+                    </div>
+                    <p>경복궁·남산타워·명동·홍대까지, 600년 역사와 현대가 공존하는 메트로폴리탄</p>
+                    <div class="rcard-tags">
+                        <span>🏯 고궁</span><span>🛍️ 쇼핑</span><span>🎵 K-POP</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="busan.html" class="rcard" id="busan">
+                <div class="rcard-img-wrap">
+                    <img src="./images/busan.png" alt="부산" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="rcard-img-banner" style="display:none; background:linear-gradient(135deg,#0369a1,#38bdf8);">🏖️</div>
+                    <div class="rcard-overlay">
+                        <span class="rcard-tag">제2의 도시</span>
+                    </div>
+                </div>
+                <div class="rcard-content">
+                    <div class="rcard-meta">
+                        <h3>부산</h3>
+                        <span class="rcard-arrow">→</span>
+                    </div>
+                    <p>해운대·광안리·감천문화마을·자갈치시장, 바다와 산이 어우러진 항구 도시</p>
+                    <div class="rcard-tags">
+                        <span>🏖️ 해변</span><span>🐟 해산물</span><span>🎬 영화제</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="jeju.html" class="rcard" id="jeju">
+                <div class="rcard-img-wrap">
+                    <img src="./images/jeju.png" alt="제주" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="rcard-img-banner" style="display:none; background:linear-gradient(135deg,#065f46,#34d399);">🌿</div>
+                    <div class="rcard-overlay">
+                        <span class="rcard-tag">유네스코 세계자연유산</span>
+                    </div>
+                </div>
+                <div class="rcard-content">
+                    <div class="rcard-meta">
+                        <h3>제주</h3>
+                        <span class="rcard-arrow">→</span>
+                    </div>
+                    <p>한라산·성산일출봉·우도·협재해변, 바람과 돌과 여자의 삼다(三多)의 섬</p>
+                    <div class="rcard-tags">
+                        <span>⛰️ 한라산</span><span>🌊 해변</span><span>🐷 흑돼지</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="gangwon.html" class="rcard" id="gangwon">
+                <div class="rcard-img-wrap">
+                    <img src="./images/gangwon.png" alt="강원" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="rcard-img-banner" style="display:none; background:linear-gradient(135deg,#92400e,#f59e0b);">🏔️</div>
+                    <div class="rcard-overlay">
+                        <span class="rcard-tag">사계절 자연의 보고</span>
+                    </div>
+                </div>
+                <div class="rcard-content">
+                    <div class="rcard-meta">
+                        <h3>강원</h3>
+                        <span class="rcard-arrow">→</span>
+                    </div>
+                    <p>설악산·동해·평창·춘천, 스키부터 래프팅까지 사계절 액티비티 천국</p>
+                    <div class="rcard-tags">
+                        <span>🎿 스키</span><span>🍗 닭갈비</span><span>🌅 일출</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="gyeongju.html" class="rcard" id="gyeongju">
+                <div class="rcard-img-wrap">
+                    <img src="./images/gyeongju.png" alt="경주" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="rcard-img-banner" style="display:none; background:linear-gradient(135deg,#92400e,#f59e0b);">🛕</div>
+                    <div class="rcard-overlay">
+                        <span class="rcard-tag">천년 신라의 수도</span>
+                    </div>
+                </div>
+                <div class="rcard-content">
+                    <div class="rcard-meta">
+                        <h3>경주</h3>
+                        <span class="rcard-arrow">→</span>
+                    </div>
+                    <p>불국사·석굴암·첨성대·대릉원, 도시 전체가 유네스코 세계문화유산인 역사의 도시</p>
+                    <div class="rcard-tags">
+                        <span>🛕 불국사</span><span>🥐 황남빵</span><span>🌙 야경</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 인천 -->
+            <a href="about.html" class="rcard">
+                <div class="rcard-img-wrap">
+                    <img src="./images/incheon.png" alt="인천" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="rcard-img-banner" style="display:none; background:linear-gradient(135deg,#1E3A5F,#0EA5C9);">🌉</div>
+                    <div class="rcard-overlay">
+                        <span class="rcard-tag">국제 관문 도시</span>
+                    </div>
+                </div>
+                <div class="rcard-content">
+                    <div class="rcard-meta">
+                        <h3>인천</h3>
+                        <span class="rcard-arrow">→</span>
+                    </div>
+                    <p>송도·차이나타운·월미도·강화도, 개항의 역사와 현대가 공존하는 항구 도시</p>
+                    <div class="rcard-tags">
+                        <span>🌉 송도</span><span>🥟 차이나타운</span><span>🏝️ 강화도</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
 
     <footer>
         <div class="social-icons">
@@ -113,6 +190,7 @@
             <li><a href="contact.html"><span class="tab-icon">💬</span>문의</a></li>
         </ul>
     </nav>
+
     <script src="./js/common.js"></script>
 </body>
 </html>
