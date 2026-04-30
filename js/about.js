@@ -82,3 +82,26 @@ document.querySelector('.detail-close')?.addEventListener('click', closeDetail);
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeDetail();
 });
+
+// 스크롤 스파이
+(function () {
+    const menuLinks = document.querySelectorAll('.side-menu a[href^="#"]');
+    if (!menuLinks.length) return;
+
+    const sectionIds = Array.from(menuLinks).map(a => a.getAttribute('href').slice(1));
+    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+    const setActive = (id) => {
+        menuLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) setActive(entry.target.id);
+        });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+})();
