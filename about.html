@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <link rel="icon" href="./icon/bridge.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>인천 소개</title>
-    <meta name="description" content="인천의 역사, 주요 관광지, 위치 정보를 소개합니다. 차이나타운, 송도 센트럴파크, 월미도의 상세 정보를 확인하세요.">
+    <title>인천 소개 - 인천 여행지 소개</title>
+    <meta name="description" content="국제 항구도시 인천의 역사, 주요 관광지, 추천 코스를 소개합니다.">
     <meta property="og:title" content="인천 소개 - 인천 여행지 소개">
     <meta property="og:description" content="인천의 역사와 주요 관광지를 소개하는 페이지입니다.">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/region-detail.css">
 </head>
 <body>
     <header>
@@ -33,62 +34,190 @@
 
     <button class="back-to-top" id="back-to-top">↑</button>
 
-    <!-- 좌측 세로 메뉴 -->
     <aside class="side-menu">
-        <h3>메뉴</h3>
+        <h3>목차</h3>
         <ul>
             <li><a href="#incheon-overview">소개</a></li>
             <li><a href="#incheon-history">역사</a></li>
             <li><a href="#card-section">주요 관광지</a></li>
-            <li><a href="#map-section">위치 확인</a></li>
+            <li><a href="#course">추천 코스</a></li>
+            <li><a href="#food">추천 음식</a></li>
+            <li><a href="#map-section">위치</a></li>
         </ul>
     </aside>
 
+    <!-- 히어로 -->
+    <div class="region-hero" style="background-image: url('./images/incheon.png');">
+        <div class="region-hero-overlay">
+            <span class="region-hero-tag">국제 관문 도시</span>
+            <h2>인천</h2>
+            <p>개항의 역사와 현대 국제도시가 공존하는 항구 도시</p>
+            <a href="regions.html" class="region-back-btn">← 인기 지역으로</a>
+        </div>
+    </div>
+
+    <!-- 소개 -->
     <div class="container" id="incheon-overview">
         <h2>인천 소개</h2>
-        <p>인천은 대한민국 서해안에 위치한 국제 항구도시로, 역사적·경제적·문화적으로 중요한 역할을 하는 도시입니다. 인천항과 인천국제공항을 중심으로 국내외 물류와 관광의 중심지 역할을 하고 있습니다.
-            인천은 조선시대 개항 이후 외국과의 교류가 활발하게 이루어졌으며, 차이나타운과 개항기 건축물 등에서 과거와 현대가 공존하는 모습을 볼 수 있습니다.</p>
-        <p>현대 인천은 고층 빌딩과 산업 단지, 송도국제도시, 청라국제도시 등 첨단 도시가 조화를 이루며 경제적 성장을 이루고 있습니다. 인천국제공항과 인천항은 국내외 관광과 비즈니스를 지원합니다.
-            자연과 조화로운 도시 환경도 인천의 매력입니다. 강화도, 영종도, 무의도 등 주변 섬과 송도 센트럴파크, 월미도, 인천대공원 등에서 시민과 관광객이 자연 속 휴식을 즐길 수 있습니다.</p>
-        <p>결국 인천은 역사와 현대, 자연과 도시, 문화와 경제가 공존하는 매력적인 국제 항구도시로, 방문객과 시민 모두에게 다채로운 경험과 기회를 제공합니다.</p>
+        <p>인천은 대한민국 서해안에 위치한 국제 항구도시로, 역사적·경제적·문화적으로 중요한 역할을 하는 도시입니다. 인천항과 인천국제공항을 중심으로 국내외 물류와 관광의 중심지 역할을 하고 있으며, 1883년 개항 이후 외국과의 교류가 활발하게 이루어진 역사를 지니고 있습니다.</p>
+        <p>송도국제도시·청라국제도시 등 첨단 신도시와 함께 차이나타운의 이국적 풍경, 강화도의 유서 깊은 역사가 공존합니다. 강화도·영종도·무의도 등 주변 섬과 송도 센트럴파크, 월미도에서 자연 속 휴식도 즐길 수 있습니다.</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-icon">🗺️</span>
+                <strong>위치</strong>
+                <span>대한민국 서해안, 경기만 연안</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">👥</span>
+                <strong>인구</strong>
+                <span>약 300만 명</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">🌡️</span>
+                <strong>기후</strong>
+                <span>해양성 기후, 서울보다 온난</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">✈️</span>
+                <strong>교통</strong>
+                <span>인천국제공항, 수도권 지하철</span>
+            </div>
+        </div>
     </div>
 
+    <!-- 역사 -->
     <div class="container" id="incheon-history">
-        <h2>인천 역사</h2>
-        <p>인천은 고대에는 백제의 영역에 속했으며, 고려와 조선 시대에도 한강 유역과 서해안의 중요한 거점으로 이용되었습니다. 특히 강화도는 외적의 침입을 막는 전략적 요충지로서 군사적 역할을 수행했습니다. 조선 후기에는 인천 지역이 점차 발전하기 시작했으며, 1883년 인천항이 개항하면서 외국과의 무역이 활발해졌습니다. 개항 이후 외국인 거주지와 선교사 활동, 근대식 건물과 학교가 들어오며 도시로서의 면모를 갖추게 되었습니다.</p>
-        <p>근대에는 일제강점기를 거치면서 인천항과 산업시설이 일본의 경제적 목적에 맞춰 확장되었고, 차이나타운과 근대 건축물, 철도망 등이 형성되어 현재까지 역사적 흔적을 남기고 있습니다. 광복 이후 인천은 수도권의 산업과 물류 중심지로 발전했으며, 2001년 송도국제도시 개발과 인천국제공항 개항을 통해 국제적인 경제·문화 중심지로 성장하였습니다. 현재 인천은 항구, 교통, 산업, 문화가 조화를 이루는 국제 도시로 자리잡고 있습니다.</p>
+        <h2>인천의 역사</h2>
+        <p>인천은 고대에는 백제의 영역에 속했으며, 고려와 조선시대에도 한강 유역과 서해안의 중요한 거점으로 이용되었습니다. 특히 강화도는 외적의 침입을 막는 전략적 요충지로서 고려 대몽항쟁(1232~1270년)의 중심지였으며, 고인돌 등 선사시대 유물도 다수 보존되어 있습니다.</p>
+        <p>1883년 인천항이 개항하면서 외국과의 무역이 활발해졌습니다. 차이나타운, 일본 조계지, 미국·영국 영사관 등이 들어서며 한국 최초의 근대적 개항도시로 성장했습니다. 짜장면이 이 시기 차이나타운에서 탄생했으며, 한국 최초의 철도(경인선, 1899년), 전화, 전기, 서양식 공원도 모두 인천에서 처음 시작되었습니다.</p>
+        <p>1950년 한국전쟁 당시에는 맥아더 장군이 이끈 인천상륙작전(9·15)이 전세를 뒤바꾼 역사적 현장이 되었습니다. 2001년 인천국제공항이 개항하면서 동북아시아의 항공 허브로 도약했으며, 송도국제도시 개발로 글로벌 비즈니스·문화의 중심지로 계속 성장하고 있습니다.</p>
     </div>
 
+    <!-- 주요 관광지 -->
     <div class="container card-section" id="card-section">
         <h2>주요 관광지</h2>
         <div class="cards">
             <div class="card">
-                <img src="./images/town.png" alt="차이나타운" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'">
+                <img src="./images/town.png" alt="차이나타운" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-img-banner banner-rose" style="display:none; aspect-ratio:1/1;">🥟</div>
                 <div class="card-content">
                     <h3>차이나타운</h3>
-                    <p>한국 속 작은 중국, 화려한 건축과 맛집 체험</p>
+                    <p>짜장면 발상지이자 한국 유일의 차이나타운. 화려한 패루와 붉은 건물이 이국적인 분위기를 자아냅니다.</p>
                     <a href="#" data-detail="town">자세히 보기</a>
                 </div>
             </div>
             <div class="card">
-                <img src="./images/songdo.png" alt="송도 센트럴파크" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'">
+                <img src="./images/songdo.png" alt="송도 센트럴파크" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-img-banner banner-teal" style="display:none; aspect-ratio:1/1;">🏙️</div>
                 <div class="card-content">
                     <h3>송도 센트럴파크</h3>
-                    <p>현대적인 도시 속에서 자연과 함께 휴식을 즐길 수 있는 공간</p>
+                    <p>해수 수로에서 카약·보트를 즐기고 야경이 아름다운 송도국제도시의 대형 수변공원입니다.</p>
                     <a href="#" data-detail="songdo">자세히 보기</a>
                 </div>
             </div>
             <div class="card">
-                <img src="./images/wolmido.png" alt="월미도" loading="lazy" onerror="this.src='./icon/incheon.png'; this.style.opacity='0.3'">
+                <img src="./images/wolmido.png" alt="월미도" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="card-img-banner banner-blue" style="display:none; aspect-ratio:1/1;">🎡</div>
                 <div class="card-content">
                     <h3>월미도</h3>
-                    <p>놀이공원과 바다를 동시에 즐길 수 있는 인기 명소</p>
+                    <p>놀이공원과 씨사이드 산책로, 선착장이 어우러진 복합 관광지. 인천상륙작전의 역사적 현장이기도 합니다.</p>
                     <a href="#" data-detail="wolmido">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-green" style="aspect-ratio:1/1;">🏝️</div>
+                <div class="card-content">
+                    <h3>강화도</h3>
+                    <p>고인돌 유네스코 세계유산, 고려 대몽항쟁의 역사, 드넓은 갯벌과 낙조가 아름다운 역사·자연의 섬입니다.</p>
+                    <a href="#" data-detail="ganghwa">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-amber" style="aspect-ratio:1/1;">🏛️</div>
+                <div class="card-content">
+                    <h3>개항장 문화지구</h3>
+                    <p>1883년 개항 당시의 근대 건축물이 그대로 남아있는 거리. 일본식·중국식·서양식 건물이 공존하는 역사 탐방 코스입니다.</p>
+                    <a href="#" data-detail="gaehang">자세히 보기</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img-banner banner-purple" style="aspect-ratio:1/1;">🌊</div>
+                <div class="card-content">
+                    <h3>을왕리 해수욕장</h3>
+                    <p>영종도에 위치한 서해 대표 해변. 조개구이와 낙조가 유명하며 인천공항에서 가까워 접근성이 뛰어납니다.</p>
+                    <a href="#" data-detail="eulwang">자세히 보기</a>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- 추천 코스 -->
+    <div class="container" id="course">
+        <h2>추천 여행 코스</h2>
+        <div class="course-list">
+            <div class="course-item">
+                <div class="course-day">Day 1</div>
+                <div class="course-content">
+                    <strong>개항 역사 탐방</strong>
+                    <span>차이나타운 → 개항장 문화지구 → 자유공원 → 인천항 선착장</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">Day 2</div>
+                <div class="course-content">
+                    <strong>현대 도시 & 야경</strong>
+                    <span>송도 센트럴파크 → 트리플스트리트 → 월미도 → 문화의 거리</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">Day 3</div>
+                <div class="course-content">
+                    <strong>섬 & 자연</strong>
+                    <span>강화도 고인돌 → 전등사 → 을왕리 해수욕장 → 조개구이</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추천 음식 -->
+    <div class="container" id="food">
+        <h2>추천 음식</h2>
+        <div class="food-grid">
+            <div class="food-card">
+                <span class="food-emoji">🍜</span>
+                <strong>짜장면</strong>
+                <span>차이나타운 원조 짜장면</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🥟</span>
+                <strong>공갈빵</strong>
+                <span>차이나타운 명물 빵</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🦪</span>
+                <strong>조개구이</strong>
+                <span>을왕리·무의도 조개구이</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🐟</span>
+                <strong>활어회</strong>
+                <span>소래포구 신선 회</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🍢</span>
+                <strong>쫄면</strong>
+                <span>인천 발상지 쫄면</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🍰</span>
+                <strong>월병</strong>
+                <span>차이나타운 중국 과자</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 위치 -->
     <div class="container card-section" id="map-section">
         <h2>위치 확인</h2>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.307222206211!2d126.62167327691264!3d37.456255279811565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7e08e70b3eaf%3A0x2f8d3f6aef5e6e4b!2z7ISc7Jq47JqU7J2065Oc64yA!5e0!3m2!1sko!2skr!4v1694510000000!5m2!1sko!2skr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -107,14 +236,13 @@
         </div>
     </div>
 
-
     <footer>
         <div class="social-icons">
             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./icon/facebook.png" alt="페이스북"></a>
             <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./icon/instagram.png" alt="인스타그램"></a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><img src="./icon/twitter.png" alt="트위터"></a>
         </div>
-        <p>&copy; 2025 인천 소개 | 문혁진</p>
+        <p>&copy; 2025 인천 여행지 소개 | 문혁진</p>
         <p>문의: example@email.com | 전화: 010-1234-5678</p>
     </footer>
 
@@ -127,6 +255,7 @@
             <li><a href="contact.html"><span class="tab-icon">💬</span>문의</a></li>
         </ul>
     </nav>
+
     <script src="./js/common.js"></script>
     <script src="./js/about.js"></script>
 </body>
