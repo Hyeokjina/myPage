@@ -232,6 +232,58 @@ body.dark .review-search-bar input {
   color: #ddd;
 }
 
+/* 필터 pill */
+.review-filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+}
+.review-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.review-filter-label {
+  font-size: 0.78em;
+  font-weight: 700;
+  color: #999;
+  min-width: 28px;
+  letter-spacing: 0.2px;
+}
+.review-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.review-pill {
+  padding: 5px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: #f8fafc;
+  color: #555;
+  font-size: 0.82em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  font-family: inherit;
+  letter-spacing: -0.1px;
+}
+.review-pill:hover { border-color: #0EA5C9; color: #0EA5C9; background: #EDF9FC; }
+.review-pill.active { background: #0EA5C9; color: #fff; border-color: #0EA5C9; }
+
+body.dark .review-filter-section { background: #0F2035; border-color: rgba(255,255,255,0.04); }
+body.dark .review-pill { background: #0A1628; color: #7a94a8; border-color: rgba(255,255,255,0.08); }
+body.dark .review-pill:hover { border-color: #0EA5C9; color: #0EA5C9; background: #0a2535; }
+body.dark .review-pill.active { background: #0EA5C9; color: #fff; border-color: #0EA5C9; }
+body.dark .review-filter-label { color: #3a5a6a; }
+
 /* 목록 */
 .list-section {
   padding-bottom: 20px;

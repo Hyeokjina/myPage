@@ -1,6 +1,8 @@
 const STORAGE_KEY = 'travel_reviews';
 const PAGE_SIZE = 5;
 let currentPage = 1;
+let filterRegion = '전체';
+let filterRating = 0;
 
 function getReviews() {
   try {
@@ -182,12 +184,12 @@ function renderRatingSummary() {
 
 // 렌더링
 function renderList() {
-  const filterVal = document.getElementById('filter-region').value;
   const sortVal = document.getElementById('sort-order').value;
   const query = document.getElementById('review-search').value.trim().toLowerCase();
   const all = getReviews();
 
-  let filtered = filterVal === '전체' ? all : all.filter(r => r.region === filterVal);
+  let filtered = filterRegion === '전체' ? all : all.filter(r => r.region === filterRegion);
+  if (filterRating > 0) filtered = filtered.filter(r => r.rating === filterRating);
 
   if (query) {
     filtered = filtered.filter(r =>
@@ -352,7 +354,28 @@ document.getElementById('import-reviews-input')?.addEventListener('change', e =>
   e.target.value = '';
 });
 
-document.getElementById('filter-region').addEventListener('change', () => { currentPage = 1; renderList(); });
+// 지역 pill 필터
+document.getElementById('region-pills').addEventListener('click', e => {
+  const pill = e.target.closest('.review-pill');
+  if (!pill) return;
+  document.querySelectorAll('#region-pills .review-pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+  filterRegion = pill.dataset.region;
+  currentPage = 1;
+  renderList();
+});
+
+// 별점 pill 필터
+document.getElementById('rating-pills').addEventListener('click', e => {
+  const pill = e.target.closest('.review-pill');
+  if (!pill) return;
+  document.querySelectorAll('#rating-pills .review-pill').forEach(p => p.classList.remove('active'));
+  pill.classList.add('active');
+  filterRating = Number(pill.dataset.rating);
+  currentPage = 1;
+  renderList();
+});
+
 document.getElementById('sort-order').addEventListener('change', () => { currentPage = 1; renderList(); });
 document.getElementById('review-search').addEventListener('input', () => { currentPage = 1; renderList(); });
 document.getElementById('review-search-clear').addEventListener('click', () => {
