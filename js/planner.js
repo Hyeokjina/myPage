@@ -730,7 +730,15 @@ document.getElementById('rename-cancel-btn')?.addEventListener('click', closeRen
 document.getElementById('edit-modal')?.addEventListener('click', closeEditModalOutside);
 document.getElementById('edit-cancel-btn')?.addEventListener('click', closeEditModal);
 document.getElementById('copy-btn')?.addEventListener('click', copySchedule);
-document.getElementById('print-btn')?.addEventListener('click', () => window.print());
+document.getElementById('print-btn')?.addEventListener('click', () => {
+  const activePlanId = getActivePlanId();
+  const plan = getPlans().find(p => String(p.id) === String(activePlanId));
+  const header = document.getElementById('print-header');
+  if (header && plan) {
+    header.innerHTML = `<span class="ph-title">${plan.name}</span><span class="ph-period">${plan.start} ~ ${plan.end}</span>`;
+  }
+  window.print();
+});
 
 // ── 초기화 ─────────────────────────────────────────
 

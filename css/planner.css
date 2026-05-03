@@ -409,11 +409,52 @@ body.dark .cat-btn.active {
   transform: translateX(-50%) translateY(0);
 }
 
+/* 카테고리 레전드 */
+.cat-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 10px 16px;
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+.cat-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #555;
+}
+
+.cat-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cat-legend-dot.cat-관광 { background: #0EA5C9; }
+.cat-legend-dot.cat-식사  { background: #e67e22; }
+.cat-legend-dot.cat-숙박  { background: #9b59b6; }
+.cat-legend-dot.cat-교통  { background: #3498db; }
+.cat-legend-dot.cat-쇼핑  { background: #e91e8c; }
+.cat-legend-dot.cat-기타  { background: #95a5a6; }
+
+body.dark .cat-legend { background: #0A1628; border-color: #333; }
+body.dark .cat-legend-item { color: #aaa; }
+
+/* 인쇄용 헤더 (화면에서 숨김) */
+.print-header { display: none; }
+
 /* 인쇄 스타일 */
 @media print {
   header, footer, .plans-section, .add-section,
   .list-actions, .s-actions, .back-to-top,
-  .hamburger, .dark-toggle {
+  .hamburger, .dark-toggle, .cat-filter-bar,
+  .cat-legend, .schedule-stats, .bottom-nav {
     display: none !important;
   }
 
@@ -421,14 +462,30 @@ body.dark .cat-btn.active {
 
   .planner-wrap { margin: 0; padding: 0; }
 
-  .list-section {
+  .list-section { display: block !important; }
+
+  .print-header {
     display: block !important;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #000;
+  }
+
+  .print-header .ph-title {
+    display: block;
+    font-size: 22px;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 4px;
+  }
+
+  .print-header .ph-period {
+    font-size: 13px;
+    color: #555;
   }
 
   .list-header h2 {
-    font-size: 18px;
-    margin-bottom: 16px;
-    color: #000;
+    display: none;
   }
 
   .schedule-card {
