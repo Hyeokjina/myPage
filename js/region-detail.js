@@ -215,3 +215,43 @@ document.addEventListener('keydown', e => {
 
     sections.forEach(s => observer.observe(s));
 })();
+
+// 관광지 카드 즐겨찾기
+(function () {
+    const FAV_KEY = 'incheon_favorites';
+
+    function getFavs() {
+        try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch { return []; }
+    }
+    function saveFavs(favs) {
+        try { localStorage.setItem(FAV_KEY, JSON.stringify(favs)); } catch {}
+    }
+
+    document.querySelectorAll('.card').forEach(card => {
+        const name = card.querySelector('h3')?.textContent?.trim();
+        const banner = card.querySelector('.card-img-banner');
+        if (!name || !banner) return;
+
+        const btn = document.createElement('button');
+        btn.className = 'fav-btn';
+        btn.setAttribute('aria-label', '즐겨찾기');
+        btn.setAttribute('title', '즐겨찾기');
+
+        function update() {
+            const active = getFavs().includes(name);
+            btn.textContent = active ? '♥' : '♡';
+            btn.classList.toggle('active', active);
+        }
+
+        btn.addEventListener('click', e => {
+            e.stopPropagation();
+            let favs = getFavs();
+            favs = favs.includes(name) ? favs.filter(f => f !== name) : [...favs, name];
+            saveFavs(favs);
+            update();
+        });
+
+        update();
+        banner.appendChild(btn);
+    });
+})();

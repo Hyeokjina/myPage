@@ -137,6 +137,10 @@ document.getElementById('fav-modal')?.addEventListener('click', closeFavModalOut
 
 document.querySelectorAll('.hero-tag').forEach(btn => {
     btn.addEventListener('click', () => {
+        if (btn.dataset.href) {
+            window.location.href = btn.dataset.href;
+            return;
+        }
         const input = document.getElementById('search-input');
         if (input) { input.value = btn.dataset.query; searchPlaces(); }
         document.getElementById('places')?.scrollIntoView({ behavior: 'smooth' });
