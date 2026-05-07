@@ -30,6 +30,49 @@
     margin: 0;
 }
 
+/* 테마 필터 */
+.regions-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+}
+
+.rfilter-btn {
+    padding: 8px 18px;
+    border: 1.5px solid #ddd;
+    border-radius: 100px;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s, color 0.15s, transform 0.15s;
+    color: #555;
+}
+
+.rfilter-btn:hover {
+    border-color: #0EA5C9;
+    color: #0EA5C9;
+    transform: translateY(-1px);
+}
+
+.rfilter-btn.active {
+    background: #0EA5C9;
+    border-color: #0EA5C9;
+    color: #fff;
+}
+
+.rcard.hidden { display: none; }
+
+body.dark .rfilter-btn {
+    background: #0F2035;
+    border-color: #2a3a4a;
+    color: #aaa;
+}
+body.dark .rfilter-btn:hover { border-color: #0EA5C9; color: #7EC8E3; }
+body.dark .rfilter-btn.active { background: #0EA5C9; border-color: #0EA5C9; color: #fff; }
+
 /* 카드 그리드 */
 .regions-grid {
     display: grid;

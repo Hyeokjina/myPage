@@ -44,10 +44,19 @@
 
     <div class="container">
 
+        <!-- 테마 필터 -->
+        <div class="regions-filter" id="regions-filter">
+            <button class="rfilter-btn active" data-theme="전체">전체</button>
+            <button class="rfilter-btn" data-theme="역사·문화">🏯 역사·문화</button>
+            <button class="rfilter-btn" data-theme="자연·힐링">🌿 자연·힐링</button>
+            <button class="rfilter-btn" data-theme="해변·바다">🌊 해변·바다</button>
+            <button class="rfilter-btn" data-theme="도시·쇼핑">🛍️ 도시·쇼핑</button>
+        </div>
+
         <!-- 지역 카드 그리드 -->
         <div class="regions-grid">
 
-            <a href="seoul.html" class="rcard" id="seoul">
+            <a href="seoul.html" class="rcard" id="seoul" data-theme="역사·문화 도시·쇼핑">
                 <div class="rcard-img-wrap">
                     <img src="./images/seoul.png" alt="서울" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="rcard-img-banner" style="display:none; background:linear-gradient(135deg,#6d28d9,#a78bfa);">🏙️</div>
@@ -67,7 +76,7 @@
                 </div>
             </a>
 
-            <a href="busan.html" class="rcard" id="busan">
+            <a href="busan.html" class="rcard" id="busan" data-theme="해변·바다 도시·쇼핑">
                 <div class="rcard-img-wrap">
                     <img src="./images/busan.png" alt="부산" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="rcard-img-banner" style="display:none; background:linear-gradient(135deg,#0369a1,#38bdf8);">🏖️</div>
@@ -87,7 +96,7 @@
                 </div>
             </a>
 
-            <a href="jeju.html" class="rcard" id="jeju">
+            <a href="jeju.html" class="rcard" id="jeju" data-theme="자연·힐링 해변·바다">
                 <div class="rcard-img-wrap">
                     <img src="./images/jeju.png" alt="제주" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="rcard-img-banner" style="display:none; background:linear-gradient(135deg,#065f46,#34d399);">🌿</div>
@@ -107,7 +116,7 @@
                 </div>
             </a>
 
-            <a href="gangwon.html" class="rcard" id="gangwon">
+            <a href="gangwon.html" class="rcard" id="gangwon" data-theme="자연·힐링">
                 <div class="rcard-img-wrap">
                     <img src="./images/gangwon.png" alt="강원" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="rcard-img-banner" style="display:none; background:linear-gradient(135deg,#92400e,#f59e0b);">🏔️</div>
@@ -127,7 +136,7 @@
                 </div>
             </a>
 
-            <a href="gyeongju.html" class="rcard" id="gyeongju">
+            <a href="gyeongju.html" class="rcard" id="gyeongju" data-theme="역사·문화">
                 <div class="rcard-img-wrap">
                     <img src="./images/gyeongju.png" alt="경주" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="rcard-img-banner" style="display:none; background:linear-gradient(135deg,#92400e,#f59e0b);">🛕</div>
@@ -148,7 +157,7 @@
             </a>
 
             <!-- 인천 -->
-            <a href="about.html" class="rcard">
+            <a href="about.html" class="rcard" data-theme="역사·문화 자연·힐링 해변·바다">
                 <div class="rcard-img-wrap">
                     <img src="./images/incheon.png" alt="인천" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="rcard-img-banner" style="display:none; background:linear-gradient(135deg,#1E3A5F,#0EA5C9);">🌉</div>
@@ -192,5 +201,6 @@
     </nav>
 
     <script src="./js/common.js"></script>
+    <script src="./js/regions.js"></script>
 </body>
 </html>
