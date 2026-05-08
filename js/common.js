@@ -25,7 +25,7 @@ function toggleDark() {
 }
 
 window.addEventListener('scroll', () => {
-    document.getElementById('back-to-top').classList.toggle('visible', window.scrollY > 300);
+    document.getElementById('back-to-top')?.classList.toggle('visible', window.scrollY > 300);
 });
 
 // 다크모드 초기화: 저장값 우선, 없으면 OS 설정 따름
