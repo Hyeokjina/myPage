@@ -15,13 +15,18 @@ document.querySelectorAll('.places li, .lodging li, .card, .region-card, .lodgin
 });
 
 function toggleNav() {
-    document.querySelector('header nav').classList.toggle('open');
+    const nav = document.querySelector('header nav');
+    nav.classList.toggle('open');
+    document.querySelector('.hamburger')
+        ?.setAttribute('aria-expanded', nav.classList.contains('open'));
 }
 
 function toggleDark() {
     const isDark = document.body.classList.toggle('dark');
     localStorage.setItem('dark', isDark);
-    document.getElementById('dark-btn').textContent = isDark ? '☀️' : '🌙';
+    const btn = document.getElementById('dark-btn');
+    btn.textContent = isDark ? '☀️' : '🌙';
+    btn.setAttribute('aria-label', isDark ? '라이트모드로 전환' : '다크모드로 전환');
 }
 
 window.addEventListener('scroll', () => {
@@ -99,3 +104,32 @@ function showToast(msg) {
 document.querySelector('.hamburger')?.addEventListener('click', toggleNav);
 document.getElementById('dark-btn')?.addEventListener('click', toggleDark);
 document.getElementById('back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// 접근성 초기화
+(function initA11y() {
+    const hamburger = document.querySelector('.hamburger');
+    if (hamburger) {
+        hamburger.setAttribute('aria-label', '메뉴 열기/닫기');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-controls', 'main-nav');
+        document.querySelector('header nav')?.setAttribute('id', 'main-nav');
+    }
+
+    const darkBtn = document.getElementById('dark-btn');
+    if (darkBtn) {
+        const isDark = document.body.classList.contains('dark');
+        darkBtn.setAttribute('aria-label', isDark ? '라이트모드로 전환' : '다크모드로 전환');
+    }
+
+    document.getElementById('back-to-top')
+        ?.setAttribute('aria-label', '맨 위로 이동');
+
+    document.querySelector('.fav-count')
+        ?.setAttribute('aria-label', '즐겨찾기 목록 열기');
+
+    document.querySelector('.bottom-nav')
+        ?.setAttribute('aria-label', '하단 탭 메뉴');
+
+    document.querySelector('header nav')
+        ?.setAttribute('aria-label', '주요 메뉴');
+})();
