@@ -43,20 +43,34 @@
 
     <div class="container">
         <!-- 지역 필터 -->
-        <div class="lodging-filter">
-            <button class="filter-btn active" data-filter="전체">전체</button>
-            <button class="filter-btn" data-filter="인천">인천</button>
-            <button class="filter-btn" data-filter="서울">서울</button>
-            <button class="filter-btn" data-filter="부산">부산</button>
-            <button class="filter-btn" data-filter="제주">제주</button>
-            <button class="filter-btn" data-filter="강원">강원</button>
-            <button class="filter-btn" data-filter="경주">경주</button>
+        <div class="lodging-filter-wrap">
+          <div class="lodging-filter-row">
+            <span class="lodging-filter-label">지역</span>
+            <div class="lodging-filter" id="region-filter">
+              <button class="filter-btn active" data-filter="전체">전체</button>
+              <button class="filter-btn" data-filter="인천">인천</button>
+              <button class="filter-btn" data-filter="서울">서울</button>
+              <button class="filter-btn" data-filter="부산">부산</button>
+              <button class="filter-btn" data-filter="제주">제주</button>
+              <button class="filter-btn" data-filter="강원">강원</button>
+              <button class="filter-btn" data-filter="경주">경주</button>
+            </div>
+          </div>
+          <div class="lodging-filter-row">
+            <span class="lodging-filter-label">가격대</span>
+            <div class="lodging-filter" id="price-filter">
+              <button class="filter-btn active" data-price="전체">전체</button>
+              <button class="filter-btn" data-price="under10">~10만원</button>
+              <button class="filter-btn" data-price="10to20">10~20만원</button>
+              <button class="filter-btn" data-price="over20">20만원~</button>
+            </div>
+          </div>
         </div>
 
         <div class="lodging-grid" id="lodging-grid">
 
             <!-- 인천 -->
-            <div class="lodging-card" data-region="인천">
+            <div class="lodging-card" data-region="인천" data-price="99000">
                 <div class="lodging-img-wrap">
                     <img src="./images/lo1.png" alt="송도 뷰 호텔" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="lodging-img-banner" style="display:none; background: linear-gradient(135deg,#1E3A5F,#0EA5C9);">🏨</div>
@@ -81,7 +95,7 @@
                 </div>
             </div>
 
-            <div class="lodging-card" data-region="인천">
+            <div class="lodging-card" data-region="인천" data-price="139000">
                 <div class="lodging-img-wrap">
                     <img src="./images/lo2.png" alt="월미도 씨사이드 펜션" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="lodging-img-banner" style="display:none; background: linear-gradient(135deg,#0369a1,#38bdf8);">🌊</div>
@@ -106,7 +120,7 @@
                 </div>
             </div>
 
-            <div class="lodging-card" data-region="인천">
+            <div class="lodging-card" data-region="인천" data-price="55000">
                 <div class="lodging-img-wrap">
                     <img src="./images/lo3.png" alt="차이나타운 게스트하우스" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="lodging-img-banner" style="display:none; background: linear-gradient(135deg,#be185d,#f472b6);">🏠</div>
@@ -131,7 +145,7 @@
             </div>
 
             <!-- 서울 -->
-            <div class="lodging-card" data-region="서울">
+            <div class="lodging-card" data-region="서울" data-price="189000">
                 <div class="lodging-img-wrap">
                     <img src="./images/seoul.png" alt="광화문 시티 호텔" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="lodging-img-banner" style="display:none; background: linear-gradient(135deg,#6d28d9,#a78bfa);">🏙️</div>
@@ -156,7 +170,7 @@
                 </div>
             </div>
 
-            <div class="lodging-card" data-region="서울">
+            <div class="lodging-card" data-region="서울" data-price="49000">
                 <div class="lodging-img-wrap">
                     <img src="./images/seoul.png" alt="홍대 감성 호스텔" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="lodging-img-banner" style="display:none; background: linear-gradient(135deg,#92400e,#f59e0b);">🎵</div>
@@ -182,7 +196,7 @@
             </div>
 
             <!-- 부산 -->
-            <div class="lodging-card" data-region="부산">
+            <div class="lodging-card" data-region="부산" data-price="299000">
                 <div class="lodging-img-wrap">
                     <img src="./images/busan.png" alt="해운대 오션 리조트" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="lodging-img-banner" style="display:none; background: linear-gradient(135deg,#0369a1,#38bdf8);">🏖️</div>
@@ -207,7 +221,7 @@
                 </div>
             </div>
 
-            <div class="lodging-card" data-region="부산">
+            <div class="lodging-card" data-region="부산" data-price="125000">
                 <div class="lodging-img-wrap">
                     <img src="./images/busan.png" alt="광안리 뷰 호텔" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="lodging-img-banner" style="display:none; background: linear-gradient(135deg,#1E3A5F,#0EA5C9);">🌉</div>
@@ -232,7 +246,7 @@
             </div>
 
             <!-- 제주 -->
-            <div class="lodging-card" data-region="제주">
+            <div class="lodging-card" data-region="제주" data-price="369000">
                 <div class="lodging-img-wrap">
                     <img src="./images/jeju.png" alt="제주 한라 풀빌라" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="lodging-img-banner" style="display:none; background: linear-gradient(135deg,#065f46,#34d399);">🌿</div>
@@ -258,7 +272,7 @@
             </div>
 
             <!-- 강원 -->
-            <div class="lodging-card" data-region="강원">
+            <div class="lodging-card" data-region="강원" data-price="149000">
                 <div class="lodging-img-wrap">
                     <img src="./images/gangwon.png" alt="설악 포레스트 리조트" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="lodging-img-banner" style="display:none; background: linear-gradient(135deg,#92400e,#f59e0b);">🏔️</div>
@@ -284,7 +298,7 @@
             </div>
 
             <!-- 경주 -->
-            <div class="lodging-card" data-region="경주">
+            <div class="lodging-card" data-region="경주" data-price="219000">
                 <div class="lodging-img-wrap">
                     <img src="./images/gyeongju.png" alt="경주 보문 한옥 호텔" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                     <div class="lodging-img-banner" style="display:none; background: linear-gradient(135deg,#92400e,#f59e0b);">🛕</div>

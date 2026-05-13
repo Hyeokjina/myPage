@@ -33,11 +33,28 @@
 }
 
 /* 필터 탭 */
+.lodging-filter-wrap {
+    margin: 28px 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.lodging-filter-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.lodging-filter-label {
+    font-size: 0.82em;
+    font-weight: 700;
+    color: #999;
+    white-space: nowrap;
+    min-width: 36px;
+}
 .lodging-filter {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    margin: 28px 0 24px;
 }
 .filter-btn {
     padding: 8px 18px;

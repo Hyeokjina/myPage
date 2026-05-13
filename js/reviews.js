@@ -1,8 +1,29 @@
 const STORAGE_KEY = 'travel_reviews';
+const LIKED_KEY = 'review_liked_ids';
 const PAGE_SIZE = 5;
 let currentPage = 1;
 let filterRegion = '전체';
 let filterRating = 0;
+
+function getLikedIds() {
+  try { return JSON.parse(localStorage.getItem(LIKED_KEY) || '[]'); } catch { return []; }
+}
+function saveLikedIds(ids) {
+  try { localStorage.setItem(LIKED_KEY, JSON.stringify(ids)); } catch {}
+}
+
+function toggleLike(id) {
+  let liked = getLikedIds();
+  const isLiked = liked.includes(id);
+  const reviews = getReviews().map(r => {
+    if (r.id !== id) return r;
+    return { ...r, likes: Math.max(0, (r.likes || 0) + (isLiked ? -1 : 1)) };
+  });
+  liked = isLiked ? liked.filter(x => x !== id) : [...liked, id];
+  saveReviews(reviews);
+  saveLikedIds(liked);
+  renderList();
+}
 
 function getReviews() {
   try {
@@ -262,6 +283,16 @@ function renderList() {
     contentEl.className = 'card-content';
     contentEl.textContent = review.content;
 
+    const bottomRow = document.createElement('div');
+    bottomRow.className = 'card-bottom-row';
+
+    const likeBtn = document.createElement('button');
+    const isLiked = getLikedIds().includes(review.id);
+    likeBtn.className = 'like-btn' + (isLiked ? ' liked' : '');
+    likeBtn.setAttribute('aria-label', '좋아요');
+    likeBtn.innerHTML = `<span class="like-icon">${isLiked ? '♥' : '♡'}</span><span class="like-count">${review.likes || 0}</span>`;
+    likeBtn.addEventListener('click', () => toggleLike(review.id));
+
     const editBtn = document.createElement('button');
     editBtn.className = 'edit-btn';
     editBtn.textContent = '✏️';
@@ -274,11 +305,14 @@ function renderList() {
     delBtn.setAttribute('aria-label', '후기 삭제');
     delBtn.addEventListener('click', () => deleteReview(review.id));
 
+    bottomRow.appendChild(likeBtn);
+    bottomRow.appendChild(editBtn);
+    bottomRow.appendChild(delBtn);
+
     li.appendChild(top);
     li.appendChild(titleEl);
     li.appendChild(contentEl);
-    li.appendChild(editBtn);
-    li.appendChild(delBtn);
+    li.appendChild(bottomRow);
 
     list.appendChild(li);
   });

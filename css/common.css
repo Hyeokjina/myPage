@@ -19,6 +19,7 @@ body {
     line-height: 1.6;
     padding-top: 64px;
     word-break: keep-all;
+    transition: background 0.3s, color 0.3s;
 }
 
 p {
@@ -41,6 +42,7 @@ header {
     padding: 0 28px;
     height: 64px;
     box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 .logo {
@@ -95,6 +97,7 @@ footer {
     margin-top: 80px;
     font-size: 0.88em;
     line-height: 1.8;
+    transition: background 0.3s;
 }
 footer .social-icons { margin-bottom: 16px; }
 footer .social-icons a { margin: 0 8px; display: inline-block; }
@@ -118,9 +121,10 @@ footer p { color: rgba(255,255,255,0.55); font-size: 0.92em; }
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s;
+    transition: background 0.3s, transform 0.3s;
     flex-shrink: 0;
 }
+.dark-toggle:active { transform: rotate(20deg) scale(0.9); }
 .dark-toggle:hover { background: #e2eaf2; }
 
 /* 상단 이동 버튼 */

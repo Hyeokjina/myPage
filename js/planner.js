@@ -1,6 +1,7 @@
 const PLANS_KEY = 'travel_plans';
 const SCHEDULES_KEY = 'travel_schedules';
 let activeCatFilter = '전체';
+let dragSrcId = null;
 
 // ── 플랜 관리 ──────────────────────────────────────
 
@@ -565,6 +566,43 @@ function renderScheduleList() {
       openEditModal(s);
     });
 
+    const dragHandle = document.createElement('div');
+    dragHandle.className = 'drag-handle';
+    dragHandle.textContent = '⠿';
+    dragHandle.setAttribute('aria-hidden', 'true');
+
+    li.draggable = true;
+    li.addEventListener('dragstart', e => {
+      dragSrcId = s.id;
+      li.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    li.addEventListener('dragend', () => {
+      li.classList.remove('dragging');
+      document.querySelectorAll('.schedule-card').forEach(el => el.classList.remove('drag-over'));
+    });
+    li.addEventListener('dragover', e => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      document.querySelectorAll('.schedule-card').forEach(el => el.classList.remove('drag-over'));
+      if (dragSrcId !== s.id) li.classList.add('drag-over');
+    });
+    li.addEventListener('drop', e => {
+      e.preventDefault();
+      li.classList.remove('drag-over');
+      if (dragSrcId === null || dragSrcId === s.id) return;
+      const all = getSchedules();
+      const fromIdx = all.findIndex(sc => sc.id === dragSrcId);
+      const toIdx = all.findIndex(sc => sc.id === s.id);
+      if (fromIdx === -1 || toIdx === -1) return;
+      const [moved] = all.splice(fromIdx, 1);
+      all.splice(toIdx, 0, moved);
+      saveSchedules(all);
+      renderScheduleList();
+      renderPlanList();
+    });
+
+    li.appendChild(dragHandle);
     li.appendChild(catBar);
     li.appendChild(dateBlock);
     li.appendChild(divider);

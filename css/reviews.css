@@ -654,3 +654,32 @@ body.dark .edit-btn:hover { color: #0EA5C9; }
   .review-card { padding: 18px 20px; }
   .review-modal-box { padding: 24px 20px; }
 }
+
+/* 좋아요 버튼 */
+.card-bottom-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.like-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: #f8f8f8;
+  color: #888;
+  font-size: 0.88em;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s, transform 0.15s;
+  margin-right: auto;
+}
+.like-btn:hover { background: #fee2e2; border-color: #fca5a5; color: #ef4444; }
+.like-btn.liked { background: #fee2e2; border-color: #fca5a5; color: #ef4444; }
+.like-btn:active { transform: scale(0.92); }
+.like-icon { font-size: 1em; line-height: 1; }
+.like-count { font-weight: 600; }
+body.dark .like-btn { background: #1a1a2e; border-color: #444; color: #aaa; }
+body.dark .like-btn:hover, body.dark .like-btn.liked { background: #3f1010; border-color: #b91c1c; color: #fca5a5; }
