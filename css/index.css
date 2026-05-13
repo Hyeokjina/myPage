@@ -504,3 +504,15 @@ body.dark .modal-close:hover { background: #0B8CAA; }
         scroll-snap-align: start;
     }
 }
+
+.search-highlight {
+    background: #fef08a;
+    color: #1e293b;
+    border-radius: 2px;
+    padding: 0 1px;
+    font-style: normal;
+}
+body.dark .search-highlight {
+    background: #854d0e;
+    color: #fef9c3;
+}

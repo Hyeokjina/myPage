@@ -87,6 +87,12 @@ function closeFavModalOutside(event) {
     if (event.target === document.getElementById('fav-modal')) closeFavModal();
 }
 
+function highlight(text, query) {
+    if (!query) return text;
+    const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return text.replace(new RegExp(`(${escaped})`, 'gi'), '<mark class="search-highlight">$1</mark>');
+}
+
 function searchPlaces() {
     const query = document.getElementById('search-input').value.trim().toLowerCase();
     document.querySelectorAll('.container[id]').forEach(section => {
@@ -94,10 +100,17 @@ function searchPlaces() {
         if (!items.length) return;
         let anyVisible = false;
         items.forEach(li => {
-            const name = li.querySelector('h3')?.textContent?.toLowerCase()
-                || li.querySelector('img')?.alt?.toLowerCase() || '';
-            const visible = !query || name.includes(query);
+            const h3 = li.querySelector('h3');
+            const desc = li.querySelector('p');
+            const rawName = h3?._originalText ?? h3?.textContent ?? '';
+            const rawDesc = desc?._originalText ?? desc?.textContent ?? '';
+            if (h3 && !h3._originalText) h3._originalText = h3.textContent;
+            if (desc && !desc._originalText) desc._originalText = desc.textContent;
+            const searchTarget = (rawName + ' ' + rawDesc).toLowerCase();
+            const visible = !query || searchTarget.includes(query);
             li.style.display = visible ? '' : 'none';
+            if (h3) h3.innerHTML = visible && query ? highlight(rawName, query) : rawName;
+            if (desc) desc.innerHTML = visible && query ? highlight(rawDesc, query) : rawDesc;
             if (visible) anyVisible = true;
         });
         let noResult = section.querySelector('.no-result');
