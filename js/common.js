@@ -31,6 +31,13 @@ function toggleDark() {
 
 window.addEventListener('scroll', () => {
     document.getElementById('back-to-top')?.classList.toggle('visible', window.scrollY > 300);
+
+    const el = document.getElementById('scroll-progress');
+    if (el) {
+        const scrolled = document.documentElement.scrollTop;
+        const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        el.style.width = total > 0 ? `${(scrolled / total) * 100}%` : '0%';
+    }
 });
 
 // 다크모드 초기화: 저장값 우선, 없으면 OS 설정 따름
