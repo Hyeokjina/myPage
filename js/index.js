@@ -169,6 +169,59 @@ document.addEventListener('keydown', e => {
     }
 });
 
+// 최근 본 여행지 렌더링
+function renderRecentlyViewed() {
+    let recent;
+    try { recent = JSON.parse(localStorage.getItem('recently_viewed') || '[]'); } catch { recent = []; }
+    const section = document.getElementById('recently-viewed-section');
+    const list = document.getElementById('recently-viewed-list');
+    if (!section || !list || recent.length === 0) return;
+
+    list.innerHTML = '';
+    recent.forEach(item => {
+        const li = document.createElement('li');
+        li.tabIndex = 0;
+        li.addEventListener('click', () => { window.location.href = item.href; });
+        li.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = item.href; }
+        });
+
+        const wrap = document.createElement('div');
+        wrap.className = 'card-img-wrap';
+
+        const img = document.createElement('img');
+        img.src = item.img;
+        img.alt = item.name;
+        img.loading = 'lazy';
+        img.onerror = () => { img.src = './icon/incheon.png'; img.style.opacity = '0.3'; };
+
+        const overlay = document.createElement('div');
+        overlay.className = 'card-overlay';
+        overlay.innerHTML = `<span>${item.name} 보기 →</span>`;
+
+        wrap.appendChild(img);
+        wrap.appendChild(overlay);
+
+        const info = document.createElement('div');
+        const h3 = document.createElement('h3');
+        h3.textContent = item.name;
+        info.appendChild(h3);
+
+        li.appendChild(wrap);
+        li.appendChild(info);
+        list.appendChild(li);
+    });
+
+    section.style.display = 'block';
+}
+
+document.getElementById('clear-recent-btn')?.addEventListener('click', () => {
+    localStorage.removeItem('recently_viewed');
+    const section = document.getElementById('recently-viewed-section');
+    if (section) section.style.display = 'none';
+});
+
 // 초기화
 updateBadge();
 updateButtons();
+renderRecentlyViewed();

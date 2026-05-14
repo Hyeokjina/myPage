@@ -105,6 +105,30 @@ document.querySelector('.hamburger')?.addEventListener('click', toggleNav);
 document.getElementById('dark-btn')?.addEventListener('click', toggleDark);
 document.getElementById('back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+// 최근 본 여행지 추적
+(function trackRecentlyViewed() {
+    const PAGE_MAP = {
+        'seoul.html':    { name: '서울',     img: './images/seoul.png' },
+        'busan.html':    { name: '부산',     img: './images/busan.png' },
+        'jeju.html':     { name: '제주',     img: './images/jeju.png' },
+        'gangwon.html':  { name: '강원',     img: './images/gangwon.png' },
+        'gyeongju.html': { name: '경주',     img: './images/gyeongju.png' },
+        'about.html':    { name: '인천',     img: './images/incheon.png' },
+        'lodging.html':  { name: '숙소 세일', img: './images/lo1.png' },
+        'regions.html':  { name: '인기 지역', img: './images/seoul.png' },
+    };
+    const file = location.pathname.split('/').pop() || 'index.html';
+    const info = PAGE_MAP[file];
+    if (!info) return;
+    try {
+        let recent = JSON.parse(localStorage.getItem('recently_viewed') || '[]');
+        recent = recent.filter(r => r.href !== file);
+        recent.unshift({ name: info.name, href: file, img: info.img });
+        recent = recent.slice(0, 5);
+        localStorage.setItem('recently_viewed', JSON.stringify(recent));
+    } catch {}
+})();
+
 // 접근성 초기화
 (function initA11y() {
     const hamburger = document.querySelector('.hamburger');

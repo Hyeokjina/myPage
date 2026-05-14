@@ -27,6 +27,19 @@ p {
     font-size: 1.1em;
 }
 
+/* 스크롤 진행률 바 */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, #0EA5C9, #38bdf8);
+    z-index: 200;
+    transition: width 0.1s linear;
+    pointer-events: none;
+}
+
 /* 헤더 */
 header {
     background: rgba(255,255,255,0.85);
