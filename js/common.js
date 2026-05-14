@@ -136,6 +136,20 @@ document.getElementById('back-to-top')?.addEventListener('click', () => window.s
     } catch {}
 })();
 
+// 공유 버튼 (동적 주입)
+(function initShareBtn() {
+    if (!navigator.share) return;
+    const btn = document.createElement('button');
+    btn.id = 'share-btn';
+    btn.className = 'share-btn';
+    btn.setAttribute('aria-label', '페이지 공유');
+    btn.innerHTML = '&#x1F517; 공유';
+    btn.addEventListener('click', () => {
+        navigator.share({ title: document.title, url: location.href }).catch(() => {});
+    });
+    document.body.appendChild(btn);
+})();
+
 // 접근성 초기화
 (function initA11y() {
     const hamburger = document.querySelector('.hamburger');

@@ -40,19 +40,6 @@ p {
     pointer-events: none;
 }
 
-/* 스크롤 진행률 바 */
-#scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    width: 0%;
-    background: linear-gradient(90deg, #0EA5C9, #38bdf8);
-    z-index: 200;
-    transition: width 0.1s linear;
-    pointer-events: none;
-}
-
 /* 헤더 */
 header {
     background: rgba(255,255,255,0.85);
@@ -313,4 +300,31 @@ body.dark .bottom-nav a.active { color: #0EA5C9; }
     body { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
     .back-to-top { bottom: calc(72px + env(safe-area-inset-bottom)); }
     .toast { bottom: calc(76px + env(safe-area-inset-bottom)); }
+}
+
+/* 공유 버튼 */
+.share-btn {
+    position: fixed;
+    bottom: 82px;
+    right: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border-radius: 100px;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: #fff;
+    color: #555;
+    font-size: 0.85em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    z-index: 150;
+    transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.18s;
+}
+.share-btn:hover { background: #e0f2fe; border-color: #0EA5C9; color: #0EA5C9; transform: translateY(-2px); }
+body.dark .share-btn { background: #0A1628; border-color: #333; color: #aaa; }
+body.dark .share-btn:hover { background: #0A2535; border-color: #0EA5C9; color: #38bdf8; }
+@media (max-width: 900px) {
+    .share-btn { bottom: calc(70px + env(safe-area-inset-bottom)); right: 16px; }
 }
