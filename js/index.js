@@ -87,6 +87,96 @@ function closeFavModalOutside(event) {
     if (event.target === document.getElementById('fav-modal')) closeFavModal();
 }
 
+// 자동완성 후보 목록
+const AUTOCOMPLETE_ITEMS = [
+    { name: '차이나타운',      href: null },
+    { name: '송도 센트럴파크', href: null },
+    { name: '월미도',          href: null },
+    { name: '서울',            href: 'seoul.html' },
+    { name: '부산',            href: 'busan.html' },
+    { name: '제주',            href: 'jeju.html' },
+    { name: '강원',            href: 'gangwon.html' },
+    { name: '경주',            href: 'gyeongju.html' },
+    { name: '인천',            href: 'about.html' },
+    { name: '송도 뷰 호텔',    href: 'lodging.html' },
+    { name: '월미도 씨사이드 펜션', href: 'lodging.html' },
+    { name: '차이나타운 게스트하우스', href: 'lodging.html' },
+];
+
+(function initAutocomplete() {
+    const input = document.getElementById('search-input');
+    if (!input) return;
+
+    const box = document.createElement('ul');
+    box.id = 'autocomplete-list';
+    box.className = 'autocomplete-list';
+    input.parentNode.style.position = 'relative';
+    input.parentNode.appendChild(box);
+
+    let activeIdx = -1;
+
+    function closeList() {
+        box.innerHTML = '';
+        box.style.display = 'none';
+        activeIdx = -1;
+    }
+
+    function renderList(query) {
+        const q = query.trim().toLowerCase();
+        if (!q) { closeList(); return; }
+        const matches = AUTOCOMPLETE_ITEMS.filter(item =>
+            item.name.toLowerCase().includes(q)
+        );
+        if (matches.length === 0) { closeList(); return; }
+
+        box.innerHTML = '';
+        activeIdx = -1;
+        matches.forEach((item, i) => {
+            const li = document.createElement('li');
+            li.className = 'autocomplete-item';
+            li.innerHTML = item.name.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'), '<mark>$1</mark>');
+            li.addEventListener('mousedown', e => {
+                e.preventDefault();
+                if (item.href) { window.location.href = item.href; return; }
+                input.value = item.name;
+                searchPlaces();
+                document.getElementById('places')?.scrollIntoView({ behavior: 'smooth' });
+                closeList();
+            });
+            box.appendChild(li);
+        });
+        box.style.display = 'block';
+    }
+
+    input.addEventListener('input', () => renderList(input.value));
+    input.addEventListener('focus', () => renderList(input.value));
+    input.addEventListener('blur', () => setTimeout(closeList, 150));
+
+    input.addEventListener('keydown', e => {
+        const items = box.querySelectorAll('.autocomplete-item');
+        if (!items.length) return;
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            activeIdx = (activeIdx + 1) % items.length;
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            activeIdx = (activeIdx - 1 + items.length) % items.length;
+        } else if (e.key === 'Escape') {
+            closeList(); return;
+        } else if (e.key === 'Enter' && activeIdx >= 0) {
+            e.preventDefault();
+            items[activeIdx].dispatchEvent(new MouseEvent('mousedown'));
+            return;
+        } else { return; }
+        items.forEach((el, i) => el.classList.toggle('active', i === activeIdx));
+        if (activeIdx >= 0) input.value = items[activeIdx].textContent;
+    });
+
+    document.addEventListener('click', e => {
+        if (!input.parentNode.contains(e.target)) closeList();
+    });
+})();
+
 function highlight(text, query) {
     if (!query) return text;
     const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
