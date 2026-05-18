@@ -136,6 +136,50 @@ document.getElementById('back-to-top')?.addEventListener('click', () => window.s
     } catch {}
 })();
 
+// 라이트박스
+(function initLightbox() {
+    const overlay = document.createElement('div');
+    overlay.id = 'lightbox';
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML = `
+        <button class="lightbox-close" aria-label="닫기">✕</button>
+        <img class="lightbox-img" src="" alt="">
+        <p class="lightbox-caption"></p>`;
+    document.body.appendChild(overlay);
+
+    const img = overlay.querySelector('.lightbox-img');
+    const caption = overlay.querySelector('.lightbox-caption');
+
+    function open(src, alt) {
+        img.src = src;
+        img.alt = alt;
+        caption.textContent = alt;
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        overlay.querySelector('.lightbox-close').focus();
+    }
+
+    function close() {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+        img.src = '';
+    }
+
+    document.addEventListener('click', e => {
+        const target = e.target.closest('.card-img-wrap img, .lodging-img-wrap img');
+        if (!target || target.src.includes('/icon/')) return;
+        e.stopPropagation();
+        const alt = target.alt || target.closest('li, .lodging-card')?.querySelector('h3')?.textContent || '';
+        open(target.src, alt);
+    });
+
+    overlay.querySelector('.lightbox-close').addEventListener('click', close);
+    overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+    });
+})();
+
 // 공유 버튼 (동적 주입)
 (function initShareBtn() {
     if (!navigator.share) return;

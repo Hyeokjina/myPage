@@ -328,3 +328,53 @@ body.dark .share-btn:hover { background: #0A2535; border-color: #0EA5C9; color: 
 @media (max-width: 900px) {
     .share-btn { bottom: calc(70px + env(safe-area-inset-bottom)); right: 16px; }
 }
+
+/* 라이트박스 */
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+}
+.lightbox-overlay.open { display: flex; }
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+    animation: lb-in 0.2s ease;
+}
+@keyframes lb-in {
+    from { opacity: 0; transform: scale(0.94); }
+    to   { opacity: 1; transform: scale(1); }
+}
+.lightbox-caption {
+    color: rgba(255,255,255,0.8);
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+}
+.lightbox-close {
+    position: fixed;
+    top: 20px; right: 24px;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: #fff;
+    font-size: 1.3em;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.18s;
+    display: flex; align-items: center; justify-content: center;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.3); }
+
+/* 이미지 hover 시 커서 */
+.card-img-wrap img, .lodging-img-wrap img { cursor: zoom-in; }
