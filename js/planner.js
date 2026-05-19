@@ -773,7 +773,15 @@ document.getElementById('print-btn')?.addEventListener('click', () => {
   const plan = getPlans().find(p => String(p.id) === String(activePlanId));
   const header = document.getElementById('print-header');
   if (header && plan) {
-    header.innerHTML = `<span class="ph-title">${plan.name}</span><span class="ph-period">${plan.start} ~ ${plan.end}</span>`;
+    header.innerHTML = '';
+    const titleSpan = document.createElement('span');
+    titleSpan.className = 'ph-title';
+    titleSpan.textContent = plan.name;
+    const periodSpan = document.createElement('span');
+    periodSpan.className = 'ph-period';
+    periodSpan.textContent = `${plan.start} ~ ${plan.end}`;
+    header.appendChild(titleSpan);
+    header.appendChild(periodSpan);
   }
   window.print();
 });
