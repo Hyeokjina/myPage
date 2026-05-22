@@ -120,7 +120,7 @@ document.getElementById('back-to-top')?.addEventListener('click', () => window.s
         'jeju.html':     { name: '제주',     img: './images/jeju.png' },
         'gangwon.html':  { name: '강원',     img: './images/gangwon.png' },
         'gyeongju.html': { name: '경주',     img: './images/gyeongju.png' },
-        'about.html':    { name: '인천',     img: './images/incheon.png' },
+        'about.html':    { name: '인천',     img: './images/town.png' },
         'lodging.html':  { name: '숙소 세일', img: './images/lo1.png' },
         'regions.html':  { name: '인기 지역', img: './images/seoul.png' },
     };
