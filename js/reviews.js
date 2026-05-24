@@ -303,7 +303,10 @@ function renderList() {
     delBtn.className = 'delete-btn';
     delBtn.textContent = '✕';
     delBtn.setAttribute('aria-label', '후기 삭제');
-    delBtn.addEventListener('click', () => deleteReview(review.id));
+    delBtn.addEventListener('click', () => {
+      if (!confirm('후기를 삭제할까요?')) return;
+      deleteReview(review.id);
+    });
 
     bottomRow.appendChild(likeBtn);
     bottomRow.appendChild(editBtn);
