@@ -555,7 +555,10 @@ function renderScheduleList() {
     delBtn.className = 'delete-btn';
     delBtn.textContent = '✕';
     delBtn.setAttribute('aria-label', '일정 삭제');
-    delBtn.addEventListener('click', () => deleteSchedule(s.id));
+    delBtn.addEventListener('click', () => {
+      if (!confirm('일정을 삭제할까요?')) return;
+      deleteSchedule(s.id);
+    });
 
     actions.appendChild(checkBtn);
     actions.appendChild(delBtn);
