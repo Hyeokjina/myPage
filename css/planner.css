@@ -864,6 +864,234 @@ body.dark .list-actions button { background: #0A1628; border-color: #444; color:
 body.dark .list-actions button:hover { background: #0A2535; border-color: #0EA5C9; }
 body.dark .toast { background: #0EA5C9; color: #fff; }
 
+/* ── 여행 준비물 체크리스트 ── */
+.checklist-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 36px 40px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.checklist-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.checklist-header h2 {
+  color: #1E3A5F;
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.checklist-sub {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+}
+
+.checklist-progress-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  min-width: 120px;
+}
+
+.checklist-progress-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0EA5C9;
+}
+
+.checklist-progress-bar {
+  width: 120px;
+  height: 6px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.checklist-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0EA5C9, #38bdf8);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+
+/* 카테고리 그룹 */
+.checklist-group {
+  margin-bottom: 20px;
+}
+
+.checklist-group-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0EA5C9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+.checklist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* 체크리스트 항목 */
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  background: #fafafa;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.checklist-item:hover { border-color: #c0e8f4; background: #f4fbfe; }
+
+.checklist-item.checked {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.checklist-item.checked .checklist-item-text {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.checklist-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #0EA5C9;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.checklist-item-text {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+  transition: color 0.2s;
+}
+
+.checklist-item-del {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ddd;
+  font-size: 14px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.checklist-item-del:hover { color: #e74c3c; }
+
+/* 항목 추가 입력 */
+.checklist-add-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.checklist-add-row input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fafafa;
+  transition: border-color 0.2s;
+}
+
+.checklist-add-row input:focus {
+  outline: none;
+  border-color: #0EA5C9;
+}
+
+#checklist-add-btn {
+  padding: 10px 18px;
+  background: #0EA5C9;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+#checklist-add-btn:hover { background: #0B8CAA; }
+
+.checklist-reset-btn {
+  margin-top: 14px;
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #aaa;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.15s;
+}
+
+.checklist-reset-btn:hover { color: #e74c3c; }
+
+/* 다크 모드 */
+body.dark .checklist-section {
+  background: #0F2035;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+
+body.dark .checklist-header h2 { color: #7EC8E3; }
+body.dark .checklist-sub { color: #666; }
+body.dark .checklist-progress-bar { background: #2a2a4a; }
+body.dark .checklist-group-title { color: #5CC8E0; }
+
+body.dark .checklist-item {
+  background: #0A1628;
+  border-color: #2a2a4a;
+}
+
+body.dark .checklist-item:hover { background: #0A2535; border-color: #0EA5C9; }
+
+body.dark .checklist-item.checked {
+  background: #0a2535;
+  border-color: #1a4a3a;
+}
+
+body.dark .checklist-item-text { color: #ccc; }
+body.dark .checklist-item.checked .checklist-item-text { color: #555; }
+body.dark .checklist-item-del { color: #444; }
+body.dark .checklist-item-del:hover { color: #e74c3c; }
+
+body.dark .checklist-add-row input {
+  background: #0A1628;
+  border-color: #444;
+  color: #ddd;
+}
+
+body.dark .checklist-reset-btn { color: #555; }
+body.dark .checklist-reset-btn:hover { color: #e74c3c; }
+
+/* 반응형 */
+@media (max-width: 600px) {
+  .checklist-section { padding: 24px 20px; }
+  .checklist-header { flex-direction: column; }
+  .checklist-progress-wrap { align-items: flex-start; }
+  .checklist-progress-bar { width: 100%; }
+}
+
 /* 반응형 */
 @media (max-width: 600px) {
   .add-section { padding: 24px 20px; }
