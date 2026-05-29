@@ -1,5 +1,13 @@
 const PLANS_KEY = 'travel_plans';
 const SCHEDULES_KEY = 'travel_schedules';
+const CHECKLISTS_KEY = 'travel_checklists';
+
+const DEFAULT_CHECKLIST = [
+  { category: '서류·소지품', items: ['신분증/여권', '지갑·현금', '충전기', '보조배터리'] },
+  { category: '의류·용품',   items: ['옷·속옷·양말', '우산/우비', '편한 신발'] },
+  { category: '세면·위생',   items: ['칫솔·치약', '세면도구', '선크림', '상비약'] },
+  { category: '여행 준비',   items: ['숙소 예약 확인', '교통 예약 확인', '여행 일정 저장'] },
+];
 let activeCatFilter = '전체';
 let dragSrcId = null;
 
@@ -94,12 +102,18 @@ function deletePlan(id) {
     showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
   }
 
+  // 해당 플랜 체크리스트 삭제
+  const allChecklists = getAllChecklists();
+  delete allChecklists[id];
+  try { localStorage.setItem(CHECKLISTS_KEY, JSON.stringify(allChecklists)); } catch {}
+
   // 활성 플랜이 삭제된 경우 초기화
   if (String(getActivePlanId()) === String(id)) {
     localStorage.removeItem('active_plan_id');
     document.getElementById('schedule-section').style.display = 'none';
     document.getElementById('list-section').style.display = 'none';
     document.getElementById('schedule-stats').style.display = 'none';
+    document.getElementById('checklist-section').style.display = 'none';
   }
 
   renderPlanList();
@@ -158,6 +172,8 @@ function selectPlan(id) {
 
   document.getElementById('schedule-section').style.display = 'block';
   document.getElementById('list-section').style.display = 'block';
+  document.getElementById('checklist-section').style.display = 'block';
+  renderChecklist();
 }
 
 // 플랜 목록 렌더링
@@ -174,6 +190,7 @@ function renderPlanList() {
     document.getElementById('schedule-section').style.display = 'none';
     document.getElementById('list-section').style.display = 'none';
     document.getElementById('schedule-stats').style.display = 'none';
+    document.getElementById('checklist-section').style.display = 'none';
     return;
   }
   emptyMsg.style.display = 'none';
@@ -787,6 +804,125 @@ document.getElementById('print-btn')?.addEventListener('click', () => {
     header.appendChild(periodSpan);
   }
   window.print();
+});
+
+// ── 여행 준비물 체크리스트 ─────────────────────────────
+
+function getAllChecklists() {
+  try { return JSON.parse(localStorage.getItem(CHECKLISTS_KEY) || '{}'); } catch { return {}; }
+}
+
+function getChecklist() {
+  const id = getActivePlanId();
+  if (!id) return [];
+  const all = getAllChecklists();
+  if (!all[id]) {
+    all[id] = DEFAULT_CHECKLIST.flatMap(group =>
+      group.items.map(text => ({ id: Date.now() + Math.random(), text, checked: false, category: group.category }))
+    );
+    try { localStorage.setItem(CHECKLISTS_KEY, JSON.stringify(all)); } catch {}
+  }
+  return all[id];
+}
+
+function saveChecklist(items) {
+  const id = getActivePlanId();
+  if (!id) return;
+  const all = getAllChecklists();
+  all[id] = items;
+  try { localStorage.setItem(CHECKLISTS_KEY, JSON.stringify(all)); } catch {
+    showToast('저장 공간이 부족합니다.');
+  }
+}
+
+function renderChecklist() {
+  const items = getChecklist();
+  const body = document.getElementById('checklist-body');
+  if (!body) return;
+
+  const checked = items.filter(i => i.checked).length;
+  const total = items.length;
+  document.getElementById('checklist-progress-text').textContent = `${checked} / ${total}`;
+  document.getElementById('checklist-progress-fill').style.width = total ? `${(checked / total) * 100}%` : '0%';
+
+  const categories = [...new Set(items.map(i => i.category))];
+  body.innerHTML = '';
+
+  categories.forEach(cat => {
+    const group = document.createElement('div');
+    group.className = 'checklist-group';
+
+    const title = document.createElement('div');
+    title.className = 'checklist-group-title';
+    title.textContent = cat;
+    group.appendChild(title);
+
+    const list = document.createElement('div');
+    list.className = 'checklist-items';
+
+    items.filter(i => i.category === cat).forEach(item => {
+      const row = document.createElement('div');
+      row.className = 'checklist-item' + (item.checked ? ' checked' : '');
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.className = 'checklist-checkbox';
+      checkbox.checked = item.checked;
+      checkbox.addEventListener('change', () => {
+        const all = getChecklist().map(i => i.id === item.id ? { ...i, checked: checkbox.checked } : i);
+        saveChecklist(all);
+        renderChecklist();
+      });
+
+      const label = document.createElement('span');
+      label.className = 'checklist-item-text';
+      label.textContent = item.text;
+
+      const delBtn = document.createElement('button');
+      delBtn.className = 'checklist-item-del';
+      delBtn.textContent = '✕';
+      delBtn.setAttribute('aria-label', '항목 삭제');
+      delBtn.addEventListener('click', () => {
+        saveChecklist(getChecklist().filter(i => i.id !== item.id));
+        renderChecklist();
+      });
+
+      row.appendChild(checkbox);
+      row.appendChild(label);
+      row.appendChild(delBtn);
+      list.appendChild(row);
+    });
+
+    group.appendChild(list);
+    body.appendChild(group);
+  });
+}
+
+document.getElementById('checklist-add-btn')?.addEventListener('click', () => {
+  const input = document.getElementById('checklist-input');
+  const text = input.value.trim();
+  if (!text) return;
+  const items = getChecklist();
+  items.push({ id: Date.now(), text, checked: false, category: '직접 추가' });
+  saveChecklist(items);
+  renderChecklist();
+  input.value = '';
+});
+
+document.getElementById('checklist-input')?.addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('checklist-add-btn').click();
+});
+
+document.getElementById('checklist-reset-btn')?.addEventListener('click', () => {
+  if (!confirm('기본 항목으로 초기화할까요? 현재 목록이 모두 삭제됩니다.')) return;
+  const id = getActivePlanId();
+  if (!id) return;
+  const all = getAllChecklists();
+  all[id] = DEFAULT_CHECKLIST.flatMap(group =>
+    group.items.map(text => ({ id: Date.now() + Math.random(), text, checked: false, category: group.category }))
+  );
+  try { localStorage.setItem(CHECKLISTS_KEY, JSON.stringify(all)); } catch {}
+  renderChecklist();
 });
 
 // ── 초기화 ─────────────────────────────────────────
