@@ -230,6 +230,31 @@
       <ul id="schedule-list"></ul>
       <p id="empty-msg" class="empty-msg">아직 추가된 일정이 없습니다.</p>
     </section>
+
+    <!-- 여행 준비물 체크리스트 -->
+    <section class="checklist-section" id="checklist-section" style="display:none;">
+      <div class="checklist-header">
+        <div>
+          <h2>여행 준비물</h2>
+          <p class="checklist-sub">빠진 준비물이 없는지 확인해보세요.</p>
+        </div>
+        <div class="checklist-progress-wrap">
+          <span class="checklist-progress-text" id="checklist-progress-text">0 / 0</span>
+          <div class="checklist-progress-bar">
+            <div class="checklist-progress-fill" id="checklist-progress-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="checklist-body" id="checklist-body"></div>
+
+      <div class="checklist-add-row">
+        <input type="text" id="checklist-input" placeholder="직접 항목 추가..." maxlength="30">
+        <button id="checklist-add-btn">+ 추가</button>
+      </div>
+
+      <button class="checklist-reset-btn" id="checklist-reset-btn">기본 항목으로 초기화</button>
+    </section>
   </main>
 
   <footer>
