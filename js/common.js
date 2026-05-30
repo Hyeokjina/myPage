@@ -194,6 +194,11 @@ document.getElementById('back-to-top')?.addEventListener('click', () => window.s
     document.body.appendChild(btn);
 })();
 
+// 푸터 연도 자동화
+document.querySelectorAll('.footer-year').forEach(el => {
+    el.textContent = new Date().getFullYear();
+});
+
 // 접근성 초기화
 (function initA11y() {
     const hamburger = document.querySelector('.hamburger');
