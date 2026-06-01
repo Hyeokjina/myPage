@@ -60,6 +60,23 @@ function highlightStars(val) {
   });
 }
 
+// 글자수 카운터
+(function initCharCounters() {
+  const titleInput = document.getElementById('title');
+  const contentInput = document.getElementById('content');
+  const titleCounter = document.getElementById('title-counter');
+  const contentCounter = document.getElementById('content-counter');
+
+  function updateCounter(input, counter, max) {
+    const len = input.value.length;
+    counter.textContent = `${len} / ${max}`;
+    counter.classList.toggle('over', len >= max);
+  }
+
+  titleInput.addEventListener('input', () => updateCounter(titleInput, titleCounter, 50));
+  contentInput.addEventListener('input', () => updateCounter(contentInput, contentCounter, 500));
+})();
+
 // 폼 제출
 document.getElementById('review-form').addEventListener('submit', e => {
   e.preventDefault();
