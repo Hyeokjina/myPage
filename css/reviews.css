@@ -114,6 +114,32 @@ body.dark .rating-avg-label { color: #5a7a8a; }
   margin-bottom: 16px;
 }
 
+.form-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.form-label-row label {
+  margin-bottom: 0;
+}
+
+.char-counter {
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.char-counter.over {
+  color: #e74c3c;
+  font-weight: 700;
+}
+
+body.dark .char-counter { color: #555; }
+body.dark .char-counter.over { color: #e74c3c; }
+
 .form-group label {
   display: block;
   font-weight: 600;
