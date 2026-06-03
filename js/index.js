@@ -250,8 +250,19 @@ document.querySelectorAll('.hero-tag').forEach(btn => {
     });
 });
 
-document.getElementById('search-input')?.addEventListener('input', searchPlaces);
+document.getElementById('search-input')?.addEventListener('input', () => {
+    searchPlaces();
+    const clearBtn = document.getElementById('search-clear-btn');
+    if (clearBtn) clearBtn.style.display = document.getElementById('search-input').value ? 'block' : 'none';
+});
 document.getElementById('search-btn')?.addEventListener('click', searchPlaces);
+document.getElementById('search-clear-btn')?.addEventListener('click', () => {
+    const input = document.getElementById('search-input');
+    input.value = '';
+    input.focus();
+    document.getElementById('search-clear-btn').style.display = 'none';
+    searchPlaces();
+});
 
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && document.getElementById('fav-modal').classList.contains('open')) {
