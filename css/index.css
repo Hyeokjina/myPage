@@ -64,6 +64,24 @@
     letter-spacing: -0.2px;
 }
 .hero-search input::placeholder { color: #aaa; }
+
+#search-clear-btn {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 50%;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: color 0.15s, background 0.15s;
+}
+#search-clear-btn:hover {
+    color: #555;
+    background: #f0f4f8;
+}
+
 .hero-search button {
     display: flex;
     align-items: center;
