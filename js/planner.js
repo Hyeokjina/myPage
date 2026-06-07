@@ -869,9 +869,12 @@ function renderChecklist() {
       checkbox.className = 'checklist-checkbox';
       checkbox.checked = item.checked;
       checkbox.addEventListener('change', () => {
-        const all = getChecklist().map(i => i.id === item.id ? { ...i, checked: checkbox.checked } : i);
-        saveChecklist(all);
+        const updated = getChecklist().map(i => i.id === item.id ? { ...i, checked: checkbox.checked } : i);
+        saveChecklist(updated);
         renderChecklist();
+        if (checkbox.checked && updated.length > 0 && updated.every(i => i.checked)) {
+          showToast('🎉 모든 준비물 체크 완료!');
+        }
       });
 
       const label = document.createElement('span');
