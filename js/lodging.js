@@ -1,8 +1,13 @@
-const cards = document.querySelectorAll('.lodging-card');
+const grid = document.getElementById('lodging-grid');
 const emptyMsg = document.getElementById('lodging-empty');
 
 let activeRegion = '전체';
 let activePrice = '전체';
+let activeSort = 'default';
+
+function getCards() {
+    return Array.from(grid.querySelectorAll('.lodging-card'));
+}
 
 function matchesPrice(price, range) {
     if (range === '전체') return true;
@@ -13,6 +18,9 @@ function matchesPrice(price, range) {
 }
 
 function applyFilters() {
+    const cards = getCards();
+
+    // 필터 적용
     let visible = 0;
     cards.forEach(card => {
         const regionMatch = activeRegion === '전체' || card.dataset.region === activeRegion;
@@ -22,6 +30,16 @@ function applyFilters() {
         if (show) visible++;
     });
     emptyMsg.style.display = visible === 0 ? 'block' : 'none';
+
+    // 정렬 적용 (hidden 카드 포함해 DOM 순서만 재배치)
+    if (activeSort !== 'default') {
+        const sorted = cards.slice().sort((a, b) => {
+            const pa = Number(a.dataset.price || 0);
+            const pb = Number(b.dataset.price || 0);
+            return activeSort === 'price-asc' ? pa - pb : pb - pa;
+        });
+        sorted.forEach(card => grid.appendChild(card));
+    }
 }
 
 document.getElementById('region-filter').addEventListener('click', e => {
@@ -39,5 +57,10 @@ document.getElementById('price-filter').addEventListener('click', e => {
     document.querySelectorAll('#price-filter .filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     activePrice = btn.dataset.price;
+    applyFilters();
+});
+
+document.getElementById('lodging-sort').addEventListener('change', e => {
+    activeSort = e.target.value;
     applyFilters();
 });
