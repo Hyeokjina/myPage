@@ -376,6 +376,9 @@ document.getElementById('schedule-form').addEventListener('submit', e => {
   renderScheduleList();
   renderPlanList();
   e.target.reset();
+
+  const newEl = document.querySelector(`[data-id="${schedule.id}"]`);
+  if (newEl) newEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
 
 // 일정 수정 모달 열기/닫기
