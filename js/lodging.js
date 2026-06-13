@@ -1,9 +1,15 @@
 const grid = document.getElementById('lodging-grid');
 const emptyMsg = document.getElementById('lodging-empty');
+const sortSelect = document.getElementById('lodging-sort');
 
 let activeRegion = '전체';
 let activePrice = '전체';
 let activeSort = 'default';
+
+// 초기 HTML 순서를 기억해 "기본순" 복원에 사용
+Array.from(grid.querySelectorAll('.lodging-card')).forEach((card, i) => {
+    card.dataset.originalIndex = i;
+});
 
 function getCards() {
     return Array.from(grid.querySelectorAll('.lodging-card'));
@@ -31,15 +37,18 @@ function applyFilters() {
     });
     emptyMsg.style.display = visible === 0 ? 'block' : 'none';
 
-    // 정렬 적용 (hidden 카드 포함해 DOM 순서만 재배치)
-    if (activeSort !== 'default') {
-        const sorted = cards.slice().sort((a, b) => {
-            const pa = Number(a.dataset.price || 0);
-            const pb = Number(b.dataset.price || 0);
-            return activeSort === 'price-asc' ? pa - pb : pb - pa;
-        });
-        sorted.forEach(card => grid.appendChild(card));
-    }
+    // 정렬 적용 — 기본순은 originalIndex로 복원
+    const sorted = cards.slice().sort((a, b) => {
+        if (activeSort === 'price-asc') return Number(a.dataset.price) - Number(b.dataset.price);
+        if (activeSort === 'price-desc') return Number(b.dataset.price) - Number(a.dataset.price);
+        return Number(a.dataset.originalIndex) - Number(b.dataset.originalIndex);
+    });
+    sorted.forEach(card => grid.appendChild(card));
+}
+
+function resetSort() {
+    activeSort = 'default';
+    sortSelect.value = 'default';
 }
 
 document.getElementById('region-filter').addEventListener('click', e => {
@@ -48,6 +57,7 @@ document.getElementById('region-filter').addEventListener('click', e => {
     document.querySelectorAll('#region-filter .filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     activeRegion = btn.dataset.filter;
+    resetSort();
     applyFilters();
 });
 
@@ -57,10 +67,11 @@ document.getElementById('price-filter').addEventListener('click', e => {
     document.querySelectorAll('#price-filter .filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     activePrice = btn.dataset.price;
+    resetSort();
     applyFilters();
 });
 
-document.getElementById('lodging-sort').addEventListener('change', e => {
+sortSelect.addEventListener('change', e => {
     activeSort = e.target.value;
     applyFilters();
 });
