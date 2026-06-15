@@ -75,3 +75,47 @@ sortSelect.addEventListener('change', e => {
     activeSort = e.target.value;
     applyFilters();
 });
+
+// ── 숙소 찜하기 ──────────────────────────────────────
+const FAV_KEY = 'incheon_favorites';
+
+function getLodgingFavs() {
+    try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch { return []; }
+}
+
+function saveLodgingFavs(favs) {
+    try { localStorage.setItem(FAV_KEY, JSON.stringify(favs)); } catch {}
+}
+
+function updateFavBtns() {
+    const favs = getLodgingFavs();
+    document.querySelectorAll('.lodging-fav-btn').forEach(btn => {
+        const active = favs.includes(btn.dataset.name);
+        btn.textContent = active ? '♥' : '♡';
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-label', active ? '찜 취소' : '찜하기');
+    });
+}
+
+function toggleLodgingFav(e, name) {
+    e.stopPropagation();
+    let favs = getLodgingFavs();
+    favs = favs.includes(name) ? favs.filter(f => f !== name) : [...favs, name];
+    saveLodgingFavs(favs);
+    updateFavBtns();
+}
+
+// 각 카드 이미지 영역에 ♡ 버튼 동적 삽입
+getCards().forEach(card => {
+    const name = card.querySelector('h3')?.textContent.trim();
+    if (!name) return;
+    const btn = document.createElement('button');
+    btn.className = 'lodging-fav-btn';
+    btn.dataset.name = name;
+    btn.textContent = '♡';
+    btn.setAttribute('aria-label', '찜하기');
+    btn.addEventListener('click', e => toggleLodgingFav(e, name));
+    card.querySelector('.lodging-img-wrap').appendChild(btn);
+});
+
+updateFavBtns();
