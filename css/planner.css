@@ -625,6 +625,45 @@ body.dark .cat-filter-btn.active {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* 날짜 그룹 헤더 */
+.schedule-date-header {
+  position: relative;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 8px;
+}
+.schedule-date-header:first-child { margin-top: 4px; }
+.schedule-date-header::before {
+  content: '';
+  position: absolute;
+  left: -27px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background: #0EA5C9;
+  border-radius: 2px;
+  z-index: 2;
+}
+.schedule-date-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(14,165,201,0.2);
+}
+.schedule-date-header-text {
+  font-size: 0.78em;
+  font-weight: 700;
+  color: #0EA5C9;
+  white-space: nowrap;
+  letter-spacing: -0.1px;
+}
+body.dark .schedule-date-header::before { background: #0EA5C9; }
+body.dark .schedule-date-header::after { background: rgba(14,165,201,0.15); }
+body.dark .schedule-date-header-text { color: #38bdf8; }
+
 /* 타임라인 도트 */
 .schedule-card::before {
   content: '';

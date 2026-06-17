@@ -499,7 +499,27 @@ function renderScheduleList() {
   }
   emptyMsg.style.display = 'none';
 
+  // 날짜별 그룹핑
+  const grouped = {};
+  const dateOrder = [];
   filtered.forEach(s => {
+    if (!grouped[s.date]) { grouped[s.date] = []; dateOrder.push(s.date); }
+    grouped[s.date].push(s);
+  });
+
+  const DAY_NAMES = ['일', '월', '화', '수', '목', '금', '토'];
+
+  dateOrder.forEach(date => {
+    const headerLi = document.createElement('li');
+    headerLi.className = 'schedule-date-header';
+    const d = new Date(date + 'T00:00:00');
+    const span = document.createElement('span');
+    span.className = 'schedule-date-header-text';
+    span.textContent = `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 (${DAY_NAMES[d.getDay()]})`;
+    headerLi.appendChild(span);
+    list.appendChild(headerLi);
+
+    grouped[date].forEach(s => {
     const dateObj = new Date(s.date + 'T00:00:00');
     const month = dateObj.toLocaleString('ko-KR', { month: 'short' });
     const day = dateObj.getDate();
@@ -633,7 +653,8 @@ function renderScheduleList() {
     li.appendChild(actions);
 
     list.appendChild(li);
-  });
+    }); // grouped[date].forEach 끝
+  }); // dateOrder.forEach 끝
 
   renderStats();
 }
