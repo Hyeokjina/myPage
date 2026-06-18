@@ -334,6 +334,57 @@ body.dark .lodging li div { border-top-color: rgba(255,255,255,0.05); }
     box-shadow: 0 2px 8px rgba(231,76,60,0.4);
 }
 
+/* 여행 팁 */
+.tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+.tip-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: #fff;
+    border-radius: 18px;
+    padding: 20px 22px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.tip-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.tip-icon {
+    font-size: 1.8em;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.tip-body h3 {
+    font-size: 0.95em;
+    font-weight: 700;
+    color: #1E3A5F;
+    margin: 0 0 6px;
+    letter-spacing: -0.3px;
+}
+.tip-body p {
+    font-size: 0.84em;
+    color: #777;
+    line-height: 1.6;
+    margin: 0;
+}
+body.dark .tip-card {
+    background: #0F2035;
+    border-color: rgba(255,255,255,0.04);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+body.dark .tip-body h3 { color: #e8f4fb; }
+body.dark .tip-body p { color: #7a94a8; }
+@media (max-width: 600px) {
+    .tips-list { grid-template-columns: 1fr; }
+}
+
 /* 즐겨찾기 버튼 */
 .fav-btn {
     position: absolute;
