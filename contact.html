@@ -83,9 +83,15 @@
         </form>
 
         <div class="success-msg" id="success-msg">
-            <span class="success-icon">✓</span>
+            <div class="success-icon">
+                <svg class="checkmark-svg" viewBox="0 0 52 52" aria-hidden="true">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="23" fill="none"/>
+                    <path class="checkmark-path" fill="none" d="M14 27 l8 8 l16-16"/>
+                </svg>
+            </div>
             <strong>문의가 접수되었습니다!</strong>
             <p>빠른 시일 내에 답변 드리겠습니다.</p>
+            <button type="button" id="new-inquiry-btn">새 문의 작성하기</button>
         </div>
     </div>
 

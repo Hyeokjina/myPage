@@ -95,7 +95,26 @@ form.addEventListener('submit', function (e) {
         submitBtn.disabled = false;
         submitBtn.classList.remove('loading');
 
-        successEl.classList.add('show');
-        setTimeout(() => successEl.classList.remove('show'), 5000);
+        // 폼 페이드아웃 후 성공 화면 표시
+        form.style.transition = 'opacity 0.3s';
+        form.style.opacity = '0';
+        setTimeout(() => {
+            form.style.display = 'none';
+            form.style.opacity = '';
+            form.style.transition = '';
+            successEl.classList.add('show');
+        }, 300);
     }, 800);
+});
+
+// 새 문의 작성 버튼
+document.getElementById('new-inquiry-btn').addEventListener('click', () => {
+    successEl.classList.remove('show');
+    form.style.display = '';
+    form.style.opacity = '0';
+    form.style.transition = 'opacity 0.3s';
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => { form.style.opacity = '1'; });
+    });
+    setTimeout(() => { form.style.transition = ''; }, 350);
 });
