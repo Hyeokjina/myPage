@@ -403,7 +403,7 @@ body.dark .tip-body p { color: #7a94a8; }
     box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 .fav-btn:hover { transform: scale(1.15); }
-.fav-btn.active { background: #fff0f0; }
+.fav-btn.active { background: #fff0f0; color: #e74c3c; }
 
 /* 헤더 즐겨찾기 카운트 */
 .fav-count {
