@@ -326,3 +326,8 @@ document.getElementById('clear-recent-btn')?.addEventListener('click', () => {
 updateBadge();
 updateButtons();
 renderRecentlyViewed();
+
+// bfcache 대응: 뒤로가기로 복원된 경우 재렌더링
+window.addEventListener('pageshow', e => {
+    if (e.persisted) renderRecentlyViewed();
+});

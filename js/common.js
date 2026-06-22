@@ -58,10 +58,12 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e =
 });
 
 // 네비게이션 active 자동화 (헤더 nav + 하단 탭바 공통)
+const REGION_SUBPAGES = new Set(['seoul.html', 'busan.html', 'jeju.html', 'gangwon.html', 'gyeongju.html']);
 const currentFile = location.pathname.split('/').pop() || 'index.html';
+const activeFile = REGION_SUBPAGES.has(currentFile) ? 'regions.html' : currentFile;
 document.querySelectorAll('nav a, .bottom-nav a').forEach(a => {
     a.classList.remove('active');
-    if (a.getAttribute('href') === currentFile) {
+    if (a.getAttribute('href') === activeFile) {
         a.classList.add('active');
     }
 });
