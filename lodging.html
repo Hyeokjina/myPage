@@ -30,8 +30,23 @@
             </ul>
         </nav>
         <button class="hamburger">☰</button>
-        <button class="dark-toggle" id="dark-btn">🌙</button>
+        <div style="display:flex; align-items:center; gap:12px;">
+            <button class="dark-toggle" id="dark-btn">🌙</button>
+            <button class="fav-count">
+                ♥ 즐겨찾기 <span class="badge" id="fav-badge">0</span>
+            </button>
+        </div>
     </header>
+
+    <!-- 즐겨찾기 모달 -->
+    <div class="modal-overlay" id="fav-modal">
+        <div class="modal">
+            <h3>♥ 즐겨찾기 목록</h3>
+            <ul class="modal-list" id="fav-list"></ul>
+            <p class="modal-empty" id="fav-empty" style="display:none;">즐겨찾기한 숙소가 없습니다.</p>
+            <button class="modal-close">닫기</button>
+        </div>
+    </div>
 
     <button class="back-to-top" id="back-to-top">↑</button>
 

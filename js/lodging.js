@@ -97,11 +97,55 @@ function updateFavBtns() {
     });
 }
 
+function updateBadge() {
+    document.getElementById('fav-badge').textContent = getLodgingFavs().length;
+}
+
+function openFavModal() {
+    const favs = getLodgingFavs();
+    const list = document.getElementById('fav-list');
+    const empty = document.getElementById('fav-empty');
+    list.innerHTML = '';
+    if (favs.length === 0) {
+        empty.style.display = 'block';
+    } else {
+        empty.style.display = 'none';
+        favs.forEach(name => {
+            const li = document.createElement('li');
+            const span = document.createElement('span');
+            span.textContent = `♥ ${name}`;
+            const btn = document.createElement('button');
+            btn.textContent = '✕';
+            btn.title = '삭제';
+            btn.addEventListener('click', () => removeFav(name));
+            li.appendChild(span);
+            li.appendChild(btn);
+            list.appendChild(li);
+        });
+    }
+    document.getElementById('fav-modal').classList.add('open');
+    trapFocus(document.getElementById('fav-modal'));
+}
+
+function removeFav(name) {
+    saveLodgingFavs(getLodgingFavs().filter(f => f !== name));
+    updateBadge();
+    updateFavBtns();
+    openFavModal();
+}
+
+function closeFavModal() {
+    const modal = document.getElementById('fav-modal');
+    modal.classList.remove('open');
+    releaseFocus(modal);
+}
+
 function toggleLodgingFav(e, name) {
     e.stopPropagation();
     let favs = getLodgingFavs();
     favs = favs.includes(name) ? favs.filter(f => f !== name) : [...favs, name];
     saveLodgingFavs(favs);
+    updateBadge();
     updateFavBtns();
 }
 
@@ -119,3 +163,15 @@ getCards().forEach(card => {
 });
 
 updateFavBtns();
+updateBadge();
+
+document.querySelector('.fav-count')?.addEventListener('click', openFavModal);
+document.querySelector('.modal-close')?.addEventListener('click', closeFavModal);
+document.getElementById('fav-modal')?.addEventListener('click', e => {
+    if (e.target === document.getElementById('fav-modal')) closeFavModal();
+});
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('fav-modal')?.classList.contains('open')) {
+        closeFavModal();
+    }
+});
