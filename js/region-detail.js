@@ -168,6 +168,20 @@ function openDetail(key) {
         span.textContent = i;
         infoEl.appendChild(span);
     });
+
+    // 카카오맵 버튼
+    let mapBtn = document.getElementById('detail-map-btn');
+    if (!mapBtn) {
+        mapBtn = document.createElement('a');
+        mapBtn.id = 'detail-map-btn';
+        mapBtn.className = 'detail-map-btn';
+        mapBtn.target = '_blank';
+        mapBtn.rel = 'noopener noreferrer';
+        infoEl.after(mapBtn);
+    }
+    mapBtn.href = `https://map.kakao.com/?q=${encodeURIComponent(d.title)}`;
+    mapBtn.textContent = '🗺️ 카카오맵에서 보기';
+
     const overlay = document.getElementById('detail-overlay');
     overlay.classList.add('open');
     trapFocus(overlay);
