@@ -659,31 +659,56 @@ function renderScheduleList() {
   renderStats();
 }
 
-// ── 복사 / 인쇄 ────────────────────────────────────
+// ── 복사 / 공유 / 저장 / 인쇄 ──────────────────────────
 
-function copySchedule() {
+function buildScheduleText() {
   const schedules = getSchedules();
-  if (schedules.length === 0) {
-    showToast('일정이 없습니다.');
-    return;
-  }
-
+  if (schedules.length === 0) return null;
   const activePlanId = getActivePlanId();
   const plan = getPlans().find(p => String(p.id) === String(activePlanId));
   const title = plan ? `[${plan.name}] ${plan.start} ~ ${plan.end}` : '여행 일정';
-
   const lines = schedules.map(s => {
     const time = s.time ? ` ${s.time}` : '';
     const memo = s.memo ? ` (${s.memo})` : '';
     const done = s.done ? ' ✓' : '';
     return `${s.date}${time}  ${s.place}${memo}${done}`;
   });
+  return `${title}\n${'─'.repeat(30)}\n${lines.join('\n')}`;
+}
 
-  const text = `${title}\n${'─'.repeat(30)}\n${lines.join('\n')}`;
-
+function copySchedule() {
+  const text = buildScheduleText();
+  if (!text) { showToast('일정이 없습니다.'); return; }
   navigator.clipboard.writeText(text)
     .then(() => showToast('클립보드에 복사되었습니다!'))
     .catch(() => showToast('복사에 실패했습니다.'));
+}
+
+function shareSchedule() {
+  const text = buildScheduleText();
+  if (!text) { showToast('일정이 없습니다.'); return; }
+  if (navigator.share) {
+    navigator.share({ title: '내 여행 일정', text }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(text)
+      .then(() => showToast('공유를 지원하지 않는 환경입니다. 텍스트를 복사했습니다.'))
+      .catch(() => showToast('복사에 실패했습니다.'));
+  }
+}
+
+function downloadSchedule() {
+  const text = buildScheduleText();
+  if (!text) { showToast('일정이 없습니다.'); return; }
+  const activePlanId = getActivePlanId();
+  const plan = getPlans().find(p => String(p.id) === String(activePlanId));
+  const filename = plan ? `${plan.name}-일정.txt` : '여행일정.txt';
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
 // ── ESC 키로 모달 닫기 ──────────────────────────────
@@ -812,6 +837,8 @@ document.getElementById('rename-cancel-btn')?.addEventListener('click', closeRen
 document.getElementById('edit-modal')?.addEventListener('click', closeEditModalOutside);
 document.getElementById('edit-cancel-btn')?.addEventListener('click', closeEditModal);
 document.getElementById('copy-btn')?.addEventListener('click', copySchedule);
+document.getElementById('share-schedule-btn')?.addEventListener('click', shareSchedule);
+document.getElementById('download-btn')?.addEventListener('click', downloadSchedule);
 document.getElementById('print-btn')?.addEventListener('click', () => {
   const activePlanId = getActivePlanId();
   const plan = getPlans().find(p => String(p.id) === String(activePlanId));
