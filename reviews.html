@@ -87,6 +87,18 @@
           </div>
           <textarea id="content" rows="5" placeholder="여행 후기를 자유롭게 작성해주세요." required maxlength="500"></textarea>
         </div>
+        <div class="form-group">
+          <label>사진 첨부 <span class="img-hint">(선택 · 최대 1MB · JPG/PNG/WEBP)</span></label>
+          <label class="img-upload-label" id="img-upload-label">
+            <span id="img-upload-text">📷 사진 선택하기</span>
+            <input type="file" id="img-input" accept="image/jpeg,image/png,image/webp" style="display:none;">
+          </label>
+          <div class="img-preview-wrap" id="img-preview-wrap" style="display:none;">
+            <img id="img-preview" src="" alt="미리보기">
+            <button type="button" class="img-remove-btn" id="img-remove-btn">✕</button>
+          </div>
+          <p class="img-error" id="img-error" style="display:none;"></p>
+        </div>
         <button type="submit">후기 등록</button>
       </form>
     </section>

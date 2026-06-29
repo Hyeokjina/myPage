@@ -709,3 +709,61 @@ body.dark .edit-btn:hover { color: #0EA5C9; }
 .like-count { font-weight: 600; }
 body.dark .like-btn { background: #1a1a2e; border-color: #444; color: #aaa; }
 body.dark .like-btn:hover, body.dark .like-btn.liked { background: #3f1010; border-color: #b91c1c; color: #fca5a5; }
+
+/* 이미지 첨부 */
+.img-hint { font-size: 0.8em; color: #aaa; font-weight: 400; }
+.img-upload-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #888;
+  font-size: 0.92em;
+  font-weight: 500;
+  transition: border-color 0.18s, background 0.18s;
+}
+.img-upload-label:hover { border-color: #0EA5C9; background: #f0f9ff; color: #0EA5C9; }
+.img-preview-wrap {
+  position: relative;
+  margin-top: 10px;
+  display: inline-block;
+}
+.img-preview-wrap img {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+}
+.img-remove-btn {
+  position: absolute;
+  top: 6px; right: 6px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 26px; height: 26px;
+  font-size: 0.8em;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.18s;
+}
+.img-remove-btn:hover { background: rgba(220,38,38,0.85); }
+.img-error { color: #e74c3c; font-size: 0.85em; margin-top: 4px; }
+
+/* 후기 카드 이미지 */
+.card-img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: zoom-in;
+}
+
+body.dark .img-upload-label { border-color: #444; color: #888; }
+body.dark .img-upload-label:hover { border-color: #0EA5C9; background: #0A2535; color: #38bdf8; }

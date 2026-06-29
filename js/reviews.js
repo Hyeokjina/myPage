@@ -77,6 +77,50 @@ function highlightStars(val) {
   contentInput.addEventListener('input', () => updateCounter(contentInput, contentCounter, 500));
 })();
 
+// 이미지 첨부
+const MAX_IMG_BYTES = 1 * 1024 * 1024; // 1MB
+let pendingImageBase64 = null;
+
+const imgInput = document.getElementById('img-input');
+const imgPreviewWrap = document.getElementById('img-preview-wrap');
+const imgPreview = document.getElementById('img-preview');
+const imgError = document.getElementById('img-error');
+const imgUploadLabel = document.getElementById('img-upload-label');
+const imgUploadText = document.getElementById('img-upload-text');
+
+function clearImage() {
+  pendingImageBase64 = null;
+  imgInput.value = '';
+  imgPreviewWrap.style.display = 'none';
+  imgPreview.src = '';
+  imgUploadText.textContent = '📷 사진 선택하기';
+  imgError.style.display = 'none';
+}
+
+imgInput.addEventListener('change', () => {
+  const file = imgInput.files[0];
+  if (!file) return;
+
+  if (file.size > MAX_IMG_BYTES) {
+    imgError.textContent = '파일 크기가 1MB를 초과합니다.';
+    imgError.style.display = 'block';
+    imgInput.value = '';
+    return;
+  }
+  imgError.style.display = 'none';
+
+  const reader = new FileReader();
+  reader.onload = ev => {
+    pendingImageBase64 = ev.target.result;
+    imgPreview.src = pendingImageBase64;
+    imgPreviewWrap.style.display = 'block';
+    imgUploadText.textContent = '📷 ' + file.name;
+  };
+  reader.readAsDataURL(file);
+});
+
+document.getElementById('img-remove-btn').addEventListener('click', clearImage);
+
 // 폼 제출
 document.getElementById('review-form').addEventListener('submit', e => {
   e.preventDefault();
@@ -96,7 +140,8 @@ document.getElementById('review-form').addEventListener('submit', e => {
     rating,
     title: document.getElementById('title').value.trim(),
     content: document.getElementById('content').value.trim(),
-    date: new Date().toLocaleDateString('ko-KR')
+    date: new Date().toLocaleDateString('ko-KR'),
+    image: pendingImageBase64 || null
   };
 
   const reviews = getReviews();
@@ -109,6 +154,7 @@ document.getElementById('review-form').addEventListener('submit', e => {
   ratingInput.value = 0;
   highlightStars(0);
   document.getElementById('star-warn').style.display = 'none';
+  clearImage();
 });
 
 // 삭제
@@ -292,6 +338,18 @@ function renderList() {
     top.appendChild(nicknameEl);
     top.appendChild(dateEl);
 
+    if (review.image) {
+      const cardImg = document.createElement('img');
+      cardImg.src = review.image;
+      cardImg.className = 'card-img';
+      cardImg.alt = review.title;
+      cardImg.loading = 'lazy';
+      li.appendChild(top);
+      li.appendChild(cardImg);
+    } else {
+      li.appendChild(top);
+    }
+
     const titleEl = document.createElement('p');
     titleEl.className = 'card-title';
     titleEl.textContent = review.title;
@@ -329,7 +387,6 @@ function renderList() {
     bottomRow.appendChild(editBtn);
     bottomRow.appendChild(delBtn);
 
-    li.appendChild(top);
     li.appendChild(titleEl);
     li.appendChild(contentEl);
     li.appendChild(bottomRow);
