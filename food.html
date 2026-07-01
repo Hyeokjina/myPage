@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <script>(function(){var d=localStorage.getItem("dark");var p=window.matchMedia("(prefers-color-scheme: dark)").matches;if(d==="true"||(d===null&&p)){document.documentElement.style.background="#0A1628";}})()</script>
+    <link rel="icon" href="./icon/bridge.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>맛집 - 인천 여행지 소개</title>
+    <meta name="description" content="인천·서울·부산·제주·강원·경주의 지역별 대표 맛집을 소개합니다.">
+    <meta property="og:title" content="맛집 - 인천 여행지 소개">
+    <meta property="og:description" content="여행지별 꼭 가봐야 할 맛집을 한눈에 확인하세요.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/food.css">
+</head>
+<body>
+    <div id="scroll-progress"></div>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="./icon/bridge.png" alt="다리 아이콘" class="icon">
+            <h1>맛집</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="about.html">소개</a></li>
+                <li><a href="regions.html">지역</a></li>
+                <li><a href="lodging.html">숙소</a></li>
+                <li><a href="food.html">맛집</a></li>
+                <li><a href="reviews.html">후기</a></li>
+                <li><a href="planner.html">플래너</a></li>
+                <li><a href="contact.html">문의</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger">☰</button>
+        <button class="dark-toggle" id="dark-btn">🌙</button>
+    </header>
+
+    <button class="back-to-top" id="back-to-top">↑</button>
+
+    <main id="main-content">
+        <div class="food-hero">
+            <div class="food-hero-inner">
+                <p class="food-hero-tag">🍽️ 지역별 대표 맛집</p>
+                <h2>어디서 뭘 먹을까?</h2>
+                <p class="food-hero-sub">인천·서울·부산·제주·강원·경주, 여행지마다 꼭 먹어야 할 음식들</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- 검색 -->
+            <div class="food-search-wrap">
+                <input type="text" id="food-search" placeholder="맛집 이름, 메뉴, 지역 검색...">
+                <button id="food-search-clear" class="food-search-clear" style="display:none;" aria-label="검색어 지우기">✕</button>
+            </div>
+
+            <!-- 필터 -->
+            <div class="food-filters">
+                <div class="filter-row">
+                    <span class="filter-label">지역</span>
+                    <div class="filter-pills" id="region-filter">
+                        <button class="fpill active" data-region="전체">전체</button>
+                        <button class="fpill" data-region="인천">인천</button>
+                        <button class="fpill" data-region="서울">서울</button>
+                        <button class="fpill" data-region="부산">부산</button>
+                        <button class="fpill" data-region="제주">제주</button>
+                        <button class="fpill" data-region="강원">강원</button>
+                        <button class="fpill" data-region="경주">경주</button>
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <span class="filter-label">카테고리</span>
+                    <div class="filter-pills" id="category-filter">
+                        <button class="fpill active" data-category="전체">전체</button>
+                        <button class="fpill" data-category="한식">🍚 한식</button>
+                        <button class="fpill" data-category="중식">🥢 중식</button>
+                        <button class="fpill" data-category="해산물">🦞 해산물</button>
+                        <button class="fpill" data-category="분식">🍢 분식</button>
+                        <button class="fpill" data-category="디저트">🍡 디저트</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 결과 카운트 -->
+            <p class="food-count"><span id="food-count">0</span>개의 맛집</p>
+
+            <!-- 카드 그리드 -->
+            <div class="food-grid" id="food-grid"></div>
+            <p class="food-empty" id="food-empty" style="display:none;">검색 결과가 없습니다.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./icon/facebook.png" alt="페이스북" loading="lazy"></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./icon/instagram.png" alt="인스타그램" loading="lazy"></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><img src="./icon/twitter.png" alt="트위터" loading="lazy"></a>
+        </div>
+        <p>&copy; <span class="footer-year">2025</span> 인천 여행지 소개 | 문혁진</p>
+        <p>문의: example@email.com | 전화: 010-1234-5678</p>
+    </footer>
+
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="index.html"><span class="tab-icon">🏠</span>홈</a></li>
+            <li><a href="regions.html"><span class="tab-icon">🗺️</span>지역</a></li>
+            <li><a href="lodging.html"><span class="tab-icon">🏨</span>숙소</a></li>
+            <li><a href="reviews.html"><span class="tab-icon">⭐</span>후기</a></li>
+            <li><a href="planner.html"><span class="tab-icon">📅</span>플래너</a></li>
+        </ul>
+    </nav>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/food.js"></script>
+</body>
+</html>

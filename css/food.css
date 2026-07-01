@@ -1,0 +1,231 @@
+/* 히어로 */
+.food-hero {
+    background: linear-gradient(135deg, #f97316 0%, #ef4444 60%, #dc2626 100%);
+    color: #fff;
+    padding: 80px 24px 60px;
+    text-align: center;
+    border-radius: 0 0 32px 32px;
+    margin-bottom: 0;
+}
+.food-hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 5px 16px;
+    font-size: 0.88em;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: -0.2px;
+}
+.food-hero h2 {
+    font-size: 2.6em;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    margin-bottom: 12px;
+    line-height: 1.15;
+}
+.food-hero-sub {
+    font-size: 1em;
+    opacity: 0.88;
+    margin-bottom: 0;
+    letter-spacing: -0.3px;
+}
+
+/* 검색 */
+.food-search-wrap {
+    position: relative;
+    margin-bottom: 24px;
+}
+.food-search-wrap input {
+    width: 100%;
+    padding: 13px 44px 13px 18px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 14px;
+    font-size: 0.97em;
+    font-family: inherit;
+    outline: none;
+    background: #fff;
+    color: #222;
+    transition: border-color 0.18s;
+}
+.food-search-wrap input:focus { border-color: #f97316; }
+.food-search-clear {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 4px;
+}
+.food-search-clear:hover { color: #ef4444; }
+
+/* 필터 */
+.food-filters { margin-bottom: 20px; display: flex; flex-direction: column; gap: 12px; }
+.filter-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.filter-label { font-size: 0.82em; font-weight: 700; color: #888; min-width: 46px; letter-spacing: -0.2px; }
+.filter-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.fpill {
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1.5px solid #e5e7eb;
+    background: #fff;
+    color: #555;
+    font-size: 0.85em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: inherit;
+    letter-spacing: -0.2px;
+}
+.fpill:hover { border-color: #f97316; color: #f97316; }
+.fpill.active { background: #f97316; border-color: #f97316; color: #fff; }
+
+/* 결과 카운트 */
+.food-count {
+    font-size: 0.88em;
+    color: #888;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.food-count span { color: #f97316; font-weight: 700; }
+
+/* 카드 그리드 */
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* 맛집 카드 */
+.food-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+.food-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.12); }
+
+.food-card-banner {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    flex-shrink: 0;
+}
+
+.food-card-body { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; }
+
+.food-card-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+.food-region-badge {
+    font-size: 0.72em;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 100px;
+    background: #fff7ed;
+    color: #f97316;
+    border: 1px solid #fed7aa;
+    letter-spacing: -0.2px;
+}
+.food-cat-badge {
+    font-size: 0.72em;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 100px;
+    background: #f3f4f6;
+    color: #6b7280;
+    letter-spacing: -0.2px;
+}
+
+.food-card-name {
+    font-size: 1.05em;
+    font-weight: 800;
+    color: #1E3A5F;
+    margin-bottom: 6px;
+    letter-spacing: -0.4px;
+    line-height: 1.3;
+}
+.food-card-menu {
+    font-size: 0.83em;
+    font-weight: 600;
+    color: #f97316;
+    margin-bottom: 8px;
+    letter-spacing: -0.2px;
+}
+.food-card-desc {
+    font-size: 0.87em;
+    color: #666;
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 14px;
+}
+.food-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+.food-card-loc {
+    font-size: 0.78em;
+    color: #aaa;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.food-map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: #FEE500;
+    color: #3C1E1E;
+    border-radius: 8px;
+    font-size: 0.78em;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.18s;
+    flex-shrink: 0;
+}
+.food-map-btn:hover { background: #F5D800; }
+
+.food-empty {
+    text-align: center;
+    color: #aaa;
+    padding: 60px 0;
+    font-size: 1em;
+}
+
+/* 다크 모드 */
+body.dark .food-search-wrap input { background: #0F2035; border-color: #333; color: #ddd; }
+body.dark .food-search-wrap input:focus { border-color: #f97316; }
+body.dark .fpill { background: #0F2035; border-color: #333; color: #999; }
+body.dark .fpill:hover { border-color: #f97316; color: #f97316; }
+body.dark .fpill.active { background: #f97316; border-color: #f97316; color: #fff; }
+body.dark .food-card { background: #0F2035; border-color: rgba(255,255,255,0.05); }
+body.dark .food-card-name { color: #e8f4fb; }
+body.dark .food-card-desc { color: #8a9ab0; }
+body.dark .food-region-badge { background: #1a1500; border-color: #7c3a00; }
+body.dark .food-cat-badge { background: #1a2236; color: #6b7280; }
+
+/* 반응형 */
+@media (max-width: 600px) {
+    .food-hero h2 { font-size: 1.9em; }
+    .food-grid { grid-template-columns: 1fr; }
+    .filter-row { gap: 8px; }
+}
