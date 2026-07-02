@@ -1,0 +1,277 @@
+/* 히어로 */
+.fest-hero {
+    background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%);
+    color: #fff;
+    padding: 80px 24px 60px;
+    text-align: center;
+    border-radius: 0 0 32px 32px;
+}
+.fest-hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 5px 16px;
+    font-size: 0.88em;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: -0.2px;
+}
+.fest-hero h2 {
+    font-size: 2.6em;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+.fest-hero-sub {
+    font-size: 1em;
+    opacity: 0.88;
+    margin-bottom: 0;
+    letter-spacing: -0.3px;
+}
+
+/* 계절 탭 */
+.season-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px 20px 0;
+    flex-wrap: wrap;
+}
+.stab {
+    padding: 9px 20px;
+    border-radius: 100px;
+    border: 2px solid #e5e7eb;
+    background: #fff;
+    color: #555;
+    font-size: 0.92em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: inherit;
+    letter-spacing: -0.2px;
+}
+.stab:hover { border-color: #7c3aed; color: #7c3aed; }
+.stab.active          { background: #7c3aed; border-color: #7c3aed; color: #fff; }
+.stab.spring.active   { background: #ec4899; border-color: #ec4899; }
+.stab.summer.active   { background: #0ea5e9; border-color: #0ea5e9; }
+.stab.autumn.active   { background: #f97316; border-color: #f97316; }
+.stab.winter.active   { background: #6366f1; border-color: #6366f1; }
+
+/* 툴바 */
+.fest-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+.filter-pills { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
+.fpill {
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1.5px solid #e5e7eb;
+    background: #fff;
+    color: #555;
+    font-size: 0.83em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-family: inherit;
+    letter-spacing: -0.2px;
+}
+.fpill:hover { border-color: #7c3aed; color: #7c3aed; }
+.fpill.active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
+
+/* 검색 */
+.fest-search-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+.fest-search-wrap input {
+    padding: 8px 34px 8px 14px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 0.88em;
+    font-family: inherit;
+    outline: none;
+    background: #fff;
+    color: #222;
+    width: 180px;
+    transition: border-color 0.18s;
+}
+.fest-search-wrap input:focus { border-color: #7c3aed; }
+#fest-search-clear {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 2px;
+}
+#fest-search-clear:hover { color: #7c3aed; }
+
+.fest-count {
+    font-size: 0.88em;
+    color: #888;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.fest-count span { color: #7c3aed; font-weight: 700; }
+
+/* 카드 그리드 */
+.fest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* 축제 카드 */
+.fest-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+.fest-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.12); }
+
+.fest-card-banner {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    flex-shrink: 0;
+}
+.fest-card-emoji { font-size: 2.8em; }
+.fest-card-period {
+    font-size: 0.82em;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    background: rgba(0,0,0,0.18);
+    padding: 4px 10px;
+    border-radius: 100px;
+    letter-spacing: -0.2px;
+}
+
+.fest-card-body { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; }
+
+.fest-card-top {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+.season-badge {
+    font-size: 0.72em;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 100px;
+    letter-spacing: -0.2px;
+}
+.season-봄   { background: #fce7f3; color: #be185d; }
+.season-여름 { background: #e0f2fe; color: #0369a1; }
+.season-가을 { background: #fff7ed; color: #c2410c; }
+.season-겨울 { background: #ede9fe; color: #5b21b6; }
+
+.region-badge {
+    font-size: 0.72em;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 100px;
+    background: #f3f4f6;
+    color: #6b7280;
+    letter-spacing: -0.2px;
+}
+.cat-badge {
+    font-size: 0.7em;
+    color: #9ca3af;
+    letter-spacing: -0.2px;
+}
+
+.fest-card-name {
+    font-size: 1.05em;
+    font-weight: 800;
+    color: #1E3A5F;
+    margin-bottom: 8px;
+    letter-spacing: -0.4px;
+    line-height: 1.3;
+}
+.fest-card-desc {
+    font-size: 0.87em;
+    color: #666;
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 14px;
+}
+.fest-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+.fest-card-loc {
+    font-size: 0.78em;
+    color: #aaa;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.fest-map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: #FEE500;
+    color: #3C1E1E;
+    border-radius: 8px;
+    font-size: 0.78em;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.18s;
+    flex-shrink: 0;
+}
+.fest-map-btn:hover { background: #F5D800; }
+
+.fest-empty {
+    text-align: center;
+    color: #aaa;
+    padding: 60px 0;
+    font-size: 1em;
+}
+
+/* 다크 모드 */
+body.dark .stab { background: #0F2035; border-color: #333; color: #888; }
+body.dark .stab:hover { border-color: #7c3aed; color: #a78bfa; }
+body.dark .stab.active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
+body.dark .stab.spring.active { background: #ec4899; border-color: #ec4899; }
+body.dark .stab.summer.active { background: #0ea5e9; border-color: #0ea5e9; }
+body.dark .stab.autumn.active { background: #f97316; border-color: #f97316; }
+body.dark .stab.winter.active { background: #6366f1; border-color: #6366f1; }
+body.dark .fpill { background: #0F2035; border-color: #333; color: #888; }
+body.dark .fpill.active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
+body.dark .fest-search-wrap input { background: #0F2035; border-color: #333; color: #ddd; }
+body.dark .fest-card { background: #0F2035; border-color: rgba(255,255,255,0.05); }
+body.dark .fest-card-name { color: #e8f4fb; }
+body.dark .fest-card-desc { color: #8a9ab0; }
+body.dark .region-badge { background: #1a2236; color: #6b7280; }
+
+/* 반응형 */
+@media (max-width: 640px) {
+    .fest-hero h2 { font-size: 1.9em; }
+    .fest-grid { grid-template-columns: 1fr; }
+    .fest-toolbar { flex-direction: column; align-items: flex-start; }
+    .fest-search-wrap input { width: 100%; }
+    .fest-search-wrap { width: 100%; }
+}

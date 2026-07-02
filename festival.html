@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <script>(function(){var d=localStorage.getItem("dark");var p=window.matchMedia("(prefers-color-scheme: dark)").matches;if(d==="true"||(d===null&&p)){document.documentElement.style.background="#0A1628";}})()</script>
+    <link rel="icon" href="./icon/bridge.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>축제·이벤트 - 인천 여행지 소개</title>
+    <meta name="description" content="봄·여름·가을·겨울 계절별 전국 축제와 이벤트를 소개합니다.">
+    <meta property="og:title" content="축제·이벤트 - 인천 여행지 소개">
+    <meta property="og:description" content="계절별 인기 축제와 이벤트를 한눈에 확인하세요.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/festival.css">
+</head>
+<body>
+    <div id="scroll-progress"></div>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="./icon/bridge.png" alt="다리 아이콘" class="icon">
+            <h1>축제·이벤트</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="about.html">소개</a></li>
+                <li><a href="regions.html">지역</a></li>
+                <li><a href="lodging.html">숙소</a></li>
+                <li><a href="food.html">맛집</a></li>
+                <li><a href="festival.html">축제</a></li>
+                <li><a href="reviews.html">후기</a></li>
+                <li><a href="planner.html">플래너</a></li>
+                <li><a href="contact.html">문의</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger">☰</button>
+        <button class="dark-toggle" id="dark-btn">🌙</button>
+    </header>
+
+    <button class="back-to-top" id="back-to-top">↑</button>
+
+    <main id="main-content">
+        <div class="fest-hero">
+            <div class="fest-hero-inner">
+                <p class="fest-hero-tag">🎉 계절별 축제 & 이벤트</p>
+                <h2>지금 이 계절엔<br>어디서 뭐 하나요?</h2>
+                <p class="fest-hero-sub">봄 벚꽃부터 겨울 빙어낚시까지, 여행에 특별함을 더해줄 축제들</p>
+            </div>
+        </div>
+
+        <!-- 계절 탭 -->
+        <div class="season-tabs" id="season-tabs">
+            <button class="stab active" data-season="전체">🗓️ 전체</button>
+            <button class="stab spring" data-season="봄">🌸 봄</button>
+            <button class="stab summer" data-season="여름">☀️ 여름</button>
+            <button class="stab autumn" data-season="가을">🍂 가을</button>
+            <button class="stab winter" data-season="겨울">❄️ 겨울</button>
+        </div>
+
+        <div class="container">
+            <!-- 지역 필터 + 검색 -->
+            <div class="fest-toolbar">
+                <div class="filter-pills" id="region-filter">
+                    <button class="fpill active" data-region="전체">전체</button>
+                    <button class="fpill" data-region="인천">인천</button>
+                    <button class="fpill" data-region="서울">서울</button>
+                    <button class="fpill" data-region="부산">부산</button>
+                    <button class="fpill" data-region="제주">제주</button>
+                    <button class="fpill" data-region="강원">강원</button>
+                    <button class="fpill" data-region="경주">경주</button>
+                </div>
+                <div class="fest-search-wrap">
+                    <input type="text" id="fest-search" placeholder="축제명 검색...">
+                    <button id="fest-search-clear" style="display:none;" aria-label="검색어 지우기">✕</button>
+                </div>
+            </div>
+
+            <p class="fest-count"><span id="fest-count">0</span>개의 축제</p>
+
+            <div class="fest-grid" id="fest-grid"></div>
+            <p class="fest-empty" id="fest-empty" style="display:none;">해당하는 축제가 없습니다.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./icon/facebook.png" alt="페이스북" loading="lazy"></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./icon/instagram.png" alt="인스타그램" loading="lazy"></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><img src="./icon/twitter.png" alt="트위터" loading="lazy"></a>
+        </div>
+        <p>&copy; <span class="footer-year">2025</span> 인천 여행지 소개 | 문혁진</p>
+        <p>문의: example@email.com | 전화: 010-1234-5678</p>
+    </footer>
+
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="index.html"><span class="tab-icon">🏠</span>홈</a></li>
+            <li><a href="regions.html"><span class="tab-icon">🗺️</span>지역</a></li>
+            <li><a href="festival.html"><span class="tab-icon">🎉</span>축제</a></li>
+            <li><a href="reviews.html"><span class="tab-icon">⭐</span>후기</a></li>
+            <li><a href="planner.html"><span class="tab-icon">📅</span>플래너</a></li>
+        </ul>
+    </nav>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/festival.js"></script>
+</body>
+</html>
