@@ -26,7 +26,7 @@ function matchesPrice(price, range) {
 function applyFilters() {
     const cards = getCards();
 
-    // 필터 적용
+    // 필터 적용.
     let visible = 0;
     cards.forEach(card => {
         const regionMatch = activeRegion === '전체' || card.dataset.region === activeRegion;
