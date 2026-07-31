@@ -39,6 +39,7 @@ const details = {
 
 function openDetail(key) {
     const d = details[key];
+    if (!d) return;
     const imgEl = document.getElementById('detail-img');
     if (d.img) {
         imgEl.src = d.img;
