@@ -161,6 +161,7 @@ document.getElementById('review-form').addEventListener('submit', e => {
 function deleteReview(id) {
   const reviews = getReviews().filter(r => r.id !== id);
   saveReviews(reviews);
+  saveLikedIds(getLikedIds().filter(likedId => likedId !== id));
   renderList();
 }
 
