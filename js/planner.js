@@ -784,7 +784,7 @@ document.querySelectorAll('.cat-filter-btn').forEach(btn => {
 // ── 데이터 내보내기 / 가져오기 ────────────────────────
 
 function exportPlannerData() {
-  const data = { plans: getPlans(), schedules: getAllSchedules() };
+  const data = { plans: getPlans(), schedules: getAllSchedules(), checklists: getAllChecklists() };
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -811,6 +811,9 @@ document.getElementById('import-plan-input')?.addEventListener('change', e => {
       savePlans(data.plans);
       try {
         localStorage.setItem(SCHEDULES_KEY, JSON.stringify(data.schedules));
+        if (data.checklists && typeof data.checklists === 'object') {
+          localStorage.setItem(CHECKLISTS_KEY, JSON.stringify(data.checklists));
+        }
       } catch {
         showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
         return;
@@ -819,6 +822,7 @@ document.getElementById('import-plan-input')?.addEventListener('change', e => {
       document.getElementById('schedule-section').style.display = 'none';
       document.getElementById('list-section').style.display = 'none';
       document.getElementById('schedule-stats').style.display = 'none';
+      document.getElementById('checklist-section').style.display = 'none';
       renderPlanList();
       showToast('데이터를 성공적으로 가져왔습니다.');
     } catch {
