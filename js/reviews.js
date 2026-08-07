@@ -161,7 +161,6 @@ document.getElementById('review-form').addEventListener('submit', e => {
 function deleteReview(id) {
   const reviews = getReviews().filter(r => r.id !== id);
   saveReviews(reviews);
-  saveLikedIds(getLikedIds().filter(likedId => likedId !== id));
   renderList();
 }
 
@@ -430,7 +429,7 @@ function renderPagination(totalPages) {
 
 // 데이터 내보내기 / 가져오기
 function exportReviewsData() {
-  const data = getReviews();
+  const data = { reviews: getReviews(), likedIds: getLikedIds() };
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -448,13 +447,17 @@ document.getElementById('import-reviews-input')?.addEventListener('change', e =>
   const reader = new FileReader();
   reader.onload = ev => {
     try {
-      const data = JSON.parse(ev.target.result);
-      if (!Array.isArray(data)) {
+      const parsed = JSON.parse(ev.target.result);
+      // 구버전 백업(배열만) / 신버전 백업({reviews, likedIds}) 모두 지원
+      const reviews = Array.isArray(parsed) ? parsed : parsed.reviews;
+      const likedIds = Array.isArray(parsed) ? null : parsed.likedIds;
+      if (!Array.isArray(reviews)) {
         showToast('올바른 후기 백업 파일이 아닙니다.');
         return;
       }
-      if (!confirm(`후기 ${data.length}건을 가져옵니다. 기존 데이터가 덮어씌워집니다. 계속할까요?`)) return;
-      saveReviews(data);
+      if (!confirm(`후기 ${reviews.length}건을 가져옵니다. 기존 데이터가 덮어씌워집니다. 계속할까요?`)) return;
+      saveReviews(reviews);
+      if (Array.isArray(likedIds)) saveLikedIds(likedIds);
       currentPage = 1;
       renderList();
       showToast('데이터를 성공적으로 가져왔습니다.');
