@@ -114,6 +114,20 @@ document.querySelector('.hamburger')?.addEventListener('click', toggleNav);
 document.getElementById('dark-btn')?.addEventListener('click', toggleDark);
 document.getElementById('back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+// 모바일 메뉴: 바깥 클릭 / Esc 키로 닫기
+document.addEventListener('click', e => {
+    const nav = document.querySelector('header nav');
+    const hamburger = document.querySelector('.hamburger');
+    if (!nav?.classList.contains('open')) return;
+    if (nav.contains(e.target) || hamburger?.contains(e.target)) return;
+    toggleNav();
+});
+document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    const nav = document.querySelector('header nav');
+    if (nav?.classList.contains('open')) toggleNav();
+});
+
 // 최근 본 여행지 추적
 (function trackRecentlyViewed() {
     const PAGE_MAP = {
