@@ -509,3 +509,33 @@ body.dark .data-btn:hover { background: #0EA5C9; color: #fff; border-color: #0EA
 }
 .form-row .form-group { flex: 1; }
 .form-group { margin-bottom: 16px; }
+
+/* 즐겨찾기(찜) 버튼 공통 — 카드 이미지 위 원형 하트 버튼 */
+.fav-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(4px);
+    color: #ccc;
+    font-size: 1.05em;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s, background 0.18s, color 0.18s;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.fav-btn:hover { background: #fff; color: #e74c3c; transform: scale(1.12); }
+.fav-btn.active { background: #fff0f0; color: #e74c3c; }
+.fav-btn.fav-btn-bottom { top: auto; bottom: 10px; }
+
+body.dark .fav-btn { background: rgba(15,32,53,0.85); color: #555; }
+body.dark .fav-btn:hover { background: #0F2035; color: #e74c3c; }
+body.dark .fav-btn.active { background: #0F2035; color: #e74c3c; }

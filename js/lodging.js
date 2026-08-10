@@ -89,7 +89,7 @@ function saveLodgingFavs(favs) {
 
 function updateFavBtns() {
     const favs = getLodgingFavs();
-    document.querySelectorAll('.lodging-fav-btn').forEach(btn => {
+    document.querySelectorAll('.fav-btn').forEach(btn => {
         const active = favs.includes(btn.dataset.name);
         btn.textContent = active ? '♥' : '♡';
         btn.classList.toggle('active', active);
@@ -154,7 +154,7 @@ getCards().forEach(card => {
     const name = card.querySelector('h3')?.textContent.trim();
     if (!name) return;
     const btn = document.createElement('button');
-    btn.className = 'lodging-fav-btn';
+    btn.className = 'fav-btn fav-btn-bottom';
     btn.dataset.name = name;
     btn.textContent = '♡';
     btn.setAttribute('aria-label', '찜하기');
