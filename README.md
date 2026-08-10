@@ -12,14 +12,15 @@
 | `index.html` | 메인 홈 — 검색, 대표 여행지, 인기 지역, 여행 팁, 숙소 세일, 최근 본 여행지 |
 | `about.html` | 인천 소개 — 차이나타운, 송도, 월미도 등 명소 상세 정보 |
 | `regions.html` | 인기 지역 목록 — 테마 필터(역사·자연·해변·도시) |
-| `seoul.html` | 서울 —
- 경복궁, N서울타워, 명동, 홍대 등 |
+| `seoul.html` | 서울 — 경복궁, N서울타워, 명동, 홍대 등 |
 | `busan.html` | 부산 — 해운대, 감천문화마을, 자갈치시장 등 |
 | `jeju.html` | 제주 — 한라산, 성산일출봉, 협재해수욕장 등 |
 | `gangwon.html` | 강원 — 설악산, 정동진, 춘천 의암호 등 |
 | `gyeongju.html` | 경주 — 불국사, 첨성대, 동궁과 월지 등 |
 | `lodging.html` | 숙소 세일 — 지역·가격 필터, 정렬, 즐겨찾기 |
-| `reviews.html` | 여행 후기 — 작성·수정·삭제, 별점, 좋아요, 검색, 데이터 백업 |
+| `food.html` | 맛집 — 지역·카테고리별 맛집 검색, 카카오맵 연동 |
+| `festival.html` | 축제·이벤트 — 계절·지역별 축제 검색, 카카오맵 연동 |
+| `reviews.html` | 여행 후기 — 작성·수정·삭제, 별점, 좋아요, 사진 첨부, 검색, 데이터 백업 |
 | `planner.html` | 여행 플래너 — 일정 관리, D-day, 진행률, 체크리스트 |
 | `contact.html` | 문의하기 — 실시간 유효성 검사, 글자수 카운터 |
 | `404.html` | 404 에러 페이지 |
@@ -46,10 +47,18 @@
 - 지역·가격대 필터 + 가격순 정렬
 - 카드별 즐겨찾기(찜) + 헤더 배지 및 모달
 
+### 맛집 (food.html)
+- 지역·카테고리(한식/중식/해산물/분식/디저트) 필터 + 검색
+- 카카오맵 바로가기
+
+### 축제 (festival.html)
+- 계절 탭(봄/여름/가을/겨울) + 지역 필터 + 검색
+- 카카오맵 바로가기
+
 ### 후기 (reviews.html)
 - 별점·지역·키워드 필터, 최신순/별점순 정렬
-- 후기 작성·수정·삭제·좋아요
-- JSON 파일로 데이터 내보내기/가져오기
+- 후기 작성·수정·삭제·좋아요, 사진 첨부(최대 1MB)
+- JSON 파일로 데이터 내보내기/가져오기 (좋아요 기록 포함)
 
 ### 여행 플래너 (planner.html)
 - 여행 플랜 생성·수정·삭제 (이름, 날짜 범위)
@@ -57,7 +66,8 @@
 - 일정 카드 — 날짜·시간·장소·카테고리·메모, 드래그로 순서 변경
 - 날짜별 타임라인 그룹핑
 - 준비물 체크리스트 (기본 항목 제공, 직접 추가 가능)
-- 일정 클립보드 복사 / 인쇄
+- 일정 클립보드 복사 / 공유 / 저장(.txt) / 인쇄
+- JSON 파일로 데이터 내보내기/가져오기 (체크리스트 포함)
 
 ---
 
@@ -70,6 +80,7 @@
 | `incheon_favorites` | 즐겨찾기 목록 |
 | `recently_viewed` | 최근 본 여행지 (최대 5개) |
 | `travel_plans` | 여행 플랜 목록 |
+| `active_plan_id` | 현재 선택된 플랜 ID |
 | `travel_schedules` | 플랜별 일정 |
 | `travel_checklists` | 플랜별 체크리스트 |
 | `travel_reviews` | 여행 후기 목록 |
@@ -95,6 +106,8 @@ mypage/
 ├── regions.html
 ├── seoul.html / busan.html / jeju.html / gangwon.html / gyeongju.html
 ├── lodging.html
+├── food.html
+├── festival.html
 ├── reviews.html
 ├── planner.html
 ├── contact.html
@@ -106,6 +119,8 @@ mypage/
 │   ├── region-detail.css
 │   ├── regions.css
 │   ├── lodging.css
+│   ├── food.css
+│   ├── festival.css
 │   ├── reviews.css
 │   ├── planner.css
 │   └── contact.css
@@ -116,6 +131,8 @@ mypage/
 │   ├── region-detail.js
 │   ├── regions.js
 │   ├── lodging.js
+│   ├── food.js
+│   ├── festival.js
 │   ├── reviews.js
 │   ├── planner.js
 │   └── contact.js
