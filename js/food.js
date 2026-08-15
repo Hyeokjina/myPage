@@ -87,7 +87,7 @@ function renderCards() {
             </div>
             <div class="food-card-body">
                 <div class="food-card-top">
-                    <span class="food-region-badge">${f.region}</span>
+                    <span class="region-badge region-${f.region}">${f.region}</span>
                     <span class="food-cat-badge">${f.category}</span>
                 </div>
                 <div class="food-card-name">${f.name}</div>

@@ -182,16 +182,6 @@
 .season-여름 { background: #e0f2fe; color: #0369a1; }
 .season-가을 { background: #fff7ed; color: #c2410c; }
 .season-겨울 { background: #ede9fe; color: #5b21b6; }
-
-.region-badge {
-    font-size: 0.72em;
-    font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 100px;
-    background: #f3f4f6;
-    color: #6b7280;
-    letter-spacing: -0.2px;
-}
 .cat-badge {
     font-size: 0.7em;
     color: #9ca3af;
@@ -265,7 +255,6 @@ body.dark .fest-search-wrap input { background: #0F2035; border-color: #333; col
 body.dark .fest-card { background: #0F2035; border-color: rgba(255,255,255,0.05); }
 body.dark .fest-card-name { color: #e8f4fb; }
 body.dark .fest-card-desc { color: #8a9ab0; }
-body.dark .region-badge { background: #1a2236; color: #6b7280; }
 
 /* 반응형 */
 @media (max-width: 640px) {

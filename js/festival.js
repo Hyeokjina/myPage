@@ -190,7 +190,7 @@ function renderCards() {
             <div class="fest-card-body">
                 <div class="fest-card-top">
                     <span class="season-badge season-${f.season}">${f.season}</span>
-                    <span class="region-badge">${f.region}</span>
+                    <span class="region-badge region-${f.region}">${f.region}</span>
                     <span class="cat-badge">${f.category}</span>
                 </div>
                 <div class="fest-card-name">${f.name}</div>
