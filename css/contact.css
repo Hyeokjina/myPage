@@ -29,7 +29,6 @@ label {
     margin-bottom: 7px;
     color: #444;
 }
-.required { color: #e74c3c; margin-left: 2px; }
 
 input, textarea, select {
     width: 100%;

@@ -55,7 +55,7 @@
             <input type="text" id="nickname" placeholder="예) 여행러버" maxlength="15">
           </div>
           <div class="form-group">
-            <label for="region">지역</label>
+            <label for="region">지역 <span class="required">*</span></label>
             <select id="region" required>
               <option value="">선택하세요</option>
               <option value="인천">인천</option>
@@ -68,7 +68,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>별점</label>
+            <label>별점 <span class="required">*</span></label>
             <div class="star-input" id="star-input">
               <span data-val="1">★</span>
               <span data-val="2">★</span>
@@ -82,14 +82,14 @@
         </div>
         <div class="form-group">
           <div class="form-label-row">
-            <label for="title">제목</label>
+            <label for="title">제목 <span class="required">*</span></label>
             <span class="char-counter" id="title-counter">0 / 50</span>
           </div>
           <input type="text" id="title" placeholder="후기 제목을 입력하세요" required maxlength="50">
         </div>
         <div class="form-group">
           <div class="form-label-row">
-            <label for="content">내용</label>
+            <label for="content">내용 <span class="required">*</span></label>
             <span class="char-counter" id="content-counter">0 / 500</span>
           </div>
           <textarea id="content" rows="5" placeholder="여행 후기를 자유롭게 작성해주세요." required maxlength="500"></textarea>
@@ -199,7 +199,7 @@
             <input type="text" id="edit-nickname" maxlength="15">
           </div>
           <div class="form-group">
-            <label for="edit-region">지역</label>
+            <label for="edit-region">지역 <span class="required">*</span></label>
             <select id="edit-region" required>
               <option value="인천">인천</option>
               <option value="서울">서울</option>
@@ -211,7 +211,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>별점</label>
+            <label>별점 <span class="required">*</span></label>
             <div class="star-input" id="edit-star-input">
               <span data-val="1">★</span>
               <span data-val="2">★</span>
@@ -224,11 +224,11 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="edit-title">제목</label>
+          <label for="edit-title">제목 <span class="required">*</span></label>
           <input type="text" id="edit-title" required maxlength="50">
         </div>
         <div class="form-group">
-          <label for="edit-content">내용</label>
+          <label for="edit-content">내용 <span class="required">*</span></label>
           <textarea id="edit-content" rows="5" required maxlength="500"></textarea>
         </div>
         <div class="review-modal-actions">
