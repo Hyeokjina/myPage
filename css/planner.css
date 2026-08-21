@@ -360,28 +360,6 @@ body.dark .cat-btn.active {
   border-color: #0EA5C9;
 }
 
-/* 복사 완료 토스트 */
-.toast {
-  position: fixed;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: #1E3A5F;
-  color: #fff;
-  padding: 10px 22px;
-  border-radius: 30px;
-  font-size: 14px;
-  opacity: 0;
-  transition: opacity 0.3s, transform 0.3s;
-  pointer-events: none;
-  z-index: 2000;
-}
-
-.toast.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
 /* 카테고리 레전드 */
 .cat-legend {
   display: flex;
@@ -867,7 +845,6 @@ body.dark .delete-btn:hover { color: #e74c3c; }
 body.dark .edit-warn { background: #2a1a0a; border-color: #7a4a1a; color: #f0a060; }
 body.dark .list-actions button { background: #0A1628; border-color: #444; color: #ccc; }
 body.dark .list-actions button:hover { background: #0A2535; border-color: #0EA5C9; }
-body.dark .toast { background: #0EA5C9; color: #fff; }
 
 /* ── 여행 준비물 체크리스트 ── */
 .checklist-section {
