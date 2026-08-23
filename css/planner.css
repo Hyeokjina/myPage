@@ -176,7 +176,7 @@
 .plan-del-btn:hover { background: #fde8e8; }
 
 /* 모달 */
-.modal-overlay {
+.dialog-overlay {
   display: none;
   position: fixed;
   inset: 0;
@@ -186,7 +186,7 @@
   justify-content: center;
 }
 
-.modal-overlay.open { display: flex; }
+.dialog-overlay.open { display: flex; }
 
 .modal-box {
   background: #fff;
@@ -804,7 +804,7 @@ body.dark .modal-actions button[type="button"] {
   color: #aaa;
 }
 
-body.dark .modal-overlay { background: rgba(0,0,0,0.6); }
+body.dark .dialog-overlay { background: rgba(0,0,0,0.6); }
 
 body.dark .form-group input[type="date"] { color-scheme: dark; }
 
