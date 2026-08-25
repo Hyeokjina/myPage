@@ -569,3 +569,17 @@ body.dark .region-badge.region-기타 { background: #1a2030; color: #94a3b8; }
 
 /* 폼 필수 입력 표시 (contact.html, reviews.html, planner.html 공통) */
 .required { color: #e74c3c; margin-left: 2px; }
+
+/* 숙소 특가 태그 (index.html, lodging.html 공통) */
+.lodging-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 0.72em;
+    font-weight: 700;
+    color: #fff;
+    background: #e74c3c;
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: -0.1px;
+}

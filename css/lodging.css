@@ -141,18 +141,6 @@ body.dark #lodging-sort:hover { border-color: #0EA5C9; color: #0EA5C9; }
 }
 
 /* 배지 */
-.lodging-tag {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    font-size: 0.72em;
-    font-weight: 700;
-    color: #fff;
-    background: #e74c3c;
-    padding: 3px 10px;
-    border-radius: 100px;
-    letter-spacing: -0.1px;
-}
 .lodging-region-badge {
     position: absolute;
     top: 12px;

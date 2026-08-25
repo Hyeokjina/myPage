@@ -319,20 +319,6 @@ body.dark .lodging-price-sale { color: #ff7675; }
 body.dark .lodging-sale-badge { background: #c0392b; }
 body.dark .lodging li div { border-top-color: rgba(255,255,255,0.05); }
 
-/* 숙소 이미지 태그 라벨 */
-.lodging-tag {
-    position: absolute;
-    top: 12px; left: 12px;
-    background: #e74c3c;
-    color: #fff;
-    font-size: 0.72em;
-    font-weight: 800;
-    padding: 4px 10px;
-    border-radius: 6px;
-    z-index: 2;
-    letter-spacing: -0.2px;
-    box-shadow: 0 2px 8px rgba(231,76,60,0.4);
-}
 
 /* 여행 팁 */
 .tips-list {
