@@ -67,20 +67,6 @@
 .food-filters { margin-bottom: 20px; display: flex; flex-direction: column; gap: 12px; }
 .filter-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .filter-label { font-size: 0.82em; font-weight: 700; color: #888; min-width: 46px; letter-spacing: -0.2px; }
-.filter-pills { display: flex; gap: 6px; flex-wrap: wrap; }
-.fpill {
-    padding: 6px 14px;
-    border-radius: 100px;
-    border: 1.5px solid #e5e7eb;
-    background: #fff;
-    color: #555;
-    font-size: 0.85em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.18s;
-    font-family: inherit;
-    letter-spacing: -0.2px;
-}
 .fpill:hover { border-color: #f97316; color: #f97316; }
 .fpill.active { background: #f97316; border-color: #f97316; color: #fff; }
 
@@ -204,7 +190,6 @@
 /* 다크 모드 */
 body.dark .food-search-wrap input { background: #0F2035; border-color: #333; color: #ddd; }
 body.dark .food-search-wrap input:focus { border-color: #f97316; }
-body.dark .fpill { background: #0F2035; border-color: #333; color: #999; }
 body.dark .fpill:hover { border-color: #f97316; color: #f97316; }
 body.dark .fpill.active { background: #f97316; border-color: #f97316; color: #fff; }
 body.dark .food-card { background: #0F2035; border-color: rgba(255,255,255,0.05); }

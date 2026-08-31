@@ -66,20 +66,8 @@
     margin-bottom: 16px;
     flex-wrap: wrap;
 }
-.filter-pills { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
-.fpill {
-    padding: 6px 14px;
-    border-radius: 100px;
-    border: 1.5px solid #e5e7eb;
-    background: #fff;
-    color: #555;
-    font-size: 0.83em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.18s;
-    font-family: inherit;
-    letter-spacing: -0.2px;
-}
+.filter-pills { flex: 1; }
+.fpill { font-size: 0.83em; }
 .fpill:hover { border-color: #7c3aed; color: #7c3aed; }
 .fpill.active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
 
