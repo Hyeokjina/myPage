@@ -410,14 +410,6 @@ body.dark .review-filter-label { color: #3a5a6a; }
 
 .delete-btn:hover { color: #e74c3c; }
 
-.empty-msg {
-  text-align: center;
-  color: #aaa;
-  font-size: 15px;
-  margin-top: 40px;
-  display: none;
-}
-
 /* 페이지네이션 */
 .pagination {
   display: flex;
