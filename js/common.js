@@ -128,6 +128,109 @@ document.addEventListener('keydown', e => {
     if (nav?.classList.contains('open')) toggleNav();
 });
 
+// 즐겨찾기(찜) 공통 로직 — index.html, lodging.html, 지역 상세 페이지 공통
+// (버튼은 페이지마다 다르게 만들어지지만, 저장·배지·모달 동작은 이 한 곳에서만 처리)
+const FAV_KEY = 'incheon_favorites';
+
+function getFavs() {
+    try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch { return []; }
+}
+
+function saveFavs(favs) {
+    try { localStorage.setItem(FAV_KEY, JSON.stringify(favs)); } catch {
+        showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
+    }
+}
+
+function updateFavBadge() {
+    const badge = document.getElementById('fav-badge');
+    if (badge) badge.textContent = getFavs().length;
+}
+
+function syncFavButtons() {
+    const favs = getFavs();
+    document.querySelectorAll('.fav-btn').forEach(btn => {
+        const name = btn.dataset.name;
+        if (!name) return;
+        const active = favs.includes(name);
+        btn.textContent = active ? '♥' : '♡';
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-label', active ? '찜 취소' : '찜하기');
+    });
+}
+
+function toggleFav(name) {
+    let favs = getFavs();
+    favs = favs.includes(name) ? favs.filter(f => f !== name) : [...favs, name];
+    saveFavs(favs);
+    updateFavBadge();
+    syncFavButtons();
+}
+
+function removeFav(name) {
+    saveFavs(getFavs().filter(f => f !== name));
+    updateFavBadge();
+    syncFavButtons();
+    openFavModal();
+}
+
+function openFavModal() {
+    const modal = document.getElementById('fav-modal');
+    if (!modal) return;
+    const favs = getFavs();
+    const list = document.getElementById('fav-list');
+    const empty = document.getElementById('fav-empty');
+    list.innerHTML = '';
+    if (favs.length === 0) {
+        empty.style.display = 'block';
+    } else {
+        empty.style.display = 'none';
+        favs.forEach(name => {
+            const li = document.createElement('li');
+            const span = document.createElement('span');
+            span.textContent = `♥ ${name}`;
+            const delBtn = document.createElement('button');
+            delBtn.textContent = '✕';
+            delBtn.title = '삭제';
+            delBtn.addEventListener('click', () => removeFav(name));
+            li.appendChild(span);
+            li.appendChild(delBtn);
+            list.appendChild(li);
+        });
+    }
+    modal.classList.add('open');
+    trapFocus(modal);
+}
+
+function closeFavModal() {
+    const modal = document.getElementById('fav-modal');
+    if (!modal) return;
+    modal.classList.remove('open');
+    releaseFocus(modal);
+}
+
+// 즐겨찾기 버튼은 나중에 동적으로 추가되는 경우도 있어, 이벤트 위임으로 한 번만 등록
+document.addEventListener('click', e => {
+    const btn = e.target.closest('.fav-btn');
+    if (!btn?.dataset.name) return;
+    e.stopPropagation();
+    toggleFav(btn.dataset.name);
+});
+
+document.querySelector('.fav-count')?.addEventListener('click', openFavModal);
+document.querySelector('.modal-close')?.addEventListener('click', closeFavModal);
+document.getElementById('fav-modal')?.addEventListener('click', e => {
+    if (e.target === document.getElementById('fav-modal')) closeFavModal();
+});
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('fav-modal')?.classList.contains('open')) {
+        closeFavModal();
+    }
+});
+
+updateFavBadge();
+syncFavButtons();
+
 // 최근 본 여행지 추적
 (function trackRecentlyViewed() {
     const PAGE_MAP = {

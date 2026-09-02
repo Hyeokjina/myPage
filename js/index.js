@@ -1,92 +1,3 @@
-const FAV_KEY = 'incheon_favorites';
-
-function getFavs() {
-    try {
-        return JSON.parse(localStorage.getItem(FAV_KEY) || '[]');
-    } catch {
-        return [];
-    }
-}
-
-function saveFavs(favs) {
-    try {
-        localStorage.setItem(FAV_KEY, JSON.stringify(favs));
-    } catch {
-        showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
-    }
-}
-
-function updateBadge() {
-    document.getElementById('fav-badge').textContent = getFavs().length;
-}
-
-function updateButtons() {
-    const favs = getFavs();
-    document.querySelectorAll('.fav-btn').forEach(btn => {
-        const name = btn.dataset.name;
-        if (!name) return;
-        if (favs.includes(name)) {
-            btn.textContent = '♥';
-            btn.classList.add('active');
-        } else {
-            btn.textContent = '♡';
-            btn.classList.remove('active');
-        }
-    });
-}
-
-function toggleFav(event, name) {
-    event.stopPropagation();
-    let favs = getFavs();
-    favs = favs.includes(name) ? favs.filter(f => f !== name) : [...favs, name];
-    saveFavs(favs);
-    updateBadge();
-    updateButtons();
-}
-
-function openFavModal() {
-    const favs = getFavs();
-    const list = document.getElementById('fav-list');
-    const empty = document.getElementById('fav-empty');
-    list.innerHTML = '';
-    if (favs.length === 0) {
-        empty.style.display = 'block';
-    } else {
-        empty.style.display = 'none';
-        favs.forEach(name => {
-            const li = document.createElement('li');
-            const span = document.createElement('span');
-            span.textContent = `♥ ${name}`;
-            const btn = document.createElement('button');
-            btn.textContent = '✕';
-            btn.title = '삭제';
-            btn.addEventListener('click', () => removeFav(name));
-            li.appendChild(span);
-            li.appendChild(btn);
-            list.appendChild(li);
-        });
-    }
-    document.getElementById('fav-modal').classList.add('open');
-    trapFocus(document.getElementById('fav-modal'));
-}
-
-function removeFav(name) {
-    saveFavs(getFavs().filter(f => f !== name));
-    updateBadge();
-    updateButtons();
-    openFavModal();
-}
-
-function closeFavModal() {
-    const modal = document.getElementById('fav-modal');
-    modal.classList.remove('open');
-    releaseFocus(modal);
-}
-
-function closeFavModalOutside(event) {
-    if (event.target === document.getElementById('fav-modal')) closeFavModal();
-}
-
 // 자동완성 후보 목록
 const AUTOCOMPLETE_ITEMS = [
     { name: '차이나타운',      href: null },
@@ -220,10 +131,6 @@ function searchPlaces() {
 }
 
 // 이벤트 리스너 등록
-document.querySelectorAll('.fav-btn').forEach(btn => {
-    btn.addEventListener('click', e => toggleFav(e, btn.dataset.name));
-});
-
 document.querySelectorAll('.places li[data-href], .lodging li[data-href]').forEach(li => {
     li.addEventListener('click', () => { window.location.href = li.dataset.href; });
     li.addEventListener('keydown', e => {
@@ -233,10 +140,6 @@ document.querySelectorAll('.places li[data-href], .lodging li[data-href]').forEa
         }
     });
 });
-
-document.querySelector('.fav-count')?.addEventListener('click', openFavModal);
-document.querySelector('.modal-close')?.addEventListener('click', closeFavModal);
-document.getElementById('fav-modal')?.addEventListener('click', closeFavModalOutside);
 
 document.querySelectorAll('.hero-tag').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -262,12 +165,6 @@ document.getElementById('search-clear-btn')?.addEventListener('click', () => {
     input.focus();
     document.getElementById('search-clear-btn').style.display = 'none';
     searchPlaces();
-});
-
-document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && document.getElementById('fav-modal').classList.contains('open')) {
-        closeFavModal();
-    }
 });
 
 // 최근 본 여행지 렌더링
@@ -323,8 +220,6 @@ document.getElementById('clear-recent-btn')?.addEventListener('click', () => {
 });
 
 // 초기화
-updateBadge();
-updateButtons();
 renderRecentlyViewed();
 
 // bfcache 대응: 뒤로가기로 복원된 경우 재렌더링

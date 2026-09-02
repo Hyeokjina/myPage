@@ -230,39 +230,9 @@ document.addEventListener('keydown', e => {
     sections.forEach(s => observer.observe(s));
 })();
 
-// 관광지 카드 즐겨찾기 + 헤더 배지 · 모달
+// 관광지 카드 즐겨찾기 버튼 삽입
+// 저장·배지·모달 로직은 common.js의 공통 즐겨찾기 함수를 그대로 사용
 (function () {
-    const FAV_KEY = 'incheon_favorites';
-
-    function getFavs() {
-        try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch { return []; }
-    }
-    function saveFavs(favs) {
-        try { localStorage.setItem(FAV_KEY, JSON.stringify(favs)); } catch {}
-    }
-
-    function updateBadge() {
-        const badge = document.getElementById('fav-badge');
-        if (badge) badge.textContent = getFavs().length;
-    }
-
-    function syncCardButtons() {
-        const favs = getFavs();
-        document.querySelectorAll('.card .fav-btn').forEach(btn => {
-            const active = favs.includes(btn.dataset.name);
-            btn.textContent = active ? '♥' : '♡';
-            btn.classList.toggle('active', active);
-        });
-    }
-
-    function toggleFav(name) {
-        let favs = getFavs();
-        favs = favs.includes(name) ? favs.filter(f => f !== name) : [...favs, name];
-        saveFavs(favs);
-        updateBadge();
-        syncCardButtons();
-    }
-
     document.querySelectorAll('.card').forEach(card => {
         const name = card.querySelector('h3')?.textContent?.trim();
         const banner = card.querySelector('.card-img-banner');
@@ -273,66 +243,8 @@ document.addEventListener('keydown', e => {
         btn.dataset.name = name;
         btn.setAttribute('aria-label', '즐겨찾기');
         btn.setAttribute('title', '즐겨찾기');
-        btn.addEventListener('click', e => {
-            e.stopPropagation();
-            toggleFav(name);
-        });
-
         banner.appendChild(btn);
     });
 
-    // 헤더 즐겨찾기 모달
-    function openFavModal() {
-        const modal = document.getElementById('fav-modal');
-        if (!modal) return;
-        const favs = getFavs();
-        const list = document.getElementById('fav-list');
-        const empty = document.getElementById('fav-empty');
-        list.innerHTML = '';
-        if (favs.length === 0) {
-            empty.style.display = 'block';
-        } else {
-            empty.style.display = 'none';
-            favs.forEach(name => {
-                const li = document.createElement('li');
-                const span = document.createElement('span');
-                span.textContent = `♥ ${name}`;
-                const delBtn = document.createElement('button');
-                delBtn.textContent = '✕';
-                delBtn.title = '삭제';
-                delBtn.addEventListener('click', () => {
-                    saveFavs(getFavs().filter(f => f !== name));
-                    updateBadge();
-                    syncCardButtons();
-                    openFavModal();
-                });
-                li.appendChild(span);
-                li.appendChild(delBtn);
-                list.appendChild(li);
-            });
-        }
-        modal.classList.add('open');
-        trapFocus(modal);
-    }
-
-    function closeFavModal() {
-        const modal = document.getElementById('fav-modal');
-        if (!modal) return;
-        modal.classList.remove('open');
-        releaseFocus(modal);
-    }
-
-    document.querySelector('.fav-count')?.addEventListener('click', openFavModal);
-    document.querySelector('.modal-close')?.addEventListener('click', closeFavModal);
-    document.getElementById('fav-modal')?.addEventListener('click', e => {
-        if (e.target === document.getElementById('fav-modal')) closeFavModal();
-    });
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && document.getElementById('fav-modal')?.classList.contains('open')) {
-            closeFavModal();
-        }
-    });
-
-    syncCardButtons();
-    updateBadge();
+    syncFavButtons();
 })();

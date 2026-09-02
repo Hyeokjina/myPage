@@ -77,77 +77,7 @@ sortSelect.addEventListener('change', e => {
 });
 
 // ── 숙소 찜하기 ──────────────────────────────────────
-const FAV_KEY = 'incheon_favorites';
-
-function getLodgingFavs() {
-    try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch { return []; }
-}
-
-function saveLodgingFavs(favs) {
-    try { localStorage.setItem(FAV_KEY, JSON.stringify(favs)); } catch {}
-}
-
-function updateFavBtns() {
-    const favs = getLodgingFavs();
-    document.querySelectorAll('.fav-btn').forEach(btn => {
-        const active = favs.includes(btn.dataset.name);
-        btn.textContent = active ? '♥' : '♡';
-        btn.classList.toggle('active', active);
-        btn.setAttribute('aria-label', active ? '찜 취소' : '찜하기');
-    });
-}
-
-function updateBadge() {
-    document.getElementById('fav-badge').textContent = getLodgingFavs().length;
-}
-
-function openFavModal() {
-    const favs = getLodgingFavs();
-    const list = document.getElementById('fav-list');
-    const empty = document.getElementById('fav-empty');
-    list.innerHTML = '';
-    if (favs.length === 0) {
-        empty.style.display = 'block';
-    } else {
-        empty.style.display = 'none';
-        favs.forEach(name => {
-            const li = document.createElement('li');
-            const span = document.createElement('span');
-            span.textContent = `♥ ${name}`;
-            const btn = document.createElement('button');
-            btn.textContent = '✕';
-            btn.title = '삭제';
-            btn.addEventListener('click', () => removeFav(name));
-            li.appendChild(span);
-            li.appendChild(btn);
-            list.appendChild(li);
-        });
-    }
-    document.getElementById('fav-modal').classList.add('open');
-    trapFocus(document.getElementById('fav-modal'));
-}
-
-function removeFav(name) {
-    saveLodgingFavs(getLodgingFavs().filter(f => f !== name));
-    updateBadge();
-    updateFavBtns();
-    openFavModal();
-}
-
-function closeFavModal() {
-    const modal = document.getElementById('fav-modal');
-    modal.classList.remove('open');
-    releaseFocus(modal);
-}
-
-function toggleLodgingFav(e, name) {
-    e.stopPropagation();
-    let favs = getLodgingFavs();
-    favs = favs.includes(name) ? favs.filter(f => f !== name) : [...favs, name];
-    saveLodgingFavs(favs);
-    updateBadge();
-    updateFavBtns();
-}
+// 저장·배지·모달 로직은 common.js의 공통 즐겨찾기 함수를 그대로 사용
 
 // 각 카드 이미지 영역에 ♡ 버튼 동적 삽입
 getCards().forEach(card => {
@@ -158,20 +88,7 @@ getCards().forEach(card => {
     btn.dataset.name = name;
     btn.textContent = '♡';
     btn.setAttribute('aria-label', '찜하기');
-    btn.addEventListener('click', e => toggleLodgingFav(e, name));
     card.querySelector('.lodging-img-wrap').appendChild(btn);
 });
 
-updateFavBtns();
-updateBadge();
-
-document.querySelector('.fav-count')?.addEventListener('click', openFavModal);
-document.querySelector('.modal-close')?.addEventListener('click', closeFavModal);
-document.getElementById('fav-modal')?.addEventListener('click', e => {
-    if (e.target === document.getElementById('fav-modal')) closeFavModal();
-});
-document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && document.getElementById('fav-modal')?.classList.contains('open')) {
-        closeFavModal();
-    }
-});
+syncFavButtons();
