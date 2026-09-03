@@ -120,3 +120,21 @@ document.addEventListener('keydown', e => {
 
     sections.forEach(s => observer.observe(s));
 })();
+
+// 관광지 카드 즐겨찾기 버튼 삽입
+// 저장·배지·모달 로직은 common.js의 공통 즐겨찾기 함수를 그대로 사용
+(function () {
+    document.querySelectorAll('.card').forEach(card => {
+        const name = card.querySelector('h3')?.textContent?.trim();
+        if (!name) return;
+
+        const btn = document.createElement('button');
+        btn.className = 'fav-btn';
+        btn.dataset.name = name;
+        btn.setAttribute('aria-label', '즐겨찾기');
+        btn.setAttribute('title', '즐겨찾기');
+        card.appendChild(btn);
+    });
+
+    syncFavButtons();
+})();
