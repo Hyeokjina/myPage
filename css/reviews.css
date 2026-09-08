@@ -301,17 +301,7 @@ body.dark .review-filter-label { color: #3a5a6a; }
   padding-bottom: 20px;
 }
 
-.list-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.list-header h2 { margin-bottom: 0; }
-
+/* 목록 헤더 기본 스타일은 common.css 참고, 카운트 색상만 여기서 지정 */
 .list-header #review-count {
   color: #0EA5C9;
 }

@@ -605,6 +605,17 @@ body.dark .region-badge.region-기타 { background: #1a2030; color: #94a3b8; }
     display: none;
 }
 
+/* 목록 헤더 (reviews.html, planner.html 공통 — 카운트 색상은 각 페이지 CSS에서 지정) */
+.list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.list-header h2 { margin-bottom: 0; }
+
 /* 필터 알약 버튼 공통 (food.html, festival.html 공통 — 강조색은 각 페이지 CSS에서 지정) */
 .filter-pills { display: flex; gap: 6px; flex-wrap: wrap; }
 .fpill {

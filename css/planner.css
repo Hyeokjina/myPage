@@ -326,18 +326,7 @@ body.dark .cat-btn.active {
 
 #schedule-form button[type="submit"]:hover { background: #0B8CAA; }
 
-/* 목록 헤더 */
-.list-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.list-header h2 { margin-bottom: 0; }
-
+/* 목록 헤더 기본 스타일은 common.css 참고, 카운트 색상만 여기서 지정 */
 .list-header h2 span { color: #0EA5C9; }
 
 .list-actions {
