@@ -86,13 +86,11 @@ select {
     align-items: flex-start;
     margin-top: 5px;
 }
+/* 글자 크기/색상은 common.css 참고, 여기서는 배치만 지정 */
 .char-counter {
-    font-size: 0.78em;
-    color: #bbb;
     white-space: nowrap;
     margin-left: auto;
 }
-.char-counter.over { color: #e74c3c; }
 
 /* 제출 버튼 */
 button[type="submit"] {
@@ -213,7 +211,6 @@ body.dark .checkmark-circle,
 body.dark .checkmark-path { stroke: #38bdf8; }
 body.dark #new-inquiry-btn { background: #0EA5C9; }
 body.dark #new-inquiry-btn:hover { background: #0B8CAA; }
-body.dark .char-counter { color: #3a5a6a; }
 
 /* 반응형 */
 @media (max-width: 600px) {
