@@ -110,6 +110,20 @@ function showToast(msg) {
     setTimeout(() => toast.classList.remove('show'), 2200);
 }
 
+// 필터/탭 버튼 공통 로직 — food/festival/reviews/lodging/regions 페이지에서 공통으로 사용
+// 컨테이너 안에서 버튼 클릭 → 클릭된 버튼에만 active 클래스 부여 → onSelect(dataset, 버튼) 호출
+function initFilterGroup(containerSelector, itemSelector, onSelect) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
+    container.addEventListener('click', e => {
+        const item = e.target.closest(itemSelector);
+        if (!item) return;
+        container.querySelectorAll(itemSelector).forEach(el => el.classList.remove('active'));
+        item.classList.add('active');
+        onSelect(item.dataset, item);
+    });
+}
+
 document.querySelector('.hamburger')?.addEventListener('click', toggleNav);
 document.getElementById('dark-btn')?.addEventListener('click', toggleDark);
 document.getElementById('back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));

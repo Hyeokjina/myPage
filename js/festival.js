@@ -212,22 +212,14 @@ function renderCards() {
 }
 
 // 계절 탭
-document.getElementById('season-tabs').addEventListener('click', e => {
-    const tab = e.target.closest('.stab');
-    if (!tab) return;
-    document.querySelectorAll('.stab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    activeSeason = tab.dataset.season;
+initFilterGroup('#season-tabs', '.stab', ds => {
+    activeSeason = ds.season;
     renderCards();
 });
 
 // 지역 필터
-document.getElementById('region-filter').addEventListener('click', e => {
-    const pill = e.target.closest('.fpill');
-    if (!pill) return;
-    document.querySelectorAll('#region-filter .fpill').forEach(p => p.classList.remove('active'));
-    pill.classList.add('active');
-    activeRegion = pill.dataset.region;
+initFilterGroup('#region-filter', '.fpill', ds => {
+    activeRegion = ds.region;
     renderCards();
 });
 

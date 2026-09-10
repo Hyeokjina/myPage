@@ -111,21 +111,13 @@ function renderCards() {
 }
 
 // 필터 이벤트
-document.getElementById('region-filter').addEventListener('click', e => {
-    const pill = e.target.closest('.fpill');
-    if (!pill) return;
-    document.querySelectorAll('#region-filter .fpill').forEach(p => p.classList.remove('active'));
-    pill.classList.add('active');
-    activeRegion = pill.dataset.region;
+initFilterGroup('#region-filter', '.fpill', ds => {
+    activeRegion = ds.region;
     renderCards();
 });
 
-document.getElementById('category-filter').addEventListener('click', e => {
-    const pill = e.target.closest('.fpill');
-    if (!pill) return;
-    document.querySelectorAll('#category-filter .fpill').forEach(p => p.classList.remove('active'));
-    pill.classList.add('active');
-    activeCategory = pill.dataset.category;
+initFilterGroup('#category-filter', '.fpill', ds => {
+    activeCategory = ds.category;
     renderCards();
 });
 

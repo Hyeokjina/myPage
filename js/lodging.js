@@ -51,22 +51,14 @@ function resetSort() {
     sortSelect.value = 'default';
 }
 
-document.getElementById('region-filter').addEventListener('click', e => {
-    const btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-    document.querySelectorAll('#region-filter .filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeRegion = btn.dataset.filter;
+initFilterGroup('#region-filter', '.filter-btn', ds => {
+    activeRegion = ds.filter;
     resetSort();
     applyFilters();
 });
 
-document.getElementById('price-filter').addEventListener('click', e => {
-    const btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-    document.querySelectorAll('#price-filter .filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activePrice = btn.dataset.price;
+initFilterGroup('#price-filter', '.filter-btn', ds => {
+    activePrice = ds.price;
     resetSort();
     applyFilters();
 });

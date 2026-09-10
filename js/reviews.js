@@ -470,23 +470,15 @@ document.getElementById('import-reviews-input')?.addEventListener('change', e =>
 });
 
 // 지역 pill 필터
-document.getElementById('region-pills').addEventListener('click', e => {
-  const pill = e.target.closest('.review-pill');
-  if (!pill) return;
-  document.querySelectorAll('#region-pills .review-pill').forEach(p => p.classList.remove('active'));
-  pill.classList.add('active');
-  filterRegion = pill.dataset.region;
+initFilterGroup('#region-pills', '.review-pill', ds => {
+  filterRegion = ds.region;
   currentPage = 1;
   renderList();
 });
 
 // 별점 pill 필터
-document.getElementById('rating-pills').addEventListener('click', e => {
-  const pill = e.target.closest('.review-pill');
-  if (!pill) return;
-  document.querySelectorAll('#rating-pills .review-pill').forEach(p => p.classList.remove('active'));
-  pill.classList.add('active');
-  filterRating = Number(pill.dataset.rating);
+initFilterGroup('#rating-pills', '.review-pill', ds => {
+  filterRating = Number(ds.rating);
   currentPage = 1;
   renderList();
 });
