@@ -11,7 +11,7 @@
 /* 헤더 */
 .contact-header { text-align: center; margin-bottom: 32px; }
 .contact-header h2 {
-    color: #1E3A5F;
+    color: var(--navy);
     font-size: 1.5em;
     font-weight: 800;
     letter-spacing: -0.5px;
@@ -45,16 +45,16 @@ input, textarea, select {
 }
 input:focus, textarea:focus, select:focus {
     outline: none;
-    border-color: #0EA5C9;
+    border-color: var(--brand);
     background: #fff;
-    box-shadow: 0 0 0 3px rgba(14,165,201,0.12);
+    box-shadow: 0 0 0 3px rgba(var(--brand-rgb),0.12);
 }
 input.is-invalid, textarea.is-invalid {
-    border-color: #e74c3c;
+    border-color: var(--danger);
     background: #fff8f8;
 }
 input.is-invalid:focus, textarea.is-invalid:focus {
-    box-shadow: 0 0 0 3px rgba(231,76,60,0.12);
+    box-shadow: 0 0 0 3px rgba(var(--danger-rgb),0.12);
 }
 input.is-valid, textarea.is-valid {
     border-color: #22c55e;
@@ -73,7 +73,7 @@ select {
 .field-error {
     display: block;
     font-size: 0.78em;
-    color: #e74c3c;
+    color: var(--danger);
     margin-top: 5px;
     min-height: 1em;
     letter-spacing: -0.1px;
@@ -97,7 +97,7 @@ button[type="submit"] {
     width: 100%;
     padding: 14px;
     margin-top: 6px;
-    background: #1E3A5F;
+    background: var(--navy);
     color: #fff;
     font-size: 0.95em;
     font-weight: 700;
@@ -112,7 +112,7 @@ button[type="submit"] {
     justify-content: center;
     gap: 8px;
 }
-button[type="submit"]:hover:not(:disabled) { background: #0EA5C9; }
+button[type="submit"]:hover:not(:disabled) { background: var(--brand); }
 button[type="submit"]:disabled { opacity: 0.6; cursor: not-allowed; }
 
 .btn-spinner {
@@ -159,7 +159,7 @@ button[type="submit"].loading .btn-text::after { content: ' 중...'; }
 }
 .checkmark-svg { width: 64px; height: 64px; }
 .checkmark-circle {
-    stroke: #0EA5C9;
+    stroke: var(--brand);
     stroke-width: 2.5;
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
@@ -167,7 +167,7 @@ button[type="submit"].loading .btn-text::after { content: ' 중...'; }
     animation: drawCircle 0.55s ease forwards;
 }
 .checkmark-path {
-    stroke: #0EA5C9;
+    stroke: var(--brand);
     stroke-width: 4;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -178,12 +178,12 @@ button[type="submit"].loading .btn-text::after { content: ' 중...'; }
 @keyframes drawCircle { to { stroke-dashoffset: 0; } }
 @keyframes drawCheck  { to { stroke-dashoffset: 0; } }
 
-.success-msg strong { font-size: 1.05em; color: #1E3A5F; font-weight: 800; }
+.success-msg strong { font-size: 1.05em; color: var(--navy); font-weight: 800; }
 .success-msg p { font-size: 0.88em; color: #666; margin: 0; }
 #new-inquiry-btn {
     margin-top: 10px;
     padding: 10px 24px;
-    background: #0EA5C9;
+    background: var(--brand);
     color: #fff;
     border: none;
     border-radius: 100px;
@@ -202,14 +202,14 @@ body.dark .contact-header h2 { color: #e8f4fb; }
 body.dark .contact-sub { color: #5a7a8a; }
 body.dark label { color: #b0c8d8; }
 body.dark input, body.dark textarea, body.dark select { background: #0A1628; color: #ddd; border-color: #1e3348; }
-body.dark input:focus, body.dark textarea:focus, body.dark select:focus { border-color: #0EA5C9; background: #0d1e30; }
+body.dark input:focus, body.dark textarea:focus, body.dark select:focus { border-color: var(--brand); background: #0d1e30; }
 body.dark input.is-invalid, body.dark textarea.is-invalid { background: #1e0f0f; }
 body.dark .success-msg { background: #0A2535; }
 body.dark .success-msg strong { color: #e8f4fb; }
 body.dark .success-msg p { color: #7a94a8; }
 body.dark .checkmark-circle,
 body.dark .checkmark-path { stroke: #38bdf8; }
-body.dark #new-inquiry-btn { background: #0EA5C9; }
+body.dark #new-inquiry-btn { background: var(--brand); }
 body.dark #new-inquiry-btn:hover { background: #0B8CAA; }
 
 /* 반응형 */

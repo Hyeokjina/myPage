@@ -87,7 +87,7 @@
     align-items: center;
     gap: 6px;
     padding: 12px 24px;
-    background: #0EA5C9;
+    background: var(--brand);
     border: none;
     border-radius: 100px;
     color: #fff;
@@ -138,7 +138,7 @@
 }
 .section-header-text { display: flex; flex-direction: column; gap: 4px; }
 .section-header h2 {
-    color: #1E3A5F;
+    color: var(--navy);
     font-size: 1.45em;
     font-weight: 800;
     letter-spacing: -0.6px;
@@ -151,7 +151,7 @@
     display: inline-block;
     width: 4px;
     height: 1.1em;
-    background: #0EA5C9;
+    background: var(--brand);
     border-radius: 4px;
     flex-shrink: 0;
 }
@@ -163,7 +163,7 @@
 }
 .more-btn {
     text-decoration: none;
-    color: #0EA5C9;
+    color: var(--brand);
     font-weight: 600;
     font-size: 0.85em;
     transition: color 0.18s, gap 0.18s;
@@ -204,7 +204,7 @@ body.dark .section-subtitle { color: #5a7a8a; }
     transform: translateY(-6px);
     box-shadow: 0 16px 40px rgba(0,0,0,0.14);
 }
-.places li:focus, .lodging li:focus { outline: 2px solid #0EA5C9; outline-offset: 2px; }
+.places li:focus, .lodging li:focus { outline: 2px solid var(--brand); outline-offset: 2px; }
 
 /* 카드 이미지 + 호버 오버레이 */
 .places li .card-img-wrap,
@@ -296,14 +296,14 @@ body.dark .section-subtitle { color: #5a7a8a; }
 .lodging-price-sale {
     font-size: 1.25em;
     font-weight: 800;
-    color: #e74c3c;
+    color: var(--danger);
     letter-spacing: -0.5px;
     line-height: 1;
 }
 .lodging-sale-badge {
     font-size: 0.78em;
     font-weight: 800;
-    background: #e74c3c;
+    background: var(--danger);
     color: #fff;
     padding: 4px 9px;
     border-radius: 6px;
@@ -350,7 +350,7 @@ body.dark .lodging li div { border-top-color: rgba(255,255,255,0.05); }
 .tip-body h3 {
     font-size: 0.95em;
     font-weight: 700;
-    color: #1E3A5F;
+    color: var(--navy);
     margin: 0 0 6px;
     letter-spacing: -0.3px;
 }
@@ -477,13 +477,13 @@ body.dark .search-highlight {
     transition: background 0.15s;
 }
 .autocomplete-item:hover,
-.autocomplete-item.active { background: #f0f9ff; color: #0EA5C9; }
+.autocomplete-item.active { background: #f0f9ff; color: var(--brand); }
 .autocomplete-item mark {
     background: none;
-    color: #0EA5C9;
+    color: var(--brand);
     font-weight: 700;
 }
-body.dark .autocomplete-list { background: #0f2035; border-color: #1e3a5f; }
+body.dark .autocomplete-list { background: #0f2035; border-color: var(--navy); }
 body.dark .autocomplete-item { color: #ccc; }
 body.dark .autocomplete-item:hover,
 body.dark .autocomplete-item.active { background: #0a2535; color: #38bdf8; }

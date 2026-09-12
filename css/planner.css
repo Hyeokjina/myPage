@@ -23,7 +23,7 @@
 }
 
 .plans-header h2 {
-  color: #1E3A5F;
+  color: var(--navy);
   font-size: 1.3rem;
   margin: 0;
 }
@@ -68,8 +68,8 @@
   gap: 14px;
 }
 
-.plan-card:hover { border-color: #0EA5C9; background: #f7fdfd; }
-.plan-card.active { border-color: #0EA5C9; background: #e8f7f6; }
+.plan-card:hover { border-color: var(--brand); background: #f7fdfd; }
+.plan-card.active { border-color: var(--brand); background: #e8f7f6; }
 
 .plan-icon {
   font-size: 22px;
@@ -105,7 +105,7 @@
 
 .dday-active {
   background: #e8f7f6;
-  color: #0EA5C9;
+  color: var(--brand);
 }
 
 .dday-past {
@@ -136,7 +136,7 @@
 
 .plan-progress-fill {
   height: 100%;
-  background: #0EA5C9;
+  background: var(--brand);
   border-radius: 10px;
   transition: width 0.4s ease;
 }
@@ -148,7 +148,7 @@
 }
 
 .plan-progress-label.done-all {
-  color: #0EA5C9;
+  color: var(--brand);
   font-weight: 700;
 }
 
@@ -198,7 +198,7 @@
 }
 
 .modal-box h3 {
-  color: #1E3A5F;
+  color: var(--navy);
   font-size: 1.2rem;
   margin-bottom: 24px;
 }
@@ -227,7 +227,7 @@
 .modal-actions button[type="button"]:hover { background: #ddd; }
 
 .modal-actions button[type="submit"] {
-  background: #0EA5C9;
+  background: var(--brand);
   color: #fff;
 }
 
@@ -244,7 +244,7 @@
 .add-section h2,
 .list-section h2 {
   margin-bottom: 24px;
-  color: #1E3A5F;
+  color: var(--navy);
   font-size: 1.3rem;
 }
 
@@ -270,7 +270,7 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #0EA5C9;
+  border-color: var(--brand);
 }
 
 /* 카테고리 선택 */
@@ -291,10 +291,10 @@
   font-family: inherit;
 }
 
-.cat-btn:hover { border-color: #0EA5C9; }
+.cat-btn:hover { border-color: var(--brand); }
 .cat-btn.active {
-  border-color: #0EA5C9;
-  background: #0EA5C9;
+  border-color: var(--brand);
+  background: var(--brand);
   color: #fff;
 }
 
@@ -304,17 +304,17 @@ body.dark .cat-btn {
   color: #ccc;
 }
 
-body.dark .cat-btn:hover { border-color: #0EA5C9; }
+body.dark .cat-btn:hover { border-color: var(--brand); }
 body.dark .cat-btn.active {
-  background: #0EA5C9;
-  border-color: #0EA5C9;
+  background: var(--brand);
+  border-color: var(--brand);
   color: #fff;
 }
 
 #schedule-form button[type="submit"] {
   width: 100%;
   padding: 12px;
-  background: #0EA5C9;
+  background: var(--brand);
   color: #fff;
   font-size: 15px;
   border: none;
@@ -327,7 +327,7 @@ body.dark .cat-btn.active {
 #schedule-form button[type="submit"]:hover { background: #0B8CAA; }
 
 /* 목록 헤더 기본 스타일은 common.css 참고, 카운트 색상만 여기서 지정 */
-.list-header h2 span { color: #0EA5C9; }
+.list-header h2 span { color: var(--brand); }
 
 .list-actions {
   display: flex;
@@ -346,7 +346,7 @@ body.dark .cat-btn.active {
 
 .list-actions button:hover {
   background: #f0fafa;
-  border-color: #0EA5C9;
+  border-color: var(--brand);
 }
 
 /* 카테고리 레전드 */
@@ -376,7 +376,7 @@ body.dark .cat-btn.active {
   flex-shrink: 0;
 }
 
-.cat-legend-dot.cat-관광 { background: #0EA5C9; }
+.cat-legend-dot.cat-관광 { background: var(--brand); }
 .cat-legend-dot.cat-식사  { background: #e67e22; }
 .cat-legend-dot.cat-숙박  { background: #9b59b6; }
 .cat-legend-dot.cat-교통  { background: #3498db; }
@@ -466,7 +466,7 @@ body.dark .cat-legend-item { color: #aaa; }
 }
 
 .stats-item strong {
-  color: #1E3A5F;
+  color: var(--navy);
   font-weight: 700;
 }
 
@@ -510,10 +510,10 @@ body.dark .stats-item strong { color: #7EC8E3; }
   font-family: inherit;
 }
 
-.cat-filter-btn:hover { border-color: #0EA5C9; }
+.cat-filter-btn:hover { border-color: var(--brand); }
 .cat-filter-btn.active {
-  border-color: #0EA5C9;
-  background: #0EA5C9;
+  border-color: var(--brand);
+  background: var(--brand);
   color: #fff;
 }
 
@@ -522,10 +522,10 @@ body.dark .cat-filter-btn {
   border-color: #444;
   color: #ccc;
 }
-body.dark .cat-filter-btn:hover { border-color: #0EA5C9; }
+body.dark .cat-filter-btn:hover { border-color: var(--brand); }
 body.dark .cat-filter-btn.active {
-  background: #0EA5C9;
-  border-color: #0EA5C9;
+  background: var(--brand);
+  border-color: var(--brand);
   color: #fff;
 }
 
@@ -546,7 +546,7 @@ body.dark .cat-filter-btn.active {
   top: 12px;
   bottom: 12px;
   width: 2px;
-  background: linear-gradient(to bottom, #0EA5C9 0%, #e0f2fe 100%);
+  background: linear-gradient(to bottom, var(--brand) 0%, #e0f2fe 100%);
   border-radius: 2px;
 }
 
@@ -583,7 +583,7 @@ body.dark .cat-filter-btn.active {
   transform: translateY(-50%) rotate(45deg);
   width: 12px;
   height: 12px;
-  background: #0EA5C9;
+  background: var(--brand);
   border-radius: 2px;
   z-index: 2;
 }
@@ -591,17 +591,17 @@ body.dark .cat-filter-btn.active {
   content: '';
   flex: 1;
   height: 1px;
-  background: rgba(14,165,201,0.2);
+  background: rgba(var(--brand-rgb),0.2);
 }
 .schedule-date-header-text {
   font-size: 0.78em;
   font-weight: 700;
-  color: #0EA5C9;
+  color: var(--brand);
   white-space: nowrap;
   letter-spacing: -0.1px;
 }
-body.dark .schedule-date-header::before { background: #0EA5C9; }
-body.dark .schedule-date-header::after { background: rgba(14,165,201,0.15); }
+body.dark .schedule-date-header::before { background: var(--brand); }
+body.dark .schedule-date-header::after { background: rgba(var(--brand-rgb),0.15); }
 body.dark .schedule-date-header-text { color: #38bdf8; }
 
 /* 타임라인 도트 */
@@ -615,11 +615,11 @@ body.dark .schedule-date-header-text { color: #38bdf8; }
   height: 14px;
   border-radius: 50%;
   background: #fff;
-  border: 3px solid #0EA5C9;
-  box-shadow: 0 0 0 3px rgba(14,165,201,0.15);
+  border: 3px solid var(--brand);
+  box-shadow: 0 0 0 3px rgba(var(--brand-rgb),0.15);
   z-index: 1;
 }
-.schedule-card[data-category="관광"]::before { border-color: #0EA5C9; box-shadow: 0 0 0 3px rgba(14,165,201,0.15); }
+.schedule-card[data-category="관광"]::before { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(var(--brand-rgb),0.15); }
 .schedule-card[data-category="식사"]::before  { border-color: #e67e22; box-shadow: 0 0 0 3px rgba(230,126,34,0.15); }
 .schedule-card[data-category="숙박"]::before  { border-color: #9b59b6; box-shadow: 0 0 0 3px rgba(155,89,182,0.15); }
 .schedule-card[data-category="교통"]::before  { border-color: #3498db; box-shadow: 0 0 0 3px rgba(52,152,219,0.15); }
@@ -635,7 +635,7 @@ body.dark .schedule-date-header-text { color: #38bdf8; }
   margin: -16px -8px -16px -18px;
 }
 
-.cat-bar.cat-관광 { background: #0EA5C9; }
+.cat-bar.cat-관광 { background: var(--brand); }
 .cat-bar.cat-식사  { background: #e67e22; }
 .cat-bar.cat-숙박  { background: #9b59b6; }
 .cat-bar.cat-교통  { background: #3498db; }
@@ -657,7 +657,7 @@ body.dark .schedule-date-header-text { color: #38bdf8; }
   border-radius: 20px;
 }
 
-.cat-badge-관광 { background: #e8f7f6; color: #0EA5C9; }
+.cat-badge-관광 { background: #e8f7f6; color: var(--brand); }
 .cat-badge-식사  { background: #fef0e6; color: #e67e22; }
 .cat-badge-숙박  { background: #f5eefb; color: #9b59b6; }
 .cat-badge-교통  { background: #e8f4fd; color: #3498db; }
@@ -671,7 +671,7 @@ body.dark .schedule-date-header-text { color: #38bdf8; }
 
 .s-date-block .s-month {
   font-size: 11px;
-  color: #0EA5C9;
+  color: var(--brand);
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -679,7 +679,7 @@ body.dark .schedule-date-header-text { color: #38bdf8; }
 .s-date-block .s-day {
   font-size: 26px;
   font-weight: 800;
-  color: #1E3A5F;
+  color: var(--navy);
   line-height: 1.1;
 }
 
@@ -712,11 +712,11 @@ body.dark .schedule-date-header-text { color: #38bdf8; }
 }
 
 .check-btn { color: #ccc; }
-.check-btn.checked { color: #0EA5C9; font-weight: 700; }
+.check-btn.checked { color: var(--brand); font-weight: 700; }
 .check-btn:hover { transform: scale(1.2); }
 
 .delete-btn { color: #ddd; }
-.delete-btn:hover { color: #e74c3c; }
+.delete-btn:hover { color: var(--danger); }
 
 /* 완료 상태 */
 .schedule-card.done { opacity: 0.5; }
@@ -748,7 +748,7 @@ body.dark .schedule-date-header-text { color: #38bdf8; }
 
 .s-time {
   font-size: 12px;
-  color: #0EA5C9;
+  color: var(--brand);
   margin-top: 2px;
 }
 
@@ -769,8 +769,8 @@ body.dark .plans-header h2,
 body.dark .modal-box h3 { color: #7EC8E3; }
 
 body.dark .plan-card { border-color: #333; }
-body.dark .plan-card:hover { background: #1a2a3a; border-color: #0EA5C9; }
-body.dark .plan-card.active { background: #0A2535; border-color: #0EA5C9; }
+body.dark .plan-card:hover { background: #1a2a3a; border-color: var(--brand); }
+body.dark .plan-card.active { background: #0A2535; border-color: var(--brand); }
 body.dark .plan-name { color: #ddd; }
 body.dark .plan-edit-btn:hover { background: #0A2535; }
 body.dark .plan-del-btn:hover { background: #3a1a1a; }
@@ -790,7 +790,7 @@ body.dark .dialog-overlay { background: rgba(0,0,0,0.6); }
 body.dark .form-group input[type="date"] { color-scheme: dark; }
 
 body.dark #schedule-list::before {
-  background: linear-gradient(to bottom, #0EA5C9 0%, #0a2535 100%);
+  background: linear-gradient(to bottom, var(--brand) 0%, #0a2535 100%);
 }
 body.dark .schedule-card::before { background: #0F2035; }
 
@@ -822,10 +822,10 @@ body.dark .cat-badge-교통  { background: #0d2a3a; color: #7ab8d9; }
 body.dark .cat-badge-쇼핑  { background: #3a0a25; color: #f07ac0; }
 body.dark .cat-badge-기타  { background: #2a2a2a; color: #888; }
 body.dark .delete-btn { color: #555; }
-body.dark .delete-btn:hover { color: #e74c3c; }
+body.dark .delete-btn:hover { color: var(--danger); }
 body.dark .edit-warn { background: #2a1a0a; border-color: #7a4a1a; color: #f0a060; }
 body.dark .list-actions button { background: #0A1628; border-color: #444; color: #ccc; }
-body.dark .list-actions button:hover { background: #0A2535; border-color: #0EA5C9; }
+body.dark .list-actions button:hover { background: #0A2535; border-color: var(--brand); }
 
 /* ── 여행 준비물 체크리스트 ── */
 .checklist-section {
@@ -845,7 +845,7 @@ body.dark .list-actions button:hover { background: #0A2535; border-color: #0EA5C
 }
 
 .checklist-header h2 {
-  color: #1E3A5F;
+  color: var(--navy);
   font-size: 1.3rem;
   margin-bottom: 4px;
 }
@@ -867,7 +867,7 @@ body.dark .list-actions button:hover { background: #0A2535; border-color: #0EA5C
 .checklist-progress-text {
   font-size: 13px;
   font-weight: 700;
-  color: #0EA5C9;
+  color: var(--brand);
 }
 
 .checklist-progress-bar {
@@ -880,7 +880,7 @@ body.dark .list-actions button:hover { background: #0A2535; border-color: #0EA5C
 
 .checklist-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #0EA5C9, #38bdf8);
+  background: linear-gradient(90deg, var(--brand), #38bdf8);
   border-radius: 10px;
   transition: width 0.4s ease;
   width: 0%;
@@ -894,7 +894,7 @@ body.dark .list-actions button:hover { background: #0A2535; border-color: #0EA5C
 .checklist-group-title {
   font-size: 12px;
   font-weight: 700;
-  color: #0EA5C9;
+  color: var(--brand);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 10px;
@@ -934,7 +934,7 @@ body.dark .list-actions button:hover { background: #0A2535; border-color: #0EA5C
 .checklist-checkbox {
   width: 18px;
   height: 18px;
-  accent-color: #0EA5C9;
+  accent-color: var(--brand);
   cursor: pointer;
   flex-shrink: 0;
 }
@@ -958,7 +958,7 @@ body.dark .list-actions button:hover { background: #0A2535; border-color: #0EA5C
   flex-shrink: 0;
 }
 
-.checklist-item-del:hover { color: #e74c3c; }
+.checklist-item-del:hover { color: var(--danger); }
 
 /* 항목 추가 입력 */
 .checklist-add-row {
@@ -980,12 +980,12 @@ body.dark .list-actions button:hover { background: #0A2535; border-color: #0EA5C
 
 .checklist-add-row input:focus {
   outline: none;
-  border-color: #0EA5C9;
+  border-color: var(--brand);
 }
 
 #checklist-add-btn {
   padding: 10px 18px;
-  background: #0EA5C9;
+  background: var(--brand);
   color: #fff;
   border: none;
   border-radius: 7px;
@@ -1008,7 +1008,7 @@ body.dark .list-actions button:hover { background: #0A2535; border-color: #0EA5C
   transition: color 0.15s;
 }
 
-.checklist-reset-btn:hover { color: #e74c3c; }
+.checklist-reset-btn:hover { color: var(--danger); }
 
 /* 다크 모드 */
 body.dark .checklist-section {
@@ -1026,7 +1026,7 @@ body.dark .checklist-item {
   border-color: #2a2a4a;
 }
 
-body.dark .checklist-item:hover { background: #0A2535; border-color: #0EA5C9; }
+body.dark .checklist-item:hover { background: #0A2535; border-color: var(--brand); }
 
 body.dark .checklist-item.checked {
   background: #0a2535;
@@ -1036,7 +1036,7 @@ body.dark .checklist-item.checked {
 body.dark .checklist-item-text { color: #ccc; }
 body.dark .checklist-item.checked .checklist-item-text { color: #555; }
 body.dark .checklist-item-del { color: #444; }
-body.dark .checklist-item-del:hover { color: #e74c3c; }
+body.dark .checklist-item-del:hover { color: var(--danger); }
 
 body.dark .checklist-add-row input {
   background: #0A1628;
@@ -1045,7 +1045,7 @@ body.dark .checklist-add-row input {
 }
 
 body.dark .checklist-reset-btn { color: #555; }
-body.dark .checklist-reset-btn:hover { color: #e74c3c; }
+body.dark .checklist-reset-btn:hover { color: var(--danger); }
 
 /* 반응형 */
 @media (max-width: 600px) {
@@ -1081,7 +1081,7 @@ body.dark .drag-handle { color: #555; }
   box-shadow: none;
 }
 .schedule-card.drag-over {
-  border-color: #0EA5C9;
-  box-shadow: 0 0 0 2px rgba(14,165,201,0.35);
+  border-color: var(--brand);
+  box-shadow: 0 0 0 2px rgba(var(--brand-rgb),0.35);
   transform: scale(1.01);
 }

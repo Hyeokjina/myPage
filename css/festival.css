@@ -179,7 +179,7 @@
 .fest-card-name {
     font-size: 1.05em;
     font-weight: 800;
-    color: #1E3A5F;
+    color: var(--navy);
     margin-bottom: 8px;
     letter-spacing: -0.4px;
     line-height: 1.3;

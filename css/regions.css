@@ -1,6 +1,6 @@
 /* 히어로 */
 .regions-hero {
-    background: linear-gradient(135deg, #1E3A5F 0%, #0EA5C9 100%);
+    background: linear-gradient(135deg, var(--navy) 0%, var(--brand) 100%);
     padding: 56px 24px 48px;
     text-align: center;
 }
@@ -52,14 +52,14 @@
 }
 
 .rfilter-btn:hover {
-    border-color: #0EA5C9;
-    color: #0EA5C9;
+    border-color: var(--brand);
+    color: var(--brand);
     transform: translateY(-1px);
 }
 
 .rfilter-btn.active {
-    background: #0EA5C9;
-    border-color: #0EA5C9;
+    background: var(--brand);
+    border-color: var(--brand);
     color: #fff;
 }
 
@@ -70,8 +70,8 @@ body.dark .rfilter-btn {
     border-color: #2a3a4a;
     color: #aaa;
 }
-body.dark .rfilter-btn:hover { border-color: #0EA5C9; color: #7EC8E3; }
-body.dark .rfilter-btn.active { background: #0EA5C9; border-color: #0EA5C9; color: #fff; }
+body.dark .rfilter-btn:hover { border-color: var(--brand); color: #7EC8E3; }
+body.dark .rfilter-btn.active { background: var(--brand); border-color: var(--brand); color: #fff; }
 
 /* 카드 그리드 */
 .regions-grid {
@@ -132,7 +132,7 @@ body.dark .rfilter-btn.active { background: #0EA5C9; border-color: #0EA5C9; colo
     font-size: 0.72em;
     font-weight: 700;
     color: #fff;
-    background: rgba(14,165,201,0.85);
+    background: rgba(var(--brand-rgb),0.85);
     padding: 3px 10px;
     border-radius: 100px;
     backdrop-filter: blur(4px);
@@ -148,13 +148,13 @@ body.dark .rfilter-btn.active { background: #0EA5C9; border-color: #0EA5C9; colo
 .rcard-meta h3 {
     font-size: 1.15em;
     font-weight: 800;
-    color: #1E3A5F;
+    color: var(--navy);
     letter-spacing: -0.4px;
     margin: 0;
 }
 .rcard-arrow {
     font-size: 1em;
-    color: #0EA5C9;
+    color: var(--brand);
     font-weight: 700;
     transition: transform 0.2s;
 }
@@ -173,7 +173,7 @@ body.dark .rfilter-btn.active { background: #0EA5C9; border-color: #0EA5C9; colo
 }
 .rcard-tags span {
     font-size: 0.75em;
-    color: #0EA5C9;
+    color: var(--brand);
     background: #EDF9FC;
     padding: 3px 9px;
     border-radius: 100px;
