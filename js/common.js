@@ -97,6 +97,97 @@ function releaseFocus(modalEl) {
     delete modalEl._focusReturnEl;
 }
 
+// 관광지 상세 모달 공통 로직 — about.js(인천 소개), region-detail.js(지역 상세 페이지) 공용
+// dataMap: { key: { title, desc, info[], img? } } 형태의 상세 데이터
+// img 필드가 있는 페이지만 #detail-img를 사용하고, 없으면 건드리지 않음
+function initDetailModal(dataMap) {
+    function openDetail(key) {
+        const d = dataMap[key];
+        if (!d) return;
+
+        const imgEl = document.getElementById('detail-img');
+        if (imgEl) {
+            if (d.img) {
+                imgEl.src = d.img;
+                imgEl.alt = d.title;
+                imgEl.style.display = '';
+            } else {
+                imgEl.style.display = 'none';
+            }
+        }
+
+        document.getElementById('detail-title').textContent = d.title;
+        document.getElementById('detail-desc').textContent = d.desc;
+        const infoEl = document.getElementById('detail-info');
+        infoEl.innerHTML = '';
+        d.info.forEach(i => {
+            const span = document.createElement('span');
+            span.textContent = i;
+            infoEl.appendChild(span);
+        });
+
+        // 카카오맵 버튼
+        let mapBtn = document.getElementById('detail-map-btn');
+        if (!mapBtn) {
+            mapBtn = document.createElement('a');
+            mapBtn.id = 'detail-map-btn';
+            mapBtn.className = 'detail-map-btn';
+            mapBtn.target = '_blank';
+            mapBtn.rel = 'noopener noreferrer';
+            infoEl.after(mapBtn);
+        }
+        mapBtn.href = `https://map.kakao.com/?q=${encodeURIComponent(d.title)}`;
+        mapBtn.textContent = '🗺️ 카카오맵에서 보기';
+
+        const overlay = document.getElementById('detail-overlay');
+        overlay.classList.add('open');
+        trapFocus(overlay);
+    }
+
+    function closeDetail() {
+        const overlay = document.getElementById('detail-overlay');
+        overlay.classList.remove('open');
+        releaseFocus(overlay);
+    }
+
+    document.querySelectorAll('[data-detail]').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            openDetail(link.dataset.detail);
+        });
+    });
+    document.getElementById('detail-overlay')?.addEventListener('click', e => {
+        if (e.target === document.getElementById('detail-overlay')) closeDetail();
+    });
+    document.querySelector('.detail-close')?.addEventListener('click', closeDetail);
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeDetail();
+    });
+}
+
+// 사이드 메뉴 스크롤 스파이 공통 로직 — about.js, region-detail.js 공용
+function initScrollSpy() {
+    const menuLinks = document.querySelectorAll('.side-menu a[href^="#"]');
+    if (!menuLinks.length) return;
+
+    const sectionIds = Array.from(menuLinks).map(a => a.getAttribute('href').slice(1));
+    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+    const setActive = (id) => {
+        menuLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) setActive(entry.target.id);
+        });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+}
+
 function showToast(msg) {
     let toast = document.getElementById('toast');
     if (!toast) {
