@@ -14,27 +14,15 @@ let dragSrcId = null;
 // ── 플랜 관리 ──────────────────────────────────────
 
 function getPlans() {
-  try {
-    return JSON.parse(localStorage.getItem(PLANS_KEY) || '[]');
-  } catch {
-    return [];
-  }
+  return readJSON(PLANS_KEY, []);
 }
 
 function getAllSchedules() {
-  try {
-    return JSON.parse(localStorage.getItem(SCHEDULES_KEY) || '{}');
-  } catch {
-    return {};
-  }
+  return readJSON(SCHEDULES_KEY, {});
 }
 
 function savePlans(plans) {
-  try {
-    localStorage.setItem(PLANS_KEY, JSON.stringify(plans));
-  } catch {
-    showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
-  }
+  writeJSON(PLANS_KEY, plans);
 }
 
 function getActivePlanId() {
@@ -96,16 +84,12 @@ function deletePlan(id) {
   // 해당 플랜 일정 삭제
   const all = getAllSchedules();
   delete all[id];
-  try {
-    localStorage.setItem(SCHEDULES_KEY, JSON.stringify(all));
-  } catch {
-    showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
-  }
+  writeJSON(SCHEDULES_KEY, all);
 
   // 해당 플랜 체크리스트 삭제
   const allChecklists = getAllChecklists();
   delete allChecklists[id];
-  try { localStorage.setItem(CHECKLISTS_KEY, JSON.stringify(allChecklists)); } catch {}
+  writeJSON(CHECKLISTS_KEY, allChecklists, true);
 
   // 활성 플랜이 삭제된 경우 초기화
   if (String(getActivePlanId()) === String(id)) {
@@ -317,11 +301,7 @@ function saveSchedules(schedules) {
   const id = getActivePlanId();
   if (!id) return;
   all[id] = schedules;
-  try {
-    localStorage.setItem(SCHEDULES_KEY, JSON.stringify(all));
-  } catch {
-    showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
-  }
+  writeJSON(SCHEDULES_KEY, all);
 }
 
 // 카테고리 버튼 클릭 처리
@@ -809,14 +789,9 @@ document.getElementById('import-plan-input')?.addEventListener('change', e => {
       }
       if (!confirm(`플랜 ${data.plans.length}개를 가져옵니다. 기존 데이터가 덮어씌워집니다. 계속할까요?`)) return;
       savePlans(data.plans);
-      try {
-        localStorage.setItem(SCHEDULES_KEY, JSON.stringify(data.schedules));
-        if (data.checklists && typeof data.checklists === 'object') {
-          localStorage.setItem(CHECKLISTS_KEY, JSON.stringify(data.checklists));
-        }
-      } catch {
-        showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
-        return;
+      if (!writeJSON(SCHEDULES_KEY, data.schedules)) return;
+      if (data.checklists && typeof data.checklists === 'object') {
+        writeJSON(CHECKLISTS_KEY, data.checklists);
       }
       localStorage.removeItem('active_plan_id');
       document.getElementById('schedule-section').style.display = 'none';
@@ -864,7 +839,7 @@ document.getElementById('print-btn')?.addEventListener('click', () => {
 // ── 여행 준비물 체크리스트 ─────────────────────────────
 
 function getAllChecklists() {
-  try { return JSON.parse(localStorage.getItem(CHECKLISTS_KEY) || '{}'); } catch { return {}; }
+  return readJSON(CHECKLISTS_KEY, {});
 }
 
 function getChecklist() {
@@ -875,7 +850,7 @@ function getChecklist() {
     all[id] = DEFAULT_CHECKLIST.flatMap(group =>
       group.items.map(text => ({ id: Date.now() + Math.random(), text, checked: false, category: group.category }))
     );
-    try { localStorage.setItem(CHECKLISTS_KEY, JSON.stringify(all)); } catch {}
+    writeJSON(CHECKLISTS_KEY, all, true);
   }
   return all[id];
 }
@@ -885,9 +860,7 @@ function saveChecklist(items) {
   if (!id) return;
   const all = getAllChecklists();
   all[id] = items;
-  try { localStorage.setItem(CHECKLISTS_KEY, JSON.stringify(all)); } catch {
-    showToast('저장 공간이 부족합니다.');
-  }
+  writeJSON(CHECKLISTS_KEY, all);
 }
 
 function renderChecklist() {
@@ -979,7 +952,7 @@ document.getElementById('checklist-reset-btn')?.addEventListener('click', () => 
   all[id] = DEFAULT_CHECKLIST.flatMap(group =>
     group.items.map(text => ({ id: Date.now() + Math.random(), text, checked: false, category: group.category }))
   );
-  try { localStorage.setItem(CHECKLISTS_KEY, JSON.stringify(all)); } catch {}
+  writeJSON(CHECKLISTS_KEY, all, true);
   renderChecklist();
 });
 

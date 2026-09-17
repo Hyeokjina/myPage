@@ -201,6 +201,27 @@ function showToast(msg) {
     setTimeout(() => toast.classList.remove('show'), 2200);
 }
 
+// localStorage에 JSON을 읽고 쓰는 공통 헬퍼 — common.js/reviews.js/planner.js 공용
+// silent가 true면 저장 실패 시에도 토스트 없이 조용히 넘어감 (같은 동작 안에서 토스트가 중복되지 않게)
+function readJSON(key, fallback) {
+    try {
+        const raw = localStorage.getItem(key);
+        return raw === null ? fallback : JSON.parse(raw);
+    } catch {
+        return fallback;
+    }
+}
+
+function writeJSON(key, value, silent = false) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+        return true;
+    } catch {
+        if (!silent) showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
+        return false;
+    }
+}
+
 // 필터/탭 버튼 공통 로직 — food/festival/reviews/lodging/regions 페이지에서 공통으로 사용
 // 컨테이너 안에서 버튼 클릭 → 클릭된 버튼에만 active 클래스 부여 → onSelect(dataset, 버튼) 호출
 function initFilterGroup(containerSelector, itemSelector, onSelect) {
@@ -238,13 +259,11 @@ document.addEventListener('keydown', e => {
 const FAV_KEY = 'incheon_favorites';
 
 function getFavs() {
-    try { return JSON.parse(localStorage.getItem(FAV_KEY) || '[]'); } catch { return []; }
+    return readJSON(FAV_KEY, []);
 }
 
 function saveFavs(favs) {
-    try { localStorage.setItem(FAV_KEY, JSON.stringify(favs)); } catch {
-        showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
-    }
+    writeJSON(FAV_KEY, favs);
 }
 
 function updateFavBadge() {
@@ -351,13 +370,11 @@ syncFavButtons();
     const file = location.pathname.split('/').pop() || 'index.html';
     const info = PAGE_MAP[file];
     if (!info) return;
-    try {
-        let recent = JSON.parse(localStorage.getItem('recently_viewed') || '[]');
-        recent = recent.filter(r => r.href !== file);
-        recent.unshift({ name: info.name, href: file, img: info.img });
-        recent = recent.slice(0, 5);
-        localStorage.setItem('recently_viewed', JSON.stringify(recent));
-    } catch {}
+    let recent = readJSON('recently_viewed', []);
+    recent = recent.filter(r => r.href !== file);
+    recent.unshift({ name: info.name, href: file, img: info.img });
+    recent = recent.slice(0, 5);
+    writeJSON('recently_viewed', recent, true);
 })();
 
 // 라이트박스

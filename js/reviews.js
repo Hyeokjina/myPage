@@ -6,10 +6,10 @@ let filterRegion = '전체';
 let filterRating = 0;
 
 function getLikedIds() {
-  try { return JSON.parse(localStorage.getItem(LIKED_KEY) || '[]'); } catch { return []; }
+  return readJSON(LIKED_KEY, []);
 }
 function saveLikedIds(ids) {
-  try { localStorage.setItem(LIKED_KEY, JSON.stringify(ids)); } catch {}
+  writeJSON(LIKED_KEY, ids, true); // 좋아요 저장 실패는 saveReviews의 토스트와 중복되지 않게 조용히 처리
 }
 
 function toggleLike(id) {
@@ -26,19 +26,11 @@ function toggleLike(id) {
 }
 
 function getReviews() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  } catch {
-    return [];
-  }
+  return readJSON(STORAGE_KEY, []);
 }
 
 function saveReviews(reviews) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
-  } catch {
-    showToast('저장 공간이 부족합니다. 일부 데이터를 삭제해주세요.');
-  }
+  writeJSON(STORAGE_KEY, reviews);
 }
 
 // 별점 UI
