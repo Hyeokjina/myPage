@@ -52,22 +52,9 @@ function highlightStars(val) {
   });
 }
 
-// 글자수 카운터
-(function initCharCounters() {
-  const titleInput = document.getElementById('title');
-  const contentInput = document.getElementById('content');
-  const titleCounter = document.getElementById('title-counter');
-  const contentCounter = document.getElementById('content-counter');
-
-  function updateCounter(input, counter, max) {
-    const len = input.value.length;
-    counter.textContent = `${len} / ${max}`;
-    counter.classList.toggle('over', len >= max);
-  }
-
-  titleInput.addEventListener('input', () => updateCounter(titleInput, titleCounter, 50));
-  contentInput.addEventListener('input', () => updateCounter(contentInput, contentCounter, 500));
-})();
+// 글자수 카운터 (common.js 공통 함수 사용) — maxlength로 막혀있어 도달 즉시 경고 표시
+bindCharCounter(document.getElementById('title'), document.getElementById('title-counter'), 50, { warnAtMax: true });
+bindCharCounter(document.getElementById('content'), document.getElementById('content-counter'), 500, { warnAtMax: true });
 
 // 이미지 첨부
 const MAX_IMG_BYTES = 1 * 1024 * 1024; // 1MB

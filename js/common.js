@@ -236,6 +236,17 @@ function initFilterGroup(containerSelector, itemSelector, onSelect) {
     });
 }
 
+// 글자수 카운터 공통 로직 — contact.js, reviews.js 공용
+// maxlength 속성으로 입력 자체가 막혀있는 필드는 warnAtMax:true로 호출해 글자수 도달 즉시 경고 표시
+// (contact.js의 문의 내용은 maxlength가 없어 실제로 초과 입력이 가능하므로 기본값 false 사용)
+function bindCharCounter(input, counterEl, max, { warnAtMax = false } = {}) {
+    input.addEventListener('input', () => {
+        const len = input.value.length;
+        counterEl.textContent = `${len} / ${max}`;
+        counterEl.classList.toggle('over', warnAtMax ? len >= max : len > max);
+    });
+}
+
 document.querySelector('.hamburger')?.addEventListener('click', toggleNav);
 document.getElementById('dark-btn')?.addEventListener('click', toggleDark);
 document.getElementById('back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));

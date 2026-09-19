@@ -8,12 +8,10 @@ const successEl = document.getElementById('success-msg');
 
 const MAX_CHARS = 500;
 
-// 글자수 카운터
+// 글자수 카운터 (common.js 공통 함수 사용) + 입력 중 실시간 검증
+bindCharCounter(messageEl, counter, MAX_CHARS);
 messageEl.addEventListener('input', () => {
-    const len = messageEl.value.length;
-    counter.textContent = `${len} / ${MAX_CHARS}`;
-    counter.classList.toggle('over', len > MAX_CHARS);
-    if (len > 0) validate(messageEl);
+    if (messageEl.value.length > 0) validate(messageEl);
 });
 
 // 실시간 유효성 검사 (포커스 벗어날 때)
