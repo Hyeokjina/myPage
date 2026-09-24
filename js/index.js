@@ -169,8 +169,7 @@ document.getElementById('search-clear-btn')?.addEventListener('click', () => {
 
 // 최근 본 여행지 렌더링
 function renderRecentlyViewed() {
-    let recent;
-    try { recent = JSON.parse(localStorage.getItem('recently_viewed') || '[]'); } catch { recent = []; }
+    const recent = readJSON('recently_viewed', []);
     const section = document.getElementById('recently-viewed-section');
     const list = document.getElementById('recently-viewed-list');
     if (!section || !list || recent.length === 0) return;

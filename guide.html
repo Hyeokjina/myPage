@@ -1,0 +1,301 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <script>(function(){var d=localStorage.getItem("dark");var p=window.matchMedia("(prefers-color-scheme: dark)").matches;if(d==="true"||(d===null&&p)){document.documentElement.style.background="#0A1628";}})()</script>
+    <link rel="icon" href="./icon/bridge.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행 팁 - 인천 여행지 소개</title>
+    <meta name="description" content="국내 여행을 처음 떠나는 분도 쉽게 — 교통·계절·짐 싸기·예산·매너까지 실전 여행 팁을 모았습니다.">
+    <meta property="og:title" content="여행 팁 - 인천 여행지 소개">
+    <meta property="og:description" content="인천·서울·부산·제주·강원·경주 여행을 더 편하게 즐기는 실전 팁 모음.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./images/home_image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="여행 팁 - 인천 여행지 소개">
+    <meta name="twitter:description" content="인천·서울·부산·제주·강원·경주 여행을 더 편하게 즐기는 실전 팁 모음.">
+    <meta name="twitter:image" content="./images/home_image.png">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/region-detail.css">
+</head>
+<body>
+    <div id="scroll-progress"></div>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="./icon/bridge.png" alt="다리 아이콘" class="icon">
+            <h1>여행 팁</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="about.html">소개</a></li>
+                <li><a href="guide.html">여행 팁</a></li>
+                <li><a href="regions.html">지역</a></li>
+                <li><a href="lodging.html">숙소</a></li>
+                <li><a href="food.html">맛집</a></li>
+                <li><a href="festival.html">축제</a></li>
+                <li><a href="reviews.html">후기</a></li>
+                <li><a href="planner.html">플래너</a></li>
+                <li><a href="contact.html">문의</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger">☰</button>
+        <button class="dark-toggle" id="dark-btn">🌙</button>
+    </header>
+
+    <button class="back-to-top" id="back-to-top">↑</button>
+
+    <main id="main-content">
+    <aside class="side-menu">
+        <h3>목차</h3>
+        <ul>
+            <li><a href="#guide-overview">소개</a></li>
+            <li><a href="#guide-transport">교통 &amp; 이동</a></li>
+            <li><a href="#guide-season">계절별 팁</a></li>
+            <li><a href="#guide-checklist">짐 싸기</a></li>
+            <li><a href="#guide-budget">예산 짜기</a></li>
+            <li><a href="#guide-manner">매너 &amp; 안전</a></li>
+            <li><a href="#guide-photospot">포토스팟</a></li>
+        </ul>
+    </aside>
+
+    <!-- 히어로 -->
+    <div class="region-hero" style="background: linear-gradient(135deg, var(--navy) 0%, var(--brand) 100%);">
+        <div class="region-hero-overlay">
+            <span class="region-hero-tag">국내 여행 가이드</span>
+            <h2>여행 팁</h2>
+            <p>처음 국내 여행을 떠나는 분도 쉽게 — 교통부터 예산, 짐 싸기까지</p>
+        </div>
+    </div>
+
+    <!-- 소개 -->
+    <div class="container" id="guide-overview">
+        <h2>여행 팁 소개</h2>
+        <p>인천·서울·부산·제주·강원·경주, 여행지마다 이동 방법과 날씨, 필요한 준비물이 조금씩 다릅니다. 이 페이지에서는 지역에 상관없이 국내 여행을 준비할 때 알아두면 도움이 되는 실전 팁을 한곳에 모았습니다.</p>
+        <p>교통·이동 방법부터 계절별 유의사항, 짐 싸기 체크리스트, 예산 짜는 법, 여행 매너와 안전 수칙, 그리고 놓치기 아까운 포토스팟까지 — 아래 목차를 눌러 필요한 부분만 골라 보세요.</p>
+    </div>
+
+    <!-- 교통 & 이동 -->
+    <div class="container" id="guide-transport">
+        <h2>교통 &amp; 이동</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-icon">🚇</span>
+                <strong>수도권 전철</strong>
+                <span>인천 1·2호선과 공항철도(AREX)로 서울까지 환승 없이 이동 가능</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">🚄</span>
+                <strong>KTX·SRT</strong>
+                <span>부산·경주는 고속철도로 2~3시간대, 코레일톡 앱으로 미리 예매하기</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">🚌</span>
+                <strong>고속·시외버스</strong>
+                <span>철도가 닿지 않는 강원 소도시는 버스가 더 빠르고 편한 경우가 많음</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">🚗</span>
+                <strong>렌터카</strong>
+                <span>제주·강원처럼 대중교통이 뜸한 지역은 렌터카가 이동 시간을 크게 줄여줌</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 계절별 팁 -->
+    <div class="container" id="guide-season">
+        <h2>계절별 여행 팁</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-icon">🌸</span>
+                <strong>봄 (3~5월)</strong>
+                <span>벚꽃 시즌으로 나들이객이 많은 시기. 낮과 밤의 기온차가 커서 얇은 겉옷은 필수</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">☀️</span>
+                <strong>여름 (6~8월)</strong>
+                <span>해수욕은 7~8월이 절정. 제주·강원은 장마·태풍 시기를 미리 확인하고 일정 잡기</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">🍁</span>
+                <strong>가을 (9~11월)</strong>
+                <span>단풍과 지역 축제가 가장 많은 성수기. 숙소는 미리 예약해야 원하는 곳을 잡을 수 있음</span>
+            </div>
+            <div class="info-card">
+                <span class="info-icon">❄️</span>
+                <strong>겨울 (12~2월)</strong>
+                <span>강원 산간은 폭설 시 도로 통제 가능. 방한용품을 챙기고 일정은 여유 있게</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 짐 싸기 체크리스트 -->
+    <div class="container" id="guide-checklist">
+        <h2>짐 쌀 때 체크리스트</h2>
+        <ul class="tips-list">
+            <li class="tip-card">
+                <span class="tip-icon">🪪</span>
+                <div class="tip-body">
+                    <h3>신분증 &amp; 예약 확인증</h3>
+                    <p>숙소 체크인, 항공권·기차표 등 예약 내역은 화면 캡처본도 함께 챙기면 안심입니다.</p>
+                </div>
+            </li>
+            <li class="tip-card">
+                <span class="tip-icon">🔌</span>
+                <div class="tip-body">
+                    <h3>보조배터리 &amp; 충전기</h3>
+                    <p>지도 앱과 사진 촬영으로 배터리 소모가 빠르니 보조배터리는 꼭 챙기세요.</p>
+                </div>
+            </li>
+            <li class="tip-card">
+                <span class="tip-icon">💊</span>
+                <div class="tip-body">
+                    <h3>상비약</h3>
+                    <p>두통약, 멀미약, 밴드 등 기본 상비약을 미리 챙기면 급할 때 든든합니다.</p>
+                </div>
+            </li>
+            <li class="tip-card">
+                <span class="tip-icon">🧴</span>
+                <div class="tip-body">
+                    <h3>계절별 용품</h3>
+                    <p>여름엔 자외선 차단제, 겨울엔 핫팩과 방한용품처럼 계절에 맞는 준비물을 추가하세요.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 예산 짜기 -->
+    <div class="container" id="guide-budget">
+        <h2>여행 예산 짜기</h2>
+        <div class="course-list">
+            <div class="course-item">
+                <div class="course-day">숙박</div>
+                <div class="course-content">
+                    <strong>전체 예산의 30~40%</strong>
+                    <span>성수기·주말은 최대 2배까지 차이 나니 평일 여행이나 얼리버드 예약 추천</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">식비</div>
+                <div class="course-content">
+                    <strong>전체 예산의 20~25%</strong>
+                    <span>지역 대표 맛집은 한두 끼로 즐기고 나머지는 가성비 식당으로 균형 잡기</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">교통</div>
+                <div class="course-content">
+                    <strong>전체 예산의 15~20%</strong>
+                    <span>KTX 특실보다 일반실, 렌터카는 일행끼리 나눠 타면 부담을 줄일 수 있음</span>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-day">기타</div>
+                <div class="course-content">
+                    <strong>전체 예산의 15~20%</strong>
+                    <span>입장료·기념품·비상금은 넉넉하게 잡아두는 편이 마음 편합니다</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 매너 & 안전 -->
+    <div class="container" id="guide-manner">
+        <h2>여행 매너 &amp; 안전 수칙</h2>
+        <ul class="tips-list">
+            <li class="tip-card">
+                <span class="tip-icon">🤫</span>
+                <div class="tip-body">
+                    <h3>공공장소 매너</h3>
+                    <p>대중교통·숙소에서는 통화·소음을 자제하고, 사진 촬영 시 타인의 얼굴이 나오지 않도록 주의하세요.</p>
+                </div>
+            </li>
+            <li class="tip-card">
+                <span class="tip-icon">🗑️</span>
+                <div class="tip-body">
+                    <h3>쓰레기는 되가져가기</h3>
+                    <p>해변·산 등 자연 관광지는 분리배출함이 없는 경우가 많으니 되가져가는 습관을 들이세요.</p>
+                </div>
+            </li>
+            <li class="tip-card">
+                <span class="tip-icon">🌊</span>
+                <div class="tip-body">
+                    <h3>물놀이 안전</h3>
+                    <p>지정된 해수욕장에서 안전요원 근무 시간 내에만 물놀이를 즐기세요.</p>
+                </div>
+            </li>
+            <li class="tip-card">
+                <span class="tip-icon">📞</span>
+                <div class="tip-body">
+                    <h3>비상 연락처 저장</h3>
+                    <p>112(경찰)·119(구급) 외에도 숙소, 렌터카 업체 연락처를 미리 저장해두면 유용합니다.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 추천 포토스팟 -->
+    <div class="container card-section" id="guide-photospot">
+        <h2>지역별 추천 포토스팟</h2>
+        <div class="food-grid">
+            <div class="food-card">
+                <span class="food-emoji">🚤</span>
+                <strong>송도 센트럴파크</strong>
+                <span>인천 · 수상택시와 야경</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🏯</span>
+                <strong>경복궁</strong>
+                <span>서울 · 한복 입고 야간 개장 산책</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🏘️</span>
+                <strong>감천문화마을</strong>
+                <span>부산 · 알록달록한 골목 풍경</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🌅</span>
+                <strong>성산일출봉</strong>
+                <span>제주 · 해돋이 명소</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🌄</span>
+                <strong>정동진</strong>
+                <span>강원 · 바다에서 맞는 해돋이</span>
+            </div>
+            <div class="food-card">
+                <span class="food-emoji">🌙</span>
+                <strong>동궁과 월지</strong>
+                <span>경주 · 신라 유적의 야경</span>
+            </div>
+        </div>
+    </div>
+
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./icon/facebook.png" alt="페이스북" loading="lazy"></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./icon/instagram.png" alt="인스타그램" loading="lazy"></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><img src="./icon/twitter.png" alt="트위터" loading="lazy"></a>
+        </div>
+        <p>&copy; <span class="footer-year">2025</span> 인천 여행지 소개 | 문혁진</p>
+        <p>문의: example@email.com | 전화: 010-1234-5678</p>
+    </footer>
+
+    <nav class="bottom-nav">
+        <ul>
+            <li><a href="index.html"><span class="tab-icon">🏠</span>홈</a></li>
+            <li><a href="regions.html"><span class="tab-icon">🗺️</span>지역</a></li>
+            <li><a href="reviews.html"><span class="tab-icon">⭐</span>후기</a></li>
+            <li><a href="planner.html"><span class="tab-icon">📅</span>플래너</a></li>
+            <li><a href="contact.html"><span class="tab-icon">💬</span>문의</a></li>
+        </ul>
+    </nav>
+
+    <script src="./js/common.js"></script>
+    <script src="./js/guide.js"></script>
+</body>
+</html>

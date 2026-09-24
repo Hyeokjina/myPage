@@ -13,6 +13,7 @@
 |------|------|
 | `index.html` | 메인 홈 — 검색, 대표 여행지, 인기 지역, 여행 팁, 숙소 세일, 최근 본 여행지 |
 | `about.html` | 인천 소개 — 차이나타운, 송도, 월미도 등 명소 상세 정보 |
+| `guide.html` | 여행 팁 — 교통·계절·짐 싸기·예산·매너·포토스팟 등 실전 가이드 |
 | `regions.html` | 인기 지역 목록 — 테마 필터(역사·자연·해변·도시) |
 | `seoul.html` | 서울 — 경복궁, N서울타워, 명동, 홍대 등 |
 | `busan.html` | 부산 — 해운대, 감천문화마을, 자갈치시장 등 |
@@ -106,6 +107,7 @@
 mypage/
 ├── index.html
 ├── about.html
+├── guide.html
 ├── regions.html
 ├── seoul.html / busan.html / jeju.html / gangwon.html / gyeongju.html
 ├── lodging.html
@@ -131,6 +133,7 @@ mypage/
 │   ├── common.js        # 공통 동작 (다크모드, 네비, 즐겨찾기, 라이트박스, 최근 본 여행지, 필터 버튼, 글자수 카운터, localStorage 헬퍼 등)
 │   ├── index.js
 │   ├── about.js
+│   ├── guide.js
 │   ├── region-detail.js
 │   ├── regions.js
 │   ├── lodging.js
