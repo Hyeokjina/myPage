@@ -182,7 +182,11 @@ function renderRecentlyViewed() {
     recent.forEach(item => {
         const li = document.createElement('li');
         li.tabIndex = 0;
-        li.addEventListener('click', () => { window.location.href = item.href; });
+        // 카드 클릭 → 상세 페이지 이동 (이미지 클릭은 라이트박스가 처리)
+        li.addEventListener('click', e => {
+            if (e.target.closest('.card-img-wrap img')) return;
+            window.location.href = item.href;
+        });
         li.addEventListener('keydown', e => {
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = item.href; }
         });
