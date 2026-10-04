@@ -131,8 +131,12 @@ function searchPlaces() {
 }
 
 // 이벤트 리스너 등록
+// 카드 클릭 → 상세 페이지 이동 (즐겨찾기 버튼 클릭은 제외, 이미지 클릭은 라이트박스가 처리)
 document.querySelectorAll('.places li[data-href], .lodging li[data-href]').forEach(li => {
-    li.addEventListener('click', () => { window.location.href = li.dataset.href; });
+    li.addEventListener('click', e => {
+        if (e.target.closest('.fav-btn, .card-img-wrap img, .lodging-img-wrap img')) return;
+        window.location.href = li.dataset.href;
+    });
     li.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
