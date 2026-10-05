@@ -70,22 +70,29 @@ document.querySelectorAll('nav a, .bottom-nav a').forEach(a => {
 
 const FOCUSABLE_SEL = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
+// fav-modal처럼 모달이 열린 채로 목록이 다시 그려져 trapFocus가 재호출될 수 있어
+// (1) focusable 목록은 Tab을 누를 때마다 새로 조회하고 (제거된 요소에 포커스가 걸려 트랩이 깨지는 것 방지)
+// (2) 이미 트랩 중이면 리스너/복귀 대상을 다시 만들지 않는다 (중복 등록·복귀 대상 덮어쓰기 방지)
 function trapFocus(modalEl) {
     const focusable = Array.from(modalEl.querySelectorAll(FOCUSABLE_SEL));
     if (!focusable.length) return;
-    modalEl._focusReturnEl = document.activeElement;
+    if (!modalEl._focusTrapHandler) {
+        modalEl._focusReturnEl = document.activeElement;
+        modalEl._focusTrapHandler = e => {
+            if (e.key !== 'Tab') return;
+            const current = Array.from(modalEl.querySelectorAll(FOCUSABLE_SEL));
+            if (!current.length) return;
+            const first = current[0];
+            const last  = current[current.length - 1];
+            if (e.shiftKey) {
+                if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+            } else {
+                if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+            }
+        };
+        modalEl.addEventListener('keydown', modalEl._focusTrapHandler);
+    }
     focusable[0].focus();
-    modalEl._focusTrapHandler = e => {
-        if (e.key !== 'Tab') return;
-        const first = focusable[0];
-        const last  = focusable[focusable.length - 1];
-        if (e.shiftKey) {
-            if (document.activeElement === first) { e.preventDefault(); last.focus(); }
-        } else {
-            if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
-        }
-    };
-    modalEl.addEventListener('keydown', modalEl._focusTrapHandler);
 }
 
 function releaseFocus(modalEl) {
