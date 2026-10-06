@@ -68,10 +68,12 @@ const AUTOCOMPLETE_ITEMS = [
         if (!items.length) return;
         if (e.key === 'ArrowDown') {
             e.preventDefault();
-            activeIdx = (activeIdx + 1) % items.length;
+            activeIdx = activeIdx < 0 ? 0 : (activeIdx + 1) % items.length;
         } else if (e.key === 'ArrowUp') {
             e.preventDefault();
-            activeIdx = (activeIdx - 1 + items.length) % items.length;
+            // activeIdx가 -1(선택 없음)일 때 (activeIdx - 1 + length) % length 공식을 그대로 쓰면
+            // 마지막 항목이 아니라 그 바로 앞 항목이 선택되는 오프바이원 버그가 있어 분기 처리
+            activeIdx = activeIdx < 0 ? items.length - 1 : (activeIdx - 1 + items.length) % items.length;
         } else if (e.key === 'Escape') {
             closeList(); return;
         } else if (e.key === 'Enter' && activeIdx >= 0) {
