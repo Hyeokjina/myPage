@@ -480,12 +480,16 @@ function renderScheduleList() {
   emptyMsg.style.display = 'none';
 
   // 날짜별 그룹핑
+  // dateOrder는 일정이 추가/드래그된 순서가 아니라 항상 날짜 오름차순으로 정렬
+  // (예: Day 3 일정을 Day 1보다 먼저 추가하면 그 순서 그대로 표시되던 문제 방지)
+  // 날짜 input은 "YYYY-MM-DD" 형식이라 문자열 정렬 = 날짜순 정렬
   const grouped = {};
   const dateOrder = [];
   filtered.forEach(s => {
     if (!grouped[s.date]) { grouped[s.date] = []; dateOrder.push(s.date); }
     grouped[s.date].push(s);
   });
+  dateOrder.sort();
 
   const DAY_NAMES = ['일', '월', '화', '수', '목', '금', '토'];
 
@@ -647,7 +651,8 @@ function buildScheduleText() {
   const activePlanId = getActivePlanId();
   const plan = getPlans().find(p => String(p.id) === String(activePlanId));
   const title = plan ? `[${plan.name}] ${plan.start} ~ ${plan.end}` : '여행 일정';
-  const lines = schedules.map(s => {
+  // 화면의 날짜별 타임라인과 동일하게 날짜 오름차순으로 — 같은 날짜 안에서의 순서(드래그 순서)는 그대로 유지 (stable sort)
+  const lines = schedules.slice().sort((a, b) => a.date.localeCompare(b.date)).map(s => {
     const time = s.time ? ` ${s.time}` : '';
     const memo = s.memo ? ` (${s.memo})` : '';
     const done = s.done ? ' ✓' : '';
