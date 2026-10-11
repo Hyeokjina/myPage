@@ -394,7 +394,8 @@ body.dark .cat-legend-item { color: #aaa; }
   header, footer, .plans-section, .add-section,
   .list-actions, .s-actions, .back-to-top,
   .hamburger, .dark-toggle, .cat-filter-bar,
-  .cat-legend, .schedule-stats, .bottom-nav {
+  .cat-legend, .schedule-stats, .bottom-nav,
+  .drag-handle {
     display: none !important;
   }
 
