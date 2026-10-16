@@ -486,3 +486,13 @@ document.querySelectorAll('.footer-year').forEach(el => {
     document.querySelector('header nav')
         ?.setAttribute('aria-label', '주요 메뉴');
 })();
+
+// 서비스워커 등록 — 설치(PWA)와 오프라인 캐싱을 담당하는 sw.js를 연결
+// 페이지 로드가 다 끝난 뒤에 등록해서 초기 렌더링을 방해하지 않게 함
+// file://로 직접 열면 등록이 항상 실패하니, 로컬 서버(http://)로 띄워서 테스트해야 함
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .catch(err => console.warn('서비스워커 등록 실패:', err));
+    });
+}
