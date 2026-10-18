@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <script>(function(){var d=localStorage.getItem("dark");var p=window.matchMedia("(prefers-color-scheme: dark)").matches;if(d==="true"||(d===null&&p)){document.documentElement.style.background="#0A1628";}})()</script>
+  <link rel="icon" href="./icon/bridge.png" type="image/png">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#1E3A5F">
+  <link rel="apple-touch-icon" href="./icon/bridge-192.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오프라인 상태입니다 - 인천 여행지 소개</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="./css/common.css">
+  <style>
+    .not-found-wrap {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      gap: 0;
+    }
+
+    .nf-code {
+      font-size: clamp(72px, 16vw, 140px);
+      line-height: 1;
+      margin-bottom: 8px;
+      user-select: none;
+    }
+
+    .nf-title {
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      font-weight: 800;
+      color: #1E3A5F;
+      margin-bottom: 12px;
+    }
+
+    .nf-desc {
+      font-size: 1rem;
+      color: #666;
+      max-width: 400px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .nf-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nf-btn {
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      border: none;
+    }
+
+    .nf-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(14,165,201,0.3);
+    }
+
+    .nf-btn-primary {
+      background: linear-gradient(135deg, #0EA5C9, #1E3A5F);
+      color: #fff;
+    }
+
+    .nf-links {
+      margin-top: 48px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nf-link {
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: #0EA5C9;
+      text-decoration: none;
+      background: #fff;
+      border: 1px solid #e0f5fb;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .nf-link:hover {
+      background: #e8f7fd;
+      border-color: #0EA5C9;
+    }
+
+    body.dark .nf-title { color: #7EC8E3; }
+    body.dark .nf-desc  { color: #aaa; }
+    body.dark .nf-link {
+      background: #0F2035;
+      color: #7EC8E3;
+      border-color: #1a4a5a;
+    }
+    body.dark .nf-link:hover { background: #0A2535; border-color: #7EC8E3; }
+  </style>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="./icon/bridge.png" alt="다리 아이콘" class="icon">
+      <h1>인천 여행지 소개</h1>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="guide.html">여행 팁</a></li>
+        <li><a href="regions.html">지역</a></li>
+        <li><a href="lodging.html">숙소</a></li>
+        <li><a href="food.html">맛집</a></li>
+        <li><a href="festival.html">축제</a></li>
+        <li><a href="reviews.html">후기</a></li>
+        <li><a href="planner.html">플래너</a></li>
+        <li><a href="contact.html">문의</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger">☰</button>
+    <button class="dark-toggle" id="dark-btn">🌙</button>
+  </header>
+
+  <button class="back-to-top" id="back-to-top">↑</button>
+
+  <main class="not-found-wrap">
+    <div class="nf-code">📡</div>
+    <h2 class="nf-title">오프라인 상태예요</h2>
+    <p class="nf-desc">
+      인터넷 연결이 끊겨서 이 페이지는 아직 불러온 적이 없어요.<br>
+      연결이 돌아오면 다시 시도하거나, 이미 봤던 페이지로 돌아가 보세요.
+    </p>
+    <div class="nf-actions">
+      <button class="nf-btn nf-btn-primary" onclick="location.reload()">다시 시도</button>
+    </div>
+    <nav class="nf-links" aria-label="빠른 이동">
+      <a href="index.html" class="nf-link">🏠 홈으로</a>
+      <a href="about.html" class="nf-link">📍 소개</a>
+      <a href="guide.html" class="nf-link">🧳 여행 팁</a>
+      <a href="regions.html" class="nf-link">🗺️ 인기 지역</a>
+    </nav>
+  </main>
+
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="./icon/facebook.png" alt="페이스북" loading="lazy"></a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="./icon/instagram.png" alt="인스타그램" loading="lazy"></a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><img src="./icon/twitter.png" alt="트위터" loading="lazy"></a>
+    </div>
+    <p>&copy; <span class="footer-year">2025</span> 인천 여행지 소개 | 문혁진</p>
+    <p>문의: example@email.com | 전화: 010-1234-5678</p>
+  </footer>
+
+  <nav class="bottom-nav">
+    <ul>
+      <li><a href="index.html"><span class="tab-icon">🏠</span>홈</a></li>
+      <li><a href="regions.html"><span class="tab-icon">🗺️</span>지역</a></li>
+      <li><a href="reviews.html"><span class="tab-icon">⭐</span>후기</a></li>
+      <li><a href="planner.html"><span class="tab-icon">📅</span>플래너</a></li>
+      <li><a href="contact.html"><span class="tab-icon">💬</span>문의</a></li>
+    </ul>
+  </nav>
+
+  <script src="./js/common.js"></script>
+</body>
+</html>
