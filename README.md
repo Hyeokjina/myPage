@@ -27,6 +27,7 @@
 | `planner.html` | 여행 플래너 — 일정 관리, D-day, 진행률, 체크리스트 |
 | `contact.html` | 문의하기 — 실시간 유효성 검사, 글자수 카운터 |
 | `404.html` | 404 에러 페이지 |
+| `offline.html` | 오프라인 안내 페이지 — 인터넷 연결 없이 캐시에도 없는 페이지 접근 시 서비스워커가 대신 표시 |
 
 ---
 
@@ -42,6 +43,7 @@
 - **맨 위로 버튼** — 일정 스크롤 이상 시 노출
 - **즐겨찾기(찜)** — index/about/지역 상세(서울·부산·제주·강원·경주)/숙소 페이지에서 하트 버튼으로 찜, 헤더 배지에 개수 표시, 모달에서 목록 관리
 - **관광지 상세 모달** — about.html·지역 상세 페이지 공통, 설명·정보·카카오맵 링크 표시 + 사이드 목차 스크롤 스파이 연동
+- **PWA (설치 가능한 웹앱)** — 홈 화면에 추가해 앱처럼 실행 가능, 서비스워커가 핵심 자산을 미리 캐싱하고 방문한 페이지는 점진적으로 캐싱해 오프라인에서도 열람 가능. 캐시에 없는 페이지 접근 시 오프라인 안내 페이지로 대체
 
 ### 홈 (index.html)
 - **검색 + 자동완성** — 여행지/숙소 이름 입력 시 후보 목록 표시
@@ -97,6 +99,7 @@
 
 - **HTML5 / CSS3 / Vanilla JavaScript (ES6+)**
 - **Pretendard Variable** — 웹폰트 (CDN)
+- **PWA** — Web App Manifest + Service Worker (오프라인 캐싱, 홈 화면 설치)
 - 별도 프레임워크, 빌드 도구, 백엔드 없음
 
 ---
@@ -117,6 +120,9 @@ mypage/
 ├── planner.html
 ├── contact.html
 ├── 404.html
+├── offline.html         # 오프라인 안내 페이지 (서비스워커 전용)
+├── manifest.json        # PWA 매니페스트 (앱 이름, 아이콘, 테마색 등)
+├── sw.js                # 서비스워커 (오프라인 캐싱)
 ├── css/
 │   ├── common.css       # 공통 스타일 (헤더, 푸터, 다크모드, 모달 등)
 │   ├── index.css
@@ -130,7 +136,7 @@ mypage/
 │   ├── planner.css
 │   └── contact.css
 ├── js/
-│   ├── common.js        # 공통 동작 (다크모드, 네비, 즐겨찾기, 라이트박스, 최근 본 여행지, 필터 버튼, 글자수 카운터, localStorage 헬퍼 등)
+│   ├── common.js        # 공통 동작 (다크모드, 네비, 즐겨찾기, 라이트박스, 최근 본 여행지, 필터 버튼, 글자수 카운터, localStorage 헬퍼, 서비스워커 등록 등)
 │   ├── index.js
 │   ├── about.js
 │   ├── guide.js
@@ -143,5 +149,5 @@ mypage/
 │   ├── planner.js
 │   └── contact.js
 ├── images/              # 여행지 이미지
-└── icon/                # 로고, SNS, 검색 아이콘
+└── icon/                # 로고(bridge.png 512px, bridge-192.png 192px — PWA 아이콘 겸용), SNS, 검색 아이콘
 ```
