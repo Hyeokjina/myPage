@@ -395,6 +395,27 @@ syncFavButtons();
     writeJSON('recently_viewed', recent, true);
 })();
 
+// 여행 스탬프 — 방문 기록
+// 6개 지역 페이지만 "진짜 여행지"로 보고 스탬프 대상으로 삼음 (숙소 세일/인기 지역 같은 목록 페이지는 제외)
+// 모달 등 다른 곳에서도 이름/이모지가 필요해서 최상위 상수로 선언
+const STAMP_DESTINATIONS = {
+    'about.html':    { name: '인천', emoji: '🛳️' },
+    'seoul.html':    { name: '서울', emoji: '🏯' },
+    'busan.html':    { name: '부산', emoji: '🌊' },
+    'jeju.html':     { name: '제주', emoji: '🍊' },
+    'gangwon.html':  { name: '강원', emoji: '🏔️' },
+    'gyeongju.html': { name: '경주', emoji: '🏛️' },
+};
+
+(function trackStamp() {
+    const file = location.pathname.split('/').pop() || 'index.html';
+    if (!STAMP_DESTINATIONS[file]) return;
+    const stamps = readJSON('travel_stamps', []);
+    if (stamps.includes(file)) return; // 이미 모은 스탬프면 중복 저장하지 않음
+    stamps.push(file);
+    writeJSON('travel_stamps', stamps, true);
+})();
+
 // 라이트박스
 (function initLightbox() {
     const overlay = document.createElement('div');
