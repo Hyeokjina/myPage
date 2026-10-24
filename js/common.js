@@ -289,6 +289,15 @@ function updateFavBadge() {
     if (badge) badge.textContent = getFavs().length;
 }
 
+// STAMP_DESTINATIONS는 파일 아래쪽에 선언돼 있지만, 함수 선언은 호이스팅되고
+// 실제 호출은 그 선언 이후(trackStamp 실행 직후)에만 이뤄지므로 문제없음
+function updateStampBadge() {
+    const badge = document.getElementById('stamp-badge');
+    if (!badge) return;
+    const total = Object.keys(STAMP_DESTINATIONS).length;
+    badge.textContent = `${readJSON('travel_stamps', []).length}/${total}`;
+}
+
 function syncFavButtons() {
     const favs = getFavs();
     document.querySelectorAll('.fav-btn').forEach(btn => {
@@ -417,6 +426,8 @@ const STAMP_DESTINATIONS = {
     writeJSON('travel_stamps', stamps, true);
     showToast(`${dest.emoji} ${dest.name} 스탬프 획득!`);
 })();
+
+updateStampBadge();
 
 // 라이트박스
 (function initLightbox() {
