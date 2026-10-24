@@ -409,11 +409,13 @@ const STAMP_DESTINATIONS = {
 
 (function trackStamp() {
     const file = location.pathname.split('/').pop() || 'index.html';
-    if (!STAMP_DESTINATIONS[file]) return;
+    const dest = STAMP_DESTINATIONS[file];
+    if (!dest) return;
     const stamps = readJSON('travel_stamps', []);
     if (stamps.includes(file)) return; // 이미 모은 스탬프면 중복 저장하지 않음
     stamps.push(file);
     writeJSON('travel_stamps', stamps, true);
+    showToast(`${dest.emoji} ${dest.name} 스탬프 획득!`);
 })();
 
 // 라이트박스
