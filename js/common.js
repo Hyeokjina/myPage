@@ -360,6 +360,31 @@ function closeFavModal() {
     releaseFocus(modal);
 }
 
+// 스탬프 모달 — 6개 지역 중 모은 것/못 모은 것을 그리드로 표시
+function openStampModal() {
+    const modal = document.getElementById('stamp-modal');
+    if (!modal) return;
+    const stamps = readJSON('travel_stamps', []);
+    const grid = document.getElementById('stamp-grid');
+    grid.innerHTML = '';
+    Object.entries(STAMP_DESTINATIONS).forEach(([file, dest]) => {
+        const collected = stamps.includes(file);
+        const item = document.createElement('div');
+        item.className = 'stamp-item' + (collected ? ' collected' : '');
+        item.innerHTML = `<span class="stamp-emoji">${dest.emoji}</span><span class="stamp-name">${dest.name}</span>`;
+        grid.appendChild(item);
+    });
+    modal.classList.add('open');
+    trapFocus(modal);
+}
+
+function closeStampModal() {
+    const modal = document.getElementById('stamp-modal');
+    if (!modal) return;
+    modal.classList.remove('open');
+    releaseFocus(modal);
+}
+
 // 즐겨찾기 버튼은 나중에 동적으로 추가되는 경우도 있어, 이벤트 위임으로 한 번만 등록
 document.addEventListener('click', e => {
     const btn = e.target.closest('.fav-btn');
@@ -368,15 +393,21 @@ document.addEventListener('click', e => {
     toggleFav(btn.dataset.name);
 });
 
+// fav-modal, stamp-modal 두 모달이 같은 페이지에 함께 있을 수 있어
+// .modal-close/바깥 클릭/Esc 처리는 어느 모달인지 id로 구분해서 공용으로 처리
 document.querySelector('.fav-count')?.addEventListener('click', openFavModal);
-document.querySelector('.modal-close')?.addEventListener('click', closeFavModal);
-document.getElementById('fav-modal')?.addEventListener('click', e => {
-    if (e.target === document.getElementById('fav-modal')) closeFavModal();
+document.querySelector('.stamp-count')?.addEventListener('click', openStampModal);
+document.addEventListener('click', e => {
+    const closeBtn = e.target.closest('.modal-close');
+    const modal = closeBtn ? closeBtn.closest('.modal-overlay') : (e.target.classList.contains('modal-overlay') ? e.target : null);
+    if (!modal) return;
+    if (modal.id === 'fav-modal') closeFavModal();
+    else if (modal.id === 'stamp-modal') closeStampModal();
 });
 document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && document.getElementById('fav-modal')?.classList.contains('open')) {
-        closeFavModal();
-    }
+    if (e.key !== 'Escape') return;
+    if (document.getElementById('fav-modal')?.classList.contains('open')) closeFavModal();
+    else if (document.getElementById('stamp-modal')?.classList.contains('open')) closeStampModal();
 });
 
 updateFavBadge();
