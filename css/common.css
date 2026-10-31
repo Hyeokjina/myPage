@@ -412,6 +412,37 @@ body.dark .stamp-item.collected {
 }
 body.dark .stamp-item.collected .stamp-name { color: #fbbf24; }
 
+/* 스탬프 수집 진행률 */
+.stamp-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.stamp-progress-bar {
+    flex: 1;
+    height: 6px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.stamp-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #fbbf24, #d97706);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+.stamp-progress-label {
+    font-size: 0.78em;
+    font-weight: 600;
+    color: #aaa;
+    white-space: nowrap;
+}
+.stamp-progress.done-all .stamp-progress-label { color: #d97706; font-weight: 700; }
+body.dark .stamp-progress-bar { background: #1a2e42; }
+body.dark .stamp-progress-label { color: #7a94a8; }
+body.dark .stamp-progress.done-all .stamp-progress-label { color: #fbbf24; }
+
 /* 스크롤 애니메이션 */
 .reveal {
     opacity: 0;

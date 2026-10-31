@@ -291,11 +291,17 @@ function updateFavBadge() {
 
 // STAMP_DESTINATIONS는 파일 아래쪽에 선언돼 있지만, 함수 선언은 호이스팅되고
 // 실제 호출은 그 선언 이후(trackStamp 실행 직후)에만 이뤄지므로 문제없음
+// 저장된 값 중 현재 스탬프 대상인 것만 세서, 헤더 배지와 모달 진행률이 항상 같은 기준을 쓰도록 함
+function getCollectedStamps() {
+    const stamps = readJSON('travel_stamps', []);
+    return Object.keys(STAMP_DESTINATIONS).filter(file => stamps.includes(file));
+}
+
 function updateStampBadge() {
     const badge = document.getElementById('stamp-badge');
     if (!badge) return;
     const total = Object.keys(STAMP_DESTINATIONS).length;
-    badge.textContent = `${readJSON('travel_stamps', []).length}/${total}`;
+    badge.textContent = `${getCollectedStamps().length}/${total}`;
 }
 
 function syncFavButtons() {
@@ -364,16 +370,36 @@ function closeFavModal() {
 function openStampModal() {
     const modal = document.getElementById('stamp-modal');
     if (!modal) return;
-    const stamps = readJSON('travel_stamps', []);
+    const collectedStamps = getCollectedStamps();
     const grid = document.getElementById('stamp-grid');
     grid.innerHTML = '';
     Object.entries(STAMP_DESTINATIONS).forEach(([file, dest]) => {
-        const collected = stamps.includes(file);
+        const collected = collectedStamps.includes(file);
         const item = document.createElement('div');
         item.className = 'stamp-item' + (collected ? ' collected' : '');
         item.innerHTML = `<span class="stamp-emoji">${dest.emoji}</span><span class="stamp-name">${dest.name}</span>`;
         grid.appendChild(item);
     });
+
+    // 진행률 — showToast·detail-map-btn처럼 없으면 만들고, 있으면 값만 갱신
+    let progress = document.getElementById('stamp-progress');
+    if (!progress) {
+        progress = document.createElement('div');
+        progress.id = 'stamp-progress';
+        progress.className = 'stamp-progress';
+        progress.innerHTML =
+            '<div class="stamp-progress-bar"><div class="stamp-progress-fill"></div></div>' +
+            '<span class="stamp-progress-label"></span>';
+        grid.before(progress);
+    }
+    const total = Object.keys(STAMP_DESTINATIONS).length;
+    const done = collectedStamps.length;
+    const allDone = done === total;
+    progress.querySelector('.stamp-progress-fill').style.width = `${(done / total) * 100}%`;
+    progress.querySelector('.stamp-progress-label').textContent =
+        allDone ? '🎉 전국 제패!' : `${done} / ${total} 수집`;
+    progress.classList.toggle('done-all', allDone);
+
     modal.classList.add('open');
     trapFocus(modal);
 }
