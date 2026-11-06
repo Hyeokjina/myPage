@@ -377,7 +377,9 @@ function openStampModal() {
         const collected = collectedStamps.includes(file);
         const item = document.createElement('div');
         item.className = 'stamp-item' + (collected ? ' collected' : '');
-        item.innerHTML = `<span class="stamp-emoji">${dest.emoji}</span><span class="stamp-name">${dest.name}</span>`;
+        // 색상(흑백 필터)만으로 구분하면 스크린 리더에 전달되지 않아 label로도 상태를 알림
+        item.setAttribute('aria-label', `${dest.name} — ${collected ? '수집 완료' : '미수집'}`);
+        item.innerHTML = `<span class="stamp-emoji" aria-hidden="true">${dest.emoji}</span><span class="stamp-name">${dest.name}</span>`;
         grid.appendChild(item);
     });
 
@@ -570,6 +572,9 @@ document.querySelectorAll('.footer-year').forEach(el => {
 
     document.querySelector('.fav-count')
         ?.setAttribute('aria-label', '즐겨찾기 목록 열기');
+
+    document.querySelector('.stamp-count')
+        ?.setAttribute('aria-label', '여행 스탬프 목록 열기');
 
     document.querySelector('.bottom-nav')
         ?.setAttribute('aria-label', '하단 탭 메뉴');
