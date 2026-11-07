@@ -68,11 +68,19 @@ header {
     transition: background 0.3s, box-shadow 0.3s;
 }
 
+/* 다크토글·즐겨찾기·스탬프를 묶는 헤더 오른쪽 그룹 */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .logo {
     display: flex;
     align-items: center;
     gap: 8px;
     text-decoration: none;
+    flex-shrink: 0;
 }
 
 a.logo { text-decoration: none; }
@@ -82,8 +90,9 @@ a.logo { text-decoration: none; }
     font-weight: 700;
     color: var(--navy);
     letter-spacing: -0.3px;
+    white-space: nowrap;
 }
-.icon { width: 28px; height: 28px; }
+.icon { width: 28px; height: 28px; flex-shrink: 0; }
 
 /* 헤더 네비게이션 */
 header nav ul { display: flex; list-style: none; gap: 4px; }
@@ -570,6 +579,17 @@ body.dark .share-btn:hover { background: #0A2535; border-color: var(--brand); co
 @media (max-width: 1180px) {
     /* back-to-top이 bottom:72px~116px, right:28px를 차지하므로 그 위로 쌓이게 띄움 (겹침 방지) */
     .share-btn { bottom: calc(128px + env(safe-area-inset-bottom)); right: 16px; }
+}
+
+/* 좁은 모바일(~480px 이하)에서는 로고+햄버거+다크토글+즐겨찾기+스탬프가 한 줄에 다 안 들어가
+   로고 글자가 두 줄로 밀리는 문제가 있어, "즐겨찾기"/"스탬프" 텍스트는 숨기고 아이콘+숫자만 남김
+   + 헤더 패딩·버튼 간격·버튼 패딩도 같이 줄여서 폭이 아주 좁은 기기(360px 안팎)까지 대응
+   (1180px 블록의 header padding보다 뒤에 와야 이 규칙이 이김 — 순서 중요) */
+@media (max-width: 480px) {
+    header { padding: 0 10px; }
+    .header-actions { gap: 4px; }
+    .count-label { display: none; }
+    .fav-count, .stamp-count { padding: 6px 6px; gap: 3px; }
 }
 
 /* 라이트박스 */
