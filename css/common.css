@@ -10,6 +10,19 @@
     --danger-rgb: 231,76,60;
 }
 
+/* 반응형 기준점 registry — CSS 커스텀 프로퍼티는 @media 조건문 안에서 쓸 수 없어서
+   (브라우저가 지원 안 함) 값 자체를 변수화하진 못하고, 대신 여기에 전부 적어둠.
+   값을 바꿀 땐 아래 목록에 적힌 모든 위치를 같이 바꿔야 함.
+
+   - 1180px: 헤더가 햄버거 메뉴로 전환되는 지점.
+     · common.css 안에서 두 군데(헤더 nav, .share-btn 위치) — 각자 관련 스타일 바로 아래 있음
+     · about.css의 .side-menu 숨김 지점과 반드시 같아야 함 (다르면 그 사이 폭에서
+       목차가 숨겨진 네비 위에 둥둥 떠 있거나, 헤더는 아직 데스크톱인데 목차만 사라지는 등 틈이 생김)
+   - 480px: 헤더 배지("즐겨찾기"/"스탬프" 글자)를 아이콘+숫자로 줄이는 지점.
+     common.css 한 곳에만 있어서 다른 파일과 동기화할 필요는 없음.
+   - 600px: common.css(.tips-list)와 about.css(h2 글자 크기)에 둘 다 있지만
+     서로 무관한 독립적인 조정이라 같은 값일 필요는 없음 (우연히 같을 뿐). */
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 /* 키보드 포커스 표시 */
@@ -522,7 +535,8 @@ body.dark .bottom-nav a { color: #4a6a7a; }
 body.dark .bottom-nav a.active { color: var(--brand); }
 
 /* 반응형 공통 */
-/* 헤더 nav 10개 + 즐겨찾기·스탬프 배지까지 합치면 약 1090px 필요 — 1180px로 여유 확보 */
+/* 헤더 nav 10개 + 즐겨찾기·스탬프 배지까지 합치면 약 1090px 필요 — 1180px로 여유 확보
+   (파일 상단 "반응형 기준점 registry" 참고 — about.css .side-menu와 같은 값 유지 필요) */
 @media (max-width: 1180px) {
     header { height: 56px; padding: 0 20px; }
     .hamburger { display: block; }
@@ -576,15 +590,17 @@ body.dark .bottom-nav a.active { color: var(--brand); }
 .share-btn:hover { background: #e0f2fe; border-color: var(--brand); color: var(--brand); transform: translateY(-2px); }
 body.dark .share-btn { background: #0A1628; border-color: #333; color: #aaa; }
 body.dark .share-btn:hover { background: #0A2535; border-color: var(--brand); color: #38bdf8; }
+/* 헤더 햄버거 전환(위 registry 참고)과 같은 지점에서 모바일 하단 탭바가 뜨므로 그 폭에서만 위치 조정 */
 @media (max-width: 1180px) {
     /* back-to-top이 bottom:72px~116px, right:28px를 차지하므로 그 위로 쌓이게 띄움 (겹침 방지) */
     .share-btn { bottom: calc(128px + env(safe-area-inset-bottom)); right: 16px; }
 }
 
-/* 좁은 모바일(~480px 이하)에서는 로고+햄버거+다크토글+즐겨찾기+스탬프가 한 줄에 다 안 들어가
-   로고 글자가 두 줄로 밀리는 문제가 있어, "즐겨찾기"/"스탬프" 텍스트는 숨기고 아이콘+숫자만 남김
-   + 헤더 패딩·버튼 간격·버튼 패딩도 같이 줄여서 폭이 아주 좁은 기기(360px 안팎)까지 대응
-   (1180px 블록의 header padding보다 뒤에 와야 이 규칙이 이김 — 순서 중요) */
+/* 좁은 모바일(~480px 이하, 파일 상단 registry 참고)에서는 로고+햄버거+다크토글+즐겨찾기+스탬프가
+   한 줄에 다 안 들어가 로고 글자가 두 줄로 밀리는 문제가 있어, "즐겨찾기"/"스탬프" 텍스트는
+   숨기고 아이콘+숫자만 남김 + 헤더 패딩·버튼 간격·버튼 패딩도 같이 줄여서 360px 안팎까지 대응
+   (이 블록은 위쪽 1180px 블록들의 header padding보다 파일에서 더 아래에 있어야 함 — CSS는
+   같은 우선순위일 때 나중에 나온 규칙이 이기므로, 순서가 바뀌면 이 규칙이 무시됨) */
 @media (max-width: 480px) {
     header { padding: 0 10px; }
     .header-actions { gap: 4px; }

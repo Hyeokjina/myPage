@@ -213,7 +213,9 @@ body.dark .detail-modal-body h3 { color: #e8f4fb; }
 body.dark .detail-modal-body p { color: #bbb; }
 body.dark .detail-info { background: #0A1628; color: #aaa; }
 
-/* 반응형 — 헤더 햄버거 전환 지점(1180px)과 맞춰서 그 사이 구간에 목차가 본문 위에 떠 있지 않게 함 */
+/* 반응형 — 헤더 햄버거 전환 지점과 맞춰서 그 사이 구간에 목차가 본문 위에 떠 있지 않게 함.
+   이 값(1180px)은 common.css 상단 "반응형 기준점 registry"에 등록돼 있음 —
+   common.css의 헤더 브레이크포인트를 바꾸면 여기도 반드시 같이 바꿔야 함 */
 @media (max-width: 1180px) {
     .side-menu { display: none; }
 }
