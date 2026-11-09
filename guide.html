@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/about.css">
     <link rel="stylesheet" href="./css/region-detail.css">
+    <link rel="stylesheet" href="./css/guide.css">
 </head>
 <body>
     <div id="scroll-progress"></div>
@@ -172,33 +173,48 @@
     <!-- 예산 짜기 -->
     <div class="container" id="guide-budget">
         <h2>여행 예산 짜기</h2>
+
+        <!-- 예산 계산기 — 총 예산을 입력하면 항목별 예상 금액을 자동 계산 (로직은 다음 단계에서 연결) -->
+        <div class="budget-calc">
+            <label for="budget-total">총 여행 예산</label>
+            <div class="budget-input-wrap">
+                <input type="number" id="budget-total" placeholder="예: 500000" min="0" step="10000" inputmode="numeric">
+                <span class="budget-unit">원</span>
+            </div>
+            <p class="budget-hint">예산을 입력하면 아래 항목별 예상 금액이 자동으로 계산돼요.</p>
+        </div>
+
         <div class="course-list">
-            <div class="course-item">
+            <div class="course-item" data-budget-min="30" data-budget-max="40">
                 <div class="course-day">숙박</div>
                 <div class="course-content">
                     <strong>전체 예산의 30~40%</strong>
                     <span>성수기·주말은 최대 2배까지 차이 나니 평일 여행이나 얼리버드 예약 추천</span>
+                    <span class="budget-amount" id="budget-amount-lodging"></span>
                 </div>
             </div>
-            <div class="course-item">
+            <div class="course-item" data-budget-min="20" data-budget-max="25">
                 <div class="course-day">식비</div>
                 <div class="course-content">
                     <strong>전체 예산의 20~25%</strong>
                     <span>지역 대표 맛집은 한두 끼로 즐기고 나머지는 가성비 식당으로 균형 잡기</span>
+                    <span class="budget-amount" id="budget-amount-food"></span>
                 </div>
             </div>
-            <div class="course-item">
+            <div class="course-item" data-budget-min="15" data-budget-max="20">
                 <div class="course-day">교통</div>
                 <div class="course-content">
                     <strong>전체 예산의 15~20%</strong>
                     <span>KTX 특실보다 일반실, 렌터카는 일행끼리 나눠 타면 부담을 줄일 수 있음</span>
+                    <span class="budget-amount" id="budget-amount-transport"></span>
                 </div>
             </div>
-            <div class="course-item">
+            <div class="course-item" data-budget-min="15" data-budget-max="20">
                 <div class="course-day">기타</div>
                 <div class="course-content">
                     <strong>전체 예산의 15~20%</strong>
                     <span>입장료·기념품·비상금은 넉넉하게 잡아두는 편이 마음 편합니다</span>
+                    <span class="budget-amount" id="budget-amount-etc"></span>
                 </div>
             </div>
         </div>

@@ -1,0 +1,68 @@
+/* 여행 예산 계산기 */
+.budget-calc {
+    background: #f4f6f9;
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+}
+.budget-calc label {
+    display: block;
+    font-size: 0.88em;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+}
+.budget-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 320px;
+}
+.budget-input-wrap input {
+    flex: 1;
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #e8edf2;
+    border-radius: 12px;
+    font-size: 0.95em;
+    font-family: inherit;
+    background: #fff;
+    color: #222;
+    box-sizing: border-box;
+    transition: border-color 0.18s, box-shadow 0.18s;
+}
+.budget-input-wrap input:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(var(--brand-rgb),0.12);
+}
+.budget-unit {
+    font-size: 0.88em;
+    font-weight: 600;
+    color: #777;
+    flex-shrink: 0;
+}
+.budget-hint {
+    font-size: 0.78em;
+    color: #999;
+    margin-top: 8px;
+}
+
+/* 항목별 계산 결과 — .course-content span의 일반 회색 스타일보다 우선해야 해서 .course-content와 묶어 명시도를 높임 */
+.course-content .budget-amount {
+    font-size: 0.92em;
+    font-weight: 700;
+    color: var(--brand);
+    letter-spacing: -0.2px;
+}
+
+body.dark .budget-calc { background: #0F2035; }
+body.dark .budget-calc label { color: #e8f4fb; }
+body.dark .budget-input-wrap input {
+    background: #0A1628;
+    border-color: #1a2e42;
+    color: #ddd;
+}
+body.dark .budget-unit { color: #7a94a8; }
+body.dark .budget-hint { color: #5a7a8a; }
+body.dark .course-content .budget-amount { color: #38bdf8; }
