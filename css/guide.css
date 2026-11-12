@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    max-width: 320px;
+    max-width: 380px;
 }
 .budget-input-wrap input {
     flex: 1;
@@ -42,6 +42,21 @@
     color: #777;
     flex-shrink: 0;
 }
+.budget-reset-btn {
+    font-size: 0.78em;
+    font-weight: 600;
+    color: #999;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s;
+}
+.budget-reset-btn:hover { background: #fdecea; color: var(--danger); }
 .budget-hint {
     font-size: 0.78em;
     color: #999;
@@ -64,5 +79,7 @@ body.dark .budget-input-wrap input {
     color: #ddd;
 }
 body.dark .budget-unit { color: #7a94a8; }
+body.dark .budget-reset-btn { color: #7a94a8; }
+body.dark .budget-reset-btn:hover { background: rgba(var(--danger-rgb),0.18); color: #ff8787; }
 body.dark .budget-hint { color: #5a7a8a; }
 body.dark .course-content .budget-amount { color: #38bdf8; }

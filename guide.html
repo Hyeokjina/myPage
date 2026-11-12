@@ -174,12 +174,13 @@
     <div class="container" id="guide-budget">
         <h2>여행 예산 짜기</h2>
 
-        <!-- 예산 계산기 — 총 예산을 입력하면 항목별 예상 금액을 자동 계산 (로직은 다음 단계에서 연결) -->
+        <!-- 예산 계산기 — 총 예산을 입력하면 항목별 예상 금액을 자동 계산 -->
         <div class="budget-calc">
             <label for="budget-total">총 여행 예산</label>
             <div class="budget-input-wrap">
-                <input type="number" id="budget-total" placeholder="예: 500000" min="0" step="10000" inputmode="numeric">
+                <input type="number" id="budget-total" placeholder="예: 500000" min="0" max="100000000" step="10000" inputmode="numeric">
                 <span class="budget-unit">원</span>
+                <button type="button" id="budget-reset-btn" class="budget-reset-btn" style="display:none;" aria-label="예산 초기화">초기화</button>
             </div>
             <p class="budget-hint">예산을 입력하면 아래 항목별 예상 금액이 자동으로 계산돼요.</p>
         </div>

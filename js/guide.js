@@ -5,6 +5,7 @@ initScrollSpy();
 // 비율(data-budget-min/max)은 HTML에 한 번만 적어두고 여기서 읽어서 쓴다 (숫자 중복 방지)
 (function initBudgetCalculator() {
     const input = document.getElementById('budget-total');
+    const resetBtn = document.getElementById('budget-reset-btn');
     if (!input) return;
 
     const items = document.querySelectorAll('#guide-budget .course-item[data-budget-min]');
@@ -16,6 +17,7 @@ initScrollSpy();
     function update() {
         const total = Number(input.value);
         const amountEls = document.querySelectorAll('.budget-amount');
+        resetBtn.style.display = input.value ? 'block' : 'none';
 
         if (!input.value || !Number.isFinite(total) || total <= 0) {
             amountEls.forEach(el => { el.textContent = ''; });
@@ -32,4 +34,9 @@ initScrollSpy();
     }
 
     input.addEventListener('input', update);
+    resetBtn?.addEventListener('click', () => {
+        input.value = '';
+        update();
+        input.focus();
+    });
 })();
