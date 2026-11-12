@@ -10,6 +10,14 @@ initScrollSpy();
 
     const items = document.querySelectorAll('#guide-budget .course-item[data-budget-min]');
 
+    // 비중 막대는 입력값과 무관하게 "보통 이 정도 비중" 참고용이라 페이지 로드 시 한 번만 채워둠
+    items.forEach(item => {
+        const min = Number(item.dataset.budgetMin);
+        const max = Number(item.dataset.budgetMax);
+        const fill = item.querySelector('.budget-bar-fill');
+        if (fill) fill.style.width = `${(min + max) / 2}%`;
+    });
+
     function formatWon(n) {
         return Math.round(n).toLocaleString('ko-KR') + '원';
     }

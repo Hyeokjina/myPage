@@ -71,6 +71,27 @@
     letter-spacing: -0.2px;
 }
 
+/* 항목별 비중 막대 — planner.css의 .plan-progress-bar/.plan-progress-fill과 같은 구조.
+   채워지는 길이는 data-budget-min~max의 평균값(예: 30~40% → 35%)으로 고정 —
+   실제 예산을 입력하지 않아도 "보통 이 정도 비중"을 바로 보여주는 참고용 그래프라 항상 표시함.
+   색상은 planner.css의 일정 카테고리 색(숙박/교통/기타·식사)을 그대로 재사용해 사이트 전체에서 같은 카테고리는 같은 색으로 보이게 함 */
+.budget-bar {
+    height: 6px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 2px 0;
+}
+.budget-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.4s ease;
+}
+.budget-bar-lodging    { background: #9b59b6; }
+.budget-bar-food       { background: #e67e22; }
+.budget-bar-transport  { background: #3498db; }
+.budget-bar-etc        { background: #95a5a6; }
+
 body.dark .budget-calc { background: #0F2035; }
 body.dark .budget-calc label { color: #e8f4fb; }
 body.dark .budget-input-wrap input {
@@ -83,3 +104,8 @@ body.dark .budget-reset-btn { color: #7a94a8; }
 body.dark .budget-reset-btn:hover { background: rgba(var(--danger-rgb),0.18); color: #ff8787; }
 body.dark .budget-hint { color: #5a7a8a; }
 body.dark .course-content .budget-amount { color: #38bdf8; }
+body.dark .budget-bar { background: #2a2a4a; }
+body.dark .budget-bar-lodging    { background: #c490e4; }
+body.dark .budget-bar-food       { background: #f0a060; }
+body.dark .budget-bar-transport  { background: #7ab8d9; }
+body.dark .budget-bar-etc        { background: #888; }
