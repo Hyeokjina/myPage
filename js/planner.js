@@ -661,14 +661,8 @@ function buildScheduleText() {
   return `${title}\n${'─'.repeat(30)}\n${lines.join('\n')}`;
 }
 
-function copySchedule() {
-  const text = buildScheduleText();
-  if (!text) { showToast('일정이 없습니다.'); return; }
-  navigator.clipboard.writeText(text)
-    .then(() => showToast('클립보드에 복사되었습니다!'))
-    .catch(() => showToast('복사에 실패했습니다.'));
-}
-
+// 공유 버튼이 Web Share API 미지원 환경에서 클립보드 복사로 자동 대체하므로
+// 별도 "복사" 버튼은 완전히 중복이라 제거함 (shareSchedule()의 else 분기 참고)
 function shareSchedule() {
   const text = buildScheduleText();
   if (!text) { showToast('일정이 없습니다.'); return; }
@@ -820,7 +814,6 @@ document.getElementById('rename-modal')?.addEventListener('click', closeRenameMo
 document.getElementById('rename-cancel-btn')?.addEventListener('click', closeRenameModal);
 document.getElementById('edit-modal')?.addEventListener('click', closeEditModalOutside);
 document.getElementById('edit-cancel-btn')?.addEventListener('click', closeEditModal);
-document.getElementById('copy-btn')?.addEventListener('click', copySchedule);
 document.getElementById('share-schedule-btn')?.addEventListener('click', shareSchedule);
 document.getElementById('download-btn')?.addEventListener('click', downloadSchedule);
 document.getElementById('print-btn')?.addEventListener('click', () => {
