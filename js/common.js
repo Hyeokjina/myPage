@@ -289,21 +289,6 @@ function updateFavBadge() {
     if (badge) badge.textContent = getFavs().length;
 }
 
-// STAMP_DESTINATIONS는 파일 아래쪽에 선언돼 있지만, 함수 선언은 호이스팅되고
-// 실제 호출은 그 선언 이후(trackStamp 실행 직후)에만 이뤄지므로 문제없음
-// 저장된 값 중 현재 스탬프 대상인 것만 세서, 헤더 배지와 모달 진행률이 항상 같은 기준을 쓰도록 함
-function getCollectedStamps() {
-    const stamps = readJSON('travel_stamps', []);
-    return Object.keys(STAMP_DESTINATIONS).filter(file => stamps.includes(file));
-}
-
-function updateStampBadge() {
-    const badge = document.getElementById('stamp-badge');
-    if (!badge) return;
-    const total = Object.keys(STAMP_DESTINATIONS).length;
-    badge.textContent = `${getCollectedStamps().length}/${total}`;
-}
-
 function syncFavButtons() {
     const favs = getFavs();
     document.querySelectorAll('.fav-btn').forEach(btn => {
@@ -366,53 +351,6 @@ function closeFavModal() {
     releaseFocus(modal);
 }
 
-// 스탬프 모달 — 6개 지역 중 모은 것/못 모은 것을 그리드로 표시
-function openStampModal() {
-    const modal = document.getElementById('stamp-modal');
-    if (!modal) return;
-    const collectedStamps = getCollectedStamps();
-    const grid = document.getElementById('stamp-grid');
-    grid.innerHTML = '';
-    Object.entries(STAMP_DESTINATIONS).forEach(([file, dest]) => {
-        const collected = collectedStamps.includes(file);
-        const item = document.createElement('div');
-        item.className = 'stamp-item' + (collected ? ' collected' : '');
-        // 색상(흑백 필터)만으로 구분하면 스크린 리더에 전달되지 않아 label로도 상태를 알림
-        item.setAttribute('aria-label', `${dest.name} — ${collected ? '수집 완료' : '미수집'}`);
-        item.innerHTML = `<span class="stamp-emoji" aria-hidden="true">${dest.emoji}</span><span class="stamp-name">${dest.name}</span>`;
-        grid.appendChild(item);
-    });
-
-    // 진행률 — showToast·detail-map-btn처럼 없으면 만들고, 있으면 값만 갱신
-    let progress = document.getElementById('stamp-progress');
-    if (!progress) {
-        progress = document.createElement('div');
-        progress.id = 'stamp-progress';
-        progress.className = 'stamp-progress';
-        progress.innerHTML =
-            '<div class="stamp-progress-bar"><div class="stamp-progress-fill"></div></div>' +
-            '<span class="stamp-progress-label"></span>';
-        grid.before(progress);
-    }
-    const total = Object.keys(STAMP_DESTINATIONS).length;
-    const done = collectedStamps.length;
-    const allDone = done === total;
-    progress.querySelector('.stamp-progress-fill').style.width = `${(done / total) * 100}%`;
-    progress.querySelector('.stamp-progress-label').textContent =
-        allDone ? '🎉 전국 제패!' : `${done} / ${total} 수집`;
-    progress.classList.toggle('done-all', allDone);
-
-    modal.classList.add('open');
-    trapFocus(modal);
-}
-
-function closeStampModal() {
-    const modal = document.getElementById('stamp-modal');
-    if (!modal) return;
-    modal.classList.remove('open');
-    releaseFocus(modal);
-}
-
 // 즐겨찾기 버튼은 나중에 동적으로 추가되는 경우도 있어, 이벤트 위임으로 한 번만 등록
 document.addEventListener('click', e => {
     const btn = e.target.closest('.fav-btn');
@@ -421,21 +359,15 @@ document.addEventListener('click', e => {
     toggleFav(btn.dataset.name);
 });
 
-// fav-modal, stamp-modal 두 모달이 같은 페이지에 함께 있을 수 있어
-// .modal-close/바깥 클릭/Esc 처리는 어느 모달인지 id로 구분해서 공용으로 처리
 document.querySelector('.fav-count')?.addEventListener('click', openFavModal);
-document.querySelector('.stamp-count')?.addEventListener('click', openStampModal);
-document.addEventListener('click', e => {
-    const closeBtn = e.target.closest('.modal-close');
-    const modal = closeBtn ? closeBtn.closest('.modal-overlay') : (e.target.classList.contains('modal-overlay') ? e.target : null);
-    if (!modal) return;
-    if (modal.id === 'fav-modal') closeFavModal();
-    else if (modal.id === 'stamp-modal') closeStampModal();
+document.querySelector('.modal-close')?.addEventListener('click', closeFavModal);
+document.getElementById('fav-modal')?.addEventListener('click', e => {
+    if (e.target === document.getElementById('fav-modal')) closeFavModal();
 });
 document.addEventListener('keydown', e => {
-    if (e.key !== 'Escape') return;
-    if (document.getElementById('fav-modal')?.classList.contains('open')) closeFavModal();
-    else if (document.getElementById('stamp-modal')?.classList.contains('open')) closeStampModal();
+    if (e.key === 'Escape' && document.getElementById('fav-modal')?.classList.contains('open')) {
+        closeFavModal();
+    }
 });
 
 updateFavBadge();
@@ -462,31 +394,6 @@ syncFavButtons();
     recent = recent.slice(0, 5);
     writeJSON('recently_viewed', recent, true);
 })();
-
-// 여행 스탬프 — 방문 기록
-// 6개 지역 페이지만 "진짜 여행지"로 보고 스탬프 대상으로 삼음 (숙소 세일/인기 지역 같은 목록 페이지는 제외)
-// 모달 등 다른 곳에서도 이름/이모지가 필요해서 최상위 상수로 선언
-const STAMP_DESTINATIONS = {
-    'about.html':    { name: '인천', emoji: '🛳️' },
-    'seoul.html':    { name: '서울', emoji: '🏯' },
-    'busan.html':    { name: '부산', emoji: '🌊' },
-    'jeju.html':     { name: '제주', emoji: '🍊' },
-    'gangwon.html':  { name: '강원', emoji: '🏔️' },
-    'gyeongju.html': { name: '경주', emoji: '🏛️' },
-};
-
-(function trackStamp() {
-    const file = location.pathname.split('/').pop() || 'index.html';
-    const dest = STAMP_DESTINATIONS[file];
-    if (!dest) return;
-    const stamps = readJSON('travel_stamps', []);
-    if (stamps.includes(file)) return; // 이미 모은 스탬프면 중복 저장하지 않음
-    stamps.push(file);
-    writeJSON('travel_stamps', stamps, true);
-    showToast(`${dest.emoji} ${dest.name} 스탬프 획득!`);
-})();
-
-updateStampBadge();
 
 // 라이트박스
 (function initLightbox() {
@@ -572,9 +479,6 @@ document.querySelectorAll('.footer-year').forEach(el => {
 
     document.querySelector('.fav-count')
         ?.setAttribute('aria-label', '즐겨찾기 목록 열기');
-
-    document.querySelector('.stamp-count')
-        ?.setAttribute('aria-label', '여행 스탬프 목록 열기');
 
     document.querySelector('.bottom-nav')
         ?.setAttribute('aria-label', '하단 탭 메뉴');
