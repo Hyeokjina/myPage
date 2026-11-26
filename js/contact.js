@@ -75,17 +75,9 @@ form.addEventListener('submit', function (e) {
     submitBtn.disabled = true;
     submitBtn.classList.add('loading');
 
-    // mailto 전송 시뮬레이션 (실제 전송은 서버 없이 불가)
+    // 전송 시뮬레이션 — 서버가 없는 학습용 사이트라 실제로는 어디에도 보내지 않음
+    // (잠깐 로딩을 보여준 뒤 데모 안내 화면으로 전환)
     setTimeout(() => {
-        const name     = nameEl.value.trim();
-        const email    = emailEl.value.trim();
-        const category = document.getElementById('category').value;
-        const message  = messageEl.value.trim();
-
-        const subject = encodeURIComponent(`[문의${category ? ' - ' + category : ''}] ${name}`);
-        const body    = encodeURIComponent(`이름: ${name}\n이메일: ${email}${category ? '\n문의 유형: ' + category : ''}\n\n${message}`);
-        window.location.href = `mailto:example@email.com?subject=${subject}&body=${body}`;
-
         form.reset();
         counter.textContent = `0 / ${MAX_CHARS}`;
         [nameEl, emailEl, messageEl].forEach(el => el.classList.remove('is-valid', 'is-invalid'));
